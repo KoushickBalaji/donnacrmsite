@@ -94,21 +94,7 @@ export function PrivacyPage() {
                 <li>Access and receive a copy of your personal data</li>
                 <li>Rectify inaccurate personal data</li>
                 <li>Request deletion of your personal data</li>
-                <li>Object to processing of your personal data</li>
-                <li>Export your data in a portable format</li>
               </ul>
-            </div>
-
-            <div>
-              <h2 className="mb-4 text-2xl font-bold text-foreground">
-                Cookies and Tracking
-              </h2>
-              <p className="text-muted-foreground">
-                We use cookies and similar tracking technologies to track activity
-                on our service and hold certain information. You can instruct your
-                browser to refuse all cookies or to indicate when a cookie is being
-                sent.
-              </p>
             </div>
 
             <div>
@@ -142,4 +128,3 @@ export function PrivacyPage() {
     </>
   )
 }
-
