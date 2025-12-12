@@ -2,6 +2,15 @@
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
+## SPA Routing (Fix 404 on refresh)
+
+This site uses client-side routing (React Router). Your host must rewrite all routes (e.g. `/privacy`) to `index.html`, otherwise deep links/refresh will 404.
+
+- Netlify / Cloudflare Pages: `public/_redirects` is included (`/* /index.html 200`).
+- Vercel: `vercel.json` is included (rewrite all routes to `/`).
+- Nginx: `try_files $uri /index.html;`
+- Apache: rewrite all non-files to `index.html` (via `.htaccess`).
+
 Currently, two official plugins are available:
 
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
