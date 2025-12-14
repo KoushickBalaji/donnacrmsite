@@ -38,42 +38,6 @@ const homeFeatures = [
   },
 ] as const
 
-const testimonials = [
-  {
-    quote:
-      "Donna CRM has transformed how I manage my client relationships. It's like having a personal assistant right in Gmail.",
-    author: 'Sarah Johnson',
-    role: 'Sales Manager',
-    rating: 5,
-  },
-  {
-    quote:
-      'The pipeline tracking feature alone has helped us close 30% more deals. Absolutely essential for any sales team.',
-    author: 'Michael Chen',
-    role: 'Startup Founder',
-    rating: 5,
-  },
-  {
-    quote:
-      "Finally, a CRM that doesn't require switching between apps. Everything I need is right where I work.",
-    author: 'Emily Rodriguez',
-    role: 'Business Development',
-    rating: 5,
-  },
-] as const
-
-function Stars({ count }: { count: number }) {
-  return (
-    <div className="flex gap-1">
-      {Array.from({ length: count }).map((_, i) => (
-        <span key={i} className="text-primary">
-          ★
-        </span>
-      ))}
-    </div>
-  )
-}
-
 export function HomePage() {
   return (
     <>
@@ -141,34 +105,6 @@ export function HomePage() {
         </div>
       </section>
 
-      <section className="bg-muted/30 py-20">
-        <div className="container">
-          <div className="mb-12 text-center">
-            <h2 className="text-3xl font-bold text-foreground sm:text-4xl">
-              Trusted by Professionals
-            </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
-              See what our users are saying about Donna CRM.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-            {testimonials.map((t) => (
-              <Card key={t.author} className="border-border">
-                <CardContent className="p-6">
-                  <Stars count={t.rating} />
-                  <p className="mt-4 text-muted-foreground">"{t.quote}"</p>
-                  <div className="mt-6">
-                    <p className="font-semibold text-foreground">{t.author}</p>
-                    <p className="text-sm text-muted-foreground">{t.role}</p>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
       <section className="bg-primary py-20">
         <div className="container">
           <div className="mx-auto max-w-2xl text-center">
@@ -196,4 +132,3 @@ export function HomePage() {
     </>
   )
 }
-
