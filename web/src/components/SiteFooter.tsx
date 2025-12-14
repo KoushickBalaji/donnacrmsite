@@ -41,6 +41,24 @@ export function SiteFooter() {
               <Link to="/privacy" className="text-muted-foreground hover:text-primary">
                 Privacy
               </Link>
+              <Link
+                to="/terms"
+                className="text-muted-foreground hover:text-primary"
+              >
+                Terms
+              </Link>
+              <Link
+                to="/cancellation-refunds"
+                className="text-muted-foreground hover:text-primary"
+              >
+                Cancellation &amp; Refunds
+              </Link>
+              <Link
+                to="/shipping"
+                className="text-muted-foreground hover:text-primary"
+              >
+                Shipping
+              </Link>
             </div>
           </div>
         </div>
