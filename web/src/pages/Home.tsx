@@ -55,7 +55,7 @@ export function HomePage() {
             <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Button size="lg" asChild>
                 <a
-                  href="https://chrome.google.com/webstore"
+                  href="https://chromewebstore.google.com/detail/donna-crm/fadjjpednmcoomcpajkfbpchankdoiip"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -147,7 +147,7 @@ export function HomePage() {
             <div className="mt-8">
               <Button size="lg" variant="secondary" asChild>
                 <a
-                  href="https://chrome.google.com/webstore"
+                  href="https://chromewebstore.google.com/detail/donna-crm/fadjjpednmcoomcpajkfbpchankdoiip"
                   target="_blank"
                   rel="noopener noreferrer"
                 >

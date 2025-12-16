@@ -206,7 +206,7 @@ export function FeaturesPage() {
             <div className="mt-8">
               <Button size="lg" variant="secondary" asChild>
                 <a
-                  href="https://chrome.google.com/webstore"
+                  href="https://chromewebstore.google.com/detail/donna-crm/fadjjpednmcoomcpajkfbpchankdoiip"
                   target="_blank"
                   rel="noopener noreferrer"
                 >

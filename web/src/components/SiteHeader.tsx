@@ -48,7 +48,7 @@ export function SiteHeader() {
         <div className="hidden md:block">
           <Button asChild>
             <a
-              href="https://chrome.google.com/webstore"
+              href="https://chromewebstore.google.com/detail/donna-crm/fadjjpednmcoomcpajkfbpchankdoiip"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -90,7 +90,7 @@ export function SiteHeader() {
               })}
               <Button className="mt-2 w-full" asChild>
                 <a
-                  href="https://chrome.google.com/webstore"
+                  href="https://chromewebstore.google.com/detail/donna-crm/fadjjpednmcoomcpajkfbpchankdoiip"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
