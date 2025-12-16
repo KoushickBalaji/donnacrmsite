@@ -1,4 +1,4 @@
-import { Mail, MapPin, Phone } from 'lucide-react'
+import { Mail, MapPin } from 'lucide-react'
 import { useMemo, useState } from 'react'
 import { Button } from '../components/ui/Button'
 import { Card, CardContent } from '../components/ui/Card'
@@ -40,6 +40,7 @@ export function ContactPage() {
     {},
   )
   const [sent, setSent] = useState(false)
+  const [submitError, setSubmitError] = useState<string | null>(null)
 
   const canSubmit = useMemo(
     () => Object.keys(validate(values)).length === 0,
@@ -49,15 +50,31 @@ export function ContactPage() {
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault()
     setSent(false)
+    setSubmitError(null)
     const nextErrors = validate(values)
     setErrors(nextErrors)
     if (Object.keys(nextErrors).length) return
 
     setSubmitting(true)
-    await new Promise((r) => setTimeout(r, 900))
-    setSubmitting(false)
-    setSent(true)
-    setValues({ name: '', email: '', subject: '', message: '' })
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify(values),
+      })
+
+      if (!res.ok) {
+        const message = await res.text().catch(() => '')
+        throw new Error(message || 'Message could not be sent')
+      }
+
+      setSent(true)
+      setValues({ name: '', email: '', subject: '', message: '' })
+    } catch (err) {
+      setSubmitError(err instanceof Error ? err.message : 'Message could not be sent')
+    } finally {
+      setSubmitting(false)
+    }
   }
 
   return (
@@ -87,21 +104,12 @@ export function ContactPage() {
                   <div>
                     <h3 className="font-semibold text-foreground">Email Us</h3>
                     <p className="mt-1 text-sm text-muted-foreground">
-                      support@donnacrm.com
-                    </p>
-                  </div>
-                </CardContent>
-              </Card>
-
-              <Card className="border-border">
-                <CardContent className="flex items-start gap-4 p-6">
-                  <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-primary/10">
-                    <Phone className="h-5 w-5 text-primary" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-foreground">Call Us</h3>
-                    <p className="mt-1 text-sm text-muted-foreground">
-                      +1 (555) 123-4567
+                      <a
+                        href="mailto:support@donnacrm.com"
+                        className="hover:text-primary hover:underline"
+                      >
+                        support@donnacrm.com
+                      </a>
                     </p>
                   </div>
                 </CardContent>
@@ -113,9 +121,10 @@ export function ContactPage() {
                     <MapPin className="h-5 w-5 text-primary" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-foreground">Location</h3>
+                    <h3 className="font-semibold text-foreground">Mailing Address</h3>
                     <p className="mt-1 text-sm text-muted-foreground">
-                      Remote-first team
+                      Innov8 Mantri, Outer Ring Rd, Devarabisanahalli, Bellandur,
+                      Bengaluru, Karnataka 560103
                     </p>
                   </div>
                 </CardContent>
@@ -191,6 +200,12 @@ export function ContactPage() {
                       ) : null}
                     </div>
 
+                    {submitError ? (
+                      <div className="rounded-md border border-destructive/30 bg-destructive/5 px-4 py-3 text-sm text-foreground">
+                        {submitError}
+                      </div>
+                    ) : null}
+
                     {sent ? (
                       <div className="rounded-md border border-border bg-muted/40 px-4 py-3 text-sm text-foreground">
                         Message sent! We'll get back to you soon.
@@ -214,4 +229,3 @@ export function ContactPage() {
     </>
   )
 }
-

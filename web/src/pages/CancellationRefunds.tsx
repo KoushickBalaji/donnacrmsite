@@ -44,9 +44,9 @@ export function CancellationRefundsPage() {
                 14-day free trial
               </h2>
               <p className="text-muted-foreground">
-                Donna CRM offers a 14-day free trial. No payment or card details
-                are required to start the trial. At the end of the trial, you may
-                choose to subscribe to a paid plan by providing payment details.
+                Donna CRM offers a 14-day trial of the Paid plan, starting on
+                sign-up. At the end of the trial, you can choose whether to
+                continue on a paid subscription.
               </p>
             </div>
 
@@ -159,4 +159,3 @@ export function CancellationRefundsPage() {
     </>
   )
 }
-

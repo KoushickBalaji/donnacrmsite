@@ -11,6 +11,16 @@ This site uses client-side routing (React Router). Your host must rewrite all ro
 - Nginx: `try_files $uri /index.html;`
 - Apache: rewrite all non-files to `index.html` (via `.htaccess`).
 
+## Contact form email (Vercel)
+
+The Contact page posts to a Vercel Serverless Function at `/api/contact`, which sends an email via Resend.
+
+Set these environment variables in your deployment:
+
+- `RESEND_API_KEY`
+- `CONTACT_FROM_EMAIL` (must be a verified sender in Resend)
+- `CONTACT_TO_EMAIL` (optional, defaults to `support@donnacrm.com`)
+
 Currently, two official plugins are available:
 
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh

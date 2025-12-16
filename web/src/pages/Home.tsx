@@ -18,23 +18,23 @@ const homeFeatures = [
   },
   {
     icon: Target,
-    title: 'Deal Tracking',
-    description: 'Track deals through your sales pipeline with visual boards.',
+    title: 'Pipeline Tracking',
+    description: 'Track work through simple, stage-based pipelines.',
   },
   {
     icon: ClipboardList,
     title: 'Task Management',
-    description: 'Never miss a follow-up with integrated task management.',
+    description: 'Capture follow-ups and next steps without leaving Gmail.',
   },
   {
     icon: MailOpen,
-    title: 'Email Templates',
-    description: 'Save time with reusable email templates for common responses.',
+    title: 'Bulk Email Campaigns',
+    description: 'Send a single message to many recipients with basic personalization.',
   },
   {
     icon: Check,
-    title: 'Mail Tracking',
-    description: 'Know when your emails are opened and read.',
+    title: 'Email Tracking',
+    description: 'See opens for everyday emails and campaigns (click tracking for campaigns).',
   },
 ] as const
 
@@ -48,9 +48,9 @@ export function HomePage() {
               Your CRM, Right Inside <span className="text-primary">Gmail</span>
             </h1>
             <p className="mt-6 text-lg text-muted-foreground sm:text-xl">
-              Donna CRM is a powerful Chrome extension that brings contact
-              management, deal tracking, and email productivity tools directly
-              into your Gmail inbox.
+              Donna CRM is a Chrome extension that keeps contacts, pipelines, and
+              outreach tools inside Gmail—so you can stay focused and avoid
+              context switching.
             </p>
             <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Button size="lg" asChild>
@@ -70,6 +70,35 @@ export function HomePage() {
         </div>
       </section>
 
+      <section className="bg-background py-12">
+        <div className="container">
+          <div className="mx-auto grid max-w-5xl grid-cols-1 gap-6 md:grid-cols-2">
+            <Card className="border-border">
+              <CardContent className="p-6">
+                <h2 className="text-lg font-semibold text-foreground">
+                  AI Assistant (Live)
+                </h2>
+                <p className="mt-2 text-sm text-muted-foreground">
+                  Get help right where you work—inside Gmail.
+                </p>
+                {/* TODO: Replace with exact, verified AI Assistant capabilities. */}
+              </CardContent>
+            </Card>
+            <Card className="border-border">
+              <CardContent className="p-6">
+                <h2 className="text-lg font-semibold text-foreground">
+                  Bulk Email Campaigns (Live)
+                </h2>
+                <p className="mt-2 text-sm text-muted-foreground">
+                  Send one message to many recipients, with basic personalization.
+                </p>
+                {/* TODO: Replace with exact, verified campaign capabilities + limits (if any). */}
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
       <section className="bg-background py-20">
         <div className="container">
           <div className="mb-12 text-center">
@@ -78,7 +107,7 @@ export function HomePage() {
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
               Powerful features designed to help you build stronger connections
-              and close more deals.
+              and keep your workflow in one place.
             </p>
           </div>
 
@@ -112,8 +141,8 @@ export function HomePage() {
               Ready to Supercharge Your Gmail?
             </h2>
             <p className="mt-4 text-lg text-primary-foreground/80">
-              Join thousands of professionals who use Donna CRM to manage their
-              relationships more effectively.
+              Install the extension and manage relationships effectively—without
+              leaving Gmail.
             </p>
             <div className="mt-8">
               <Button size="lg" variant="secondary" asChild>

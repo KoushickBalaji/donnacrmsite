@@ -1,9 +1,5 @@
 export function PrivacyPage() {
-  const lastUpdated = new Date().toLocaleDateString('en-US', {
-    month: 'long',
-    day: 'numeric',
-    year: 'numeric',
-  })
+  const lastUpdated = '14 Dec 2025'
 
   return (
     <>
@@ -43,8 +39,8 @@ export function PrivacyPage() {
               <ul className="list-inside list-disc space-y-2 text-muted-foreground">
                 <li>Account information (name, email address)</li>
                 <li>Contact data you choose to store in Donna CRM</li>
-                <li>Deal and pipeline information</li>
-                <li>Task and reminder data</li>
+                <li>Pipeline information</li>
+                <li>Task data</li>
                 <li>Email templates you create</li>
                 <li>Usage data and analytics</li>
               </ul>

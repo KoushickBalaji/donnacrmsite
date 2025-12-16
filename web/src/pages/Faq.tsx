@@ -7,17 +7,17 @@ const faqs = [
   {
     question: 'What is Donna CRM?',
     answer:
-      'Donna CRM is a Chrome extension that adds powerful CRM functionality directly into your Gmail inbox. It helps you manage contacts, track deals, handle tasks, use email templates, and monitor email opens—all without leaving Gmail.',
+      'Donna CRM is a Chrome extension that adds CRM and outreach tools directly into Gmail. It helps you manage contacts, track work in pipelines, manage tasks, run bulk email campaigns, and track engagement—without leaving Gmail.',
   },
   {
     question: 'How do I install Donna CRM?',
     answer:
-      "Simply visit the Chrome Web Store, search for 'Donna CRM', and click 'Add to Chrome'. Once installed, you'll see the Donna CRM sidebar when you open Gmail. Follow the quick setup wizard to get started.",
+      'Install Donna CRM from the Chrome Web Store. After installation, you’ll see the Donna CRM sidebar when you open Gmail. Follow the in-extension onboarding steps to get started.',
   },
   {
-    question: 'Is Donna CRM free to use?',
+    question: 'What are the pricing plans?',
     answer:
-      'Yes! Donna CRM offers a free plan that includes basic contact management, limited email templates, and basic tracking features. For more advanced features like unlimited contacts and deal pipeline tracking, you can upgrade to our Pro or Team plans.',
+      'Donna CRM offers two plans: Basic and Paid. A 14-day trial of Paid starts on sign-up.',
   },
   {
     question: 'Does Donna CRM work with Google Workspace?',
@@ -27,32 +27,37 @@ const faqs = [
   {
     question: 'Is my data secure?',
     answer:
-      'Security is our top priority. All data is encrypted in transit and at rest. We follow industry best practices for data protection and never share your information with third parties. You can read more in our Privacy Policy.',
+      'We take security seriously and apply standard safeguards to protect data. For more details, see our Privacy Policy.',
   },
   {
     question: 'Can I use Donna CRM with my team?',
     answer:
-      'Yes! Our Team plan allows multiple users to share contacts, templates, and pipeline data. Administrators can manage team access and view team-wide analytics.',
+      'Not yet. Donna CRM is single-user only for now.',
   },
   {
     question: 'What browsers are supported?',
     answer:
-      "Donna CRM is currently available as a Chrome extension. We're working on support for other Chromium-based browsers like Edge and Brave, coming soon.",
+      'Donna CRM is currently available as a Chrome extension.',
   },
   {
     question: 'Can I import my existing contacts?',
     answer:
-      'Yes, you can import contacts from CSV files, Google Contacts, and other CRM platforms. Our import wizard guides you through the process and helps map your data fields correctly.',
+      'Yes. You can import contacts from CSV files and Google Sheets.',
   },
   {
     question: 'How does email tracking work?',
     answer:
-      "When you send an email with tracking enabled, Donna CRM adds a tiny invisible pixel to your message. When the recipient opens the email, you'll receive a notification. Link clicks are tracked when recipients click on trackable links in your emails.",
+      'Open tracking is supported for campaign emails and regular emails. Click tracking is supported for campaign emails only.',
   },
   {
     question: 'What if I need help or have issues?',
     answer:
-      "We offer multiple support channels: in-app help documentation, email support for all users, and priority support with faster response times for Pro and Team subscribers. You can also reach us through our Contact page.",
+      'Email support is available—reach out via the Contact page and we’ll get back to you.',
+  },
+  {
+    question: "What’s coming next?",
+    answer:
+      'Coming soon: follow-up reminders, broader integrations, and more workflow improvements. Roadmap items are subject to change.',
   },
 ] as const
 

@@ -6,73 +6,132 @@ import {
   Target,
   Users,
 } from 'lucide-react'
+import type { ComponentType } from 'react'
 import { Button } from '../components/ui/Button'
 import { Card, CardContent } from '../components/ui/Card'
 
-const featureSections = [
+type FeatureSection = {
+  icon: ComponentType<{ className?: string }>
+  title: string
+  description: string
+  details: string[]
+  screenshotSrc?: string
+  screenshotAlt: string
+}
+
+function Screenshot({
+  icon: Icon,
+  src,
+  alt,
+}: {
+  icon: FeatureSection['icon']
+  src?: string
+  alt: string
+}) {
+  return (
+    <Card className="border-border bg-muted/30">
+      <CardContent className="flex min-h-[300px] items-center justify-center p-6">
+        {src ? (
+          <img
+            src={src}
+            alt={alt}
+            className="max-h-[320px] w-full rounded-md border border-border object-contain bg-background"
+            loading="lazy"
+          />
+        ) : (
+          <div className="text-center">
+            <Icon className="mx-auto mb-4 h-20 w-20 text-primary/20" />
+            <p className="text-sm text-muted-foreground">Screenshot coming soon</p>
+          </div>
+        )}
+      </CardContent>
+    </Card>
+  )
+}
+
+const featureSections: FeatureSection[] = [
+  {
+    icon: Mail,
+    title: 'AI Assistant (Live)',
+    description:
+      'An assistant inside Gmail to help you work faster, with less context switching.',
+    details: [
+      'Available inside the Gmail sidebar while you work',
+      'Designed to support everyday CRM and outreach workflows',
+      'Works alongside contacts, pipelines, tasks, and campaigns',
+    ],
+    screenshotSrc: '/screenshots/Overview.png',
+    screenshotAlt: 'AI Assistant in Donna CRM',
+    // TODO: Replace with an AI Assistant-specific screenshot once captured.
+  },
   {
     icon: Users,
     title: 'Contact Management',
-    description:
-      'Keep all your contacts organized and accessible right within Gmail.',
+    description: 'Keep contacts organized and accessible right within Gmail.',
     details: [
-      'Create and edit contact profiles with custom fields',
-      'View contact history and previous interactions',
+      'Create and update contact profiles',
       'Add notes and tags for better organization',
-      'Quick search and filter contacts',
-      'Import contacts from various sources',
+      'Quickly search and filter contacts',
+      'Import contacts from CSV and Google Sheets',
+      'Onboarding can read contacts and auto-add contacts',
     ],
+    screenshotSrc: '/screenshots/Contacts.png',
+    screenshotAlt: 'Contacts in Donna CRM',
   },
   {
     icon: Target,
-    title: 'Deal & Pipeline Tracking',
+    title: 'Pipeline Tracking',
     description:
-      'Visualize your sales pipeline and track deals from lead to close.',
+      'Track work through simple, stage-based pipelines for any workflow.',
     details: [
       'Kanban-style pipeline boards',
-      'Customizable deal stages',
-      'Deal value and probability tracking',
-      'Activity timeline for each deal',
-      'Revenue forecasting insights',
+      'Customizable stages',
+      'Move items between stages as work progresses',
+      'Use pipelines for sales, recruiting, partnerships, support, and more',
     ],
+    screenshotSrc: '/screenshots/Pipeline.png',
+    screenshotAlt: 'Pipeline Tracking in Donna CRM',
   },
   {
     icon: ClipboardList,
     title: 'Task Management',
-    description: 'Stay on top of follow-ups and never miss an important action.',
+    description: 'Capture next steps and stay on top of follow-ups.',
     details: [
-      'Create tasks linked to contacts or deals',
-      'Due date reminders and notifications',
-      'Priority levels and categorization',
-      'Recurring task support',
-      'Task completion tracking',
+      'Create tasks linked to contacts or pipeline items',
+      'Set due dates and track completion',
+      'Reminders are handled through the AI assistant',
     ],
+    screenshotAlt: 'Tasks in Donna CRM',
+    // TODO: Add a real Tasks screenshot once captured.
   },
   {
     icon: Mail,
-    title: 'Email Templates',
-    description: 'Save time with reusable templates for your most common emails.',
+    title: 'Bulk Email Campaigns (Live)',
+    description:
+      'Send one message to many recipients, with basic personalization.',
     details: [
-      'Create and organize template libraries',
-      'Personalize templates with placeholders',
-      'Quick insert templates while composing',
-      'Team template sharing (Team plan)',
-      'Template performance insights',
+      'Create campaigns using your saved contacts',
+      'Reuse templates to keep messaging consistent',
+      'Personalization placeholders: sender name, receiver name, company name',
     ],
+    screenshotSrc: '/screenshots/Campaigns.png',
+    screenshotAlt: 'Bulk Email Campaigns in Donna CRM',
+    // TODO: Replace with a verified, detailed capabilities list once finalized.
   },
   {
     icon: MailOpen,
     title: 'Email Tracking',
-    description: 'Know when recipients engage with your emails and links.',
+    description: 'Understand engagement across regular emails and campaigns.',
     details: [
-      'Real-time email open notifications',
-      'Link click tracking',
-      'Engagement analytics dashboard',
-      'Optimal send time suggestions',
-      'Follow-up reminders for unopened emails',
+      'Open tracking: supported for campaign emails and regular emails',
+      'Click tracking: supported for campaign emails only',
+      'Campaign analytics show to-date totals for opens, clicks, and unsubscribes',
+      'Follow-up reminders: coming soon',
     ],
+    screenshotAlt: 'Email Tracking in Donna CRM',
+    // TODO: Add a real Email Tracking screenshot once captured.
   },
-] as const
+]
 
 export function FeaturesPage() {
   return (
@@ -81,11 +140,11 @@ export function FeaturesPage() {
         <div className="container">
           <div className="mx-auto max-w-3xl text-center">
             <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
-              Powerful Features for Modern Sales Teams
+              Features Built for Gmail Workflows
             </h1>
             <p className="mt-6 text-lg text-muted-foreground">
-              Donna CRM brings everything you need to manage customer
-              relationships directly into your Gmail workflow.
+              Donna CRM keeps CRM and outreach tools inside Gmail—so you can move
+              faster without switching tabs.
             </p>
           </div>
         </div>
@@ -122,14 +181,11 @@ export function FeaturesPage() {
                 </div>
 
                 <div className="flex-1">
-                  <Card className="border-border bg-muted/30">
-                    <CardContent className="flex min-h-[300px] items-center justify-center p-8">
-                      <div className="text-center">
-                        <section.icon className="mx-auto mb-4 h-24 w-24 text-primary/20" />
-                        <p className="text-muted-foreground">Feature Screenshot</p>
-                      </div>
-                    </CardContent>
-                  </Card>
+                  <Screenshot
+                    icon={section.icon}
+                    src={section.screenshotSrc}
+                    alt={section.screenshotAlt}
+                  />
                 </div>
               </div>
             ))}
@@ -164,4 +220,3 @@ export function FeaturesPage() {
     </>
   )
 }
-

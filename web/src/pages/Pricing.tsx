@@ -5,53 +5,31 @@ import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/Card'
 
 const plans = [
   {
-    name: 'Free',
+    name: 'Basic',
     price: '$0',
-    period: 'forever',
-    description: 'Perfect for getting started with CRM basics.',
+    period: '',
+    description: 'Core CRM inside Gmail to help you stay organized.',
     features: [
-      'Up to 100 contacts',
-      'Basic contact management',
-      '5 email templates',
-      'Email tracking (limited)',
-      'Community support',
+      'Contacts, pipelines, tasks, templates, and tracking inside Gmail',
+      'Single-user account',
+      'Email support',
     ],
-    cta: 'Get Started Free',
+    cta: 'Install extension',
     popular: false,
   },
   {
-    name: 'Pro',
-    price: '$19',
+    name: 'Paid',
+    price: '$10',
     period: 'per month',
-    description: 'For professionals who need more power.',
+    description: 'Unlock AI Assistant and paid features.',
     features: [
-      'Unlimited contacts',
-      'Advanced contact management',
-      'Unlimited email templates',
-      'Full email tracking',
-      'Deal pipeline tracking',
-      'Task management',
-      'Priority support',
+      'Everything in Basic',
+      'AI Assistant access',
+      '14-day trial included',
+      'Email support',
     ],
-    cta: 'Start Pro Trial',
+    cta: 'Start 14-day trial',
     popular: true,
-  },
-  {
-    name: 'Team',
-    price: '$49',
-    period: 'per month',
-    description: 'For teams that need collaboration features.',
-    features: [
-      'Everything in Pro',
-      'Up to 10 team members',
-      'Shared templates & pipelines',
-      'Team analytics dashboard',
-      'Admin controls',
-      'API access',
-      'Dedicated support',
-    ],
-    cta: 'Contact Sales',
-    popular: false,
   },
 ] as const
 
@@ -65,8 +43,11 @@ export function PricingPage() {
               Simple, Transparent Pricing
             </h1>
             <p className="mt-6 text-lg text-muted-foreground">
-              Choose the plan that fits your needs. Start free, upgrade as you
-              grow.
+              Start with Basic, then unlock Paid features when you’re ready.
+            </p>
+            <p className="mt-3 text-sm text-muted-foreground">
+              Paid includes a 14-day trial that starts on sign-up.
+              {/* TODO: If billing flow changes, update this copy to match the product. */}
             </p>
           </div>
         </div>
@@ -74,7 +55,7 @@ export function PricingPage() {
 
       <section className="bg-background py-20">
         <div className="container">
-          <div className="mx-auto grid max-w-5xl grid-cols-1 gap-8 md:grid-cols-3">
+          <div className="mx-auto grid max-w-4xl grid-cols-1 gap-8 md:grid-cols-2">
             {plans.map((plan) => (
               <Card
                 key={plan.name}
@@ -85,7 +66,7 @@ export function PricingPage() {
                 {plan.popular ? (
                   <div className="absolute -top-4 left-1/2 -translate-x-1/2">
                     <span className="rounded-full bg-primary px-4 py-1 text-sm font-medium text-primary-foreground">
-                      Most Popular
+                      Recommended
                     </span>
                   </div>
                 ) : null}
@@ -98,13 +79,21 @@ export function PricingPage() {
                     <span className="text-4xl font-bold text-foreground">
                       {plan.price}
                     </span>
-                    <span className="ml-2 text-muted-foreground">
-                      /{plan.period}
-                    </span>
+                    {plan.period ? (
+                      <span className="ml-2 text-muted-foreground">
+                        /{plan.period}
+                      </span>
+                    ) : null}
                   </div>
                   <p className="mt-2 text-sm text-muted-foreground">
                     {plan.description}
                   </p>
+                  {plan.name === 'Paid' ? (
+                    <p className="mt-2 text-xs text-muted-foreground">
+                      $8/month billed annually
+                      {/* TODO: Confirm whether annual billing is displayed elsewhere and link to it. */}
+                    </p>
+                  ) : null}
                 </CardHeader>
 
                 <CardContent className="space-y-6">

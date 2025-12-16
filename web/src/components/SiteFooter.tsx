@@ -23,6 +23,18 @@ export function SiteFooter() {
               <Link to="/features" className="text-muted-foreground hover:text-primary">
                 Features
               </Link>
+              <Link
+                to="/integrations"
+                className="text-muted-foreground hover:text-primary"
+              >
+                Integrations
+              </Link>
+              <Link
+                to="/resources"
+                className="text-muted-foreground hover:text-primary"
+              >
+                Resources
+              </Link>
               <Link to="/pricing" className="text-muted-foreground hover:text-primary">
                 Pricing
               </Link>

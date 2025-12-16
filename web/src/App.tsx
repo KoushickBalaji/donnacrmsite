@@ -5,9 +5,11 @@ import { ContactPage } from './pages/Contact'
 import { FaqPage } from './pages/Faq'
 import { FeaturesPage } from './pages/Features'
 import { HomePage } from './pages/Home'
+import { IntegrationsPage } from './pages/Integrations'
 import { NotFoundPage } from './pages/NotFound'
 import { PricingPage } from './pages/Pricing'
 import { PrivacyPage } from './pages/Privacy'
+import { ResourcesPage } from './pages/Resources'
 import { ShippingPage } from './pages/Shipping'
 import { TermsPage } from './pages/Terms'
 
@@ -17,6 +19,8 @@ export default function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/features" element={<FeaturesPage />} />
+        <Route path="/integrations" element={<IntegrationsPage />} />
+        <Route path="/resources" element={<ResourcesPage />} />
         <Route path="/pricing" element={<PricingPage />} />
         <Route path="/faq" element={<FaqPage />} />
         <Route path="/contact" element={<ContactPage />} />
