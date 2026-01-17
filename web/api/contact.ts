@@ -56,13 +56,19 @@ export default async function handler(req: RequestLike, res: ResponseLike) {
   }
 
   const apiKey = process.env.RESEND_API_KEY
-  const from = process.env.CONTACT_FROM_EMAIL
+  const from = process.env.CONTACT_FROM_EMAIL?.trim()
   const to = process.env.CONTACT_TO_EMAIL ?? 'support@donnacrm.com'
 
   // TODO: Set `RESEND_API_KEY` + `CONTACT_FROM_EMAIL` in deployment environment.
   // TODO: If you prefer SMTP/another provider later, replace this implementation.
-  if (!apiKey || !from) {
-    res.status(500).send('Email service is not configured')
+  const missing: string[] = []
+  if (!apiKey) missing.push('RESEND_API_KEY')
+  if (!from) missing.push('CONTACT_FROM_EMAIL')
+  if (missing.length) {
+    console.error('Contact email service is not configured', { missing })
+    res
+      .status(500)
+      .send(`Email service is not configured (missing ${missing.join(', ')})`)
     return
   }
 
