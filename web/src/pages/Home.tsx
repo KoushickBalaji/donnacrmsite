@@ -7,6 +7,7 @@ import {
   Users,
 } from 'lucide-react'
 import { Link } from 'react-router-dom'
+import { Seo } from '../components/Seo'
 import { Button } from '../components/ui/Button'
 import { Card, CardContent } from '../components/ui/Card'
 
@@ -41,6 +42,11 @@ const homeFeatures = [
 export function HomePage() {
   return (
     <>
+      <Seo
+        title="CRM inside Gmail"
+        description="Donna CRM is a Chrome extension that keeps contacts, pipelines, and outreach tools inside Gmail—so you can stay focused and avoid context switching."
+        canonicalPath="/"
+      />
       <section className="relative overflow-hidden bg-gradient-to-b from-primary/5 to-background py-20 lg:py-32">
         <div className="container">
           <div className="mx-auto max-w-3xl text-center">

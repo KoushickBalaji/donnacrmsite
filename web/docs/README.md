@@ -13,6 +13,7 @@ This folder documents the Donna CRM marketing website codebase as it exists toda
 - Styling + design tokens: [styling-and-design-tokens.md](./styling-and-design-tokens.md)
 - Serverless API (contact email): [serverless-api.md](./serverless-api.md)
 - Deployment: [deployment.md](./deployment.md)
+- SEO + analytics: [seo-and-analytics.md](./seo-and-analytics.md)
 - Known gaps / TODOs: [known-gaps-and-todos.md](./known-gaps-and-todos.md)
 
 ## What this repo is (and isn’t)

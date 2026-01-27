@@ -1,6 +1,7 @@
 import { ChevronDown } from 'lucide-react'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { Seo } from '../components/Seo'
 import { Button } from '../components/ui/Button'
 
 const faqs = [
@@ -65,6 +66,11 @@ export function FaqPage() {
   const [open, setOpen] = useState<string | null>('item-0')
   return (
     <>
+      <Seo
+        title="FAQ"
+        description="Answers to common questions about Donna CRM: installation, features, tracking, and billing."
+        canonicalPath="/faq"
+      />
       <section className="bg-gradient-to-b from-primary/5 to-background py-16 lg:py-24">
         <div className="container">
           <div className="mx-auto max-w-3xl text-center">

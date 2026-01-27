@@ -1,5 +1,6 @@
 import { ArrowRight, Check } from 'lucide-react'
 import { Link } from 'react-router-dom'
+import { Seo } from '../components/Seo'
 import { Button } from '../components/ui/Button'
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/Card'
 
@@ -36,6 +37,11 @@ const plans = [
 export function PricingPage() {
   return (
     <>
+      <Seo
+        title="Pricing"
+        description="Simple pricing for Donna CRM, a Chrome extension that brings CRM workflows into Gmail."
+        canonicalPath="/pricing"
+      />
       <section className="bg-gradient-to-b from-primary/5 to-background py-16 lg:py-24">
         <div className="container">
           <div className="mx-auto max-w-3xl text-center">

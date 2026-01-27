@@ -1,4 +1,5 @@
 import { BookOpen, FileSpreadsheet, Layers, Mail, MailOpen, Sparkles } from 'lucide-react'
+import { Seo } from '../components/Seo'
 import { Card, CardContent } from '../components/ui/Card'
 
 const resources = [
@@ -44,6 +45,11 @@ const resources = [
 export function ResourcesPage() {
   return (
     <>
+      <Seo
+        title="Resources"
+        description="Practical guides to help you get the most out of Donna CRM inside Gmail."
+        canonicalPath="/resources"
+      />
       <section className="bg-gradient-to-b from-primary/5 to-background py-16 lg:py-24">
         <div className="container">
           <div className="mx-auto max-w-3xl text-center">
@@ -77,4 +83,3 @@ export function ResourcesPage() {
     </>
   )
 }
-

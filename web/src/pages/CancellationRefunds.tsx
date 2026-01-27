@@ -1,3 +1,5 @@
+import { Seo } from '../components/Seo'
+
 export function CancellationRefundsPage() {
   const lastUpdated = new Date().toLocaleDateString('en-US', {
     month: 'long',
@@ -7,6 +9,7 @@ export function CancellationRefundsPage() {
 
   return (
     <>
+      <Seo title="Cancellation & Refunds" canonicalPath="/cancellation-refunds" />
       <section className="bg-gradient-to-b from-primary/5 to-background py-16 lg:py-24">
         <div className="container">
           <div className="mx-auto max-w-3xl text-center">

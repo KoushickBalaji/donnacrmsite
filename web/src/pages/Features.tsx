@@ -7,6 +7,7 @@ import {
   Users,
 } from 'lucide-react'
 import type { ComponentType } from 'react'
+import { Seo } from '../components/Seo'
 import { Button } from '../components/ui/Button'
 import { Card, CardContent } from '../components/ui/Card'
 
@@ -136,6 +137,11 @@ const featureSections: FeatureSection[] = [
 export function FeaturesPage() {
   return (
     <>
+      <Seo
+        title="Features"
+        description="Explore Donna CRM features for Gmail workflows: contact management, pipelines, tasks, campaigns, and tracking."
+        canonicalPath="/features"
+      />
       <section className="bg-gradient-to-b from-primary/5 to-background py-16 lg:py-24">
         <div className="container">
           <div className="mx-auto max-w-3xl text-center">

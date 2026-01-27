@@ -1,6 +1,13 @@
+import { Seo } from '../components/Seo'
+
 export function IntegrationsPage() {
   return (
     <>
+      <Seo
+        title="Integrations"
+        description="See how Donna CRM works with Gmail and your workflow (including CSV and Google Sheets imports)."
+        canonicalPath="/integrations"
+      />
       <section className="bg-gradient-to-b from-primary/5 to-background py-16 lg:py-24">
         <div className="container">
           <div className="mx-auto max-w-3xl text-center">

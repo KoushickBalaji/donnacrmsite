@@ -1,5 +1,6 @@
 import { Mail, MapPin } from 'lucide-react'
 import { useMemo, useState } from 'react'
+import { Seo } from '../components/Seo'
 import { Button } from '../components/ui/Button'
 import { Card, CardContent } from '../components/ui/Card'
 
@@ -79,6 +80,11 @@ export function ContactPage() {
 
   return (
     <>
+      <Seo
+        title="Contact"
+        description="Contact Donna CRM support or get help with setup, billing, and product questions."
+        canonicalPath="/contact"
+      />
       <section className="bg-gradient-to-b from-primary/5 to-background py-16 lg:py-24">
         <div className="container">
           <div className="mx-auto max-w-3xl text-center">

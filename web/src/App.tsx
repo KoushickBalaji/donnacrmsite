@@ -1,5 +1,6 @@
 import { Navigate, Route, Routes } from 'react-router-dom'
 import { SiteLayout } from './components/SiteLayout'
+import { Ga4Analytics } from './lib/analytics/Analytics'
 import { CancellationRefundsPage } from './pages/CancellationRefunds'
 import { ContactPage } from './pages/Contact'
 import { FaqPage } from './pages/Faq'
@@ -16,6 +17,7 @@ import { TermsPage } from './pages/Terms'
 export default function App() {
   return (
     <SiteLayout>
+      <Ga4Analytics />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/features" element={<FeaturesPage />} />
