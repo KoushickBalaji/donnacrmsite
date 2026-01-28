@@ -31,6 +31,7 @@ Notes:
 - The GA script is only loaded when `VITE_GA4_MEASUREMENT_ID` is set.
 - The Google tag is injected from `index.html` at runtime (so the implementation looks like Google's recommended snippet), and SPA route changes are tracked from React.
 - Basic "Do Not Track" is respected (`navigator.doNotTrack === "1"`).
+- Chrome Web Store links include UTMs via `src/lib/chromeWebStore.ts` and the `install_click` event includes those UTM fields as parameters.
 
 ### Troubleshooting (GA4 shows no realtime traffic)
 

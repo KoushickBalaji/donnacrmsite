@@ -10,6 +10,7 @@ import type { ComponentType } from 'react'
 import { Seo } from '../components/Seo'
 import { Button } from '../components/ui/Button'
 import { Card, CardContent } from '../components/ui/Card'
+import { chromeWebStoreInstallUrl } from '../lib/chromeWebStore'
 
 type FeatureSection = {
   icon: ComponentType<{ className?: string }>
@@ -212,7 +213,7 @@ export function FeaturesPage() {
             <div className="mt-8">
               <Button size="lg" variant="secondary" asChild>
                 <a
-                  href="https://chromewebstore.google.com/detail/donna-crm/fadjjpednmcoomcpajkfbpchankdoiip"
+                  href={chromeWebStoreInstallUrl({ content: 'features_bottom_cta' })}
                   target="_blank"
                   rel="noopener noreferrer"
                 >

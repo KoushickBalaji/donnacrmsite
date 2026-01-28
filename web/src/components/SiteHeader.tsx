@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom'
 import { Menu, X } from 'lucide-react'
 import { Button } from './ui/Button'
 import { cn } from '../lib/cn'
+import { chromeWebStoreInstallUrl } from '../lib/chromeWebStore'
 
 const navItems = [
   { path: '/', label: 'Home' },
@@ -48,7 +49,7 @@ export function SiteHeader() {
         <div className="hidden md:block">
           <Button asChild>
             <a
-              href="https://chromewebstore.google.com/detail/donna-crm/fadjjpednmcoomcpajkfbpchankdoiip"
+              href={chromeWebStoreInstallUrl({ content: 'header_desktop' })}
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -90,7 +91,7 @@ export function SiteHeader() {
               })}
               <Button className="mt-2 w-full" asChild>
                 <a
-                  href="https://chromewebstore.google.com/detail/donna-crm/fadjjpednmcoomcpajkfbpchankdoiip"
+                  href={chromeWebStoreInstallUrl({ content: 'header_mobile' })}
                   target="_blank"
                   rel="noopener noreferrer"
                 >

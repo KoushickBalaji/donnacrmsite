@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { Seo } from '../components/Seo'
 import { Button } from '../components/ui/Button'
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/Card'
+import { chromeWebStoreInstallUrl } from '../lib/chromeWebStore'
 
 const plans = [
   {
@@ -118,7 +119,9 @@ export function PricingPage() {
                     asChild
                   >
                     <a
-                      href="https://chromewebstore.google.com/detail/donna-crm/fadjjpednmcoomcpajkfbpchankdoiip"
+                      href={chromeWebStoreInstallUrl({
+                        content: `pricing_${plan.name.toLowerCase()}`,
+                      })}
                       target="_blank"
                       rel="noopener noreferrer"
                     >

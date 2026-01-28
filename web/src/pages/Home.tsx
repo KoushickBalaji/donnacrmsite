@@ -10,6 +10,7 @@ import { Link } from 'react-router-dom'
 import { Seo } from '../components/Seo'
 import { Button } from '../components/ui/Button'
 import { Card, CardContent } from '../components/ui/Card'
+import { chromeWebStoreInstallUrl } from '../lib/chromeWebStore'
 
 const homeFeatures = [
   {
@@ -61,7 +62,7 @@ export function HomePage() {
             <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Button size="lg" asChild>
                 <a
-                  href="https://chromewebstore.google.com/detail/donna-crm/fadjjpednmcoomcpajkfbpchankdoiip"
+                  href={chromeWebStoreInstallUrl({ content: 'home_hero' })}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -153,7 +154,7 @@ export function HomePage() {
             <div className="mt-8">
               <Button size="lg" variant="secondary" asChild>
                 <a
-                  href="https://chromewebstore.google.com/detail/donna-crm/fadjjpednmcoomcpajkfbpchankdoiip"
+                  href={chromeWebStoreInstallUrl({ content: 'home_bottom_cta' })}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
