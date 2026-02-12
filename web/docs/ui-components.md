@@ -2,14 +2,10 @@
 
 ## Layout components
 
-- `src/components/SiteLayout.tsx`
-  - Provides the page frame (header, main content, footer).
-  - Owns the “full height” flex layout to keep footer at the bottom.
-
 - `src/components/SiteHeader.tsx`
   - Desktop navigation + CTA button to install the Chrome extension.
   - Mobile menu toggle (hamburger) controlled by local state.
-  - Active route highlighting uses `useLocation()` from React Router.
+  - Active route highlighting uses `usePathname()` from Next.js.
 
 - `src/components/SiteFooter.tsx`
   - Footer navigation groups: Product + Company.

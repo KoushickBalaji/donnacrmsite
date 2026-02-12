@@ -5,7 +5,7 @@ declare global {
   }
 }
 
-const measurementId = import.meta.env.VITE_GA4_MEASUREMENT_ID as string | undefined
+const measurementId = process.env.NEXT_PUBLIC_GA4_MEASUREMENT_ID as string | undefined
 
 function isDoNotTrackEnabled() {
   return (

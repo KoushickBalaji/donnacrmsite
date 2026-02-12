@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import Link from 'next/link'
 
 export function SiteFooter() {
   return (
@@ -12,33 +12,31 @@ export function SiteFooter() {
               </span>
               <span>Donna CRM</span>
             </div>
-            <p className="text-sm text-muted-foreground">
-              Your CRM, right inside Gmail.
-            </p>
+            <p className="text-sm text-muted-foreground">Your CRM, right inside Gmail.</p>
           </div>
 
           <div className="space-y-3">
             <p className="text-sm font-semibold text-foreground">Product</p>
             <div className="flex flex-col gap-2 text-sm">
-              <Link to="/features" className="text-muted-foreground hover:text-primary">
-                Features
+              <Link href="/product" className="text-muted-foreground hover:text-primary">
+                Product
+              </Link>
+              <Link href="/gmail-crm" className="text-muted-foreground hover:text-primary">
+                Gmail CRM
+              </Link>
+              <Link href="/ai-gmail-crm" className="text-muted-foreground hover:text-primary">
+                AI Gmail CRM
               </Link>
               <Link
-                to="/integrations"
+                href="/how-it-works"
                 className="text-muted-foreground hover:text-primary"
               >
-                Integrations
+                How it works
               </Link>
-              <Link
-                to="/resources"
-                className="text-muted-foreground hover:text-primary"
-              >
-                Resources
-              </Link>
-              <Link to="/pricing" className="text-muted-foreground hover:text-primary">
+              <Link href="/pricing" className="text-muted-foreground hover:text-primary">
                 Pricing
               </Link>
-              <Link to="/faq" className="text-muted-foreground hover:text-primary">
+              <Link href="/faq" className="text-muted-foreground hover:text-primary">
                 FAQ
               </Link>
             </div>
@@ -47,33 +45,31 @@ export function SiteFooter() {
           <div className="space-y-3">
             <p className="text-sm font-semibold text-foreground">Company</p>
             <div className="flex flex-col gap-2 text-sm">
-              <Link to="/contact" className="text-muted-foreground hover:text-primary">
+              <Link href="/contact" className="text-muted-foreground hover:text-primary">
                 Contact
               </Link>
-              <Link to="/privacy" className="text-muted-foreground hover:text-primary">
+              <Link href="/privacy" className="text-muted-foreground hover:text-primary">
                 Privacy
               </Link>
-              <Link
-                to="/terms"
-                className="text-muted-foreground hover:text-primary"
-              >
+              <Link href="/terms" className="text-muted-foreground hover:text-primary">
                 Terms
               </Link>
               <Link
-                to="/cancellation-refunds"
+                href="/cancellation-refunds"
                 className="text-muted-foreground hover:text-primary"
               >
                 Cancellation &amp; Refunds
               </Link>
-              <Link
-                to="/shipping"
-                className="text-muted-foreground hover:text-primary"
-              >
-                Shipping
-              </Link>
             </div>
           </div>
         </div>
+
+        <span
+          aria-hidden
+          dangerouslySetInnerHTML={{
+            __html: '<!-- Shipping page intentionally unlinked for policy compliance -->',
+          }}
+        />
 
         <div className="mt-12 border-t border-border pt-8">
           <p className="text-center text-sm text-muted-foreground">

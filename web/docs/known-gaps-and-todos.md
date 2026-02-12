@@ -6,11 +6,11 @@ This section is intentionally blunt: it’s here to help developers know what is
 
 Several pages include `TODO` comments indicating that copy or capability lists are not verified and should be updated when product details are finalized. Examples include:
 
-- `src/pages/Home.tsx` (AI Assistant and campaigns sections)
-- `src/pages/Features.tsx` (AI assistant details, tasks screenshot, tracking screenshot/copy)
-- `src/pages/Integrations.tsx` (permission mapping)
-- `src/pages/Resources.tsx` (resource cards are placeholders)
-- `src/pages/Pricing.tsx` (billing copy)
+- `src/views/Home.tsx` (AI Assistant and campaigns sections)
+- `src/views/Features.tsx` (AI assistant details, tasks screenshot, tracking screenshot/copy)
+- `src/views/Integrations.tsx` (permission mapping)
+- `src/views/Resources.tsx` (resource cards are placeholders)
+- `src/views/Pricing.tsx` (billing copy)
 
 ## Content quality issues worth fixing (not addressed here)
 
@@ -18,13 +18,13 @@ While reading the code, a few strings appear to contain character encoding artif
 
 Places to check:
 
-- `src/pages/Home.tsx`
-- `src/pages/Features.tsx`
-- `src/pages/Pricing.tsx`
-- `src/pages/Contact.tsx`
-- `src/pages/Faq.tsx`
-- `src/pages/Integrations.tsx`
-- `src/pages/Resources.tsx`
+- `src/views/Home.tsx`
+- `src/views/Features.tsx`
+- `src/views/Pricing.tsx`
+- `src/views/Contact.tsx`
+- `src/views/Faq.tsx`
+- `src/views/Integrations.tsx`
+- `src/views/Resources.tsx`
 
 Also, `src/components/SiteFooter.tsx` renders `Ac {year}` which looks like it was intended to be a copyright symbol.
 

@@ -2,15 +2,13 @@
 
 ## Entry points
 
-- HTML shell: `index.html`
-- React mount + router: `src/main.tsx`
-- App composition + routes: `src/App.tsx`
+- Global layout: `src/app/layout.tsx`
+- Route entry points: `src/app/**/page.tsx`
 
 ## Layout composition
 
-`src/App.tsx` wraps all routes in `SiteLayout`:
+`src/app/layout.tsx` provides the overall page frame:
 
-- `src/components/SiteLayout.tsx` provides the overall page frame.
 - `src/components/SiteHeader.tsx` renders the top navigation (desktop + mobile menu).
 - `src/components/SiteFooter.tsx` renders footer links (Product + Company + legal pages).
 

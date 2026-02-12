@@ -1,5 +1,3 @@
-import { Seo } from '../components/Seo'
-
 export function CancellationRefundsPage() {
   const lastUpdated = new Date().toLocaleDateString('en-US', {
     month: 'long',
@@ -9,7 +7,6 @@ export function CancellationRefundsPage() {
 
   return (
     <>
-      <Seo title="Cancellation & Refunds" canonicalPath="/cancellation-refunds" />
       <section className="bg-gradient-to-b from-primary/5 to-background py-16 lg:py-24">
         <div className="container">
           <div className="mx-auto max-w-3xl text-center">
@@ -30,7 +27,7 @@ export function CancellationRefundsPage() {
               <h2 className="mb-4 text-2xl font-bold text-foreground">Overview</h2>
               <p className="text-muted-foreground">
                 This Cancellation &amp; Refunds Policy explains how cancellations
-                and refunds work for Donna CRM paid subscriptions. If you have any
+                and refunds work for Donna CRM subscriptions. If you have any
                 questions, contact us at{' '}
                 <a
                   href="mailto:support@donnacrm.com"
@@ -47,9 +44,9 @@ export function CancellationRefundsPage() {
                 14-day free trial
               </h2>
               <p className="text-muted-foreground">
-                Donna CRM offers a 14-day trial of the Paid plan, starting on
-                sign-up. At the end of the trial, you can choose whether to
-                continue on a paid subscription.
+                Donna CRM includes a 14-day free trial starting on sign-up. At
+                the end of the trial, you can choose whether to continue on a
+                paid subscription.
               </p>
             </div>
 

@@ -1,109 +1,76 @@
 import { ArrowRight, Check } from 'lucide-react'
-import { Link } from 'react-router-dom'
-import { Seo } from '../components/Seo'
+import Link from 'next/link'
 import { Button } from '../components/ui/Button'
-import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/Card'
+import { Card, CardContent, CardHeader } from '../components/ui/Card'
 import { chromeWebStoreInstallUrl } from '../lib/chromeWebStore'
 
-const plans = [
-  {
-    name: 'Basic',
-    price: '$0',
-    period: '',
-    description: 'Core CRM inside Gmail to help you stay organized.',
-    features: [
-      'Contacts, pipelines, tasks, templates, and tracking inside Gmail',
-      'Single-user account',
-      'Email support',
-    ],
-    cta: 'Install extension',
-    popular: false,
-  },
-  {
-    name: 'Paid',
-    price: '$10',
-    period: 'per month',
-    description: 'Unlock AI Assistant and paid features.',
-    features: [
-      'Everything in Basic',
-      'AI Assistant access',
-      '14-day trial included',
-      'Email support',
-    ],
-    cta: 'Start 14-day trial',
-    popular: true,
-  },
-] as const
+const plan = {
+  trialLabel: '14-day free trial',
+  priceAfterTrial: '$10',
+  period: 'month',
+  annualNote: '$8/month billed annually',
+  description: 'Start with 14 days free, then keep going for $10/month.',
+  features: [
+    'CRM inside Gmail (contacts, pipelines, tasks, templates, tracking)',
+    'Email campaigns + engagement tracking',
+    'AI Assistant access',
+    'Email support',
+  ],
+  cta: 'Start 14-day free trial',
+} as const
 
 export function PricingPage() {
   return (
     <>
-      <Seo
-        title="Pricing"
-        description="Simple pricing for Donna CRM, a Chrome extension that brings CRM workflows into Gmail."
-        canonicalPath="/pricing"
-      />
-      <section className="bg-gradient-to-b from-primary/5 to-background py-16 lg:py-24">
+      <section className="bg-gradient-to-b from-primary/5 to-background pt-14 pb-8 lg:pt-20 lg:pb-12">
         <div className="container">
           <div className="mx-auto max-w-3xl text-center">
             <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
               Simple, Transparent Pricing
             </h1>
             <p className="mt-6 text-lg text-muted-foreground">
-              Start with Basic, then unlock Paid features when you’re ready.
+              Start with a 14-day free trial, then pay to keep using Donna CRM.
             </p>
             <p className="mt-3 text-sm text-muted-foreground">
-              Paid includes a 14-day trial that starts on sign-up.
-              {/* TODO: If billing flow changes, update this copy to match the product. */}
+              Your trial starts on sign-up. After 14 days, continue for $10/month.
             </p>
           </div>
         </div>
       </section>
 
-      <section className="bg-background py-20">
+      <section className="bg-background pt-6 pb-16 lg:pt-8 lg:pb-20">
         <div className="container">
-          <div className="mx-auto grid max-w-4xl grid-cols-1 gap-8 md:grid-cols-2">
-            {plans.map((plan) => (
-              <Card
-                key={plan.name}
-                className={`relative border-border ${
-                  plan.popular ? 'scale-[1.03] border-primary shadow-lg' : ''
-                }`}
-              >
-                {plan.popular ? (
-                  <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                    <span className="rounded-full bg-primary px-4 py-1 text-sm font-medium text-primary-foreground">
-                      Recommended
-                    </span>
-                  </div>
-                ) : null}
+          <div className="mx-auto flex max-w-3xl justify-center">
+            <div className="relative w-full">
+              <div className="absolute -top-4 left-1/2 z-10 -translate-x-1/2">
+                <span className="rounded-full bg-primary px-4 py-1 text-sm font-medium text-primary-foreground shadow-sm">
+                  {plan.trialLabel}
+                </span>
+              </div>
 
-                <CardHeader className="text-center pb-4">
-                  <CardTitle className="text-xl text-foreground">
-                    {plan.name}
-                  </CardTitle>
-                  <div className="mt-4">
-                    <span className="text-4xl font-bold text-foreground">
-                      {plan.price}
-                    </span>
-                    {plan.period ? (
-                      <span className="ml-2 text-muted-foreground">
-                        /{plan.period}
+              <Card className="relative w-full overflow-hidden border-primary/40 shadow-lg">
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent" />
+
+                <CardHeader className="relative text-center pb-4">
+                  <div className="mt-5">
+                    <div className="flex items-baseline justify-center gap-2">
+                      <span className="text-4xl font-bold text-foreground">Free</span>
+                      <span className="text-muted-foreground">for 14 days</span>
+                    </div>
+                    <p className="mt-2 text-sm text-muted-foreground">
+                      Then{' '}
+                      <span className="font-semibold text-foreground">
+                        {plan.priceAfterTrial}
                       </span>
-                    ) : null}
-                  </div>
-                  <p className="mt-2 text-sm text-muted-foreground">
-                    {plan.description}
-                  </p>
-                  {plan.name === 'Paid' ? (
-                    <p className="mt-2 text-xs text-muted-foreground">
-                      $8/month billed annually
-                      {/* TODO: Confirm whether annual billing is displayed elsewhere and link to it. */}
+                      /{plan.period}
                     </p>
-                  ) : null}
+                  </div>
+
+                  <p className="mt-3 text-sm text-muted-foreground">{plan.description}</p>
+                  <p className="mt-2 text-xs text-muted-foreground">{plan.annualNote}</p>
                 </CardHeader>
 
-                <CardContent className="space-y-6">
+                <CardContent className="relative space-y-6">
                   <ul className="space-y-3">
                     {plan.features.map((f) => (
                       <li key={f} className="flex items-start gap-3">
@@ -113,14 +80,10 @@ export function PricingPage() {
                     ))}
                   </ul>
 
-                  <Button
-                    className="w-full"
-                    variant={plan.popular ? 'default' : 'outline'}
-                    asChild
-                  >
+                  <Button className="w-full" asChild>
                     <a
                       href={chromeWebStoreInstallUrl({
-                        content: `pricing_${plan.name.toLowerCase()}`,
+                        content: 'pricing_primary',
                       })}
                       target="_blank"
                       rel="noopener noreferrer"
@@ -128,9 +91,12 @@ export function PricingPage() {
                       {plan.cta} <ArrowRight className="ml-2 h-4 w-4" />
                     </a>
                   </Button>
+                  <p className="text-center text-xs text-muted-foreground">
+                    Cancel anytime during your trial.
+                  </p>
                 </CardContent>
               </Card>
-            ))}
+            </div>
           </div>
         </div>
       </section>
@@ -143,10 +109,10 @@ export function PricingPage() {
           </p>
           <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button variant="outline" asChild>
-              <Link to="/faq">View FAQ</Link>
+              <Link href="/faq">View FAQ</Link>
             </Button>
             <Button asChild>
-              <Link to="/contact">Contact Us</Link>
+              <Link href="/contact">Contact Us</Link>
             </Button>
           </div>
         </div>

@@ -2,7 +2,7 @@
 
 ## Prerequisites
 
-- Node.js 18+ (Vite 5 and modern tooling expect a recent Node runtime)
+- Node.js 18+
 - npm (repo includes `package-lock.json`)
 
 ## Commands
@@ -11,7 +11,7 @@
 - Start dev server: `npm run dev`
 - Lint: `npm run lint`
 - Build: `npm run build`
-- Preview production build: `npm run preview`
+- Start production server: `npm run start` (after `npm run build`)
 
 ## Environment variables
 
@@ -21,17 +21,12 @@ The Contact form’s serverless email function (Vercel) requires env vars when d
 
 ## Contact form in local dev (important)
 
-The Contact page (`src/pages/Contact.tsx`) posts to `/api/contact`.
+The Contact page (`src/views/Contact.tsx`) posts to `/api/contact`.
 
-- In production on Vercel, `/api/contact` is served by `api/contact.ts`.
-- In local development with `npm run dev` (Vite), there is no serverless runtime by default, so `/api/contact` will typically 404.
-
-If you need end-to-end local testing, use one of these approaches:
-
-- Run with Vercel CLI (`vercel dev`) so `/api/*` is available.
-- Add a Vite dev proxy to a local server implementing the same route.
+- In production on Vercel, `/api/contact` is served by `src/app/api/contact/route.ts`.
+- In local development (`npm run dev`), the API route runs locally, so the contact form can be tested end-to-end.
 
 ## Linting and typechecking
 
 - ESLint config is in `eslint.config.js` (flat config).
-- `npm run build` runs `tsc -b` before `vite build`, so type errors break builds.
+- `npm run build` runs `next build`, so type errors break builds.

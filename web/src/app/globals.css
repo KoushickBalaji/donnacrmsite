@@ -1,0 +1,168 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 0 0% 100%;
+  --foreground: 222.2 84% 4.9%;
+  --card: 0 0% 100%;
+  --card-foreground: 222.2 84% 4.9%;
+  --primary: 201 100% 36%;
+  --primary-foreground: 210 40% 98%;
+  --secondary: 210 40% 96.1%;
+  --secondary-foreground: 222.2 47.4% 11.2%;
+  --muted: 210 40% 96.1%;
+  --muted-foreground: 215.4 16.3% 46.9%;
+  --accent: 210 40% 96.1%;
+  --accent-foreground: 222.2 47.4% 11.2%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 214.3 31.8% 91.4%;
+  --input: 214.3 31.8% 91.4%;
+  --ring: 201 100% 36%;
+  --radius: 0.75rem;
+}
+
+* {
+  @apply border-border;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-background text-foreground;
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Liberation Sans', sans-serif;
+}
+
+@layer utilities {
+  @keyframes donna-hero-mesh {
+    from {
+      background-position: 0% 30%, 80% 10%, 20% 80%;
+    }
+    to {
+      background-position: 100% 60%, 20% 40%, 70% 10%;
+    }
+  }
+
+  @keyframes gradientDrift {
+    from {
+      background-position: 0% 30%, 80% 10%, 20% 80%;
+    }
+    to {
+      background-position: 100% 60%, 20% 40%, 70% 10%;
+    }
+  }
+
+  .donna-hero-drift::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background-image: radial-gradient(circle at 20% 20%, hsl(var(--primary) / 0.14), transparent 55%),
+      radial-gradient(circle at 80% 30%, hsl(var(--primary) / 0.10), transparent 50%),
+      radial-gradient(circle at 40% 80%, hsl(var(--primary) / 0.08), transparent 55%);
+    background-size: 140% 140%, 160% 160%, 180% 180%;
+    animation: gradientDrift 14s ease-in-out infinite alternate;
+    opacity: 0.085;
+    filter: blur(60px);
+    transform: translate3d(0, 0, 0);
+  }
+
+  .donna-hero-drift::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
+    background-size: 220px 220px;
+    opacity: 0.04;
+    mix-blend-mode: multiply;
+  }
+
+  .donna-hero-mesh {
+    background-image: radial-gradient(circle at 20% 20%, hsl(var(--primary) / 0.14), transparent 55%),
+      radial-gradient(circle at 80% 30%, hsl(var(--primary) / 0.10), transparent 50%),
+      radial-gradient(circle at 40% 80%, hsl(var(--primary) / 0.08), transparent 55%);
+    background-size: 140% 140%, 160% 160%, 180% 180%;
+    animation: donna-hero-mesh 14s ease-in-out infinite alternate;
+    opacity: 0.07;
+  }
+
+  .donna-hero-noise {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
+    background-size: 220px 220px;
+    opacity: 0.045;
+    mix-blend-mode: multiply;
+  }
+
+  @keyframes donna-float {
+    0%,
+    100% {
+      transform: translate3d(0, -6px, 0);
+    }
+    50% {
+      transform: translate3d(0, 6px, 0);
+    }
+  }
+
+  .donna-float {
+    animation: donna-float 6s ease-in-out infinite;
+    will-change: transform;
+  }
+
+  .donna-tilt {
+    transform: perspective(1000px) rotateX(var(--donna-rx, 0deg))
+      rotateY(var(--donna-ry, 0deg));
+    transform-style: preserve-3d;
+  }
+
+  @keyframes donna-ticker-ltr {
+    from {
+      transform: translate3d(-50%, 0, 0);
+    }
+    to {
+      transform: translate3d(0%, 0, 0);
+    }
+  }
+
+  .donna-ticker__inner {
+    animation: donna-ticker-ltr 32s linear infinite;
+    will-change: transform;
+  }
+
+  .donna-ticker:hover .donna-ticker__inner {
+    animation-play-state: paused;
+  }
+
+  .donna-cta-texture {
+    background-image: radial-gradient(circle at 20% 0%, rgba(255, 255, 255, 0.18), transparent 55%),
+      radial-gradient(circle at 85% 90%, rgba(255, 255, 255, 0.12), transparent 55%),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='.30'/%3E%3C/svg%3E");
+    background-size: 160% 160%, 160% 160%, 260px 260px;
+    opacity: 0.06;
+    mix-blend-mode: overlay;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .donna-hero-drift::before {
+      animation: none;
+    }
+    .donna-hero-mesh {
+      animation: none;
+    }
+    .donna-float {
+      animation: none;
+    }
+    .donna-ticker__inner {
+      animation: none;
+      transform: none;
+    }
+  }
+}
+

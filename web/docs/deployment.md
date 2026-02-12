@@ -2,27 +2,15 @@
 
 ## Hosting model
 
-This website is a client-rendered SPA. Any hosting must:
-
-- Serve `index.html` for all “app routes” (e.g. `/privacy`, `/pricing`)
-- Preserve `/api/*` for serverless endpoints (when applicable)
+This website is a Next.js app (App Router). Vercel deployment is the primary target.
 
 ## Vercel
 
-Vercel rewrites are configured in `vercel.json`:
+No SPA rewrite rules are required. Next.js handles routing and serverless functions natively on Vercel.
 
-- `/api/(.*)` → `/api/$1` (leave API routes alone)
-- `/(.*)` → `/` (send all other paths to the SPA entry)
-
-This keeps deep links working for React Router while still allowing serverless functions under `api/`.
-
-## Netlify / Cloudflare Pages
-
-`public/_redirects` includes:
-
-- `/* /index.html 200`
-
-This is the SPA rewrite equivalent for those platforms.
+Notes:
+- Preview deployments are configured as `noindex` via the global `robots` metadata in `src/app/layout.tsx`.
+- Set `NEXT_PUBLIC_SITE_ORIGIN=https://www.donnacrm.com` in Production env for stable canonicals/metadata.
 
 ## Assets
 

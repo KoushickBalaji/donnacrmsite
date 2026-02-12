@@ -4,16 +4,15 @@
 
 - Tailwind config: `tailwind.config.js`
 - PostCSS config: `postcss.config.js`
-- Base CSS and design tokens: `src/index.css`
+- Base CSS and design tokens: `src/app/globals.css`
 
 Tailwind scans these for class usage:
 
-- `./index.html`
 - `./src/**/*.{ts,tsx}`
 
 ## Design tokens (CSS variables)
 
-`src/index.css` defines HSL-based CSS variables on `:root`:
+`src/app/globals.css` defines HSL-based CSS variables on `:root`:
 
 - `--background`, `--foreground`
 - `--primary`, `--primary-foreground`

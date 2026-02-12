@@ -7,7 +7,6 @@ import {
   Users,
 } from 'lucide-react'
 import type { ComponentType } from 'react'
-import { Seo } from '../components/Seo'
 import { Button } from '../components/ui/Button'
 import { Card, CardContent } from '../components/ui/Card'
 import { chromeWebStoreInstallUrl } from '../lib/chromeWebStore'
@@ -41,9 +40,18 @@ function Screenshot({
             loading="lazy"
           />
         ) : (
-          <div className="text-center">
-            <Icon className="mx-auto mb-4 h-20 w-20 text-primary/20" />
-            <p className="text-sm text-muted-foreground">Screenshot coming soon</p>
+          <div className="w-full">
+            <div className="relative overflow-hidden rounded-md border border-border bg-background p-8 text-center">
+              <div className="absolute -right-16 -top-16 h-48 w-48 rounded-full bg-primary/10 blur-2xl" />
+              <div className="absolute -bottom-20 -left-20 h-56 w-56 rounded-full bg-primary/5 blur-2xl" />
+              <Icon className="mx-auto h-16 w-16 text-primary/25" />
+              <p className="mt-4 text-sm font-medium text-foreground">
+                Preview in Donna CRM
+              </p>
+              <p className="mt-1 text-xs text-muted-foreground">
+                Screenshots vary by workflow.
+              </p>
+            </div>
           </div>
         )}
       </CardContent>
@@ -54,7 +62,7 @@ function Screenshot({
 const featureSections: FeatureSection[] = [
   {
     icon: Mail,
-    title: 'AI Assistant (Live)',
+    title: 'AI Assistant',
     description:
       'An assistant inside Gmail to help you work faster, with less context switching.',
     details: [
@@ -83,8 +91,7 @@ const featureSections: FeatureSection[] = [
   {
     icon: Target,
     title: 'Pipeline Tracking',
-    description:
-      'Track work through simple, stage-based pipelines for any workflow.',
+    description: 'Track work through simple, stage-based pipelines for any workflow.',
     details: [
       'Kanban-style pipeline boards',
       'Customizable stages',
@@ -108,9 +115,8 @@ const featureSections: FeatureSection[] = [
   },
   {
     icon: Mail,
-    title: 'Bulk Email Campaigns (Live)',
-    description:
-      'Send one message to many recipients, with basic personalization.',
+    title: 'Bulk Email Campaigns',
+    description: 'Send one message to many recipients, with basic personalization.',
     details: [
       'Create campaigns using your saved contacts',
       'Reuse templates to keep messaging consistent',
@@ -126,7 +132,7 @@ const featureSections: FeatureSection[] = [
     description: 'Understand engagement across regular emails and campaigns.',
     details: [
       'Open tracking: supported for campaign emails and regular emails',
-      'Click tracking: supported for campaign emails only',
+      'Click tracking: supported for campaigns and for regular emails when manually enabled',
       'Campaign analytics show to-date totals for opens, clicks, and unsubscribes',
       'Follow-up reminders: coming soon',
     ],
@@ -138,11 +144,6 @@ const featureSections: FeatureSection[] = [
 export function FeaturesPage() {
   return (
     <>
-      <Seo
-        title="Features"
-        description="Explore Donna CRM features for Gmail workflows: contact management, pipelines, tasks, campaigns, and tracking."
-        canonicalPath="/features"
-      />
       <section className="bg-gradient-to-b from-primary/5 to-background py-16 lg:py-24">
         <div className="container">
           <div className="mx-auto max-w-3xl text-center">
@@ -174,9 +175,7 @@ export function FeaturesPage() {
                   <h2 className="text-3xl font-bold text-foreground">
                     {section.title}
                   </h2>
-                  <p className="text-lg text-muted-foreground">
-                    {section.description}
-                  </p>
+                  <p className="text-lg text-muted-foreground">{section.description}</p>
                   <ul className="space-y-3">
                     {section.details.map((d) => (
                       <li key={d} className="flex items-start gap-3">
@@ -207,8 +206,8 @@ export function FeaturesPage() {
               Install Donna CRM in Minutes
             </h2>
             <p className="mt-4 text-lg text-primary-foreground/80">
-              Add Donna CRM to Chrome and start managing your relationships
-              directly inside Gmail.
+              Add Donna CRM to Chrome and start managing your relationships directly
+              inside Gmail.
             </p>
             <div className="mt-8">
               <Button size="lg" variant="secondary" asChild>
@@ -217,7 +216,7 @@ export function FeaturesPage() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Install Extension <ArrowRight className="ml-2 h-4 w-4" />
+                  Add to Gmail — Free Trial <ArrowRight className="ml-2 h-4 w-4" />
                 </a>
               </Button>
             </div>

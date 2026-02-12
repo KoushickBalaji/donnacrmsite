@@ -1,13 +1,6 @@
-import { Seo } from '../components/Seo'
-
 export function IntegrationsPage() {
   return (
     <>
-      <Seo
-        title="Integrations"
-        description="See how Donna CRM works with Gmail and your workflow (including CSV and Google Sheets imports)."
-        canonicalPath="/integrations"
-      />
       <section className="bg-gradient-to-b from-primary/5 to-background py-16 lg:py-24">
         <div className="container">
           <div className="mx-auto max-w-3xl text-center">
@@ -67,7 +60,11 @@ export function IntegrationsPage() {
             <div>
               <h2 className="mb-3 text-2xl font-bold text-foreground">Tracking notes</h2>
               <ul className="list-inside list-disc space-y-2">
-                <li>Mail open and link click tracking is supported for campaign emails and regular emails.</li>
+                <li>Open tracking works for campaign emails and regular emails.</li>
+                <li>
+                  Click tracking works for campaign emails and can be enabled manually for
+                  regular emails.
+                </li>
                 <li>
                   Tracking behavior can vary depending on recipient mail clients and settings
                   (for example, image blocking).

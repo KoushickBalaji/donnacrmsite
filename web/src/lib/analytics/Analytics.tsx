@@ -1,9 +1,12 @@
+'use client'
+
 import { useEffect } from 'react'
-import { useLocation } from 'react-router-dom'
+import { usePathname, useSearchParams } from 'next/navigation'
 import { initGa4, trackEvent, trackPageView } from './ga4'
 
 export function Ga4Analytics() {
-  const location = useLocation()
+  const pathname = usePathname()
+  const searchParams = useSearchParams()
 
   useEffect(() => {
     initGa4()
@@ -52,8 +55,9 @@ export function Ga4Analytics() {
   }, [])
 
   useEffect(() => {
-    trackPageView(`${location.pathname}${location.search}`)
-  }, [location.pathname, location.search])
+    const qs = searchParams?.toString()
+    trackPageView(`${pathname}${qs ? `?${qs}` : ''}`)
+  }, [pathname, searchParams])
 
   return null
 }

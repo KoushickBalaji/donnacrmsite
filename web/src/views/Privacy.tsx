@@ -1,11 +1,8 @@
-import { Seo } from '../components/Seo'
-
 export function PrivacyPage() {
   const lastUpdated = '14 Dec 2025'
 
   return (
     <>
-      <Seo title="Privacy Policy" canonicalPath="/privacy" />
       <section className="bg-gradient-to-b from-primary/5 to-background py-16 lg:py-24">
         <div className="container">
           <div className="mx-auto max-w-3xl text-center">

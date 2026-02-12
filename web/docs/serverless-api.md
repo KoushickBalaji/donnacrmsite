@@ -2,11 +2,11 @@
 
 This website includes one serverless endpoint:
 
-- `POST /api/contact` → `api/contact.ts`
+- `POST /api/contact` → `src/app/api/contact/route.ts`
 
 ## Purpose
 
-The Contact page (`src/pages/Contact.tsx`) submits a JSON payload to `/api/contact`.
+The Contact page (`src/views/Contact.tsx`) submits a JSON payload to `/api/contact`.
 
 The serverless function:
 
@@ -46,4 +46,4 @@ If required env vars are missing, the function returns `500` and logs which valu
 
 ## Local testing note
 
-Vite dev server does not execute Vercel functions by default, so `/api/contact` will not work end-to-end in `npm run dev` unless you add a local server/proxy or run `vercel dev`.
+`npm run dev` runs the API route locally (Next.js), so `/api/contact` works end-to-end in development.
