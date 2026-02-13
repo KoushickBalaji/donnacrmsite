@@ -48,3 +48,13 @@ Routes are defined by the Next.js App Router under `src/app/`:
 - Marketing pages (Home/Features/Pricing/FAQ/Integrations/Resources) are mostly presentational and render copy + screenshots.
 - Legal pages (Privacy/Terms/Cancellation & Refunds/Shipping) are static content rendered as React.
 - Contact page includes client-side validation and a submit handler that calls `/api/contact`.
+
+## Home page notes
+
+The home page (`/`) is rendered by:
+
+- `src/app/page.tsx` -> `src/views/Home.tsx`
+
+Home page copy and layout live in `src/views/Home.tsx`. The home page also includes a desktop-only "scroll to next section" behavior (wheel-based) implemented in the `HomePage()` component.
+
+For details and tuning knobs, see: `docs/homepage-scroll.md`.

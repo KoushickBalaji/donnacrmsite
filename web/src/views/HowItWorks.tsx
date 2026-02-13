@@ -14,7 +14,7 @@ import { Reveal } from '../components/Reveal'
 import { Button } from '../components/ui/Button'
 import { chromeWebStoreInstallUrl } from '../lib/chromeWebStore'
 
-const primaryCtaLabel = 'Add to Gmail — Free Trial'
+const primaryCtaLabel = 'Add to Gmail - Free Trial'
 
 const surfaceTileClassName =
   'h-full min-h-[200px] rounded-[20px] bg-[#F7F8FA] p-8 shadow-[0_12px_30px_rgba(0,0,0,0.06)] ring-1 ring-black/[0.04] transition-[transform,box-shadow] duration-[220ms] ease-out hover:-translate-y-1.5 hover:shadow-[0_18px_45px_rgba(0,0,0,0.10)]'
@@ -55,7 +55,7 @@ export function HowItWorksPage() {
             </h1>
             <p className="mt-6 text-lg text-muted-foreground">
               Donna is a Gmail-native CRM for individuals. It keeps contacts, deal context,
-              tasks, and an AI assistant in your sidebar—so conversations turn into next
+              tasks, and an AI assistant in your sidebar-so conversations turn into next
               steps without switching tools.
             </p>
             <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
@@ -73,7 +73,7 @@ export function HowItWorksPage() {
               </Button>
             </div>
             <p className="mt-4 text-sm text-muted-foreground">
-              No setup · No credit card · Uninstall anytime
+              No setup | No credit card | Uninstall anytime
             </p>
           </div>
         </div>
@@ -90,7 +90,7 @@ export function HowItWorksPage() {
                 <p className="mt-3 max-w-3xl text-muted-foreground">
                   Donna installs as a Chrome extension and runs directly in the Gmail UI.
                   After you grant permissions, it can show CRM context next to the threads
-                  you’re already working on.
+                  you're already working on.
                 </p>
               </div>
 
@@ -156,7 +156,7 @@ export function HowItWorksPage() {
                           Approve the prompts to connect Donna to your Gmail.
                         </p>
                         <p className="pt-1 text-[15px] leading-[1.6] text-foreground/70">
-                          You'll see two permission screens — one for the extension and one
+                          You'll see two permission screens - one for the extension and one
                           for Donna's service.
                         </p>
                       </div>
@@ -178,7 +178,7 @@ export function HowItWorksPage() {
                           Start using Donna
                         </p>
                         <p className="text-[15px] leading-[1.6] text-foreground/70">
-                          Deals, notes, and follow-ups — right where you reply.
+                          Deals, notes, and follow-ups - right where you reply.
                         </p>
                       </div>
                     </div>
@@ -294,7 +294,7 @@ export function HowItWorksPage() {
                       Open a real thread
                     </p>
                     <p className="text-[15px] leading-[1.6] text-foreground/70">
-                      Donna anchors CRM context to the conversation you’re working on.
+                      Donna anchors CRM context to the conversation you're working on.
                     </p>
                   </div>
                 </div>
@@ -348,7 +348,7 @@ export function HowItWorksPage() {
                       Review your pipeline
                     </p>
                     <p className="text-[15px] leading-[1.6] text-foreground/70">
-                      See what’s in motion, what’s blocked, and what needs attention.
+                      See what's in motion, what's blocked, and what needs attention.
                     </p>
                   </div>
                 </div>

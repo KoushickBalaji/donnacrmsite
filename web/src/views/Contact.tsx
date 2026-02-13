@@ -126,8 +126,8 @@ export function ContactPage() {
                   <div>
                     <h3 className="font-semibold text-foreground">Mailing Address</h3>
                     <p className="mt-1 text-sm text-muted-foreground">
-                      Innov8 Mantri, Outer Ring Rd, Devarabisanahalli, Bellandur,
-                      Bengaluru, Karnataka 560103
+                      Innov8 Mantri, Outer Ring Rd, Devarabisanahalli, Bellandur, Bengaluru,
+                      Karnataka 560103
                     </p>
                   </div>
                 </CardContent>
@@ -196,7 +196,7 @@ export function ContactPage() {
                           setValues((v) => ({ ...v, message: e.target.value }))
                         }
                         className="min-h-[140px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-ring"
-                        placeholder="Tell us more…"
+                        placeholder="Tell us more..."
                       />
                       {errors.message ? (
                         <p className="text-sm text-destructive">{errors.message}</p>
@@ -220,7 +220,7 @@ export function ContactPage() {
                       className="w-full"
                       disabled={submitting || !canSubmit}
                     >
-                      {submitting ? 'Sending…' : 'Send Message'}
+                      {submitting ? 'Sending...' : 'Send Message'}
                     </Button>
                   </form>
                 </CardContent>

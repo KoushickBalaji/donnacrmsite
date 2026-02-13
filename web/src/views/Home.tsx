@@ -1,4 +1,4 @@
-﻿'use client'
+'use client'
 
 import { useEffect } from 'react'
 import { History, Inbox, Kanban, ListChecks, Settings, User, Zap } from 'lucide-react'
@@ -8,18 +8,15 @@ import { Reveal } from '../components/Reveal'
 import { Button } from '../components/ui/Button'
 import { chromeWebStoreInstallUrl } from '../lib/chromeWebStore'
 
-const primaryCtaLabel = 'Add to Gmail — Free Trial'
+const primaryCtaLabel = 'Add to Gmail - Free Trial'
+const stickyHeaderOffsetPx = 64
+const wheelSnapNotches = 5
+const initialNotchEstimatePx = 48
+const minWheelDeltaPx = 12
+const snapAnimationDurationMs = 500
 
 const surfaceTileClassName =
   'h-full min-h-[200px] rounded-[20px] bg-[#F7F8FA] p-8 shadow-[0_12px_30px_rgba(0,0,0,0.06)] ring-1 ring-black/[0.04] transition-[transform,box-shadow] duration-[220ms] ease-out hover:-translate-y-1.5 hover:shadow-[0_18px_45px_rgba(0,0,0,0.10)]'
-
-function Eyebrow({ children }: { children: string }) {
-  return (
-    <p className="text-xs font-semibold uppercase tracking-[0.08em] text-foreground/50">
-      {children}
-    </p>
-  )
-}
 
 function IconBubble({ Icon }: { Icon: typeof Inbox }) {
   return (
@@ -57,9 +54,155 @@ export function HomePage() {
     return () => window.removeEventListener('hashchange', applyHashRedirect)
   }, [router])
 
+  useEffect(() => {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    const hasFinePointer = window.matchMedia('(pointer: fine)').matches
+
+    if (prefersReducedMotion || !hasFinePointer) return
+
+    const sections = Array.from(
+      document.querySelectorAll<HTMLElement>('[data-home-snap-section]'),
+    )
+
+    if (sections.length < 2) return
+
+    let wheelScrollAccumulatorPx = 0
+    let notchEstimatePx = initialNotchEstimatePx
+    let lastDirection = 0
+    let isAnimating = false
+    let queuedScrollPx = 0
+    let queuedDirection = 0
+    let animationFrame: number | undefined
+
+    function normalizeDeltaY(event: WheelEvent) {
+      if (event.deltaMode === WheelEvent.DOM_DELTA_LINE) return event.deltaY * 16
+      if (event.deltaMode === WheelEvent.DOM_DELTA_PAGE) return event.deltaY * window.innerHeight
+      return event.deltaY
+    }
+
+    function getCurrentSectionIndex(scrollTop: number, topOffsets: number[]) {
+      let currentIndex = 0
+
+      for (let index = 0; index < topOffsets.length; index += 1) {
+        if (topOffsets[index] <= scrollTop + 1) {
+          currentIndex = index
+          continue
+        }
+
+        break
+      }
+
+      return currentIndex
+    }
+
+    function smoothScrollTo(targetScrollTop: number, onComplete?: () => void) {
+      const startScrollTop = window.scrollY
+      const scrollDistance = targetScrollTop - startScrollTop
+
+      if (Math.abs(scrollDistance) < 4) {
+        onComplete?.()
+        return
+      }
+
+      const animationStartMs = performance.now()
+      if (animationFrame) window.cancelAnimationFrame(animationFrame)
+
+      function animate(nowMs: number) {
+        const elapsedMs = nowMs - animationStartMs
+        const progress = Math.min(elapsedMs / snapAnimationDurationMs, 1)
+        const easedProgress = 0.5 - Math.cos(Math.PI * progress) / 2
+        window.scrollTo(0, startScrollTop + scrollDistance * easedProgress)
+
+        if (progress < 1) {
+          animationFrame = window.requestAnimationFrame(animate)
+          return
+        }
+
+        animationFrame = undefined
+        onComplete?.()
+      }
+
+      animationFrame = window.requestAnimationFrame(animate)
+    }
+
+    function triggerSectionScroll(direction: number) {
+      const topOffsets = sections.map((section) => Math.max(section.offsetTop - stickyHeaderOffsetPx, 0))
+      const currentScrollTop = window.scrollY
+      const currentIndex = getCurrentSectionIndex(currentScrollTop, topOffsets)
+      const targetIndex =
+        direction > 0
+          ? Math.min(currentIndex + 1, topOffsets.length - 1)
+          : Math.max(currentIndex - 1, 0)
+
+      if (targetIndex === currentIndex) return false
+
+      isAnimating = true
+      smoothScrollTo(topOffsets[targetIndex], () => {
+        isAnimating = false
+        const snapThresholdPx = wheelSnapNotches * notchEstimatePx
+        if (queuedScrollPx >= snapThresholdPx && queuedDirection) {
+          const dir = queuedDirection
+          queuedScrollPx = 0
+          queuedDirection = 0
+          triggerSectionScroll(dir)
+        } else {
+          queuedScrollPx = 0
+          queuedDirection = 0
+        }
+      })
+
+      return true
+    }
+
+    function onWheel(event: WheelEvent) {
+      const deltaY = normalizeDeltaY(event)
+      const direction = Math.sign(deltaY)
+      const absDeltaY = Math.abs(deltaY)
+      if (!direction || absDeltaY < minWheelDeltaPx) return
+
+      // Auto-calibrate "pixels per notch" so "5 notches" works across devices/browsers.
+      // Clamp keeps extreme deltas (e.g. momentum scroll) from blowing up the estimate.
+      const clampedDelta = Math.max(24, Math.min(absDeltaY, 160))
+      notchEstimatePx = notchEstimatePx * 0.85 + clampedDelta * 0.15
+
+      if (isAnimating) {
+        event.preventDefault()
+        if (direction !== queuedDirection) {
+          queuedDirection = direction
+          queuedScrollPx = 0
+        }
+
+        queuedScrollPx += absDeltaY
+        return
+      }
+
+      if (direction !== lastDirection) wheelScrollAccumulatorPx = 0
+
+      lastDirection = direction
+      wheelScrollAccumulatorPx += absDeltaY
+
+      const snapThresholdPx = wheelSnapNotches * notchEstimatePx
+      if (wheelScrollAccumulatorPx < snapThresholdPx) return
+
+      wheelScrollAccumulatorPx = 0
+      event.preventDefault()
+      triggerSectionScroll(direction)
+    }
+
+    window.addEventListener('wheel', onWheel, { passive: false })
+
+    return () => {
+      window.removeEventListener('wheel', onWheel)
+      if (animationFrame) window.cancelAnimationFrame(animationFrame)
+    }
+  }, [])
+
   return (
     <>
-      <section className="relative flex min-h-[calc(100svh-4rem)] items-center bg-background py-14 lg:py-20">
+      <section
+        data-home-snap-section
+        className="relative flex min-h-[calc(100svh-4rem)] items-center bg-background py-14 lg:py-20"
+      >
         <div className="container">
           <div className="grid items-center gap-10 lg:grid-cols-2">
             <Reveal className="max-w-xl">
@@ -90,7 +233,7 @@ export function HomePage() {
               </div>
 
               <p className="mt-4 text-sm text-muted-foreground">
-                No setup · No credit card · Uninstall anytime
+                No setup | No credit card | Uninstall anytime
               </p>
             </Reveal>
 
@@ -108,7 +251,10 @@ export function HomePage() {
         </div>
       </section>
 
-      <section className="flex min-h-[calc(100svh-4rem)] items-center bg-[#F6F7F9] py-14 lg:py-20">
+      <section
+        data-home-snap-section
+        className="flex min-h-[calc(100svh-4rem)] items-center bg-[#F6F7F9] py-14 lg:py-20"
+      >
         <div className="container">
           <Reveal>
             <div className="w-full">
@@ -138,8 +284,7 @@ export function HomePage() {
                       </div>
 
                       <div className="mt-5 flex flex-1 flex-col">
-                        <Eyebrow>Problem</Eyebrow>
-                        <p className="mt-2 h-[3.5rem] overflow-hidden text-[22px] font-[650] leading-[1.2] text-foreground">
+                        <p className="h-[3.5rem] overflow-hidden text-[22px] font-[650] leading-[1.2] text-foreground">
                           Follow-ups slip
                         </p>
                         <p className="mt-2 h-[4.8rem] overflow-hidden text-[15px] leading-[1.6] text-foreground/70">
@@ -159,8 +304,7 @@ export function HomePage() {
                       </div>
 
                       <div className="mt-5 flex flex-1 flex-col">
-                        <Eyebrow>Problem</Eyebrow>
-                        <p className="mt-2 h-[3.5rem] overflow-hidden text-[22px] font-[650] leading-[1.2] text-foreground">
+                        <p className="h-[3.5rem] overflow-hidden text-[22px] font-[650] leading-[1.2] text-foreground">
                           No relationship context
                         </p>
                         <p className="mt-2 h-[4.8rem] overflow-hidden text-[15px] leading-[1.6] text-foreground/70">
@@ -180,8 +324,7 @@ export function HomePage() {
                       </div>
 
                       <div className="mt-5 flex flex-1 flex-col">
-                        <Eyebrow>Problem</Eyebrow>
-                        <p className="mt-2 h-[3.5rem] overflow-hidden text-[22px] font-[650] leading-[1.2] text-foreground">
+                        <p className="h-[3.5rem] overflow-hidden text-[22px] font-[650] leading-[1.2] text-foreground">
                           CRMs break flow
                         </p>
                         <p className="mt-2 h-[4.8rem] overflow-hidden text-[15px] leading-[1.6] text-foreground/70">
@@ -201,8 +344,7 @@ export function HomePage() {
                       </div>
 
                       <div className="mt-5 flex flex-1 flex-col">
-                        <Eyebrow>Problem</Eyebrow>
-                        <p className="mt-2 h-[3.5rem] overflow-hidden text-[22px] font-[650] leading-[1.2] text-foreground">
+                        <p className="h-[3.5rem] overflow-hidden text-[22px] font-[650] leading-[1.2] text-foreground">
                           No deal clarity
                         </p>
                         <p className="mt-2 h-[4.8rem] overflow-hidden text-[15px] leading-[1.6] text-foreground/70">
@@ -221,7 +363,7 @@ export function HomePage() {
         </div>
       </section>
 
-      <section className="bg-background py-14 lg:py-20">
+      <section data-home-snap-section className="bg-background py-14 lg:py-20">
         <div className="container">
           <Reveal>
             <div className="mx-auto max-w-5xl">
@@ -232,7 +374,7 @@ export function HomePage() {
                       Built to stay lightweight
                     </h2>
                     <p className="mt-4 text-[15px] leading-[1.6] text-foreground/70">
-                      Donna is designed for people who need a simple system — without turning
+                      Donna is designed for people who need a simple system - without turning
                       relationship-tracking into a second job.
                     </p>
                     <div className="mt-6 flex flex-wrap gap-4">
@@ -240,25 +382,25 @@ export function HomePage() {
                         href="/product"
                         className="text-sm font-semibold text-primary hover:underline"
                       >
-                        Explore the product →
+                        Explore the product
                       </Link>
                       <Link
                         href="/gmail-crm"
                         className="text-sm font-semibold text-primary hover:underline"
                       >
-                        Read: Gmail CRM →
+                        Read: Gmail CRM
                       </Link>
                       <Link
                         href="/ai-gmail-crm"
                         className="text-sm font-semibold text-primary hover:underline"
                       >
-                        Read: AI assistant →
+                        Read: AI assistant
                       </Link>
                       <Link
                         href="/compare"
                         className="text-sm font-semibold text-primary hover:underline"
                       >
-                        See how Donna compares →
+                        See how Donna compares
                       </Link>
                     </div>
                   </div>
@@ -276,7 +418,7 @@ export function HomePage() {
         </div>
       </section>
 
-      <section className="bg-[#F6F7F9] py-14 lg:py-20">
+      <section data-home-snap-section className="bg-[#F6F7F9] py-14 lg:py-20">
         <div className="container">
           <Reveal className="mx-auto max-w-2xl text-center">
             <h2 className="text-3xl font-bold text-foreground sm:text-4xl">

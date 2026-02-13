@@ -8,4 +8,3 @@ export function resolveSiteOrigin() {
   if (configuredOrigin) return configuredOrigin.replace(/\/+$/, '')
   return 'https://www.donnacrm.com'
 }
-

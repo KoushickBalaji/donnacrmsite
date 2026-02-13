@@ -8,12 +8,12 @@ export const emailTrackingFaqs: FaqItem[] = [
   {
     question: 'What is email tracking in Gmail?',
     answer:
-      'Email tracking is a way to see engagement signals like opens and link clicks for sent emails (where supported). It’s useful for follow-ups, but it’s not perfect.',
+      "Email tracking is a way to see engagement signals like opens and link clicks for sent emails (where supported). It's useful for follow-ups, but it's not perfect.",
   },
   {
     question: 'Is open tracking always accurate?',
     answer:
-      'No. Opens can be affected by image blocking and privacy features. Treat opens as a signal—not a source of truth.',
+      'No. Opens can be affected by image blocking and privacy features. Treat opens as a signal-not a source of truth.',
   },
   {
     question: 'What about click tracking?',
@@ -32,7 +32,7 @@ export const emailTrackingFaqs: FaqItem[] = [
   },
 ]
 
-const primaryCtaLabel = 'Add to Gmail — Free Trial'
+const primaryCtaLabel = 'Add to Gmail - Free Trial'
 
 function ScreenshotCard({ src, alt }: { src: string; alt: string }) {
   return (
@@ -60,7 +60,7 @@ export function EmailTrackingInGmailPage() {
                 Email tracking in Gmail (opens & clicks)
               </h1>
               <p className="mt-5 text-lg text-muted-foreground">
-                Use engagement signals to time follow-ups better—without leaving your inbox. Donna
+                Use engagement signals to time follow-ups better-without leaving your inbox. Donna
                 CRM brings tracking into Gmail alongside contacts and pipelines.
               </p>
 
@@ -80,7 +80,7 @@ export function EmailTrackingInGmailPage() {
               </div>
 
               <p className="mt-4 text-sm text-muted-foreground">
-                Signals, not guarantees · Be mindful of compliance
+                Signals, not guarantees | Be mindful of compliance
               </p>
             </div>
 
@@ -97,11 +97,11 @@ export function EmailTrackingInGmailPage() {
           <div className="mx-auto grid max-w-5xl gap-10 lg:grid-cols-2 lg:items-start">
             <div>
               <h2 className="text-2xl font-semibold text-foreground sm:text-3xl">
-                What is email tracking?
+                What is email trackingv
               </h2>
               <p className="mt-4 text-muted-foreground">
                 Email tracking helps you see whether an email was opened and whether tracked links
-                were clicked (where supported). It’s most useful for proposals, important follow-ups,
+                were clicked (where supported). It's most useful for proposals, important follow-ups,
                 and outreach where timing matters.
               </p>
               <p className="mt-4 text-muted-foreground">
@@ -131,13 +131,13 @@ export function EmailTrackingInGmailPage() {
 
               <div className="mt-6 flex flex-wrap gap-4 text-sm font-semibold">
                 <Link href="/crm-for-consultants" className="text-primary hover:underline">
-                  Consultants →
+                  Consultants
                 </Link>
                 <Link href="/crm-for-freelancers" className="text-primary hover:underline">
-                  Freelancers →
+                  Freelancers
                 </Link>
                 <Link href="/crm-for-solo-b2b-sales" className="text-primary hover:underline">
-                  Solo sales →
+                  Solo sales
                 </Link>
               </div>
             </div>
@@ -176,7 +176,7 @@ export function EmailTrackingInGmailPage() {
             <div className="mt-10 rounded-xl border border-border bg-muted/30 p-6">
               <p className="text-sm font-semibold text-foreground">Compliance note</p>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                Laws and norms vary. If you’re tracking for regulated audiences or certain regions,
+                Laws and norms vary. If you're tracking for regulated audiences or certain regions,
                 make sure your disclosures and consent flow are appropriate.
               </p>
               <p className="mt-3 text-sm text-muted-foreground">
@@ -229,4 +229,3 @@ export function EmailTrackingInGmailPage() {
     </>
   )
 }
-

@@ -9,19 +9,20 @@ export function ComparePage() {
             Compare Donna
           </h1>
           <p className="mt-6 text-lg text-muted-foreground">
-            We keep comparisons off the homepage. This page is where we’ll add side-by-side
-            breakdowns as they’re ready.
+            We keep comparisons off the homepage. This page lists side-by-side breakdowns we're
+            comfortable standing behind.
           </p>
 
           <div className="mt-8 space-y-3">
             <Link href="/streak-crm-alternative" className="text-primary hover:underline">
-              Detailed comparison →
+              Donna vs Streak
             </Link>
-            <div className="text-sm text-muted-foreground">More comparisons coming soon.</div>
+            <Link href="/contact" className="text-sm text-muted-foreground hover:underline">
+              Want a comparison for another tool? Tell us what you're using
+            </Link>
           </div>
         </div>
       </div>
     </section>
   )
 }
-

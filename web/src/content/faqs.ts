@@ -50,7 +50,7 @@ export const faqs = [
       'If something is not working the way you expect, we are here to help. Reach out via the Contact page with a short description of the issue, and we will get back to you as soon as possible. If you can include a screenshot and the browser you are using, that helps us resolve things faster.',
   },
   {
-    question: "What’s coming next?",
+    question: "What's coming next?",
     answer:
       'We are focused on making follow-ups and inbox workflows even easier, including follow-up reminders, more integrations, and workflow improvements. Roadmap items can change, but the goal stays the same: keep Donna lightweight and Gmail-native.',
   },

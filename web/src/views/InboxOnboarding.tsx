@@ -6,24 +6,24 @@ import { chromeWebStoreInstallUrl } from '../lib/chromeWebStore'
 
 export const inboxOnboardingFaqs: FaqItem[] = [
   {
-    question: 'What is “inbox onboarding”?',
+    question: 'What is "inbox onboarding"?',
     answer:
       'Inbox onboarding is a guided setup flow that starts from your real email: it helps you create a lightweight structure (like pipelines and stages) that matches how you already work in Gmail.',
   },
   {
     question: 'What does it do (and not do)?',
     answer:
-      'It helps you get to a sensible starting point quickly. It’s not a fully automated background agent, and it won’t replace your judgment about which contacts and deals matter.',
+      "It helps you get to a sensible starting point quickly. It's not a fully automated background agent, and it won't replace your judgment about which contacts and deals matter.",
   },
   {
     question: 'Do I need to connect anything besides Gmail?',
     answer:
-      'Donna runs as a Chrome extension inside Gmail. You’ll be guided through any permissions needed for the workflow you choose.',
+      "Donna runs as a Chrome extension inside Gmail. You'll be guided through any permissions needed for the workflow you choose.",
   },
   {
     question: 'Is this safe for sensitive inboxes?',
     answer:
-      'Treat AI like a drafting and organization tool. Avoid sharing sensitive information you wouldn’t put in an email, and review suggestions before you act.',
+      "Treat AI like a drafting and organization tool. Avoid sharing sensitive information you wouldn't put in an email, and review suggestions before you act.",
   },
   {
     question: 'Where can I read about data and privacy?',
@@ -32,7 +32,7 @@ export const inboxOnboardingFaqs: FaqItem[] = [
   },
 ]
 
-const primaryCtaLabel = 'Start onboarding — Free Trial'
+const primaryCtaLabel = 'Start onboarding - Free Trial'
 
 function ScreenshotCard({ src, alt }: { src: string; alt: string }) {
   return (
@@ -60,8 +60,8 @@ export function InboxOnboardingPage() {
                 Set up your CRM from your Gmail inbox
               </h1>
               <p className="mt-5 text-lg text-muted-foreground">
-                Don’t start from blank fields. Start from real conversations. Inbox onboarding helps
-                you get to a lightweight setup fast—so you can track deals and follow-ups without
+                Don't start from blank fields. Start from real conversations. Inbox onboarding helps
+                you get to a lightweight setup fast-so you can track deals and follow-ups without
                 leaving Gmail.
               </p>
 
@@ -81,7 +81,7 @@ export function InboxOnboardingPage() {
               </div>
 
               <p className="mt-4 text-sm text-muted-foreground">
-                Lightweight setup · Human-in-the-loop · You stay in control
+                Lightweight setup | Human-in-the-loop | You stay in control
               </p>
             </div>
 
@@ -101,12 +101,12 @@ export function InboxOnboardingPage() {
                 Start with what you already do
               </h2>
               <p className="mt-4 text-muted-foreground">
-                Most solo operators already have a system—it’s just scattered across threads,
+                Most solo operators already have a system-it's just scattered across threads,
                 calendar reminders, and notes. Inbox onboarding helps you turn that into a simple,
                 repeatable workflow inside Gmail.
               </p>
               <p className="mt-4 text-muted-foreground">
-                If you’re new here, start with the Gmail CRM overview first:{' '}
+                If you're new here, start with the Gmail CRM overview first:{' '}
                 <Link href="/gmail-crm" className="text-primary hover:underline">
                   /gmail-crm
                 </Link>
@@ -115,11 +115,11 @@ export function InboxOnboardingPage() {
             </div>
 
             <div className="rounded-xl border border-border bg-muted/30 p-6">
-              <p className="text-sm font-semibold text-foreground">A sensible “first setup”</p>
+              <p className="text-sm font-semibold text-foreground">A sensible "first setup"</p>
               <ul className="mt-4 space-y-3">
                 {[
                   'Pick a lightweight pipeline (or use a simple default)',
-                  'Define 3–6 stages you’ll actually remember',
+                  "Define 3-6 stages you'll actually remember",
                   'Start tracking real threads right away',
                   'Capture next steps as tasks before you close the tab',
                 ].map((item) => (
@@ -132,16 +132,58 @@ export function InboxOnboardingPage() {
 
               <div className="mt-6 flex flex-wrap gap-4 text-sm font-semibold">
                 <Link href="/pricing" className="text-primary hover:underline">
-                  Pricing →
+                  Pricing
                 </Link>
                 <Link href="/features" className="text-primary hover:underline">
-                  Features →
+                  Features
                 </Link>
                 <Link href="/faq" className="text-primary hover:underline">
-                  FAQ →
+                  FAQ
                 </Link>
               </div>
             </div>
+          </div>
+
+          <div className="mx-auto mt-14 max-w-5xl">
+            <h2 className="text-2xl font-semibold text-foreground sm:text-3xl">
+              What onboarding can set up (with confirmation)
+            </h2>
+            <p className="mt-4 max-w-3xl text-muted-foreground">
+              Inbox onboarding is designed to get you to a sensible starting point fast. The
+              assistant can recommend a lightweight structure based on real threads, and you choose
+              what to apply.
+            </p>
+
+            <div className="mt-8 grid gap-6 md:grid-cols-3">
+              {[
+                {
+                  title: 'Pipelines + stages',
+                  body: "Start with a simple pipeline you'll actually maintain (and remember).",
+                },
+                {
+                  title: 'Contacts + context',
+                  body: 'Turn important threads into contacts with lightweight notes and tags.',
+                },
+                {
+                  title: 'Next-step tasks',
+                  body: "Capture follow-ups as tasks so the \"next step\" doesn't disappear.",
+                },
+              ].map((item) => (
+                <Card key={item.title} className="border-border bg-muted/30">
+                  <CardContent className="p-6">
+                    <p className="text-base font-semibold text-foreground">{item.title}</p>
+                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                      {item.body}
+                    </p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+
+            <p className="mt-6 text-sm text-muted-foreground">
+              Important: Donna is human-in-the-loop. Review recommendations before you create
+              records or send anything client-facing.
+            </p>
           </div>
 
           <div className="mx-auto mt-14 max-w-5xl rounded-xl border border-border bg-background p-8">
@@ -151,7 +193,7 @@ export function InboxOnboardingPage() {
             <p className="mt-4 max-w-3xl text-muted-foreground">
               Inbox workflows can touch sensitive information. Keep the mental model simple:
               treat AI like a drafting and organization tool, and review suggestions before you
-              take action—especially anything client-facing.
+              take action-especially anything client-facing.
             </p>
             <p className="mt-4 text-sm text-muted-foreground">
               See the{' '}
@@ -177,7 +219,7 @@ export function InboxOnboardingPage() {
             </div>
 
             <div className="rounded-xl border border-border bg-muted/30 p-6">
-              <p className="text-sm font-semibold text-foreground">Ready to start?</p>
+              <p className="text-sm font-semibold text-foreground">Ready to startv</p>
               <p className="mt-2 text-sm text-muted-foreground">
                 Install the extension and set up a simple workflow from your inbox.
               </p>
@@ -202,4 +244,3 @@ export function InboxOnboardingPage() {
     </>
   )
 }
-

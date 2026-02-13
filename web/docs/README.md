@@ -8,6 +8,7 @@ This folder documents the Donna CRM marketing website codebase as it exists toda
 - Codebase map: [codebase-map.md](./codebase-map.md)
 - Local development: [local-development.md](./local-development.md)
 - Frontend architecture: [frontend-architecture.md](./frontend-architecture.md)
+- Home page scroll behavior: [homepage-scroll.md](./homepage-scroll.md)
 - Routing + pages: [routing-and-pages.md](./routing-and-pages.md)
 - UI components: [ui-components.md](./ui-components.md)
 - Styling + design tokens: [styling-and-design-tokens.md](./styling-and-design-tokens.md)

@@ -6,19 +6,19 @@ import { chromeWebStoreInstallUrl } from '../lib/chromeWebStore'
 
 export const crmForSoloB2BSalesFaqs: FaqItem[] = [
   {
-    question: 'What is a “solo sales CRM”?',
+    question: 'What is a "solo sales CRM"?',
     answer:
-      'A solo sales CRM is a lightweight system for one person to track deals, next steps, and follow-ups—without the overhead of a team CRM.',
+      'A solo sales CRM is a lightweight system for one person to track deals, next steps, and follow-ups-without the overhead of a team CRM.',
   },
   {
     question: 'How does this help me avoid stale CRM data?',
     answer:
-      'By keeping context and next steps next to email threads, it’s easier to update deal status while the conversation is fresh.',
+      "By keeping context and next steps next to email threads, it's easier to update deal status while the conversation is fresh.",
   },
   {
     question: 'Can I track deal stages from email threads?',
     answer:
-      'Yes. Use a simple pipeline for stages like Lead → Meeting → Proposal → Negotiation → Closed, and capture tasks for the next step.',
+      'Yes. Use a simple pipeline for stages like Lead -> Meeting -> Proposal -> Negotiation -> Closed, and capture tasks for the next step.',
   },
   {
     question: 'Does Donna automate follow-ups?',
@@ -27,7 +27,7 @@ export const crmForSoloB2BSalesFaqs: FaqItem[] = [
   },
 ]
 
-const primaryCtaLabel = 'Add to Gmail — Free Trial'
+const primaryCtaLabel = 'Add to Gmail - Free Trial'
 
 function ScreenshotCard({ src, alt }: { src: string; alt: string }) {
   return (
@@ -55,8 +55,8 @@ export function CrmForSoloB2BSalesPage() {
                 A solo B2B sales CRM inside Gmail
               </h1>
               <p className="mt-5 text-lg text-muted-foreground">
-                Track deals and next steps from the same place you’re selling: your inbox. Keep deal
-                context next to real threads so follow-ups don’t slip.
+                Track deals and next steps from the same place you're selling: your inbox. Keep deal
+                context next to real threads so follow-ups don't slip.
               </p>
 
               <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
@@ -94,7 +94,7 @@ export function CrmForSoloB2BSalesPage() {
                 {[
                   'No clear next step after a call',
                   'Follow-ups spread across threads, notes, and calendar reminders',
-                  'Deal status isn’t updated while it’s fresh',
+                  "Deal status isn't updated while it's fresh",
                   'Important context gets lost when a thread goes quiet',
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-3">
@@ -107,16 +107,16 @@ export function CrmForSoloB2BSalesPage() {
 
             <div className="rounded-xl border border-border bg-muted/30 p-6">
               <p className="text-sm font-semibold text-foreground">
-                Thread → deal → next step
+                Thread to deal to next step
               </p>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                The fastest way to keep your CRM accurate is to update it while you’re already in
+                The fastest way to keep your CRM accurate is to update it while you're already in
                 the conversation. Capture the deal stage, add a note, and create the next task in
                 the same flow.
               </p>
               <div className="mt-4 text-sm">
                 <Link href="/ai-gmail-crm" className="text-primary hover:underline">
-                  See how the assistant helps →
+                  See how the assistant helps
                 </Link>
               </div>
             </div>
@@ -127,7 +127,7 @@ export function CrmForSoloB2BSalesPage() {
               Deal stages you can copy
             </h2>
             <p className="mt-4 max-w-3xl text-muted-foreground">
-              Keep the pipeline simple. If you can’t remember the stage definitions, there are too
+              Keep the pipeline simple. If you can't remember the stage definitions, there are too
               many stages.
             </p>
 
@@ -147,25 +147,28 @@ export function CrmForSoloB2BSalesPage() {
                 alt="Deal context displayed next to a Gmail thread"
               />
               <div className="rounded-xl border border-border bg-background p-6">
-                <p className="text-sm font-semibold text-foreground">Internal links</p>
+                <p className="text-sm font-semibold text-foreground">Related pages</p>
+                <p className="mt-2 text-sm text-muted-foreground">
+                  Deeper dives for solo sellers evaluating a Gmail-native workflow.
+                </p>
                 <div className="mt-3 flex flex-col gap-2 text-sm">
                   <Link href="/gmail-crm" className="text-primary hover:underline">
-                    Gmail CRM pillar →
+                    Gmail CRM overview
                   </Link>
                   <Link href="/ai-gmail-crm" className="text-primary hover:underline">
-                    AI assistant page →
+                    AI assistant (human-in-the-loop)
                   </Link>
-                <Link href="/pricing" className="text-primary hover:underline">
-                  Pricing →
-                </Link>
-                <Link href="/email-tracking-in-gmail" className="text-primary hover:underline">
-                  Email tracking →
-                </Link>
-                <Link href="/resources" className="text-primary hover:underline">
-                  Resources →
-                </Link>
+                  <Link href="/email-tracking-in-gmail" className="text-primary hover:underline">
+                    Email tracking in Gmail
+                  </Link>
+                  <Link href="/pricing" className="text-primary hover:underline">
+                    Pricing
+                  </Link>
+                  <Link href="/resources" className="text-primary hover:underline">
+                    Resources
+                  </Link>
+                </div>
               </div>
-            </div>
             </div>
           </div>
         </div>

@@ -8,12 +8,12 @@ export const crmForConsultantsFaqs: FaqItem[] = [
   {
     question: 'How is this different from a traditional consultant CRM?',
     answer:
-      'Donna is optimized for staying in Gmail. It’s a lightweight system for tracking client context, engagement stage, and next steps—without heavy configuration.',
+      "Donna is optimized for staying in Gmail. It's a lightweight system for tracking client context, engagement stage, and next steps-without heavy configuration.",
   },
   {
     question: 'What pipeline stages work well for consulting?',
     answer:
-      'A simple default is Discovery → Proposal → Active → Renewal. Keep stages minimal and focus on always capturing the next step.',
+      'A simple default is Discovery -> Proposal -> Active -> Renewal. Keep stages minimal and focus on always capturing the next step.',
   },
   {
     question: 'Can I use Donna for multiple engagement types?',
@@ -27,7 +27,7 @@ export const crmForConsultantsFaqs: FaqItem[] = [
   },
 ]
 
-const primaryCtaLabel = 'Add to Gmail — Free Trial'
+const primaryCtaLabel = 'Add to Gmail - Free Trial'
 
 function ScreenshotCard({ src, alt }: { src: string; alt: string }) {
   return (
@@ -75,7 +75,7 @@ export function CrmForConsultantsPage() {
               </div>
 
               <p className="mt-4 text-sm text-muted-foreground">
-                Lightweight by design · Minimal setup · Works from your inbox
+                Lightweight by design | Minimal setup | Works from your inbox
               </p>
             </div>
 
@@ -98,8 +98,8 @@ export function CrmForConsultantsPage() {
                 {[
                   'Follow-ups get buried in threads',
                   'Engagement status lives in docs or memory',
-                  'Deliverables and next steps aren’t captured consistently',
-                  'A “team CRM” is too heavy for a solo workflow',
+                  "Deliverables and next steps aren't captured consistently",
+                  'A "team CRM" is too heavy for a solo workflow',
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-3">
                     <div className="mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-primary" />
@@ -112,12 +112,12 @@ export function CrmForConsultantsPage() {
             <div className="rounded-xl border border-border bg-muted/30 p-6">
               <p className="text-sm font-semibold text-foreground">The consultant-friendly loop</p>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                Thread → client context → engagement stage → next step. The goal isn’t perfect data.
-                It’s consistent follow-through.
+                Thread to client context to engagement stage to next step. The goal isn't perfect data.
+                It's consistent follow-through.
               </p>
               <div className="mt-4 text-sm">
                 <Link href="/pricing" className="text-primary hover:underline">
-                  See pricing →
+                  See pricing
                 </Link>
               </div>
             </div>
@@ -129,7 +129,7 @@ export function CrmForConsultantsPage() {
             </h2>
             <p className="mt-4 max-w-3xl text-muted-foreground">
               A simple consulting pipeline keeps you honest about where each client stands:
-              Discovery → Proposal → Active → Renewal.
+              Discovery - Proposal - Active - Renewal.
             </p>
 
             <div className="mt-8 grid gap-6 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
@@ -178,22 +178,25 @@ export function CrmForConsultantsPage() {
             </div>
 
             <div className="rounded-xl border border-border bg-background p-6">
-              <p className="text-sm font-semibold text-foreground">Internal links</p>
+              <p className="text-sm font-semibold text-foreground">Related pages</p>
+              <p className="mt-2 text-sm text-muted-foreground">
+                If you're evaluating Donna, these pages fill in the details.
+              </p>
               <div className="mt-3 flex flex-col gap-2 text-sm">
                 <Link href="/gmail-crm" className="text-primary hover:underline">
-                  Gmail CRM pillar →
+                  Gmail CRM overview
                 </Link>
                 <Link href="/ai-gmail-crm" className="text-primary hover:underline">
-                  AI assistant page →
-                </Link>
-                <Link href="/pricing" className="text-primary hover:underline">
-                  Pricing →
+                  AI assistant (human-in-the-loop)
                 </Link>
                 <Link href="/email-tracking-in-gmail" className="text-primary hover:underline">
-                  Email tracking →
+                  Email tracking in Gmail
+                </Link>
+                <Link href="/pricing" className="text-primary hover:underline">
+                  Pricing
                 </Link>
                 <Link href="/resources" className="text-primary hover:underline">
-                  Resources →
+                  Resources
                 </Link>
               </div>
             </div>

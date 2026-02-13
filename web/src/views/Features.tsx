@@ -72,7 +72,6 @@ const featureSections: FeatureSection[] = [
     ],
     screenshotSrc: '/screenshots/Overview.png',
     screenshotAlt: 'AI Assistant in Donna CRM',
-    // TODO: Replace with an AI Assistant-specific screenshot once captured.
   },
   {
     icon: Users,
@@ -83,7 +82,7 @@ const featureSections: FeatureSection[] = [
       'Add notes and tags for better organization',
       'Quickly search and filter contacts',
       'Import contacts from CSV and Google Sheets',
-      'Onboarding can read contacts and auto-add contacts',
+      'Inbox onboarding can recommend a starting setup (with confirmation)',
     ],
     screenshotSrc: '/screenshots/Contacts.png',
     screenshotAlt: 'Contacts in Donna CRM',
@@ -108,10 +107,10 @@ const featureSections: FeatureSection[] = [
     details: [
       'Create tasks linked to contacts or pipeline items',
       'Set due dates and track completion',
-      'Reminders are handled through the AI assistant',
+      'Use the assistant to turn threads into clear next steps',
     ],
+    screenshotSrc: '/screenshots/Context%20Bar.png',
     screenshotAlt: 'Tasks in Donna CRM',
-    // TODO: Add a real Tasks screenshot once captured.
   },
   {
     icon: Mail,
@@ -120,24 +119,23 @@ const featureSections: FeatureSection[] = [
     details: [
       'Create campaigns using your saved contacts',
       'Reuse templates to keep messaging consistent',
-      'Personalization placeholders: sender name, receiver name, company name',
+      'Basic merge fields: sender name, recipient name, company name',
     ],
     screenshotSrc: '/screenshots/Campaigns.png',
     screenshotAlt: 'Bulk Email Campaigns in Donna CRM',
-    // TODO: Replace with a verified, detailed capabilities list once finalized.
   },
   {
     icon: MailOpen,
     title: 'Email Tracking',
     description: 'Understand engagement across regular emails and campaigns.',
     details: [
-      'Open tracking: supported for campaign emails and regular emails',
-      'Click tracking: supported for campaigns and for regular emails when manually enabled',
+      'Open tracking (where supported): a helpful signal, not a guarantee',
+      'Click tracking (where supported): typically applies to tracked links',
       'Campaign analytics show to-date totals for opens, clicks, and unsubscribes',
-      'Follow-up reminders: coming soon',
+      'Follow-ups: turn engagement into a clear next step',
     ],
+    screenshotSrc: '/screenshots/Campaigns.png',
     screenshotAlt: 'Email Tracking in Donna CRM',
-    // TODO: Add a real Email Tracking screenshot once captured.
   },
 ]
 
@@ -151,7 +149,7 @@ export function FeaturesPage() {
               Features Built for Gmail Workflows
             </h1>
             <p className="mt-6 text-lg text-muted-foreground">
-              Donna CRM keeps CRM and outreach tools inside Gmail—so you can move
+              Donna CRM keeps CRM and outreach tools inside Gmail-so you can move
               faster without switching tabs.
             </p>
           </div>
@@ -216,7 +214,7 @@ export function FeaturesPage() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Add to Gmail — Free Trial <ArrowRight className="ml-2 h-4 w-4" />
+                  Add to Gmail - Free Trial <ArrowRight className="ml-2 h-4 w-4" />
                 </a>
               </Button>
             </div>

@@ -3,6 +3,7 @@
 import { useEffect } from 'react'
 import { usePathname, useSearchParams } from 'next/navigation'
 import { initGa4, trackEvent, trackPageView } from './ga4'
+import { trackGoogleAdsInstallClick } from './googleAds'
 
 export function Ga4Analytics() {
   const pathname = usePathname()
@@ -48,6 +49,20 @@ export function Ga4Analytics() {
         utm_campaign: utmCampaign,
         utm_content: utmContent,
       })
+
+      const opensNewTab = (anchor.getAttribute('target') ?? '').toLowerCase() === '_blank'
+      const isPlainLeftClick =
+        e.button === 0 && !e.metaKey && !e.ctrlKey && !e.shiftKey && !e.altKey
+
+      if (!opensNewTab && isPlainLeftClick) {
+        const didStartConversion = trackGoogleAdsInstallClick(resolvedHref)
+        if (didStartConversion) {
+          e.preventDefault()
+          return
+        }
+      } else {
+        trackGoogleAdsInstallClick()
+      }
     }
 
     document.addEventListener('click', onClick, true)
@@ -56,7 +71,7 @@ export function Ga4Analytics() {
 
   useEffect(() => {
     const qs = searchParams?.toString()
-    trackPageView(`${pathname}${qs ? `?${qs}` : ''}`)
+    trackPageView(`${pathname}${qs ? `v${qs}` : ''}`)
   }, [pathname, searchParams])
 
   return null

@@ -6,7 +6,7 @@ import { chromeWebStoreInstallUrl } from '../lib/chromeWebStore'
 
 export const aiGmailCrmFaqs: FaqItem[] = [
   {
-    question: 'What does “human-in-the-loop” mean?',
+    question: 'What does "human-in-the-loop" mean?',
     answer:
       'It means the assistant can suggest drafts and next steps, but you stay in control and review before anything important happens.',
   },
@@ -23,7 +23,7 @@ export const aiGmailCrmFaqs: FaqItem[] = [
   {
     question: 'Is AI output always correct?',
     answer:
-      'No. Like any AI tool, it can be wrong. Always double-check facts, dates, and names—especially in client communication.',
+      'No. Like any AI tool, it can be wrong. Always double-check facts, dates, and names-especially in client communication.',
   },
   {
     question: 'Where can I learn more about privacy?',
@@ -32,7 +32,7 @@ export const aiGmailCrmFaqs: FaqItem[] = [
   },
 ]
 
-const primaryCtaLabel = 'Try the AI assistant — Free Trial'
+const primaryCtaLabel = 'Try the AI assistant - Free Trial'
 
 function ScreenshotCard({ src, alt }: { src: string; alt: string }) {
   return (
@@ -57,13 +57,13 @@ export function AiGmailCrmPage() {
           <div className="mx-auto grid max-w-5xl items-center gap-10 lg:grid-cols-2">
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.08em] text-foreground/50">
-                Differentiator
+                AI assistant in Gmail
               </p>
               <h1 className="mt-3 text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
                 An AI assistant that turns conversations into next steps
               </h1>
               <p className="mt-5 text-lg text-muted-foreground">
-                Donna CRM pairs a Gmail-native CRM with an assistant that helps you move faster—while
+                Donna CRM pairs a Gmail-native CRM with an assistant that helps you move faster-while
                 keeping you in control.
               </p>
 
@@ -78,15 +78,15 @@ export function AiGmailCrmPage() {
                   </a>
                 </Button>
                 <Button size="lg" variant="outline" asChild>
-                  <Link href="/gmail-crm">What is a Gmail CRM?</Link>
+                  <Link href="/gmail-crm">What is a Gmail CRMv</Link>
                 </Button>
               </div>
 
               <div className="mt-6 rounded-lg border border-border bg-muted/30 p-5">
-                <p className="text-sm font-semibold text-foreground">Simple positioning</p>
+                <p className="text-sm font-semibold text-foreground">In plain English</p>
                 <p className="mt-2 text-sm text-muted-foreground">
-                  Gmail-native CRM for individuals, with an assistant that helps you draft, prioritize,
-                  and capture next steps.
+                  Donna is a Gmail-native CRM for individuals, with an assistant that helps you
+                  summarize, draft, and capture next steps-without taking action behind your back.
                 </p>
               </div>
             </div>
@@ -109,10 +109,10 @@ export function AiGmailCrmPage() {
         <div className="container">
           <div className="mx-auto max-w-5xl">
             <h2 className="text-2xl font-semibold text-foreground sm:text-3xl">
-              What “human-in-the-loop” means here
+              What "human-in-the-loop" means here
             </h2>
             <p className="mt-4 max-w-3xl text-muted-foreground">
-              “Agentic” only matters if it’s safe. The goal is simple: the assistant helps you
+              "Agentic" only matters if it's safe. The goal is simple: the assistant helps you
               prepare actions quickly, and you confirm the final outcome.
             </p>
 
@@ -123,12 +123,12 @@ export function AiGmailCrmPage() {
                   body: 'Work where you already are: a real thread, a real contact, and a real next step.',
                 },
                 {
-                  title: 'Suggests, doesn’t assume',
+                  title: "Suggests, doesn't assume",
                   body: 'Get drafts and recommendations you can accept, edit, or ignore.',
                 },
                 {
                   title: 'You stay in control',
-                  body: 'You review what gets sent or saved—especially anything client-facing.',
+                  body: 'You review what gets sent or saved-especially anything client-facing.',
                 },
               ].map((item) => (
                 <Card key={item.title} className="border-border bg-muted/30">
@@ -173,36 +173,52 @@ export function AiGmailCrmPage() {
 
               <div className="mt-8 flex flex-wrap gap-4 text-sm font-semibold">
                 <Link href="/features" className="text-primary hover:underline">
-                  Explore features →
+                  Explore features
                 </Link>
                 <Link href="/inbox-onboarding" className="text-primary hover:underline">
-                  Inbox onboarding →
+                  Inbox onboarding
                 </Link>
                 <Link href="/email-tracking-in-gmail" className="text-primary hover:underline">
-                  Email tracking →
+                  Email tracking
                 </Link>
                 <Link href="/pricing" className="text-primary hover:underline">
-                  Pricing →
+                  Pricing
                 </Link>
                 <Link href="/privacy" className="text-primary hover:underline">
-                  Privacy →
+                  Privacy
                 </Link>
               </div>
             </div>
 
-            <div className="rounded-xl border border-border bg-background p-6">
-              <p className="text-sm font-semibold text-foreground">Accuracy + privacy note</p>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                AI suggestions can be incorrect. Avoid sharing sensitive information you wouldn’t put
-                in an email, and always review drafts before you send or save changes.
-              </p>
-              <p className="mt-3 text-sm text-muted-foreground">
-                For details about data handling and permissions, see our{' '}
-                <Link href="/privacy" className="text-primary hover:underline">
-                  Privacy Policy
-                </Link>
-                .
-              </p>
+            <div className="space-y-6">
+              <div className="rounded-xl border border-border bg-background p-6">
+                <p className="text-sm font-semibold text-foreground">Inbox onboarding (optional)</p>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                  If you want a faster starting point, ask the assistant to recommend a lightweight
+                  setup from your real inbox. It can propose pipelines, contacts, and next-step
+                  tasks-and you review before anything is created.
+                </p>
+                <p className="mt-3 text-sm">
+                  <Link href="/inbox-onboarding" className="text-primary hover:underline">
+                    Learn about inbox onboarding
+                  </Link>
+                </p>
+              </div>
+
+              <div className="rounded-xl border border-border bg-background p-6">
+                <p className="text-sm font-semibold text-foreground">Accuracy + privacy note</p>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                  AI suggestions can be incorrect. Avoid sharing sensitive information you wouldn't
+                  put in an email, and always review drafts before you send or save changes.
+                </p>
+                <p className="mt-3 text-sm text-muted-foreground">
+                  For details about data handling and permissions, see our{' '}
+                  <Link href="/privacy" className="text-primary hover:underline">
+                    Privacy Policy
+                  </Link>
+                  .
+                </p>
+              </div>
             </div>
           </div>
         </div>

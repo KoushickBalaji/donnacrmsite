@@ -15,7 +15,7 @@ const navItems = [
   { path: '/faq', label: 'FAQ' },
 ] as const
 
-const primaryCtaLabel = 'Add to Gmail — Free Trial'
+const primaryCtaLabel = 'Add to Gmail - Free Trial'
 
 export function SiteHeader() {
   const pathname = usePathname()

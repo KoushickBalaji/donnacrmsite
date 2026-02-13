@@ -6,7 +6,7 @@ import { chromeWebStoreInstallUrl } from '../lib/chromeWebStore'
 import { useMemo, useState } from 'react'
 import Link from 'next/link'
 
-const primaryCtaLabel = 'Add to Gmail — Free Trial'
+const primaryCtaLabel = 'Add to Gmail - Free Trial'
 
 export function ProductPage() {
   const showcaseItems = useMemo(
@@ -66,7 +66,7 @@ export function ProductPage() {
               Product
             </h1>
             <p className="mt-4 text-lg text-muted-foreground">
-              {'Pipelines, tasks, mail merge, and contact context — without leaving your inbox.'}
+              {'Pipelines, tasks, mail merge, and contact context - without leaving your inbox.'}
             </p>
             <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <Button size="lg" asChild>
@@ -153,7 +153,7 @@ export function ProductPage() {
         <div className="container">
           <Reveal className="mx-auto max-w-2xl text-center">
             <h2 className="text-3xl font-bold text-foreground sm:text-4xl">
-              Ready to try Donna?
+              Ready to try Donnav
             </h2>
             <p className="mt-4 text-muted-foreground">
               Install in under 2 minutes. No setup. Cancel anytime.

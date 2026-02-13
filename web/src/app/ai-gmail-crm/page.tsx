@@ -7,7 +7,7 @@ import { AiGmailCrmPage, aiGmailCrmFaqs } from '../../views/AiGmailCrm'
 export const metadata: Metadata = pageMetadata({
   title: 'AI Gmail CRM (Human-in-the-loop)',
   description:
-    'An AI assistant inside Gmail that helps you summarize threads, draft follow-ups, and capture next steps—while keeping you in control.',
+    'An AI assistant inside Gmail that helps you summarize threads, draft follow-ups, and capture next steps-while keeping you in control.',
   canonicalPath: '/ai-gmail-crm',
 })
 
@@ -23,7 +23,7 @@ const jsonLd = {
       operatingSystem: 'Chrome',
       url: `${origin}/ai-gmail-crm`,
       description:
-        'An AI assistant inside Gmail that helps you summarize threads, draft follow-ups, and capture next steps—while keeping you in control.',
+        'An AI assistant inside Gmail that helps you summarize threads, draft follow-ups, and capture next steps-while keeping you in control.',
     },
     {
       '@type': 'FAQPage',

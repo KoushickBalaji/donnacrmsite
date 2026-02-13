@@ -9,7 +9,8 @@ import { resolveSiteOrigin, SITE_NAME } from '../lib/site'
 import './globals.css'
 
 const siteOrigin = resolveSiteOrigin()
-const isProduction = process.env.VERCEL_ENV === 'production' || process.env.NODE_ENV === 'production'
+const isProduction =
+  process.env.VERCEL_ENV === 'production' || process.env.NODE_ENV === 'production'
 
 export const viewport: Viewport = {
   width: 'device-width',

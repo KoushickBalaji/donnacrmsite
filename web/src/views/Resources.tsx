@@ -22,6 +22,11 @@ const resources = [
       'Create your first contact and add a note from a real thread.',
       'Set up a pipeline stage and move one item through it.',
     ],
+    links: [
+      { href: '/gmail-crm', label: 'Gmail CRM overview' },
+      { href: '/features', label: 'Explore features' },
+      { href: '/pricing', label: 'See pricing' },
+    ],
   },
   {
     id: 'imports',
@@ -34,6 +39,11 @@ const resources = [
       'Run a small import first to confirm mapping and formatting.',
       'Use tags/notes to preserve context during your migration.',
     ],
+    links: [
+      { href: '/crm-for-freelancers', label: 'Freelancer workflow' },
+      { href: '/crm-for-consultants', label: 'Consultant workflow' },
+      { href: '/contact', label: 'Get help' },
+    ],
   },
   {
     id: 'pipelines',
@@ -42,9 +52,14 @@ const resources = [
     description: 'Use stages to track work and keep momentum in one place.',
     bullets: [
       'Create stages that match your real workflow (sales, recruiting, partnerships).',
-      'Move items as the next step happens—keep stages lightweight.',
+      'Move items as the next step happens-keep stages lightweight.',
       'Use notes/tasks to capture handoffs and follow-ups.',
       'Review your pipeline regularly to unblock stalled work.',
+    ],
+    links: [
+      { href: '/crm-for-solo-b2b-sales', label: 'Solo B2B sales' },
+      { href: '/crm-for-consultants', label: 'Consulting stages' },
+      { href: '/gmail-crm', label: 'Gmail CRM basics' },
     ],
   },
   {
@@ -53,10 +68,15 @@ const resources = [
     title: 'How campaigns work',
     description: 'Create and send bulk email campaigns with basic personalization.',
     bullets: [
-      'Create a template you’d be comfortable sending 1:1.',
+      "Create a template you'd be comfortable sending 1:1.",
       'Segment recipients into a focused list (keep it specific).',
       'Personalize the opener and preview before sending.',
       'Track opens/clicks and follow up only where it makes sense.',
+    ],
+    links: [
+      { href: '/features', label: 'Campaign features' },
+      { href: '/email-tracking-in-gmail', label: 'Tracking expectations' },
+      { href: '/privacy', label: 'Privacy policy' },
     ],
   },
   {
@@ -67,8 +87,13 @@ const resources = [
     bullets: [
       'Open tracking depends on recipient settings (image blocking and privacy features).',
       'Click tracking applies to tracked links and may vary by client.',
-      'Use tracking as a signal—not the source of truth.',
+      'Use tracking as a signal-not the source of truth.',
       'Be mindful of compliance requirements for your audience and region.',
+    ],
+    links: [
+      { href: '/email-tracking-in-gmail', label: 'Email tracking in Gmail' },
+      { href: '/privacy', label: 'Privacy policy' },
+      { href: '/contact', label: 'Questions?' },
     ],
   },
   {
@@ -80,7 +105,12 @@ const resources = [
       'Ask for a summary of a thread before responding.',
       'Generate a first draft, then edit in your own voice.',
       'Double-check facts, dates, and names before sending.',
-      'Avoid sharing sensitive data you wouldn’t email normally.',
+      "Avoid sharing sensitive data you wouldn't email normally.",
+    ],
+    links: [
+      { href: '/ai-gmail-crm', label: 'How the AI works' },
+      { href: '/inbox-onboarding', label: 'Inbox onboarding' },
+      { href: '/privacy', label: 'Privacy policy' },
     ],
   },
 ] as const
@@ -144,16 +174,27 @@ export function ResourcesPage() {
                         </li>
                       ))}
                     </ul>
+                    <div className="mt-6 flex flex-wrap gap-x-4 gap-y-2 text-sm font-semibold">
+                      {r.links.map((link) => (
+                        <Link
+                          key={link.href}
+                          href={link.href}
+                          className="text-primary hover:underline"
+                        >
+                          {link.label}
+                        </Link>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
             ))}
 
             <div className="rounded-lg border border-border bg-muted/30 p-8 text-center">
-              <h3 className="text-2xl font-bold text-foreground">Need help?</h3>
+              <h3 className="text-2xl font-bold text-foreground">Need helpv</h3>
               <p className="mx-auto mt-3 max-w-2xl text-muted-foreground">
                 If you have a question about setup, billing, or whether a feature is a
-                fit for your workflow, reach out and we’ll get back to you.
+                fit for your workflow, reach out and we'll get back to you.
               </p>
               <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
                 <Button asChild>

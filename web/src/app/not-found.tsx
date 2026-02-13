@@ -15,16 +15,15 @@ export default function NotFound() {
             Page not found
           </h1>
           <p className="mt-6 text-lg text-muted-foreground">
-            The page you’re looking for doesn’t exist.
+            The page you're looking for doesn't exist.
           </p>
-          <div className="mt-10">
-            <Link href="/" className="text-sm font-semibold text-primary hover:underline">
-              Go to homepage →
-            </Link>
-          </div>
+            <div className="mt-10">
+              <Link href="/" className="text-sm font-semibold text-primary hover:underline">
+              Go to homepage
+              </Link>
+            </div>
         </div>
       </div>
     </section>
   )
 }
-

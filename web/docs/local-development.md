@@ -13,6 +13,12 @@
 - Build: `npm run build`
 - Start production server: `npm run start` (after `npm run build`)
 
+## Windows note (Next.js build artifacts)
+
+On Windows, this repo uses a dedicated dist dir (`.next-windows`) to avoid file-lock issues with Next.js tracing.
+
+If you see errors like `Cannot find module './<chunk>.js'`, it usually means the dist dir is in a stale/inconsistent state. The `dev` and `build` scripts automatically clean `.next-windows` before running Next.js.
+
 ## Environment variables
 
 The website itself does not require env vars to run.

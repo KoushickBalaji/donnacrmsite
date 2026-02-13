@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 const copyByStatus: Record<string, { title: string; body: string; support: boolean }> = {
   ok: {
     title: 'Unsubscribed',
-    body: 'You won’t receive further emails from this organization.',
+    body: "You won't receive further emails from this organization.",
     support: false,
   },
   invalid: {
@@ -57,4 +57,3 @@ export default async function Page({
     </main>
   )
 }
-

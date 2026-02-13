@@ -1,4 +1,4 @@
-﻿'use client'
+'use client'
 
 import { ArrowRight, Check } from 'lucide-react'
 import { useEffect, useMemo, useState } from 'react'
@@ -22,7 +22,7 @@ const whyMoveAway = [
   },
   {
     title: 'Setup becomes maintenance',
-    text: 'Fields, stages, and workflows need constant tuning — even for solo users.',
+    text: 'Fields, stages, and workflows need constant tuning - even for solo users.',
   },
   {
     title: 'Built for teams, not individuals',
@@ -32,20 +32,20 @@ const whyMoveAway = [
 
 const howDonnaIsDifferent = [
   'Lives entirely inside the Gmail sidebar',
-  'Zero setup — no pipelines to configure',
-  'Focuses on conversations, not stages',
+  'Minimal setup - start simple, adjust as you go',
+  "Lightweight pipelines that don't take over Gmail",
   'Follow-ups are first-class, not an afterthought',
-  'Designed for speed, not reporting',
+  'Designed for individuals, not admin overhead',
 ] as const
 
 const comparisonRows = [
   { label: 'Works inside Gmail', donna: '\u2705', streak: '\u2705' },
-  { label: 'Setup required', donna: '\u274C', streak: '\u2705' },
-  { label: 'Built for solo users', donna: '\u2705', streak: '\u274C' },
-  { label: 'Pipeline complexity', donna: 'Minimal', streak: 'Heavy' },
-  { label: 'Follow-ups', donna: 'Native & simple', streak: 'Pipeline-dependent' },
-  { label: 'Learning curve', donna: 'Very low', streak: 'Medium' },
-  { label: 'Ideal for', donna: 'Operators & founders', streak: 'Structured teams' },
+  { label: 'Setup required', donna: 'Minimal', streak: 'Yes' },
+  { label: 'Solo-first', donna: '\u2705', streak: 'Depends' },
+  { label: 'Pipeline complexity', donna: 'Lightweight', streak: 'Heavy' },
+  { label: 'Follow-ups', donna: 'Tasks + reminders', streak: 'Pipeline-centric' },
+  { label: 'Learning curve', donna: 'Low', streak: 'Medium' },
+  { label: 'Ideal for', donna: 'Solo operators', streak: 'Pipeline-driven teams' },
 ] as const
 
 function FakePipelinePanel() {
@@ -112,11 +112,11 @@ export function StreakAlternativePage() {
           <div className="grid items-center gap-10 lg:grid-cols-2">
             <div className="mx-auto max-w-xl text-center lg:mx-0 lg:text-left">
               <h1 className="text-sm font-semibold text-primary">
-                Looking for a Streak CRM alternative?
+                Looking for a Streak CRM alternativev
               </h1>
 
               <h2 className="mt-4 text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-                A simpler alternative to Streak CRM — built for Gmail users
+                A simpler alternative to Streak CRM - built for Gmail users
               </h2>
 
               <p className="mt-6 text-lg text-muted-foreground sm:text-xl">
@@ -143,7 +143,7 @@ export function StreakAlternativePage() {
                   href="#comparison"
                   className="text-sm font-medium text-primary hover:underline"
                 >
-                  See feature comparison ↓
+                  See feature comparison v
                 </a>
               </div>
 
@@ -152,13 +152,13 @@ export function StreakAlternativePage() {
                   Homepage
                 </Link>
                 <span aria-hidden className="text-border">
-                  ·
+                  |
                 </span>
                 <Link href="/features" className="hover:text-primary">
                   Features
                 </Link>
                 <span aria-hidden className="text-border">
-                  ·
+                  |
                 </span>
                 <Link href="/pricing" className="hover:text-primary">
                   Pricing
@@ -371,25 +371,27 @@ export function StreakAlternativePage() {
               <div className="mt-10 space-y-8">
                 <div>
                   <h3 className="text-lg font-semibold text-foreground">
-                    Is Donna a full CRM like Streak?
+                    Is Donna a full CRM like Streakv
                   </h3>
                   <p className="mt-2 text-muted-foreground">
-                    No. Donna is intentionally lightweight. It’s built for people who
-                    don’t want to manage a CRM.
+                    No. Donna is intentionally lightweight. It's built for people who want
+                    a simple system for context and follow-ups inside Gmail-with optional
+                    pipelines when you want a bit more structure.
                   </p>
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold text-foreground">
-                    Can I migrate data from Streak?
+                    Can I migrate data from Streakv
                   </h3>
                   <p className="mt-2 text-muted-foreground">
-                    You don’t need to. Most users start fresh and track new conversations
+                    You can, but you don't have to migrate everything on day one. Many users
+                    start by importing the contacts that matter and tracking new conversations
                     going forward.
                   </p>
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold text-foreground">
-                    Who should stick with Streak?
+                    Who should stick with Streakv
                   </h3>
                   <p className="mt-2 text-muted-foreground">
                     Teams that rely heavily on pipelines, reports, and shared workflows.
@@ -418,13 +420,13 @@ export function StreakAlternativePage() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Add to Gmail — Free Trial
+                  Add to Gmail - Free Trial
                   <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-150 group-hover:translate-x-1" />
                 </a>
               </Button>
             </div>
             <p className="mt-4 text-sm text-primary-foreground/80">
-              Free trial · No setup · Cancel anytime
+              Free trial | Minimal setup | Cancel anytime
             </p>
           </Reveal>
         </div>

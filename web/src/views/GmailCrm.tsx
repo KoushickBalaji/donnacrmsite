@@ -13,7 +13,7 @@ export const gmailCrmFaqs: FaqItem[] = [
   {
     question: 'Is Donna CRM a full CRM replacement?',
     answer:
-      'Donna CRM is designed for individuals who live in Gmail and want a simple system for contacts, deal stages, and next steps—without a heavy admin setup.',
+      'Donna CRM is designed for individuals who live in Gmail and want a simple system for contacts, deal stages, and next steps-without a heavy admin setup.',
   },
   {
     question: 'Do I need to set up pipelines and fields?',
@@ -32,7 +32,7 @@ export const gmailCrmFaqs: FaqItem[] = [
   },
 ]
 
-const primaryCtaLabel = 'Add to Gmail — Free Trial'
+const primaryCtaLabel = 'Add to Gmail - Free Trial'
 
 function ScreenshotCard({ src, alt }: { src: string; alt: string }) {
   return (
@@ -57,14 +57,14 @@ export function GmailCrmPage() {
           <div className="mx-auto grid max-w-5xl items-center gap-10 lg:grid-cols-2">
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.08em] text-foreground/50">
-                Pillar page
+                Gmail CRM for solo operators
               </p>
               <h1 className="mt-3 text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
                 Manage contacts, deals, and follow-ups without leaving Gmail
               </h1>
               <p className="mt-5 text-lg text-muted-foreground">
                 Donna CRM is a Gmail-native CRM for solo operators. Keep relationship context next
-                to the conversation—and capture next steps before they slip.
+                to the conversation-and capture next steps before they slip.
               </p>
 
               <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
@@ -83,7 +83,7 @@ export function GmailCrmPage() {
               </div>
 
               <p className="mt-4 text-sm text-muted-foreground">
-                No setup · No credit card · Uninstall anytime
+                Minimal setup | No credit card | Uninstall anytime
               </p>
             </div>
 
@@ -100,7 +100,7 @@ export function GmailCrmPage() {
           <div className="mx-auto grid max-w-5xl gap-10 lg:grid-cols-2 lg:items-start">
             <div>
               <h2 className="text-2xl font-semibold text-foreground sm:text-3xl">
-                What is a Gmail CRM?
+                What is a Gmail CRMv
               </h2>
               <p className="mt-4 leading-relaxed text-muted-foreground">
                 A Gmail CRM helps you run a simple client or deal workflow from your inbox. Instead
@@ -119,16 +119,16 @@ export function GmailCrmPage() {
                 </p>
                 <div className="mt-4 flex flex-wrap gap-3 text-sm">
                   <Link href="/crm-for-consultants" className="text-primary hover:underline">
-                    CRM for consultants →
+                    CRM for consultants
                   </Link>
                   <Link href="/crm-for-freelancers" className="text-primary hover:underline">
-                    CRM for freelancers →
+                    CRM for freelancers
                   </Link>
                   <Link
                     href="/crm-for-solo-b2b-sales"
                     className="text-primary hover:underline"
                   >
-                    CRM for solo sales →
+                    CRM for solo sales
                   </Link>
                 </div>
               </div>
@@ -162,15 +162,15 @@ export function GmailCrmPage() {
             <div className="mt-10 grid gap-6 md:grid-cols-3">
               {[
                 {
-                  title: 'Thread → Contact',
+                  title: 'Thread -> Contact',
                   body: 'Turn real conversations into a contact record with notes and context.',
                 },
                 {
-                  title: 'Contact → Deal stage',
-                  body: 'Track what’s happening right now: lead, proposal, active, renewal.',
+                  title: 'Contact -> Deal stage',
+                  body: "Track what's happening right now: lead, proposal, active, renewal.",
                 },
                 {
-                  title: 'Deal stage → Next step',
+                  title: 'Deal stage -> Next step',
                   body: 'Capture follow-ups as tasks so nothing gets forgotten.',
                 },
               ].map((step) => (
@@ -185,24 +185,67 @@ export function GmailCrmPage() {
               ))}
             </div>
 
+            <div className="mt-12 grid gap-6 rounded-xl border border-border bg-background p-8 lg:grid-cols-[1fr_1.1fr] lg:items-start">
+              <div>
+                <h3 className="text-xl font-semibold text-foreground">
+                  What you can track in Donna
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                  Start with one real thread. As you go, add just enough structure to keep your
+                  follow-ups consistent and your context easy to find.
+                </p>
+                <ul className="mt-6 space-y-3 text-sm">
+                  {[
+                    'Contacts with notes and lightweight context',
+                    'A simple pipeline for stages you actually remember',
+                    'Tasks for next steps, follow-ups, and reminders',
+                    'Email tracking signals (where supported) when timing matters',
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-3">
+                      <div className="mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-primary" />
+                      <span className="text-muted-foreground">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="grid gap-4 sm:grid-cols-2">
+                {[
+                  { title: 'Contacts', body: 'Keep relationship context next to the conversation.' },
+                  { title: 'Pipelines', body: 'Use stages as a simple "where are we?" truth.' },
+                  { title: 'Tasks', body: 'Capture next steps before you close the tab.' },
+                  { title: 'Tracking', body: 'Use opens/clicks as signals-not guarantees.' },
+                ].map((card) => (
+                  <Card key={card.title} className="border-border bg-muted/30">
+                    <CardContent className="p-6">
+                      <p className="text-sm font-semibold text-foreground">{card.title}</p>
+                      <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                        {card.body}
+                      </p>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </div>
+
             <div className="mt-10 flex flex-wrap gap-4 text-sm font-semibold">
               <Link href="/features" className="text-primary hover:underline">
-                Explore features →
+                Explore features
               </Link>
               <Link href="/ai-gmail-crm" className="text-primary hover:underline">
-                How the AI assistant helps →
+                How the AI assistant helps
               </Link>
               <Link href="/inbox-onboarding" className="text-primary hover:underline">
-                Inbox onboarding →
+                Inbox onboarding
               </Link>
               <Link href="/email-tracking-in-gmail" className="text-primary hover:underline">
-                Email tracking →
+                Email tracking
               </Link>
               <Link href="/pricing" className="text-primary hover:underline">
-                Pricing →
+                Pricing
               </Link>
               <Link href="/resources" className="text-primary hover:underline">
-                Resources →
+                Resources
               </Link>
             </div>
           </div>
@@ -217,7 +260,7 @@ export function GmailCrmPage() {
                 FAQs
               </h2>
               <p className="mt-4 text-muted-foreground">
-                Quick answers for common “is this for me?” questions.
+                Quick answers for common "is this for me?" questions.
               </p>
               <div className="mt-8">
                 <FaqList items={gmailCrmFaqs} />

@@ -8,17 +8,17 @@ export const crmForFreelancersFaqs: FaqItem[] = [
   {
     question: 'Is this a freelancer client tracker or a full CRM?',
     answer:
-      'Think of Donna as a lightweight client tracker that lives in Gmail: contacts, deal/gig stages, and follow-ups—without a heavy setup.',
+      'Think of Donna as a lightweight client tracker that lives in Gmail: contacts, deal/gig stages, and follow-ups-without a heavy setup.',
   },
   {
     question: 'What pipeline stages work for freelance gigs?',
     answer:
-      'A simple default is Lead → Quote → In progress → Paid. Keep stages small and focus on capturing next steps.',
+      'A simple default is Lead -> Quote -> In progress -> Paid. Keep stages small and focus on capturing next steps.',
   },
   {
     question: 'Can I track proposals and follow-ups?',
     answer:
-      'Yes. Use tasks for follow-ups, and keep proposal context attached to the client and thread so you don’t lose the story.',
+      "Yes. Use tasks for follow-ups, and keep proposal context attached to the client and thread so you don't lose the story.",
   },
   {
     question: 'Does Donna replace invoicing tools?',
@@ -27,7 +27,7 @@ export const crmForFreelancersFaqs: FaqItem[] = [
   },
 ]
 
-const primaryCtaLabel = 'Add to Gmail — Free Trial'
+const primaryCtaLabel = 'Add to Gmail - Free Trial'
 
 function ScreenshotCard({ src, alt }: { src: string; alt: string }) {
   return (
@@ -56,7 +56,7 @@ export function CrmForFreelancersPage() {
               </h1>
               <p className="mt-5 text-lg text-muted-foreground">
                 A lightweight client tracker that lives in Gmail. Track leads, quotes, and follow-ups
-                without adopting a “team CRM”.
+                without adopting a "team CRM".
               </p>
 
               <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
@@ -88,17 +88,17 @@ export function CrmForFreelancersPage() {
           <div className="mx-auto grid max-w-5xl gap-10 lg:grid-cols-2 lg:items-start">
             <div>
               <h2 className="text-2xl font-semibold text-foreground sm:text-3xl">
-                Track work without a “team CRM”
+                Track work without a "team CRM"
               </h2>
               <p className="mt-4 text-muted-foreground">
-                Freelancers don’t need complex admin. You need a consistent place to track who you’re
+                Freelancers don't need complex admin. You need a consistent place to track who you're
                 talking to, what you promised, and when to follow up.
               </p>
 
               <div className="mt-8 rounded-xl border border-border bg-muted/30 p-6">
                 <p className="text-sm font-semibold text-foreground">A simple gig pipeline</p>
                 <p className="mt-2 text-sm text-muted-foreground">
-                  Lead → Quote → In progress → Paid
+                  Lead - Quote - In progress - Paid
                 </p>
                 <p className="mt-3 text-sm text-muted-foreground">
                   When in doubt, keep fewer stages and focus on capturing the next step.
@@ -112,25 +112,28 @@ export function CrmForFreelancersPage() {
                 alt="Freelance gig stages shown as a pipeline"
               />
               <div className="rounded-xl border border-border bg-background p-6">
-                <p className="text-sm font-semibold text-foreground">Internal links</p>
+                <p className="text-sm font-semibold text-foreground">Related pages</p>
+                <p className="mt-2 text-sm text-muted-foreground">
+                  Helpful if you're comparing tools or want more detail on a specific workflow.
+                </p>
                 <div className="mt-3 flex flex-col gap-2 text-sm">
                   <Link href="/gmail-crm" className="text-primary hover:underline">
-                    Gmail CRM pillar →
+                    Gmail CRM overview
                   </Link>
                   <Link href="/ai-gmail-crm" className="text-primary hover:underline">
-                    AI assistant page →
+                    AI assistant (human-in-the-loop)
                   </Link>
-                <Link href="/pricing" className="text-primary hover:underline">
-                  Pricing →
-                </Link>
-                <Link href="/email-tracking-in-gmail" className="text-primary hover:underline">
-                  Email tracking →
-                </Link>
-                <Link href="/resources" className="text-primary hover:underline">
-                  Resources →
-                </Link>
+                  <Link href="/email-tracking-in-gmail" className="text-primary hover:underline">
+                    Email tracking for proposals
+                  </Link>
+                  <Link href="/pricing" className="text-primary hover:underline">
+                    Pricing
+                  </Link>
+                  <Link href="/resources" className="text-primary hover:underline">
+                    Resources
+                  </Link>
+                </div>
               </div>
-            </div>
             </div>
           </div>
 
@@ -139,9 +142,17 @@ export function CrmForFreelancersPage() {
               Templates and follow-up habits
             </h2>
             <p className="mt-4 max-w-3xl text-muted-foreground">
-              Most freelance deals are won on follow-up. Use Donna’s lightweight workflow to stay
+              Most freelance deals are won on follow-up. Use Donna's lightweight workflow to stay
               consistent: draft the follow-up, capture the next step, and keep proposal context tied
               to the client.
+            </p>
+            <p className="mt-4 text-sm text-muted-foreground">
+              Sending proposals from Gmail? Use tracking signals responsibly and treat opens/clicks
+              as hints-not truth. See{' '}
+              <Link href="/email-tracking-in-gmail" className="text-primary hover:underline">
+                email tracking in Gmail
+              </Link>
+              .
             </p>
             <p className="mt-4 text-sm text-muted-foreground">
               Learn how the assistant can help with drafts and prioritization on{' '}

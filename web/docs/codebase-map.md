@@ -41,6 +41,10 @@ Shared page UI components used by route files in `src/app/`.
 - Contact: `Contact.tsx` (form + client validation + submit)
 - Legal: `Privacy.tsx`, `Terms.tsx`, `CancellationRefunds.tsx`, `Shipping.tsx`
 
+Notes:
+
+- `src/views/Home.tsx` contains the home page's desktop wheel-based "scroll to next section" behavior. See `docs/homepage-scroll.md`.
+
 ### Shared components (`src/components/`)
 
 - `SiteHeader.tsx`: nav + mobile menu + CTA

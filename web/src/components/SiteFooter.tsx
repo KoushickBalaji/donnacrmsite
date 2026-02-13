@@ -73,7 +73,7 @@ export function SiteFooter() {
 
         <div className="mt-12 border-t border-border pt-8">
           <p className="text-center text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Donna CRM. All rights reserved.
+            (c) {new Date().getFullYear()} Donna CRM. All rights reserved.
           </p>
         </div>
       </div>

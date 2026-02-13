@@ -4,8 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "node scripts/next-wrapper.mjs dev",
-    "build": "node scripts/next-wrapper.mjs build",
+    "dev": "node scripts/clean-next.mjs && node scripts/next-wrapper.mjs dev",
+    "build": "node scripts/clean-next.mjs && node scripts/next-wrapper.mjs build",
     "lint": "eslint .",
     "start": "node scripts/next-wrapper.mjs start"
   },

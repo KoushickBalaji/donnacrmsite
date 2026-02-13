@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 export function IntegrationsPage() {
   return (
     <>
@@ -38,11 +40,11 @@ export function IntegrationsPage() {
 
             <div>
               <h2 className="mb-3 text-2xl font-bold text-foreground">
-                Permissions and why they’re used
+                Permissions and why they're used
               </h2>
               <ul className="list-inside list-disc space-y-2">
                 <li>
-                  Gmail: to work with your emails inside Gmail and support CRM workflows.
+                  Gmail: to show CRM context next to threads and support inbox-native workflows.
                 </li>
                 <li>
                   Google Drive: to access files used during imports and related workflows.
@@ -50,20 +52,20 @@ export function IntegrationsPage() {
                 <li>
                   Google Sheets: to import contacts from Google Sheets.
                 </li>
-                <li>
-                  Google Calendar: to help manage scheduling as part of your workflow.
-                </li>
               </ul>
-              {/* TODO: Replace with an exact, permission-by-permission mapping from the extension manifest. */}
+              <p className="mt-3 text-sm">
+                You'll always see the exact permissions requested in Chrome before you grant
+                access.
+              </p>
             </div>
 
             <div>
               <h2 className="mb-3 text-2xl font-bold text-foreground">Tracking notes</h2>
               <ul className="list-inside list-disc space-y-2">
-                <li>Open tracking works for campaign emails and regular emails.</li>
+                <li>Open tracking is a helpful signal where supported, not a guarantee.</li>
                 <li>
-                  Click tracking works for campaign emails and can be enabled manually for
-                  regular emails.
+                  Click tracking typically applies to tracked links and can vary by workflow and
+                  recipient settings.
                 </li>
                 <li>
                   Tracking behavior can vary depending on recipient mail clients and settings
@@ -75,10 +77,20 @@ export function IntegrationsPage() {
             <div>
               <h2 className="mb-3 text-2xl font-bold text-foreground">AI Assistant</h2>
               <p>
-                The AI assistant uses state-of-the-art language model services from leading
-                providers to help within the product experience.
+                The AI assistant uses language model services to summarize, draft, and help you
+                capture next steps inside Gmail. You stay in control and review before acting.
               </p>
-              {/* TODO: Add a precise capabilities + limitations list once finalized. */}
+              <p className="mt-3 text-sm">
+                Learn more on{' '}
+                <Link href="/ai-gmail-crm" className="text-primary hover:underline">
+                  AI Gmail CRM
+                </Link>{' '}
+                and review data handling in our{' '}
+                <Link href="/privacy" className="text-primary hover:underline">
+                  Privacy Policy
+                </Link>
+                .
+              </p>
             </div>
           </div>
         </div>
