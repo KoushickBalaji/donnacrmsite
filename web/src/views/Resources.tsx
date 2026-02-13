@@ -191,7 +191,7 @@ export function ResourcesPage() {
             ))}
 
             <div className="rounded-lg border border-border bg-muted/30 p-8 text-center">
-              <h3 className="text-2xl font-bold text-foreground">Need helpv</h3>
+              <h3 className="text-2xl font-bold text-foreground">Need help?</h3>
               <p className="mx-auto mt-3 max-w-2xl text-muted-foreground">
                 If you have a question about setup, billing, or whether a feature is a
                 fit for your workflow, reach out and we'll get back to you.

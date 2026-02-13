@@ -13,7 +13,7 @@ export const crmForFreelancersFaqs: FaqItem[] = [
   {
     question: 'What pipeline stages work for freelance gigs?',
     answer:
-      'A simple default is Lead -> Quote -> In progress -> Paid. Keep stages small and focus on capturing next steps.',
+      'A simple default is Lead - Quote - In progress - Paid. Keep stages small and focus on capturing next steps.',
   },
   {
     question: 'Can I track proposals and follow-ups?',

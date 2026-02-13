@@ -18,7 +18,7 @@ export const crmForSoloB2BSalesFaqs: FaqItem[] = [
   {
     question: 'Can I track deal stages from email threads?',
     answer:
-      'Yes. Use a simple pipeline for stages like Lead -> Meeting -> Proposal -> Negotiation -> Closed, and capture tasks for the next step.',
+      'Yes. Use a simple pipeline for stages like Lead - Meeting - Proposal - Negotiation - Closed, and capture tasks for the next step.',
   },
   {
     question: 'Does Donna automate follow-ups?',

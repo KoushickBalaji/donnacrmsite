@@ -78,7 +78,7 @@ export function AiGmailCrmPage() {
                   </a>
                 </Button>
                 <Button size="lg" variant="outline" asChild>
-                  <Link href="/gmail-crm">What is a Gmail CRMv</Link>
+                  <Link href="/gmail-crm">What is a Gmail CRM?</Link>
                 </Button>
               </div>
 

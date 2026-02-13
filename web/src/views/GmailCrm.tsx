@@ -100,7 +100,7 @@ export function GmailCrmPage() {
           <div className="mx-auto grid max-w-5xl gap-10 lg:grid-cols-2 lg:items-start">
             <div>
               <h2 className="text-2xl font-semibold text-foreground sm:text-3xl">
-                What is a Gmail CRMv
+                What is a Gmail CRM?
               </h2>
               <p className="mt-4 leading-relaxed text-muted-foreground">
                 A Gmail CRM helps you run a simple client or deal workflow from your inbox. Instead
@@ -162,15 +162,15 @@ export function GmailCrmPage() {
             <div className="mt-10 grid gap-6 md:grid-cols-3">
               {[
                 {
-                  title: 'Thread -> Contact',
+                  title: 'Thread to contact',
                   body: 'Turn real conversations into a contact record with notes and context.',
                 },
                 {
-                  title: 'Contact -> Deal stage',
+                  title: 'Contact to deal stage',
                   body: "Track what's happening right now: lead, proposal, active, renewal.",
                 },
                 {
-                  title: 'Deal stage -> Next step',
+                  title: 'Deal stage to next step',
                   body: 'Capture follow-ups as tasks so nothing gets forgotten.',
                 },
               ].map((step) => (

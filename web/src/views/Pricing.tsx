@@ -103,7 +103,7 @@ export function PricingPage() {
 
       <section className="bg-muted/30 py-16">
         <div className="container text-center">
-          <h2 className="mb-4 text-2xl font-bold text-foreground">Have Questionsv</h2>
+          <h2 className="mb-4 text-2xl font-bold text-foreground">Have Questions?</h2>
           <p className="mb-6 text-muted-foreground">
             Check out our FAQ or contact us for more information.
           </p>

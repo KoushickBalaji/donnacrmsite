@@ -13,7 +13,7 @@ export const crmForConsultantsFaqs: FaqItem[] = [
   {
     question: 'What pipeline stages work well for consulting?',
     answer:
-      'A simple default is Discovery -> Proposal -> Active -> Renewal. Keep stages minimal and focus on always capturing the next step.',
+      'A simple default is Discovery - Proposal - Active - Renewal. Keep stages minimal and focus on always capturing the next step.',
   },
   {
     question: 'Can I use Donna for multiple engagement types?',

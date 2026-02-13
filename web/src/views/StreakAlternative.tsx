@@ -143,7 +143,7 @@ export function StreakAlternativePage() {
                   href="#comparison"
                   className="text-sm font-medium text-primary hover:underline"
                 >
-                  See feature comparison v
+                  See feature comparison
                 </a>
               </div>
 
@@ -371,7 +371,7 @@ export function StreakAlternativePage() {
               <div className="mt-10 space-y-8">
                 <div>
                   <h3 className="text-lg font-semibold text-foreground">
-                    Is Donna a full CRM like Streakv
+                    Is Donna a full CRM like Streak?
                   </h3>
                   <p className="mt-2 text-muted-foreground">
                     No. Donna is intentionally lightweight. It's built for people who want
@@ -381,7 +381,7 @@ export function StreakAlternativePage() {
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold text-foreground">
-                    Can I migrate data from Streakv
+                    Can I migrate data from Streak?
                   </h3>
                   <p className="mt-2 text-muted-foreground">
                     You can, but you don't have to migrate everything on day one. Many users
@@ -391,7 +391,7 @@ export function StreakAlternativePage() {
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold text-foreground">
-                    Who should stick with Streakv
+                    Who should stick with Streak?
                   </h3>
                   <p className="mt-2 text-muted-foreground">
                     Teams that rely heavily on pipelines, reports, and shared workflows.

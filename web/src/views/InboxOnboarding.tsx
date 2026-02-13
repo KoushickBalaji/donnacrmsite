@@ -188,12 +188,12 @@ export function InboxOnboardingPage() {
 
           <div className="mx-auto mt-14 max-w-5xl rounded-xl border border-border bg-background p-8">
             <h2 className="text-2xl font-semibold text-foreground sm:text-3xl">
-              Permissions and privacy (high level)
+              Permissions and privacy
             </h2>
             <p className="mt-4 max-w-3xl text-muted-foreground">
               Inbox workflows can touch sensitive information. Keep the mental model simple:
               treat AI like a drafting and organization tool, and review suggestions before you
-              take action-especially anything client-facing.
+              take action, especially anything client-facing.
             </p>
             <p className="mt-4 text-sm text-muted-foreground">
               See the{' '}
@@ -219,7 +219,7 @@ export function InboxOnboardingPage() {
             </div>
 
             <div className="rounded-xl border border-border bg-muted/30 p-6">
-              <p className="text-sm font-semibold text-foreground">Ready to startv</p>
+              <p className="text-sm font-semibold text-foreground">Ready to start?</p>
               <p className="mt-2 text-sm text-muted-foreground">
                 Install the extension and set up a simple workflow from your inbox.
               </p>

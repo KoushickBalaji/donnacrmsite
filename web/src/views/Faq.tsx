@@ -53,7 +53,7 @@ export function FaqPage() {
 
       <section className="bg-muted/30 py-16">
         <div className="container text-center">
-          <h2 className="mb-4 text-2xl font-bold text-foreground">Still Have Questionsv</h2>
+          <h2 className="mb-4 text-2xl font-bold text-foreground">Still Have Questions?</h2>
           <p className="mb-6 text-muted-foreground">
             Our team is here to help. Reach out and we'll get back to you as soon as possible.
           </p>
