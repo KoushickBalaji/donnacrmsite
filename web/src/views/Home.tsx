@@ -13,7 +13,8 @@ const stickyHeaderOffsetPx = 64
 const wheelSnapNotches = 5
 const initialNotchEstimatePx = 48
 const minWheelDeltaPx = 12
-const snapAnimationDurationMs = 500
+const snapAnimationDurationMs = 750
+const wheelSnapIdleMs = 70
 
 const surfaceTileClassName =
   'h-full min-h-[200px] rounded-[20px] bg-[#F7F8FA] p-8 shadow-[0_12px_30px_rgba(0,0,0,0.06)] ring-1 ring-black/[0.04] transition-[transform,box-shadow] duration-[220ms] ease-out hover:-translate-y-1.5 hover:shadow-[0_18px_45px_rgba(0,0,0,0.10)]'
@@ -73,6 +74,9 @@ export function HomePage() {
     let queuedScrollPx = 0
     let queuedDirection = 0
     let animationFrame: number | undefined
+    let snapTimeout: number | undefined
+    let hasReachedSnapThreshold = false
+    let thresholdOriginSectionIndex: number | undefined
 
     function normalizeDeltaY(event: WheelEvent) {
       if (event.deltaMode === WheelEvent.DOM_DELTA_LINE) return event.deltaY * 16
@@ -110,7 +114,10 @@ export function HomePage() {
       function animate(nowMs: number) {
         const elapsedMs = nowMs - animationStartMs
         const progress = Math.min(elapsedMs / snapAnimationDurationMs, 1)
-        const easedProgress = 0.5 - Math.cos(Math.PI * progress) / 2
+        const easedProgress =
+          progress < 0.5
+            ? 4 * progress * progress * progress
+            : 1 - Math.pow(-2 * progress + 2, 3) / 2
         window.scrollTo(0, startScrollTop + scrollDistance * easedProgress)
 
         if (progress < 1) {
@@ -125,8 +132,32 @@ export function HomePage() {
       animationFrame = window.requestAnimationFrame(animate)
     }
 
-    function triggerSectionScroll(direction: number) {
-      const topOffsets = sections.map((section) => Math.max(section.offsetTop - stickyHeaderOffsetPx, 0))
+    function scrollToSectionIndex(targetIndex: number, topOffsets: number[]) {
+      const currentScrollTop = window.scrollY
+      if (targetIndex < 0 || targetIndex >= topOffsets.length) return false
+
+      const targetScrollTop = topOffsets[targetIndex]
+      if (Math.abs(targetScrollTop - currentScrollTop) < 4) return false
+
+      isAnimating = true
+      smoothScrollTo(targetScrollTop, () => {
+        isAnimating = false
+        const snapThresholdPx = wheelSnapNotches * notchEstimatePx
+        if (queuedScrollPx >= snapThresholdPx && queuedDirection) {
+          const dir = queuedDirection
+          queuedScrollPx = 0
+          queuedDirection = 0
+          triggerSectionScroll(dir, topOffsets)
+        } else {
+          queuedScrollPx = 0
+          queuedDirection = 0
+        }
+      })
+
+      return true
+    }
+
+    function triggerSectionScroll(direction: number, topOffsets: number[]) {
       const currentScrollTop = window.scrollY
       const currentIndex = getCurrentSectionIndex(currentScrollTop, topOffsets)
       const targetIndex =
@@ -135,23 +166,7 @@ export function HomePage() {
           : Math.max(currentIndex - 1, 0)
 
       if (targetIndex === currentIndex) return false
-
-      isAnimating = true
-      smoothScrollTo(topOffsets[targetIndex], () => {
-        isAnimating = false
-        const snapThresholdPx = wheelSnapNotches * notchEstimatePx
-        if (queuedScrollPx >= snapThresholdPx && queuedDirection) {
-          const dir = queuedDirection
-          queuedScrollPx = 0
-          queuedDirection = 0
-          triggerSectionScroll(dir)
-        } else {
-          queuedScrollPx = 0
-          queuedDirection = 0
-        }
-      })
-
-      return true
+      return scrollToSectionIndex(targetIndex, topOffsets)
     }
 
     function onWheel(event: WheelEvent) {
@@ -176,17 +191,43 @@ export function HomePage() {
         return
       }
 
-      if (direction !== lastDirection) wheelScrollAccumulatorPx = 0
+      if (direction !== lastDirection) {
+        wheelScrollAccumulatorPx = 0
+        hasReachedSnapThreshold = false
+        thresholdOriginSectionIndex = undefined
+      }
 
       lastDirection = direction
       wheelScrollAccumulatorPx += absDeltaY
 
       const snapThresholdPx = wheelSnapNotches * notchEstimatePx
-      if (wheelScrollAccumulatorPx < snapThresholdPx) return
+      if (wheelScrollAccumulatorPx >= snapThresholdPx) {
+        if (!hasReachedSnapThreshold) {
+          const topOffsets = sections.map((section) =>
+            Math.max(section.offsetTop - stickyHeaderOffsetPx, 0),
+          )
+          thresholdOriginSectionIndex = getCurrentSectionIndex(window.scrollY, topOffsets)
+        }
+        hasReachedSnapThreshold = true
+        event.preventDefault()
+      }
 
-      wheelScrollAccumulatorPx = 0
-      event.preventDefault()
-      triggerSectionScroll(direction)
+      if (snapTimeout) window.clearTimeout(snapTimeout)
+      snapTimeout = window.setTimeout(() => {
+        snapTimeout = undefined
+        if (isAnimating || !hasReachedSnapThreshold || !lastDirection) return
+        hasReachedSnapThreshold = false
+        wheelScrollAccumulatorPx = 0
+        const topOffsets = sections.map((section) => Math.max(section.offsetTop - stickyHeaderOffsetPx, 0))
+        const originIndex =
+          thresholdOriginSectionIndex ?? getCurrentSectionIndex(window.scrollY, topOffsets)
+        thresholdOriginSectionIndex = undefined
+        const targetIndex =
+          lastDirection > 0
+            ? Math.min(originIndex + 1, topOffsets.length - 1)
+            : Math.max(originIndex - 1, 0)
+        scrollToSectionIndex(targetIndex, topOffsets)
+      }, wheelSnapIdleMs)
     }
 
     window.addEventListener('wheel', onWheel, { passive: false })
@@ -194,6 +235,7 @@ export function HomePage() {
     return () => {
       window.removeEventListener('wheel', onWheel)
       if (animationFrame) window.cancelAnimationFrame(animationFrame)
+      if (snapTimeout) window.clearTimeout(snapTimeout)
     }
   }, [])
 
@@ -397,10 +439,10 @@ export function HomePage() {
                         Read: AI assistant
                       </Link>
                       <Link
-                        href="/compare"
+                        href="/streak-crm-alternative"
                         className="text-sm font-semibold text-primary hover:underline"
                       >
-                        See how Donna compares
+                        Compare Donna vs Streak
                       </Link>
                     </div>
                   </div>

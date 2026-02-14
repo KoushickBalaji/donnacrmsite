@@ -14,12 +14,16 @@ export function ComparePage() {
           </p>
 
           <div className="mt-8 space-y-3">
-            <Link href="/streak-crm-alternative" className="text-primary hover:underline">
+            <Link href="/streak-crm-alternative" className="block text-primary hover:underline">
               Donna vs Streak
             </Link>
-            <Link href="/contact" className="text-sm text-muted-foreground hover:underline">
-              Want a comparison for another tool? Tell us what you're using
-            </Link>
+            <div className="text-sm text-muted-foreground">
+              Evaluating another tool?{' '}
+              <Link href="/contact" className="text-primary hover:underline">
+                Request a comparison
+              </Link>{' '}
+              and share your workflow.
+            </div>
           </div>
         </div>
       </div>

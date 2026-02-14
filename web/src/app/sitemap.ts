@@ -7,7 +7,6 @@ const paths = [
   '/',
   '/product',
   '/how-it-works',
-  '/compare',
   '/features',
   '/integrations',
   '/resources',

@@ -27,8 +27,15 @@ export const inboxOnboardingFaqs: FaqItem[] = [
   },
   {
     question: 'Where can I read about data and privacy?',
-    answer:
-      'See the Privacy Policy for details about data handling and permissions.',
+    answer: (
+      <>
+        Read the{' '}
+        <Link href="/privacy" className="text-primary hover:underline">
+          Privacy Policy
+        </Link>{' '}
+        for details about data handling and permissions.
+      </>
+    ),
   },
 ]
 
@@ -106,22 +113,24 @@ export function InboxOnboardingPage() {
                 repeatable workflow inside Gmail.
               </p>
               <p className="mt-4 text-muted-foreground">
-                If you're new here, start with the Gmail CRM overview first:{' '}
+                If you are new here, start with the Gmail CRM overview first:{' '}
                 <Link href="/gmail-crm" className="text-primary hover:underline">
-                  /gmail-crm
+                  Gmail CRM overview
                 </Link>
                 .
               </p>
             </div>
 
             <div className="rounded-xl border border-border bg-muted/30 p-6">
-              <p className="text-sm font-semibold text-foreground">A sensible "first setup"</p>
+              <p className="text-sm font-semibold text-foreground">
+                A sensible first setup (about 5 minutes)
+              </p>
               <ul className="mt-4 space-y-3">
                 {[
-                  'Pick a lightweight pipeline (or use a simple default)',
-                  "Define 3-6 stages you'll actually remember",
-                  'Start tracking real threads right away',
-                  'Capture next steps as tasks before you close the tab',
+                  'The assistant scans recent threads to understand your workflow',
+                  'It recommends a lightweight pipeline and stages you will remember',
+                  'It proposes initial contacts and context based on what you select',
+                  'It suggests follow-up tasks and drafts; you confirm what gets created',
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-3">
                     <div className="mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-primary" />
@@ -208,35 +217,41 @@ export function InboxOnboardingPage() {
 
       <section className="bg-background py-16 lg:py-20">
         <div className="container">
-          <div className="mx-auto grid max-w-5xl gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
-            <div>
-              <h2 className="text-2xl font-semibold text-foreground sm:text-3xl">
-                FAQs
-              </h2>
-              <div className="mt-8">
+          <div className="mx-auto max-w-5xl">
+            <h2 className="text-2xl font-semibold text-foreground sm:text-3xl">FAQs</h2>
+            <div className="mt-8 grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
+              <div>
                 <FaqList items={inboxOnboardingFaqs} />
               </div>
-            </div>
 
-            <div className="rounded-xl border border-border bg-muted/30 p-6">
-              <p className="text-sm font-semibold text-foreground">Ready to start?</p>
-              <p className="mt-2 text-sm text-muted-foreground">
-                Install the extension and set up a simple workflow from your inbox.
-              </p>
-              <div className="mt-5">
-                <Button asChild>
-                  <a
-                    href={chromeWebStoreInstallUrl({ content: 'inbox_onboarding_bottom_cta' })}
-                    target="_blank"
-                    rel="noopener noreferrer"
+              <div className="rounded-xl border border-border bg-muted/30 p-6">
+                <p className="text-sm font-semibold text-foreground">Ready to start?</p>
+                <p className="mt-2 text-sm text-muted-foreground">
+                  Install the extension and let the assistant recommend a first setup from recent
+                  threads in about 5 minutes.
+                </p>
+                <div className="mt-5">
+                  <Button asChild>
+                    <a
+                      href={chromeWebStoreInstallUrl({ content: 'inbox_onboarding_bottom_cta' })}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {primaryCtaLabel}
+                    </a>
+                  </Button>
+                </div>
+                <p className="mt-4 text-xs text-muted-foreground">
+                  Also useful:{' '}
+                  <Link
+                    href="/email-tracking-in-gmail"
+                    className="underline underline-offset-2"
                   >
-                    {primaryCtaLabel}
-                  </a>
-                </Button>
+                    email tracking in Gmail
+                  </Link>
+                  .
+                </p>
               </div>
-              <p className="mt-4 text-xs text-muted-foreground">
-                Also useful: <Link href="/email-tracking-in-gmail" className="underline underline-offset-2">email tracking in Gmail</Link>.
-              </p>
             </div>
           </div>
         </div>

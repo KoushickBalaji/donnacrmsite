@@ -101,7 +101,7 @@ export function CrmForFreelancersPage() {
                   Lead - Quote - In progress - Paid
                 </p>
                 <p className="mt-3 text-sm text-muted-foreground">
-                  When in doubt, keep fewer stages and focus on capturing the next step.
+                  When in doubt, keep fewer stages to focus on capturing next steps.
                 </p>
               </div>
             </div>
@@ -111,29 +111,6 @@ export function CrmForFreelancersPage() {
                 src="/screenshots/Pipeline.png"
                 alt="Freelance gig stages shown as a pipeline"
               />
-              <div className="rounded-xl border border-border bg-background p-6">
-                <p className="text-sm font-semibold text-foreground">Related pages</p>
-                <p className="mt-2 text-sm text-muted-foreground">
-                  Helpful if you're comparing tools or want more detail on a specific workflow.
-                </p>
-                <div className="mt-3 flex flex-col gap-2 text-sm">
-                  <Link href="/gmail-crm" className="text-primary hover:underline">
-                    Gmail CRM overview
-                  </Link>
-                  <Link href="/ai-gmail-crm" className="text-primary hover:underline">
-                    AI assistant (human-in-the-loop)
-                  </Link>
-                  <Link href="/email-tracking-in-gmail" className="text-primary hover:underline">
-                    Email tracking for proposals
-                  </Link>
-                  <Link href="/pricing" className="text-primary hover:underline">
-                    Pricing
-                  </Link>
-                  <Link href="/resources" className="text-primary hover:underline">
-                    Resources
-                  </Link>
-                </div>
-              </div>
             </div>
           </div>
 
@@ -146,6 +123,27 @@ export function CrmForFreelancersPage() {
               consistent: draft the follow-up, capture the next step, and keep proposal context tied
               to the client.
             </p>
+            <div className="mt-6 grid gap-4 lg:grid-cols-3">
+              {[
+                {
+                  title: 'The 48-hour nudge',
+                  body: 'Send a short follow-up after a quote or proposal. Update the client record with the latest status and set the next reminder.',
+                },
+                {
+                  title: 'The value add',
+                  body: 'Follow up with a helpful link, a small idea, or a quick clarification. Keep the thread context attached so you can pick up later.',
+                },
+                {
+                  title: 'Close the loop',
+                  body: 'If it is a no, capture why and move on. If it is a yes, add the next steps as tasks so delivery does not slip.',
+                },
+              ].map((item) => (
+                <div key={item.title} className="rounded-lg border border-border bg-background p-5">
+                  <p className="text-sm font-semibold text-foreground">{item.title}</p>
+                  <p className="mt-2 text-sm text-muted-foreground">{item.body}</p>
+                </div>
+              ))}
+            </div>
             <p className="mt-4 text-sm text-muted-foreground">
               Sending proposals from Gmail? Use tracking signals responsibly and treat opens/clicks
               as hints-not truth. See{' '}
@@ -155,9 +153,9 @@ export function CrmForFreelancersPage() {
               .
             </p>
             <p className="mt-4 text-sm text-muted-foreground">
-              Learn how the assistant can help with drafts and prioritization on{' '}
+              Learn how the assistant can help with drafts and prioritization in{' '}
               <Link href="/ai-gmail-crm" className="text-primary hover:underline">
-                /ai-gmail-crm
+                AI Gmail CRM
               </Link>
               .
             </p>
@@ -167,31 +165,53 @@ export function CrmForFreelancersPage() {
 
       <section className="bg-background py-16 lg:py-20">
         <div className="container">
-          <div className="mx-auto grid max-w-5xl gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
-            <div>
-              <h2 className="text-2xl font-semibold text-foreground sm:text-3xl">
-                FAQs
-              </h2>
-              <div className="mt-8">
+          <div className="mx-auto max-w-5xl">
+            <h2 className="text-2xl font-semibold text-foreground sm:text-3xl">FAQs</h2>
+            <div className="mt-8 grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
+              <div>
                 <FaqList items={crmForFreelancersFaqs} />
+              </div>
+
+              <div className="rounded-xl border border-border bg-muted/30 p-6">
+                <p className="text-sm font-semibold text-foreground">Try Donna CRM</p>
+                <p className="mt-2 text-sm text-muted-foreground">
+                  Install the extension and start tracking a real client thread in minutes.
+                </p>
+                <div className="mt-5">
+                  <Button asChild>
+                    <a
+                      href={chromeWebStoreInstallUrl({ content: 'crm_for_freelancers_bottom_cta' })}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {primaryCtaLabel}
+                    </a>
+                  </Button>
+                </div>
               </div>
             </div>
 
-            <div className="rounded-xl border border-border bg-muted/30 p-6">
-              <p className="text-sm font-semibold text-foreground">Try Donna CRM</p>
+            <div className="mt-10 rounded-xl border border-border bg-muted/30 p-6">
+              <p className="text-sm font-semibold text-foreground">Related pages</p>
               <p className="mt-2 text-sm text-muted-foreground">
-                Install the extension and start tracking a real client thread in minutes.
+                Helpful if you're comparing tools or want more detail on a specific workflow.
               </p>
-              <div className="mt-5">
-                <Button asChild>
-                  <a
-                    href={chromeWebStoreInstallUrl({ content: 'crm_for_freelancers_bottom_cta' })}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {primaryCtaLabel}
-                  </a>
-                </Button>
+              <div className="mt-3 flex flex-col gap-2 text-sm sm:flex-row sm:flex-wrap sm:gap-x-6 sm:gap-y-2">
+                <Link href="/gmail-crm" className="text-primary hover:underline">
+                  Gmail CRM overview
+                </Link>
+                <Link href="/ai-gmail-crm" className="text-primary hover:underline">
+                  AI assistant (human-in-the-loop)
+                </Link>
+                <Link href="/email-tracking-in-gmail" className="text-primary hover:underline">
+                  Email tracking for proposals
+                </Link>
+                <Link href="/pricing" className="text-primary hover:underline">
+                  Pricing
+                </Link>
+                <Link href="/resources" className="text-primary hover:underline">
+                  Resources
+                </Link>
               </div>
             </div>
           </div>

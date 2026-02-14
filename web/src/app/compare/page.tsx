@@ -1,13 +1,5 @@
-import type { Metadata } from 'next'
-import { pageMetadata } from '../../lib/metadata'
-import { ComparePage } from '../../views/Compare'
-
-export const metadata: Metadata = pageMetadata({
-  title: 'Compare',
-  description: 'Learn how Donna CRM compares to other CRM approaches - lightweight and built for Gmail.',
-  canonicalPath: '/compare',
-})
+import { redirect } from 'next/navigation'
 
 export default function Page() {
-  return <ComparePage />
+  redirect('/streak-crm-alternative')
 }

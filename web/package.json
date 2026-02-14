@@ -7,6 +7,7 @@
     "dev": "node scripts/clean-next.mjs && node scripts/next-wrapper.mjs dev",
     "build": "node scripts/clean-next.mjs && node scripts/next-wrapper.mjs build",
     "lint": "eslint .",
+    "qa:content": "node scripts/content-qa.mjs",
     "start": "node scripts/next-wrapper.mjs start"
   },
   "dependencies": {

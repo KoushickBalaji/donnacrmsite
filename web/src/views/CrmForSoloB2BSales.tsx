@@ -131,76 +131,95 @@ export function CrmForSoloB2BSalesPage() {
               many stages.
             </p>
 
-            <div className="mt-8 grid gap-6 md:grid-cols-5">
-              {['Lead', 'Meeting', 'Proposal', 'Negotiation', 'Closed'].map((stage) => (
-                <Card key={stage} className="border-border bg-muted/30">
-                  <CardContent className="p-5 text-center">
-                    <p className="text-sm font-semibold text-foreground">{stage}</p>
+            <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {[
+                {
+                  title: 'Lead',
+                  body: 'A real person you are actively talking to. Capture who they are and why they might buy.',
+                },
+                {
+                  title: 'Meeting',
+                  body: 'Discovery call scheduled or completed. Log what matters and set the next follow-up task.',
+                },
+                {
+                  title: 'Proposal',
+                  body: 'Proposal or quote sent. Track the decision date and create a reminder to follow up.',
+                },
+                {
+                  title: 'Negotiation',
+                  body: 'Pricing, scope, or terms are in motion. Keep the latest state in one place so you do not reopen old threads.',
+                },
+                {
+                  title: 'Closed',
+                  body: 'Won or lost. Capture the outcome and the next step (onboarding, invoice, or a future check-in).',
+                },
+              ].map((stage) => (
+                <Card key={stage.title} className="border-border bg-muted/30">
+                  <CardContent className="p-6">
+                    <p className="text-base font-semibold text-foreground">{stage.title}</p>
+                    <p className="mt-2 text-sm text-muted-foreground">{stage.body}</p>
                   </CardContent>
                 </Card>
               ))}
             </div>
 
-            <div className="mt-10 grid gap-6 lg:grid-cols-2 lg:items-start">
-              <ScreenshotCard
-                src="/screenshots/Context%20Bar.png"
-                alt="Deal context displayed next to a Gmail thread"
-              />
-              <div className="rounded-xl border border-border bg-background p-6">
-                <p className="text-sm font-semibold text-foreground">Related pages</p>
-                <p className="mt-2 text-sm text-muted-foreground">
-                  Deeper dives for solo sellers evaluating a Gmail-native workflow.
-                </p>
-                <div className="mt-3 flex flex-col gap-2 text-sm">
-                  <Link href="/gmail-crm" className="text-primary hover:underline">
-                    Gmail CRM overview
-                  </Link>
-                  <Link href="/ai-gmail-crm" className="text-primary hover:underline">
-                    AI assistant (human-in-the-loop)
-                  </Link>
-                  <Link href="/email-tracking-in-gmail" className="text-primary hover:underline">
-                    Email tracking in Gmail
-                  </Link>
-                  <Link href="/pricing" className="text-primary hover:underline">
-                    Pricing
-                  </Link>
-                  <Link href="/resources" className="text-primary hover:underline">
-                    Resources
-                  </Link>
-                </div>
-              </div>
-            </div>
+            <p className="mt-6 max-w-3xl text-sm text-muted-foreground">
+              Tip: If you sell a longer cycle, add one stage (for example, Legal or Procurement).
+              If you sell a shorter cycle, remove one stage and keep it even simpler.
+            </p>
           </div>
         </div>
       </section>
 
       <section className="bg-background py-16 lg:py-20">
         <div className="container">
-          <div className="mx-auto grid max-w-5xl gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
-            <div>
-              <h2 className="text-2xl font-semibold text-foreground sm:text-3xl">
-                FAQs
-              </h2>
-              <div className="mt-8">
+          <div className="mx-auto max-w-5xl">
+            <h2 className="text-2xl font-semibold text-foreground sm:text-3xl">FAQs</h2>
+            <div className="mt-8 grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
+              <div>
                 <FaqList items={crmForSoloB2BSalesFaqs} />
+              </div>
+
+              <div className="rounded-xl border border-border bg-muted/30 p-6">
+                <p className="text-sm font-semibold text-foreground">Try Donna CRM</p>
+                <p className="mt-2 text-sm text-muted-foreground">
+                  Install the extension and run your solo sales workflow directly from Gmail.
+                </p>
+                <div className="mt-5">
+                  <Button asChild>
+                    <a
+                      href={chromeWebStoreInstallUrl({ content: 'crm_for_solo_sales_bottom_cta' })}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {primaryCtaLabel}
+                    </a>
+                  </Button>
+                </div>
               </div>
             </div>
 
-            <div className="rounded-xl border border-border bg-muted/30 p-6">
-              <p className="text-sm font-semibold text-foreground">Try Donna CRM</p>
+            <div className="mt-10 rounded-xl border border-border bg-muted/30 p-6">
+              <p className="text-sm font-semibold text-foreground">Related pages</p>
               <p className="mt-2 text-sm text-muted-foreground">
-                Install the extension and run your solo sales workflow directly from Gmail.
+                Deeper dives for solo sellers evaluating a Gmail-native workflow.
               </p>
-              <div className="mt-5">
-                <Button asChild>
-                  <a
-                    href={chromeWebStoreInstallUrl({ content: 'crm_for_solo_sales_bottom_cta' })}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {primaryCtaLabel}
-                  </a>
-                </Button>
+              <div className="mt-3 flex flex-col gap-2 text-sm sm:flex-row sm:flex-wrap sm:gap-x-6 sm:gap-y-2">
+                <Link href="/gmail-crm" className="text-primary hover:underline">
+                  Gmail CRM overview
+                </Link>
+                <Link href="/ai-gmail-crm" className="text-primary hover:underline">
+                  AI assistant (human-in-the-loop)
+                </Link>
+                <Link href="/email-tracking-in-gmail" className="text-primary hover:underline">
+                  Email tracking in Gmail
+                </Link>
+                <Link href="/pricing" className="text-primary hover:underline">
+                  Pricing
+                </Link>
+                <Link href="/resources" className="text-primary hover:underline">
+                  Resources
+                </Link>
               </div>
             </div>
           </div>

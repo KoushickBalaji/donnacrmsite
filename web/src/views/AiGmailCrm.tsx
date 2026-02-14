@@ -192,11 +192,11 @@ export function AiGmailCrmPage() {
 
             <div className="space-y-6">
               <div className="rounded-xl border border-border bg-background p-6">
-                <p className="text-sm font-semibold text-foreground">Inbox onboarding (optional)</p>
+                <p className="text-sm font-semibold text-foreground">Inbox onboarding</p>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
                   If you want a faster starting point, ask the assistant to recommend a lightweight
-                  setup from your real inbox. It can propose pipelines, contacts, and next-step
-                  tasks-and you review before anything is created.
+                  setup from your real inbox. It can propose pipelines, contacts, and next step
+                  tasks - you review before anything is created.
                 </p>
                 <p className="mt-3 text-sm">
                   <Link href="/inbox-onboarding" className="text-primary hover:underline">

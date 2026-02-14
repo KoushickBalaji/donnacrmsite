@@ -1,6 +1,8 @@
+import type { ReactNode } from 'react'
+
 export type FaqItem = {
   question: string
-  answer: string
+  answer: ReactNode
 }
 
 export function FaqList({ items }: { items: FaqItem[] }) {
@@ -15,10 +17,9 @@ export function FaqList({ items }: { items: FaqItem[] }) {
           <summary className="cursor-pointer list-none text-base font-semibold text-foreground">
             {item.question}
           </summary>
-          <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{item.answer}</p>
+          <div className="mt-3 text-sm leading-relaxed text-muted-foreground">{item.answer}</div>
         </details>
       ))}
     </div>
   )
 }
-

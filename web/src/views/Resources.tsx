@@ -12,19 +12,36 @@ import { Card, CardContent } from '../components/ui/Card'
 
 const resources = [
   {
+    id: 'ai-assistant',
+    icon: Sparkles,
+    title: 'AI assistant',
+    description: 'Turn conversations into next steps with a human-in-the-loop assistant.',
+    bullets: [
+      'Ask the assistant to summarize a thread and pull out action items.',
+      'Draft a follow-up email and edit it in your own voice.',
+      'Create or update CRM context from a real conversation (with confirmation).',
+      'Use onboarding suggestions as a starting point, then refine over time.',
+    ],
+    links: [
+      { href: '/ai-gmail-crm', label: 'How the AI works' },
+      { href: '/inbox-onboarding', label: 'Inbox onboarding' },
+      { href: '/privacy', label: 'Privacy policy' },
+    ],
+  },
+  {
     id: 'getting-started',
     icon: BookOpen,
     title: 'Getting started',
-    description: 'Install the extension and start using Donna CRM inside Gmail.',
+    description: 'Install the extension, then let inbox onboarding recommend a first setup.',
     bullets: [
       'Install Donna CRM from the Chrome Web Store.',
       'Open Gmail and click the Donna CRM icon in the sidebar.',
-      'Create your first contact and add a note from a real thread.',
-      'Set up a pipeline stage and move one item through it.',
+      'Run inbox onboarding to scan recent threads and recommend a lightweight setup.',
+      'Review suggestions and confirm what gets created, then start from real threads.',
     ],
     links: [
+      { href: '/inbox-onboarding', label: 'Inbox onboarding' },
       { href: '/gmail-crm', label: 'Gmail CRM overview' },
-      { href: '/features', label: 'Explore features' },
       { href: '/pricing', label: 'See pricing' },
     ],
   },
@@ -75,7 +92,7 @@ const resources = [
     ],
     links: [
       { href: '/features', label: 'Campaign features' },
-      { href: '/email-tracking-in-gmail', label: 'Tracking expectations' },
+      { href: '/email-tracking-in-gmail', label: 'Email tracking in Gmail' },
       { href: '/privacy', label: 'Privacy policy' },
     ],
   },
@@ -83,34 +100,17 @@ const resources = [
     id: 'tracking',
     icon: MailOpen,
     title: 'How tracking works',
-    description: 'Understand engagement signals and their limitations.',
+    description: 'Understand opens and clicks so you can prioritize follow-ups.',
     bullets: [
-      'Open tracking depends on recipient settings (image blocking and privacy features).',
-      'Click tracking applies to tracked links and may vary by client.',
-      'Use tracking as a signal-not the source of truth.',
-      'Be mindful of compliance requirements for your audience and region.',
+      'Track opens and clicks from Gmail alongside the thread.',
+      'Use engagement to prioritize follow-ups and keep pipeline status fresh.',
+      'Review campaign engagement to see what gets replies over time.',
+      'Pair tracking with a simple next-step habit (task and reminder).',
     ],
     links: [
       { href: '/email-tracking-in-gmail', label: 'Email tracking in Gmail' },
-      { href: '/privacy', label: 'Privacy policy' },
-      { href: '/contact', label: 'Questions?' },
-    ],
-  },
-  {
-    id: 'ai-assistant',
-    icon: Sparkles,
-    title: 'AI Assistant tips',
-    description: 'Use the AI assistant to move faster while staying accurate.',
-    bullets: [
-      'Ask for a summary of a thread before responding.',
-      'Generate a first draft, then edit in your own voice.',
-      'Double-check facts, dates, and names before sending.',
-      "Avoid sharing sensitive data you wouldn't email normally.",
-    ],
-    links: [
-      { href: '/ai-gmail-crm', label: 'How the AI works' },
       { href: '/inbox-onboarding', label: 'Inbox onboarding' },
-      { href: '/privacy', label: 'Privacy policy' },
+      { href: '/contact', label: 'Questions?' },
     ],
   },
 ] as const

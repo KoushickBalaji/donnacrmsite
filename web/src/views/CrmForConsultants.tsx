@@ -132,7 +132,7 @@ export function CrmForConsultantsPage() {
               Discovery - Proposal - Active - Renewal.
             </p>
 
-            <div className="mt-8 grid gap-6 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+            <div className="mt-8 grid gap-6 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
               <div className="space-y-4">
                 {[
                   { title: 'Discovery', body: 'Early conversations and fit assessment.' },
@@ -206,31 +206,29 @@ export function CrmForConsultantsPage() {
 
       <section className="bg-background py-16 lg:py-20">
         <div className="container">
-          <div className="mx-auto grid max-w-5xl gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
-            <div>
-              <h2 className="text-2xl font-semibold text-foreground sm:text-3xl">
-                FAQs
-              </h2>
-              <div className="mt-8">
+          <div className="mx-auto max-w-5xl">
+            <h2 className="text-2xl font-semibold text-foreground sm:text-3xl">FAQs</h2>
+            <div className="mt-8 grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
+              <div>
                 <FaqList items={crmForConsultantsFaqs} />
               </div>
-            </div>
 
-            <div className="rounded-xl border border-border bg-muted/30 p-6">
-              <p className="text-sm font-semibold text-foreground">Install Donna CRM</p>
-              <p className="mt-2 text-sm text-muted-foreground">
-                Install the extension and start tracking a real consulting thread in minutes.
-              </p>
-              <div className="mt-5">
-                <Button asChild>
-                  <a
-                    href={chromeWebStoreInstallUrl({ content: 'crm_for_consultants_bottom_cta' })}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {primaryCtaLabel}
-                  </a>
-                </Button>
+              <div className="rounded-xl border border-border bg-muted/30 p-6">
+                <p className="text-sm font-semibold text-foreground">Install Donna CRM</p>
+                <p className="mt-2 text-sm text-muted-foreground">
+                  Install the extension and start tracking a real consulting thread in minutes.
+                </p>
+                <div className="mt-5">
+                  <Button asChild>
+                    <a
+                      href={chromeWebStoreInstallUrl({ content: 'crm_for_consultants_bottom_cta' })}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {primaryCtaLabel}
+                    </a>
+                  </Button>
+                </div>
               </div>
             </div>
           </div>
