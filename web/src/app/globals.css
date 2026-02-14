@@ -31,6 +31,16 @@ html {
   scroll-behavior: smooth;
 }
 
+html.home-scroll-snap {
+  scroll-snap-type: y mandatory;
+  scroll-padding-top: var(--home-snap-offset, 64px);
+  overscroll-behavior-y: contain;
+}
+
+html.home-scroll-snap [data-home-snap-section] {
+  scroll-snap-align: start;
+}
+
 body {
   @apply bg-background text-foreground;
   margin: 0;
@@ -165,4 +175,3 @@ body {
     }
   }
 }
-

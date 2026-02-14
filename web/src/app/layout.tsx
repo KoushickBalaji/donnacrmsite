@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     template: `%s | ${SITE_NAME}`,
   },
   icons: {
-    icon: '/vite.svg',
+    icon: '/icon.svg',
   },
   robots: isProduction ? { index: true, follow: true } : { index: false, follow: false },
   openGraph: {

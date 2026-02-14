@@ -10,11 +10,6 @@ import { chromeWebStoreInstallUrl } from '../lib/chromeWebStore'
 
 const primaryCtaLabel = 'Add to Gmail - Free Trial'
 const stickyHeaderOffsetPx = 64
-const wheelSnapNotches = 5
-const initialNotchEstimatePx = 48
-const minWheelDeltaPx = 12
-const snapAnimationDurationMs = 750
-const wheelSnapIdleMs = 70
 
 const surfaceTileClassName =
   'h-full min-h-[200px] rounded-[20px] bg-[#F7F8FA] p-8 shadow-[0_12px_30px_rgba(0,0,0,0.06)] ring-1 ring-black/[0.04] transition-[transform,box-shadow] duration-[220ms] ease-out hover:-translate-y-1.5 hover:shadow-[0_18px_45px_rgba(0,0,0,0.10)]'
@@ -56,186 +51,34 @@ export function HomePage() {
   }, [router])
 
   useEffect(() => {
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    const hasFinePointer = window.matchMedia('(pointer: fine)').matches
+    const root = document.documentElement
+    const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
+    const finePointerQuery = window.matchMedia('(pointer: fine)')
 
-    if (prefersReducedMotion || !hasFinePointer) return
-
-    const sections = Array.from(
-      document.querySelectorAll<HTMLElement>('[data-home-snap-section]'),
-    )
-
-    if (sections.length < 2) return
-
-    let wheelScrollAccumulatorPx = 0
-    let notchEstimatePx = initialNotchEstimatePx
-    let lastDirection = 0
-    let isAnimating = false
-    let queuedScrollPx = 0
-    let queuedDirection = 0
-    let animationFrame: number | undefined
-    let snapTimeout: number | undefined
-    let hasReachedSnapThreshold = false
-    let thresholdOriginSectionIndex: number | undefined
-
-    function normalizeDeltaY(event: WheelEvent) {
-      if (event.deltaMode === WheelEvent.DOM_DELTA_LINE) return event.deltaY * 16
-      if (event.deltaMode === WheelEvent.DOM_DELTA_PAGE) return event.deltaY * window.innerHeight
-      return event.deltaY
+    const updateHomeSnapMode = () => {
+      const shouldEnableSnap = finePointerQuery.matches && !reducedMotionQuery.matches
+      root.classList.toggle('home-scroll-snap', shouldEnableSnap)
+      if (shouldEnableSnap) {
+        root.style.setProperty('--home-snap-offset', `${stickyHeaderOffsetPx}px`)
+      } else {
+        root.style.removeProperty('--home-snap-offset')
+      }
     }
 
-    function getCurrentSectionIndex(scrollTop: number, topOffsets: number[]) {
-      let currentIndex = 0
-
-      for (let index = 0; index < topOffsets.length; index += 1) {
-        if (topOffsets[index] <= scrollTop + 1) {
-          currentIndex = index
-          continue
-        }
-
-        break
-      }
-
-      return currentIndex
+    const attachMediaListener = (query: MediaQueryList, handler: () => void) => {
+      query.addEventListener('change', handler)
+      return () => query.removeEventListener('change', handler)
     }
 
-    function smoothScrollTo(targetScrollTop: number, onComplete?: () => void) {
-      const startScrollTop = window.scrollY
-      const scrollDistance = targetScrollTop - startScrollTop
-
-      if (Math.abs(scrollDistance) < 4) {
-        onComplete?.()
-        return
-      }
-
-      const animationStartMs = performance.now()
-      if (animationFrame) window.cancelAnimationFrame(animationFrame)
-
-      function animate(nowMs: number) {
-        const elapsedMs = nowMs - animationStartMs
-        const progress = Math.min(elapsedMs / snapAnimationDurationMs, 1)
-        const easedProgress =
-          progress < 0.5
-            ? 4 * progress * progress * progress
-            : 1 - Math.pow(-2 * progress + 2, 3) / 2
-        window.scrollTo(0, startScrollTop + scrollDistance * easedProgress)
-
-        if (progress < 1) {
-          animationFrame = window.requestAnimationFrame(animate)
-          return
-        }
-
-        animationFrame = undefined
-        onComplete?.()
-      }
-
-      animationFrame = window.requestAnimationFrame(animate)
-    }
-
-    function scrollToSectionIndex(targetIndex: number, topOffsets: number[]) {
-      const currentScrollTop = window.scrollY
-      if (targetIndex < 0 || targetIndex >= topOffsets.length) return false
-
-      const targetScrollTop = topOffsets[targetIndex]
-      if (Math.abs(targetScrollTop - currentScrollTop) < 4) return false
-
-      isAnimating = true
-      smoothScrollTo(targetScrollTop, () => {
-        isAnimating = false
-        const snapThresholdPx = wheelSnapNotches * notchEstimatePx
-        if (queuedScrollPx >= snapThresholdPx && queuedDirection) {
-          const dir = queuedDirection
-          queuedScrollPx = 0
-          queuedDirection = 0
-          triggerSectionScroll(dir, topOffsets)
-        } else {
-          queuedScrollPx = 0
-          queuedDirection = 0
-        }
-      })
-
-      return true
-    }
-
-    function triggerSectionScroll(direction: number, topOffsets: number[]) {
-      const currentScrollTop = window.scrollY
-      const currentIndex = getCurrentSectionIndex(currentScrollTop, topOffsets)
-      const targetIndex =
-        direction > 0
-          ? Math.min(currentIndex + 1, topOffsets.length - 1)
-          : Math.max(currentIndex - 1, 0)
-
-      if (targetIndex === currentIndex) return false
-      return scrollToSectionIndex(targetIndex, topOffsets)
-    }
-
-    function onWheel(event: WheelEvent) {
-      const deltaY = normalizeDeltaY(event)
-      const direction = Math.sign(deltaY)
-      const absDeltaY = Math.abs(deltaY)
-      if (!direction || absDeltaY < minWheelDeltaPx) return
-
-      // Auto-calibrate "pixels per notch" so "5 notches" works across devices/browsers.
-      // Clamp keeps extreme deltas (e.g. momentum scroll) from blowing up the estimate.
-      const clampedDelta = Math.max(24, Math.min(absDeltaY, 160))
-      notchEstimatePx = notchEstimatePx * 0.85 + clampedDelta * 0.15
-
-      if (isAnimating) {
-        event.preventDefault()
-        if (direction !== queuedDirection) {
-          queuedDirection = direction
-          queuedScrollPx = 0
-        }
-
-        queuedScrollPx += absDeltaY
-        return
-      }
-
-      if (direction !== lastDirection) {
-        wheelScrollAccumulatorPx = 0
-        hasReachedSnapThreshold = false
-        thresholdOriginSectionIndex = undefined
-      }
-
-      lastDirection = direction
-      wheelScrollAccumulatorPx += absDeltaY
-
-      const snapThresholdPx = wheelSnapNotches * notchEstimatePx
-      if (wheelScrollAccumulatorPx >= snapThresholdPx) {
-        if (!hasReachedSnapThreshold) {
-          const topOffsets = sections.map((section) =>
-            Math.max(section.offsetTop - stickyHeaderOffsetPx, 0),
-          )
-          thresholdOriginSectionIndex = getCurrentSectionIndex(window.scrollY, topOffsets)
-        }
-        hasReachedSnapThreshold = true
-        event.preventDefault()
-      }
-
-      if (snapTimeout) window.clearTimeout(snapTimeout)
-      snapTimeout = window.setTimeout(() => {
-        snapTimeout = undefined
-        if (isAnimating || !hasReachedSnapThreshold || !lastDirection) return
-        hasReachedSnapThreshold = false
-        wheelScrollAccumulatorPx = 0
-        const topOffsets = sections.map((section) => Math.max(section.offsetTop - stickyHeaderOffsetPx, 0))
-        const originIndex =
-          thresholdOriginSectionIndex ?? getCurrentSectionIndex(window.scrollY, topOffsets)
-        thresholdOriginSectionIndex = undefined
-        const targetIndex =
-          lastDirection > 0
-            ? Math.min(originIndex + 1, topOffsets.length - 1)
-            : Math.max(originIndex - 1, 0)
-        scrollToSectionIndex(targetIndex, topOffsets)
-      }, wheelSnapIdleMs)
-    }
-
-    window.addEventListener('wheel', onWheel, { passive: false })
+    updateHomeSnapMode()
+    const removeReducedMotionListener = attachMediaListener(reducedMotionQuery, updateHomeSnapMode)
+    const removeFinePointerListener = attachMediaListener(finePointerQuery, updateHomeSnapMode)
 
     return () => {
-      window.removeEventListener('wheel', onWheel)
-      if (animationFrame) window.cancelAnimationFrame(animationFrame)
-      if (snapTimeout) window.clearTimeout(snapTimeout)
+      removeReducedMotionListener()
+      removeFinePointerListener()
+      root.classList.remove('home-scroll-snap')
+      root.style.removeProperty('--home-snap-offset')
     }
   }, [])
 
