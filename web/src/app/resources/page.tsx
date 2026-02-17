@@ -3,8 +3,9 @@ import { pageMetadata } from '../../lib/metadata'
 import { ResourcesPage } from '../../views/Resources'
 
 export const metadata: Metadata = pageMetadata({
-  title: 'Resources',
-  description: 'Practical guides to help you get the most out of Donna CRM inside Gmail.',
+  title: 'Gmail CRM Resources',
+  description:
+    'Guides, templates, and checklists for Gmail CRM workflows: follow-ups, pipelines, and human-in-the-loop AI for solo operators.',
   canonicalPath: '/resources',
 })
 

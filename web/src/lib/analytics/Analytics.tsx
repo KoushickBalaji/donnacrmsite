@@ -1,20 +1,47 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { usePathname, useSearchParams } from 'next/navigation'
 import { initGa4, trackEvent, trackPageView } from './ga4'
 import { trackGoogleAdsInstallClick } from './googleAds'
+import { useConsent } from '../../components/consent/ConsentProvider'
+
+type SearchParamsLike = {
+  entries(): IterableIterator<[string, string]>
+}
+
+function buildAllowedQueryString(params: SearchParamsLike | null | undefined) {
+  if (!params) return ''
+  const allowed = new URLSearchParams()
+
+  for (const [key, value] of params.entries()) {
+    const lower = key.toLowerCase()
+    if (lower.startsWith('utm_') || lower === 'gclid' || lower === 'gbraid' || lower === 'wbraid') {
+      allowed.append(key, value)
+    }
+  }
+
+  const qs = allowed.toString()
+  return qs ? `?${qs}` : ''
+}
 
 export function Ga4Analytics() {
   const pathname = usePathname()
   const searchParams = useSearchParams()
+  const { consent } = useConsent()
 
+  const consentRef = useRef(consent)
   useEffect(() => {
-    initGa4()
-  }, [])
+    consentRef.current = consent
+  }, [consent])
 
   useEffect(() => {
     function onClick(e: MouseEvent) {
+      const currentConsent = consentRef.current
+      const analyticsAllowed = Boolean(currentConsent?.analytics)
+      const marketingAllowed = Boolean(currentConsent?.marketing)
+      if (!analyticsAllowed && !marketingAllowed) return
+
       const target = e.target as Element | null
       const anchor = target?.closest?.('a') as HTMLAnchorElement | null
       if (!anchor) return
@@ -40,28 +67,36 @@ export function Ga4Analytics() {
         // ignore URL parsing failures
       }
 
-      trackEvent('install_click', {
-        link_url: resolvedHref,
-        link_text: anchor.textContent?.trim() || undefined,
-        page_path: `${window.location.pathname}${window.location.search}`,
-        utm_source: utmSource,
-        utm_medium: utmMedium,
-        utm_campaign: utmCampaign,
-        utm_content: utmContent,
-      })
+      const allowedQuery = buildAllowedQueryString(new URLSearchParams(window.location.search))
+      const pagePath = `${window.location.pathname}${allowedQuery}`
+
+      if (analyticsAllowed) {
+        initGa4({ allowAdPersonalizationSignals: marketingAllowed })
+        trackEvent('install_click', {
+          link_url: resolvedHref,
+          link_text: anchor.textContent?.trim() || undefined,
+          page_path: pagePath,
+          utm_source: utmSource,
+          utm_medium: utmMedium,
+          utm_campaign: utmCampaign,
+          utm_content: utmContent,
+        })
+      }
 
       const opensNewTab = (anchor.getAttribute('target') ?? '').toLowerCase() === '_blank'
       const isPlainLeftClick =
         e.button === 0 && !e.metaKey && !e.ctrlKey && !e.shiftKey && !e.altKey
 
-      if (!opensNewTab && isPlainLeftClick) {
-        const didStartConversion = trackGoogleAdsInstallClick(resolvedHref)
-        if (didStartConversion) {
-          e.preventDefault()
-          return
+      if (marketingAllowed) {
+        if (!opensNewTab && isPlainLeftClick) {
+          const didStartConversion = trackGoogleAdsInstallClick(resolvedHref)
+          if (didStartConversion) {
+            e.preventDefault()
+            return
+          }
+        } else {
+          trackGoogleAdsInstallClick()
         }
-      } else {
-        trackGoogleAdsInstallClick()
       }
     }
 
@@ -70,9 +105,14 @@ export function Ga4Analytics() {
   }, [])
 
   useEffect(() => {
-    const qs = searchParams?.toString()
-    trackPageView(`${pathname}${qs ? `v${qs}` : ''}`)
-  }, [pathname, searchParams])
+    if (!consent?.analytics) return
+    initGa4({ allowAdPersonalizationSignals: Boolean(consent.marketing) })
+
+    const qs = buildAllowedQueryString(searchParams)
+    const pagePath = `${pathname}${qs}`
+    const pageLocation = `${window.location.origin}${pathname}${qs}`
+    trackPageView(pagePath, pageLocation)
+  }, [pathname, searchParams, consent?.analytics, consent?.marketing])
 
   return null
 }

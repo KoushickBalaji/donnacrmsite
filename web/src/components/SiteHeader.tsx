@@ -11,6 +11,7 @@ import { chromeWebStoreInstallUrl } from '../lib/chromeWebStore'
 const navItems = [
   { path: '/product', label: 'Product' },
   { path: '/how-it-works', label: 'How it works' },
+  { path: '/resources', label: 'Resources' },
   { path: '/pricing', label: 'Pricing' },
   { path: '/faq', label: 'FAQ' },
 ] as const
@@ -29,8 +30,15 @@ export function SiteHeader() {
     <header className="sticky top-0 z-50 w-full border-b border-border bg-background/90 backdrop-blur">
       <div className="container flex h-16 items-center justify-between">
         <Link href="/" className="flex items-center gap-2 font-semibold text-foreground">
-          <span className="inline-flex h-7 w-7 items-center justify-center rounded-md bg-primary text-primary-foreground text-sm">
-            D
+          <span className="inline-flex h-7 w-7 items-center justify-center rounded-md bg-primary/10 ring-1 ring-black/[0.04]">
+            <img
+              src="/donna-16-v3.png"
+              alt=""
+              width={16}
+              height={16}
+              className="h-4 w-4"
+              loading="eager"
+            />
           </span>
           <span>Donna CRM</span>
         </Link>

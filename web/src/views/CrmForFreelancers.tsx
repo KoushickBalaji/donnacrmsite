@@ -200,10 +200,25 @@ export function CrmForFreelancersPage() {
                 <Link href="/gmail-crm" className="text-primary hover:underline">
                   Gmail CRM overview
                 </Link>
+                <Link
+                  href="/resources/freelance-client-tracker-lead-to-paid"
+                  className="text-primary hover:underline"
+                >
+                  Freelance client tracker workflow
+                </Link>
                 <Link href="/ai-gmail-crm" className="text-primary hover:underline">
                   AI assistant (human-in-the-loop)
                 </Link>
-                <Link href="/email-tracking-in-gmail" className="text-primary hover:underline">
+                <Link
+                  href="/resources/follow-up-system-in-gmail"
+                  className="text-primary hover:underline"
+                >
+                  Follow-up system templates
+                </Link>
+                <Link
+                  href="/resources/email-tracking-for-proposals"
+                  className="text-primary hover:underline"
+                >
                   Email tracking for proposals
                 </Link>
                 <Link href="/pricing" className="text-primary hover:underline">

@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
+import { JsonLd } from '../../components/JsonLd'
 import { pageMetadata } from '../../lib/metadata'
-import { FeaturesPage } from '../../views/Features'
+import { resolveSiteOrigin } from '../../lib/site'
+import { FeaturesPage, featuresFaqs } from '../../views/Features'
 
 export const metadata: Metadata = pageMetadata({
   title: 'Features',
@@ -9,6 +11,36 @@ export const metadata: Metadata = pageMetadata({
   canonicalPath: '/features',
 })
 
+const origin = resolveSiteOrigin()
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'SoftwareApplication',
+      name: 'Donna CRM',
+      applicationCategory: 'BusinessApplication',
+      operatingSystem: 'Chrome',
+      url: `${origin}/features`,
+      description:
+        'Explore Donna CRM features for Gmail workflows: contact management, pipelines, tasks, campaigns, and tracking.',
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: featuresFaqs.map((faq) => ({
+        '@type': 'Question',
+        name: faq.question,
+        acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+      })),
+    },
+  ],
+}
+
 export default function Page() {
-  return <FeaturesPage />
+  return (
+    <>
+      <JsonLd id="donna-jsonld-features" data={jsonLd} />
+      <FeaturesPage />
+    </>
+  )
 }

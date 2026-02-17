@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { CookiePreferencesButton } from './consent/CookiePreferencesButton'
 
 export function SiteFooter() {
   return (
@@ -7,8 +8,15 @@ export function SiteFooter() {
         <div className="grid grid-cols-1 gap-10 md:grid-cols-3">
           <div className="space-y-3">
             <div className="flex items-center gap-2 font-semibold">
-              <span className="inline-flex h-7 w-7 items-center justify-center rounded-md bg-primary text-primary-foreground text-sm">
-                D
+              <span className="inline-flex h-7 w-7 items-center justify-center rounded-md bg-primary/10 ring-1 ring-black/[0.04]">
+                <img
+                  src="/donna-16-v3.png"
+                  alt=""
+                  width={16}
+                  height={16}
+                  className="h-4 w-4"
+                  loading="lazy"
+                />
               </span>
               <span>Donna CRM</span>
             </div>
@@ -20,6 +28,12 @@ export function SiteFooter() {
             <div className="flex flex-col gap-2 text-sm">
               <Link href="/product" className="text-muted-foreground hover:text-primary">
                 Product
+              </Link>
+              <Link href="/features" className="text-muted-foreground hover:text-primary">
+                Features
+              </Link>
+              <Link href="/resources" className="text-muted-foreground hover:text-primary">
+                Resources
               </Link>
               <Link href="/gmail-crm" className="text-muted-foreground hover:text-primary">
                 Gmail CRM
@@ -51,6 +65,7 @@ export function SiteFooter() {
               <Link href="/privacy" className="text-muted-foreground hover:text-primary">
                 Privacy
               </Link>
+              <CookiePreferencesButton className="text-left text-muted-foreground hover:text-primary" />
               <Link href="/terms" className="text-muted-foreground hover:text-primary">
                 Terms
               </Link>

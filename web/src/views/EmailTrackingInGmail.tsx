@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { FaqList, type FaqItem } from '../components/FaqList'
+import { ResourceCardGrid } from '../components/ResourceCardGrid'
 import { Button } from '../components/ui/Button'
 import { Card, CardContent } from '../components/ui/Card'
 import { chromeWebStoreInstallUrl } from '../lib/chromeWebStore'
@@ -22,15 +23,7 @@ export const emailTrackingFaqs: FaqItem[] = [
   },
   {
     question: 'Where can I read about privacy?',
-    answer: (
-      <>
-        Read the{' '}
-        <Link href="/privacy" className="text-primary hover:underline">
-          Privacy Policy
-        </Link>{' '}
-        for details about data handling and permissions.
-      </>
-    ),
+    answer: 'Read the Privacy Policy for details about data handling and permissions.',
   },
 ]
 
@@ -113,6 +106,16 @@ export function EmailTrackingInGmailPage() {
                 </Link>
                 .
               </p>
+              <p className="mt-4 text-muted-foreground">
+                For a proposal-specific walkthrough, see{' '}
+                <Link
+                  href="/resources/email-tracking-for-proposals"
+                  className="text-primary hover:underline"
+                >
+                  email tracking for proposals
+                </Link>
+                .
+              </p>
             </div>
 
             <div className="rounded-xl border border-border bg-muted/30 p-6">
@@ -178,6 +181,16 @@ export function EmailTrackingInGmailPage() {
         </div>
       </section>
 
+      <ResourceCardGrid
+        title="More tracking and follow-up guides"
+        description="Use tracking as a signal, then follow up with a clear next step and a lightweight pipeline habit."
+        slugs={[
+          'email-tracking-for-proposals',
+          'follow-up-system-in-gmail',
+          'track-deals-from-email-threads',
+        ]}
+      />
+
       <section className="bg-background py-16 lg:py-20">
         <div className="container">
           <div className="mx-auto max-w-5xl">
@@ -210,6 +223,10 @@ export function EmailTrackingInGmailPage() {
                     className="underline underline-offset-2"
                   >
                     inbox onboarding
+                  </Link>
+                  {' '}and{' '}
+                  <Link href="/privacy" className="underline underline-offset-2">
+                    privacy policy
                   </Link>
                   .
                 </p>

@@ -7,6 +7,8 @@ import {
   Users,
 } from 'lucide-react'
 import type { ComponentType } from 'react'
+import Link from 'next/link'
+import { FaqList, type FaqItem } from '../components/FaqList'
 import { Button } from '../components/ui/Button'
 import { Card, CardContent } from '../components/ui/Card'
 import { chromeWebStoreInstallUrl } from '../lib/chromeWebStore'
@@ -139,6 +141,34 @@ const featureSections: FeatureSection[] = [
   },
 ]
 
+export const featuresFaqs: FaqItem[] = [
+  {
+    question: 'Does Donna work inside Gmail?',
+    answer:
+      'Yes. Donna runs as a Chrome extension and lives in your Gmail sidebar. The goal is to keep context, stages, and next steps close to the thread so you do not have to switch tabs to keep your CRM updated.',
+  },
+  {
+    question: 'Is the AI assistant required?',
+    answer:
+      'No. You can use Donna as a Gmail-native CRM without the assistant. When you do use AI, it is designed to be human-in-the-loop: it suggests drafts and next steps, and you review before acting.',
+  },
+  {
+    question: 'Can I import contacts?',
+    answer:
+      'Yes. You can import contacts from CSV and Google Sheets, then add notes and tags to preserve context. Many people start with active relationships first, then import more once the workflow feels natural.',
+  },
+  {
+    question: 'How reliable is email tracking?',
+    answer:
+      'Tracking is a helpful signal, but it is not perfect. Some recipients block images or use privacy features that affect opens and clicks. Use tracking to prioritize follow-ups, not as proof that someone read your message.',
+  },
+  {
+    question: 'Where should I start if I am new to Gmail CRMs?',
+    answer:
+      'Start with a simple pipeline and the next-step habit: every active relationship has a follow-up task. Once that loop works, explore AI onboarding and tracking to move faster with less manual admin.',
+  },
+]
+
 export function FeaturesPage() {
   return (
     <>
@@ -193,6 +223,40 @@ export function FeaturesPage() {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-muted/30 py-16 lg:py-20">
+        <div className="container">
+          <div className="mx-auto grid max-w-5xl gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
+            <div>
+              <h2 className="text-2xl font-bold text-foreground sm:text-3xl">Feature FAQs</h2>
+              <p className="mt-4 text-muted-foreground">
+                Quick answers to common questions about what is included and how the workflow fits inside Gmail.
+              </p>
+              <div className="mt-8">
+                <FaqList items={featuresFaqs} />
+              </div>
+            </div>
+
+            <div className="rounded-xl border border-border bg-background p-6">
+              <p className="text-sm font-semibold text-foreground">Explore next</p>
+              <p className="mt-2 text-sm text-muted-foreground">
+                If you are evaluating tools, these pages go deeper on pricing and the Gmail-native workflow.
+              </p>
+              <div className="mt-5 flex flex-col gap-2 text-sm font-semibold">
+                <Link href="/pricing" className="text-primary hover:underline">
+                  See pricing
+                </Link>
+                <Link href="/gmail-crm" className="text-primary hover:underline">
+                  Gmail CRM overview
+                </Link>
+                <Link href="/resources" className="text-primary hover:underline">
+                  Resources and templates
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </section>

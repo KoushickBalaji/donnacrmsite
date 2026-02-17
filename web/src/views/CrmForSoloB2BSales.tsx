@@ -208,8 +208,20 @@ export function CrmForSoloB2BSalesPage() {
                 <Link href="/gmail-crm" className="text-primary hover:underline">
                   Gmail CRM overview
                 </Link>
+                <Link
+                  href="/resources/track-deals-from-email-threads"
+                  className="text-primary hover:underline"
+                >
+                  Track deals from email threads
+                </Link>
                 <Link href="/ai-gmail-crm" className="text-primary hover:underline">
                   AI assistant (human-in-the-loop)
+                </Link>
+                <Link
+                  href="/resources/follow-up-email-templates-solo-b2b-sales"
+                  className="text-primary hover:underline"
+                >
+                  Follow-up email templates
                 </Link>
                 <Link href="/email-tracking-in-gmail" className="text-primary hover:underline">
                   Email tracking in Gmail

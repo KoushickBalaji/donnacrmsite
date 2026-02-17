@@ -1,5 +1,6 @@
 import { ArrowRight, Check } from 'lucide-react'
 import Link from 'next/link'
+import { FaqList, type FaqItem } from '../components/FaqList'
 import { Button } from '../components/ui/Button'
 import { Card, CardContent, CardHeader } from '../components/ui/Card'
 import { chromeWebStoreInstallUrl } from '../lib/chromeWebStore'
@@ -18,6 +19,34 @@ const plan = {
   ],
   cta: 'Start 14-day free trial',
 } as const
+
+export const pricingFaqs: FaqItem[] = [
+  {
+    question: 'How does the 14-day free trial work?',
+    answer:
+      'Your trial starts on sign-up. You can use Donna CRM in your real Gmail workflow during the trial, and you can cancel anytime before the trial ends to avoid being charged.',
+  },
+  {
+    question: 'What happens after the trial?',
+    answer:
+      'After the trial, continue on the same plan for $10/month. Annual billing is available at an effective $8/month billed annually.',
+  },
+  {
+    question: 'Is there more than one plan?',
+    answer:
+      'No. Donna CRM keeps pricing simple with one plan that includes the core Gmail CRM workflow, tracking, campaigns, and AI assistant access.',
+  },
+  {
+    question: 'Can I cancel anytime?',
+    answer:
+      'Yes. You can cancel during the trial or later. You will not be charged if you cancel before the trial ends.',
+  },
+  {
+    question: 'Is this built for teams?',
+    answer:
+      'Donna CRM is optimized for individuals and solo operators. If you need complex team permissions and reporting, a team CRM may be a better fit.',
+  },
+]
 
 export function PricingPage() {
   return (
@@ -96,6 +125,43 @@ export function PricingPage() {
                   </p>
                 </CardContent>
               </Card>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-muted/30 py-16 lg:py-20">
+        <div className="container">
+          <div className="mx-auto grid max-w-5xl gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
+            <div>
+              <h2 className="text-2xl font-bold text-foreground sm:text-3xl">Pricing FAQs</h2>
+              <p className="mt-4 text-muted-foreground">
+                Quick answers to common questions about the trial, billing, and whether Donna is a fit.
+              </p>
+              <div className="mt-8">
+                <FaqList items={pricingFaqs} />
+              </div>
+            </div>
+
+            <div className="rounded-xl border border-border bg-background p-6">
+              <p className="text-sm font-semibold text-foreground">Still not sure?</p>
+              <p className="mt-2 text-sm text-muted-foreground">
+                If you want to confirm Donna fits your workflow, these pages cover the core Gmail-native model and common questions.
+              </p>
+              <div className="mt-5 flex flex-col gap-2 text-sm font-semibold">
+                <Link href="/gmail-crm" className="text-primary hover:underline">
+                  Gmail CRM overview
+                </Link>
+                <Link href="/features" className="text-primary hover:underline">
+                  See all features
+                </Link>
+                <Link href="/resources" className="text-primary hover:underline">
+                  Resources and templates
+                </Link>
+                <Link href="/faq" className="text-primary hover:underline">
+                  View FAQ
+                </Link>
+              </div>
             </div>
           </div>
         </div>

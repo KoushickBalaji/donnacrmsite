@@ -118,7 +118,7 @@ export function HomePage() {
               </div>
 
               <p className="mt-4 text-sm text-muted-foreground">
-                No setup | No credit card | Uninstall anytime
+                No setup | No card needed for trial | Uninstall anytime
               </p>
             </Reveal>
 
@@ -248,7 +248,10 @@ export function HomePage() {
         </div>
       </section>
 
-      <section data-home-snap-section className="bg-background py-14 lg:py-20">
+      <section
+        data-home-snap-section
+        className="flex min-h-[calc(100svh-4rem)] items-center bg-background py-14 lg:py-20"
+      >
         <div className="container">
           <Reveal>
             <div className="mx-auto max-w-5xl">
@@ -295,6 +298,38 @@ export function HomePage() {
                     <MiniTile Icon={User} label="Designed for solo operators" />
                     <MiniTile Icon={Inbox} label="Works entirely inside Gmail" />
                     <MiniTile Icon={Zap} label="Fast and distraction-free" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      <section
+        data-home-snap-section
+        className="flex min-h-[calc(100svh-4rem)] items-center bg-background py-14 lg:py-20"
+      >
+        <div className="container">
+          <Reveal>
+            <div className="mx-auto max-w-5xl">
+              <div className="overflow-hidden rounded-[24px] bg-[#F7F8FA] p-8 shadow-[0_18px_45px_rgba(0,0,0,0.06)] ring-1 ring-black/[0.04] lg:p-12">
+                <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:gap-10">
+                  <div className="mx-auto w-fit flex-shrink-0 rounded-2xl bg-[#0B1220] p-4 shadow-[0_18px_40px_rgba(0,0,0,0.14)] ring-1 ring-white/10 sm:mx-0">
+                    <img
+                      src="/esof-shield.png"
+                      alt="ESOF Shield Certified"
+                      width="150"
+                    />
+                  </div>
+
+                  <div>
+                    <h2 className="text-2xl font-semibold text-foreground sm:text-3xl">
+                      Rigorous testing. CASA certified.
+                    </h2>
+                    <p className="mt-4 text-[15px] leading-[1.6] text-foreground/70">
+                      Donna has undergone rigorous third-party security testing and earned CASA
+                      certification through an independent audit by TAC Security. Your data is stored and processed using industry standard methodologies.                    </p>
                   </div>
                 </div>
               </div>

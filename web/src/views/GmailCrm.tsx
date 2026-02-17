@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { FaqList, type FaqItem } from '../components/FaqList'
+import { ResourceCardGrid } from '../components/ResourceCardGrid'
 import { Button } from '../components/ui/Button'
 import { Card, CardContent } from '../components/ui/Card'
 import { chromeWebStoreInstallUrl } from '../lib/chromeWebStore'
@@ -251,6 +252,16 @@ export function GmailCrmPage() {
           </div>
         </div>
       </section>
+
+      <ResourceCardGrid
+        title="Popular Gmail CRM guides"
+        description="Practical templates and checklists to help you build a lightweight system that stays updated while you work in Gmail."
+        slugs={[
+          'personal-crm-inside-gmail-setup',
+          'follow-up-system-in-gmail',
+          'gmail-crm-extension-checklist',
+        ]}
+      />
 
       <section className="bg-background py-16 lg:py-20">
         <div className="container">

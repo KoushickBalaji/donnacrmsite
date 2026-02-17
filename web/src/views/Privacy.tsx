@@ -1,5 +1,5 @@
 export function PrivacyPage() {
-  const lastUpdated = '14 Dec 2025'
+  const lastUpdated = '17 Feb 2026'
 
   return (
     <>
@@ -44,6 +44,29 @@ export function PrivacyPage() {
                 <li>Email templates you create</li>
                 <li>Usage data and analytics</li>
               </ul>
+            </div>
+
+            <div>
+              <h2
+                id="cookies-and-analytics"
+                className="mb-4 scroll-mt-24 text-2xl font-bold text-foreground"
+              >
+                Cookies &amp; analytics (website)
+              </h2>
+              <p className="mb-4 text-muted-foreground">
+                Our marketing website may use cookies and similar technologies to help
+                us understand how the site is used and measure marketing performance.
+                This includes:
+              </p>
+              <ul className="list-inside list-disc space-y-2 text-muted-foreground">
+                <li>Google Analytics 4 (GA4) for usage analytics</li>
+                <li>Google Ads conversion tracking for install intent measurement</li>
+              </ul>
+              <p className="mt-4 text-muted-foreground">
+                We do not load these optional analytics/marketing tags until you
+                provide consent. You can update your preferences anytime via the
+                &ldquo;Cookie preferences&rdquo; link in the site footer.
+              </p>
             </div>
 
             <div>

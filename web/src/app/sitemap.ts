@@ -1,5 +1,6 @@
 import type { MetadataRoute } from 'next'
 import { resolveSiteOrigin } from '../lib/site'
+import { resourceArticles } from '../content/resources'
 
 export const dynamic = 'force-static'
 
@@ -31,8 +32,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const origin = resolveSiteOrigin()
   const lastModified = new Date()
 
-  return paths.map((pathname) => ({
+  const resourceEntries = resourceArticles.map((article) => {
+    const articleLastModified = new Date(`${(article.updatedAt ?? article.publishedAt)}T00:00:00.000Z`)
+    return {
+      url: `${origin}/resources/${article.slug}`,
+      lastModified: Number.isNaN(articleLastModified.getTime()) ? lastModified : articleLastModified,
+    }
+  })
+
+  const staticEntries = paths.map((pathname) => ({
     url: pathname === '/' ? `${origin}/` : `${origin}${pathname}`,
     lastModified,
   }))
+
+  return [...staticEntries, ...resourceEntries]
 }

@@ -156,7 +156,7 @@ export function ProductPage() {
               Ready to try Donna?
              </h2>
             <p className="mt-4 text-muted-foreground">
-              Install in under 2 minutes. No setup. Cancel anytime.
+              Install in under 2 minutes. No card required for trial. Cancel anytime.
             </p>
             <div className="mt-8">
               <Button size="lg" asChild>

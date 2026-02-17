@@ -1,131 +1,46 @@
-import {
-  BookOpen,
-  FileSpreadsheet,
-  Layers,
-  Mail,
-  MailOpen,
-  Sparkles,
-} from 'lucide-react'
 import Link from 'next/link'
+import { ArrowRight } from 'lucide-react'
+import { FaqList, type FaqItem } from '../components/FaqList'
 import { Button } from '../components/ui/Button'
 import { Card, CardContent } from '../components/ui/Card'
+import { resourceArticles } from '../content/resources'
 
-const resources = [
+const resourcesFaqs: FaqItem[] = [
   {
-    id: 'ai-assistant',
-    icon: Sparkles,
-    title: 'AI assistant',
-    description: 'Turn conversations into next steps with a human-in-the-loop assistant.',
-    bullets: [
-      'Ask the assistant to summarize a thread and pull out action items.',
-      'Draft a follow-up email and edit it in your own voice.',
-      'Create or update CRM context from a real conversation (with confirmation).',
-      'Use onboarding suggestions as a starting point, then refine over time.',
-    ],
-    links: [
-      { href: '/ai-gmail-crm', label: 'How the AI works' },
-      { href: '/inbox-onboarding', label: 'Inbox onboarding' },
-      { href: '/privacy', label: 'Privacy policy' },
-    ],
+    question: 'Are these guides specific to Donna CRM?',
+    answer:
+      'They are written for Gmail-first workflows that solo operators actually use. The examples reference Donna CRM, but the underlying habits (stages and next steps) apply to any lightweight CRM system.',
   },
   {
-    id: 'getting-started',
-    icon: BookOpen,
-    title: 'Getting started',
-    description: 'Install the extension, then let inbox onboarding recommend a first setup.',
-    bullets: [
-      'Install Donna CRM from the Chrome Web Store.',
-      'Open Gmail and click the Donna CRM icon in the sidebar.',
-      'Run inbox onboarding to scan recent threads and recommend a lightweight setup.',
-      'Review suggestions and confirm what gets created, then start from real threads.',
-    ],
-    links: [
-      { href: '/inbox-onboarding', label: 'Inbox onboarding' },
-      { href: '/gmail-crm', label: 'Gmail CRM overview' },
-      { href: '/pricing', label: 'See pricing' },
-    ],
+    question: 'Do I need the AI assistant to use these workflows?',
+    answer:
+      'No. You can run a lightweight Gmail CRM workflow without AI. The assistant can help you move faster by drafting follow-ups and suggesting next steps, but you stay in control and review before acting.',
   },
   {
-    id: 'imports',
-    icon: FileSpreadsheet,
-    title: 'Import guide (CSV + Google Sheets)',
-    description: 'Bring your contacts into Donna CRM using CSV or Google Sheets.',
-    bullets: [
-      'Start with a sheet that has at least name + email columns.',
-      'Clean duplicates and verify emails before importing.',
-      'Run a small import first to confirm mapping and formatting.',
-      'Use tags/notes to preserve context during your migration.',
-    ],
-    links: [
-      { href: '/crm-for-freelancers', label: 'Freelancer workflow' },
-      { href: '/crm-for-consultants', label: 'Consultant workflow' },
-      { href: '/contact', label: 'Get help' },
-    ],
+    question: 'Can I reuse the templates as-is?',
+    answer:
+      'Yes, but you will get better results if you personalize them. Add one specific detail from the thread so the message sounds like you and feels relevant to the recipient.',
   },
-  {
-    id: 'pipelines',
-    icon: Layers,
-    title: 'How pipelines work',
-    description: 'Use stages to track work and keep momentum in one place.',
-    bullets: [
-      'Create stages that match your real workflow (sales, recruiting, partnerships).',
-      'Move items as the next step happens-keep stages lightweight.',
-      'Use notes/tasks to capture handoffs and follow-ups.',
-      'Review your pipeline regularly to unblock stalled work.',
-    ],
-    links: [
-      { href: '/crm-for-solo-b2b-sales', label: 'Solo B2B sales' },
-      { href: '/crm-for-consultants', label: 'Consulting stages' },
-      { href: '/gmail-crm', label: 'Gmail CRM basics' },
-    ],
-  },
-  {
-    id: 'campaigns',
-    icon: Mail,
-    title: 'How campaigns work',
-    description: 'Create and send bulk email campaigns with basic personalization.',
-    bullets: [
-      "Create a template you'd be comfortable sending 1:1.",
-      'Segment recipients into a focused list (keep it specific).',
-      'Personalize the opener and preview before sending.',
-      'Track opens/clicks and follow up only where it makes sense.',
-    ],
-    links: [
-      { href: '/features', label: 'Campaign features' },
-      { href: '/email-tracking-in-gmail', label: 'Email tracking in Gmail' },
-      { href: '/privacy', label: 'Privacy policy' },
-    ],
-  },
-  {
-    id: 'tracking',
-    icon: MailOpen,
-    title: 'How tracking works',
-    description: 'Understand opens and clicks so you can prioritize follow-ups.',
-    bullets: [
-      'Track opens and clicks from Gmail alongside the thread.',
-      'Use engagement to prioritize follow-ups and keep pipeline status fresh.',
-      'Review campaign engagement to see what gets replies over time.',
-      'Pair tracking with a simple next-step habit (task and reminder).',
-    ],
-    links: [
-      { href: '/email-tracking-in-gmail', label: 'Email tracking in Gmail' },
-      { href: '/inbox-onboarding', label: 'Inbox onboarding' },
-      { href: '/contact', label: 'Questions?' },
-    ],
-  },
-] as const
+]
 
 export function ResourcesPage() {
+  const articles = [...resourceArticles].sort((a, b) => {
+    return (b.updatedAt ?? b.publishedAt).localeCompare(a.updatedAt ?? a.publishedAt)
+  })
+
   return (
     <>
       <section className="bg-gradient-to-b from-primary/5 to-background py-16 lg:py-24">
         <div className="container">
           <div className="mx-auto max-w-3xl text-center">
             <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
-              Resources
+              Resources for Gmail CRM Workflows
             </h1>
             <p className="mt-6 text-lg text-muted-foreground">
-              Practical guides to help you get the most out of Donna CRM inside Gmail.
+              Practical guides, templates, and checklists for solo operators who sell and deliver from their inbox.
+            </p>
+            <p className="mt-3 text-sm text-muted-foreground">
+              Start with Gmail CRM basics, then pick a workflow guide that matches how you work.
             </p>
           </div>
         </div>
@@ -133,68 +48,101 @@ export function ResourcesPage() {
 
       <section className="bg-background py-20">
         <div className="container">
-          <div className="mx-auto grid max-w-5xl grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {resources.map((r) => (
-              <a
-                key={r.id}
-                href={`#${r.id}`}
-                className="group rounded-lg outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-              >
-                <Card className="h-full border-border transition-colors group-hover:border-primary/50">
-                  <CardContent className="p-6">
-                    <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
-                      <r.icon className="h-6 w-6 text-primary" />
-                    </div>
-                    <h2 className="text-lg font-semibold text-foreground">{r.title}</h2>
-                    <p className="mt-2 text-sm text-muted-foreground">{r.description}</p>
-                    <p className="mt-4 text-sm font-medium text-primary">
-                      Read guide
-                    </p>
-                  </CardContent>
-                </Card>
-              </a>
-            ))}
-          </div>
-
-          <div className="mx-auto mt-16 max-w-5xl space-y-12">
-            {resources.map((r) => (
-              <div key={r.id} id={r.id} className="scroll-mt-24">
-                <div className="flex items-start gap-4">
-                  <div className="mt-1 flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
-                    <r.icon className="h-5 w-5 text-primary" />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-2xl font-bold text-foreground">{r.title}</h3>
-                    <p className="mt-2 text-muted-foreground">{r.description}</p>
-                    <ul className="mt-4 space-y-3">
-                      {r.bullets.map((b) => (
-                        <li key={b} className="flex items-start gap-3">
-                          <div className="mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-primary" />
-                          <span className="text-muted-foreground">{b}</span>
-                        </li>
-                      ))}
-                    </ul>
-                    <div className="mt-6 flex flex-wrap gap-x-4 gap-y-2 text-sm font-semibold">
-                      {r.links.map((link) => (
-                        <Link
-                          key={link.href}
-                          href={link.href}
-                          className="text-primary hover:underline"
-                        >
-                          {link.label}
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-                </div>
+          <div className="mx-auto max-w-5xl">
+            <div className="rounded-2xl border border-border bg-muted/30 p-8 shadow-sm">
+              <h2 className="text-2xl font-bold text-foreground">Start with the pillars</h2>
+              <p className="mt-3 max-w-3xl text-muted-foreground">
+                If you are new to Gmail CRMs, these pages explain the core model: keep context next to
+                email threads, track work in simple pipelines, and capture the next step as a task.
+              </p>
+              <div className="mt-6 flex flex-wrap gap-3 text-sm font-semibold">
+                <Link
+                  href="/gmail-crm"
+                  className="rounded-full bg-background px-4 py-2 text-primary ring-1 ring-black/[0.04] hover:underline"
+                >
+                  Gmail CRM overview
+                </Link>
+                <Link
+                  href="/ai-gmail-crm"
+                  className="rounded-full bg-background px-4 py-2 text-primary ring-1 ring-black/[0.04] hover:underline"
+                >
+                  AI assistant in Gmail
+                </Link>
+                <Link
+                  href="/inbox-onboarding"
+                  className="rounded-full bg-background px-4 py-2 text-primary ring-1 ring-black/[0.04] hover:underline"
+                >
+                  Inbox onboarding
+                </Link>
+                <Link
+                  href="/email-tracking-in-gmail"
+                  className="rounded-full bg-background px-4 py-2 text-primary ring-1 ring-black/[0.04] hover:underline"
+                >
+                  Email tracking in Gmail
+                </Link>
+                <Link
+                  href="/pricing"
+                  className="rounded-full bg-background px-4 py-2 text-primary ring-1 ring-black/[0.04] hover:underline"
+                >
+                  Pricing
+                </Link>
               </div>
-            ))}
+            </div>
 
-            <div className="rounded-lg border border-border bg-muted/30 p-8 text-center">
-              <h3 className="text-2xl font-bold text-foreground">Need help?</h3>
+            <div className="mt-14">
+              <div className="flex items-end justify-between gap-6">
+                <div>
+                  <h2 className="text-2xl font-bold text-foreground">Latest guides</h2>
+                  <p className="mt-2 text-muted-foreground">
+                    Pick a workflow guide, copy the templates, and keep your system lightweight.
+                  </p>
+                </div>
+                <Link href="/contact" className="hidden text-sm font-semibold text-primary hover:underline sm:inline">
+                  Suggest a topic
+                </Link>
+              </div>
+
+              <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+                {articles.map((article) => (
+                  <Link
+                    key={article.slug}
+                    href={`/resources/${article.slug}`}
+                    className="group rounded-lg outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                  >
+                    <Card className="h-full border-border transition-colors group-hover:border-primary/50">
+                      <CardContent className="flex h-full flex-col p-6">
+                        <p className="text-xs font-semibold uppercase tracking-[0.08em] text-foreground/50">
+                          {article.category}
+                        </p>
+                        <h3 className="mt-3 text-lg font-semibold text-foreground">
+                          {article.title}
+                        </h3>
+                        <p className="mt-3 text-sm text-muted-foreground">{article.description}</p>
+                        <p className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-primary">
+                          Read guide <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                        </p>
+                      </CardContent>
+                    </Card>
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            <div className="mt-16 rounded-2xl border border-border bg-background p-8 shadow-sm">
+              <h2 className="text-2xl font-bold text-foreground">Resources FAQ</h2>
+              <p className="mt-3 max-w-3xl text-muted-foreground">
+                A few quick answers before you dive into the templates and workflows.
+              </p>
+              <div className="mt-6">
+                <FaqList items={resourcesFaqs} />
+              </div>
+            </div>
+
+            <div className="mt-16 rounded-lg border border-border bg-muted/30 p-8 text-center">
+              <h2 className="text-2xl font-bold text-foreground">Need help?</h2>
               <p className="mx-auto mt-3 max-w-2xl text-muted-foreground">
-                If you have a question about setup, billing, or whether a feature is a
-                fit for your workflow, reach out and we'll get back to you.
+                If you have a question about setup, billing, or whether Donna is a fit for your workflow,
+                reach out and we will get back to you.
               </p>
               <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
                 <Button asChild>

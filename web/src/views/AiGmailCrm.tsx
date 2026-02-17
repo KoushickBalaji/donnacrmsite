@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { FaqList, type FaqItem } from '../components/FaqList'
+import { ResourceCardGrid } from '../components/ResourceCardGrid'
 import { Button } from '../components/ui/Button'
 import { Card, CardContent } from '../components/ui/Card'
 import { chromeWebStoreInstallUrl } from '../lib/chromeWebStore'
@@ -223,6 +224,16 @@ export function AiGmailCrmPage() {
           </div>
         </div>
       </section>
+
+      <ResourceCardGrid
+        title="More on AI workflows"
+        description="If you are evaluating human-in-the-loop AI, these guides explain what to expect and how to keep control while moving faster."
+        slugs={[
+          'what-is-an-agentic-crm',
+          'keep-crm-updated-without-manual-data-entry',
+          'inbox-to-pipeline',
+        ]}
+      />
 
       <section className="bg-background py-16 lg:py-20">
         <div className="container">

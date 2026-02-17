@@ -182,16 +182,28 @@ export function CrmForConsultantsPage() {
               <p className="mt-2 text-sm text-muted-foreground">
                 If you're evaluating Donna, these pages fill in the details.
               </p>
-              <div className="mt-3 flex flex-col gap-2 text-sm">
-                <Link href="/gmail-crm" className="text-primary hover:underline">
-                  Gmail CRM overview
-                </Link>
-                <Link href="/ai-gmail-crm" className="text-primary hover:underline">
-                  AI assistant (human-in-the-loop)
-                </Link>
-                <Link href="/email-tracking-in-gmail" className="text-primary hover:underline">
-                  Email tracking in Gmail
-                </Link>
+                <div className="mt-3 flex flex-col gap-2 text-sm">
+                  <Link href="/gmail-crm" className="text-primary hover:underline">
+                    Gmail CRM overview
+                  </Link>
+                  <Link
+                    href="/resources/gmail-crm-for-consultants-workflow"
+                    className="text-primary hover:underline"
+                  >
+                    Consultant Gmail CRM workflow
+                  </Link>
+                  <Link
+                    href="/resources/consultant-pipeline-stages"
+                    className="text-primary hover:underline"
+                  >
+                    Consultant pipeline stages
+                  </Link>
+                  <Link href="/ai-gmail-crm" className="text-primary hover:underline">
+                    AI assistant (human-in-the-loop)
+                  </Link>
+                  <Link href="/email-tracking-in-gmail" className="text-primary hover:underline">
+                    Email tracking in Gmail
+                  </Link>
                 <Link href="/pricing" className="text-primary hover:underline">
                   Pricing
                 </Link>

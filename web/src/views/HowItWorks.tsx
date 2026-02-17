@@ -427,7 +427,7 @@ export function HowItWorksPage() {
               Try Donna CRM inside Gmail
             </h2>
             <p className="mt-4 text-muted-foreground">
-              Install in under 2 minutes. No setup. Cancel anytime.
+              Install in under 2 minutes. No card required for trial. Cancel anytime.
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <Button size="lg" asChild>

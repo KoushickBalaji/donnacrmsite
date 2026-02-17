@@ -1,5 +1,7 @@
 import type { Metadata, Viewport } from 'next'
 import { Suspense } from 'react'
+import { ConsentProvider } from '../components/consent/ConsentProvider'
+import { CookieConsentBanner } from '../components/consent/CookieConsentBanner'
 import { JsonLd } from '../components/JsonLd'
 import { SiteFooter } from '../components/SiteFooter'
 import { SiteHeader } from '../components/SiteHeader'
@@ -25,7 +27,8 @@ export const metadata: Metadata = {
     template: `%s | ${SITE_NAME}`,
   },
   icons: {
-    icon: '/icon.svg',
+    icon: '/donna-16-v3.png',
+    shortcut: '/donna-16-v3.png',
   },
   robots: isProduction ? { index: true, follow: true } : { index: false, follow: false },
   openGraph: {
@@ -56,18 +59,21 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" suppressHydrationWarning>
       <body suppressHydrationWarning>
-        <Ga4Script />
-        <JsonLd id="donna-jsonld-global" data={globalJsonLd} />
-        <div className="min-h-screen bg-background">
-          <div className="flex min-h-screen flex-col">
-            <SiteHeader />
-            <Suspense fallback={null}>
-              <Ga4Analytics />
-            </Suspense>
-            <main className="flex-1">{children}</main>
-            <SiteFooter />
+        <ConsentProvider>
+          <Ga4Script />
+          <JsonLd id="donna-jsonld-global" data={globalJsonLd} />
+          <div className="min-h-screen bg-background">
+            <div className="flex min-h-screen flex-col">
+              <SiteHeader />
+              <Suspense fallback={null}>
+                <Ga4Analytics />
+              </Suspense>
+              <main className="flex-1">{children}</main>
+              <SiteFooter />
+            </div>
           </div>
-        </div>
+          <CookieConsentBanner />
+        </ConsentProvider>
       </body>
     </html>
   )

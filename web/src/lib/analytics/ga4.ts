@@ -1,3 +1,5 @@
+import { isDoNotTrackEnabled } from '../consent'
+
 declare global {
   interface Window {
     dataLayer?: unknown[]
@@ -6,13 +8,6 @@ declare global {
 }
 
 const measurementId = process.env.NEXT_PUBLIC_GA4_MEASUREMENT_ID as string | undefined
-
-function isDoNotTrackEnabled() {
-  return (
-    navigator.doNotTrack === '1' ||
-    (window as unknown as { doNotTrack?: string }).doNotTrack === '1'
-  )
-}
 
 function ensureGtagShim() {
   window.dataLayer ??= []
@@ -23,7 +18,7 @@ function ensureGtagShim() {
 
 let initialized = false
 
-export function initGa4() {
+export function initGa4(options?: { allowAdPersonalizationSignals?: boolean }) {
   if (initialized) return
   if (!measurementId) return
   if (isDoNotTrackEnabled()) return
@@ -31,18 +26,22 @@ export function initGa4() {
   ensureGtagShim()
 
   window.gtag?.('js', new Date())
-  window.gtag?.('config', measurementId, { send_page_view: false })
+  window.gtag?.('config', measurementId, {
+    send_page_view: false,
+    allow_google_signals: false,
+    allow_ad_personalization_signals: Boolean(options?.allowAdPersonalizationSignals),
+  })
 
   initialized = true
 }
 
-export function trackPageView(path: string) {
+export function trackPageView(path: string, location?: string) {
   if (!initialized) return
   if (!measurementId) return
 
   window.gtag?.('event', 'page_view', {
     page_path: path,
-    page_location: window.location.href,
+    page_location: location ?? window.location.href,
     page_title: document.title,
   })
 }

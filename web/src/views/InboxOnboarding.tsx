@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { FaqList, type FaqItem } from '../components/FaqList'
+import { ResourceCardGrid } from '../components/ResourceCardGrid'
 import { Button } from '../components/ui/Button'
 import { Card, CardContent } from '../components/ui/Card'
 import { chromeWebStoreInstallUrl } from '../lib/chromeWebStore'
@@ -27,15 +28,7 @@ export const inboxOnboardingFaqs: FaqItem[] = [
   },
   {
     question: 'Where can I read about data and privacy?',
-    answer: (
-      <>
-        Read the{' '}
-        <Link href="/privacy" className="text-primary hover:underline">
-          Privacy Policy
-        </Link>{' '}
-        for details about data handling and permissions.
-      </>
-    ),
+    answer: 'Read the Privacy Policy for details about data handling and permissions.',
   },
 ]
 
@@ -214,6 +207,16 @@ export function InboxOnboardingPage() {
           </div>
         </div>
       </section>
+
+      <ResourceCardGrid
+        title="Next guides to read"
+        description="If you are building a Gmail-first system, these guides help you keep it lightweight and consistent."
+        slugs={[
+          'personal-crm-inside-gmail-setup',
+          'inbox-to-pipeline',
+          'keep-crm-updated-without-manual-data-entry',
+        ]}
+      />
 
       <section className="bg-background py-16 lg:py-20">
         <div className="container">
