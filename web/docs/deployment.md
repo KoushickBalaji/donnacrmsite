@@ -2,17 +2,36 @@
 
 ## Hosting model
 
-This website is a Next.js app (App Router). Vercel deployment is the primary target.
+This package is a Next.js App Router app. Vercel is the primary deployment target.
 
-## Vercel
+## Runtime behavior in code
 
-No SPA rewrite rules are required. Next.js handles routing and serverless functions natively on Vercel.
-
-Notes:
-- Preview deployments are configured as `noindex` via the global `robots` metadata in `src/app/layout.tsx`.
-- Set `NEXT_PUBLIC_SITE_ORIGIN=https://www.donnacrm.com` in Production env for stable canonicals/metadata.
-
-## Assets
-
+- No SPA rewrite rules are needed.
 - `public/` is served at the site root.
-- Screenshots referenced in pages live in `public/screenshots/`.
+- `src/middleware.ts` enforces HTTPS redirects in production requests.
+- The middleware does not enforce host canonicalization (`non-www` to `www` is not implemented in this repo).
+
+## Robots/indexing behavior
+
+Global robots metadata is set in `src/app/layout.tsx`:
+
+- `index/follow = true` when `VERCEL_ENV === 'production'` **or** `NODE_ENV === 'production'`
+- `index/follow = false` otherwise
+
+## Environment variables
+
+### Recommended
+
+- `NEXT_PUBLIC_SITE_ORIGIN=https://www.donnacrm.com`
+
+### Optional analytics
+
+- `NEXT_PUBLIC_GA4_MEASUREMENT_ID`
+- `NEXT_PUBLIC_GOOGLE_ADS_TAG_ID`
+- `NEXT_PUBLIC_GOOGLE_ADS_INSTALL_SEND_TO`
+
+### Required for contact email
+
+- `RESEND_API_KEY`
+- `CONTACT_FROM_EMAIL`
+- `CONTACT_TO_EMAIL` (optional, defaults to `support@donnacrm.com`)

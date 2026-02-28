@@ -1132,7 +1132,7 @@ export const resourceArticles: ResourceArticle[] = [
         heading: '2) Pipelines and tasks (your follow-up system)',
         bullets: [
           'Can you create pipelines with simple stages?',
-          'Can you tie tasks to contacts or pipeline items?',
+          'Can you tie tasks to contacts?',
           'Can you review what is stalled without scanning your inbox?',
         ],
       },

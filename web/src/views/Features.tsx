@@ -107,7 +107,7 @@ const featureSections: FeatureSection[] = [
     title: 'Task Management',
     description: 'Capture next steps and stay on top of follow-ups.',
     details: [
-      'Create tasks linked to contacts or pipeline items',
+      'Create tasks linked to contacts',
       'Set due dates and track completion',
       'Use the assistant to turn threads into clear next steps',
     ],

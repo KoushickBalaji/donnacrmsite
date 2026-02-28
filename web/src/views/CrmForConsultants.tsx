@@ -162,7 +162,7 @@ export function CrmForConsultantsPage() {
           <div className="mx-auto grid max-w-5xl gap-10 lg:grid-cols-2 lg:items-start">
             <div>
               <h2 className="text-2xl font-semibold text-foreground sm:text-3xl">
-                Tasks and reminders tied to clients
+                Tasks and follow-ups tied to clients
               </h2>
               <p className="mt-4 text-muted-foreground">
                 Consulting work is follow-up work: scheduling, confirming, nudging, and closing the

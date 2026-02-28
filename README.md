@@ -1,5 +1,6 @@
 # donnacrm
-Manage website of donnacrm.com
+
+Marketing website for `donnacrm.com`.
 
 ## Local development
 
@@ -7,11 +8,7 @@ Manage website of donnacrm.com
 - `npm install`
 - `npm run dev`
 
-## Pages
+## Documentation
 
-- `/` Home
-- `/features`
-- `/pricing`
-- `/faq`
-- `/contact`
-- `/privacy`
+- Web package README: `web/README.md`
+- Web docs index: `web/docs/README.md`

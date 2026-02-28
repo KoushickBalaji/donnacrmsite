@@ -47,6 +47,9 @@ export function IntegrationsPage() {
                   Gmail: to show CRM context next to threads and support inbox-native workflows.
                 </li>
                 <li>
+                  Google Calendar: to schedule meetings (and include Google Meet links) directly from CRM workflows.
+                </li>
+                <li>
                   Google Drive: to access files used during imports and related workflows.
                 </li>
                 <li>

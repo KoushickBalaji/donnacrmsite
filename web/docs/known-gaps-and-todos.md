@@ -1,31 +1,17 @@
 # Known gaps and TODOs
 
-This section is intentionally blunt: it’s here to help developers know what is “placeholder” vs “final”.
+This file tracks code-observable gaps and open decisions.
 
-## In-code TODOs (copy/feature accuracy)
+## Current TODO status in source
 
-Several pages include `TODO` comments indicating that copy or capability lists are not verified and should be updated when product details are finalized. Examples include:
+- No `TODO` markers were found in `src/` during this sync pass.
+- `npm run qa:content` already fails on placeholder markers like `TODO`, `TBD`, and similar patterns.
 
-- `src/views/Home.tsx` (AI Assistant and campaigns sections)
-- `src/views/Features.tsx` (AI assistant details, tasks screenshot, tracking screenshot/copy)
-- `src/views/Integrations.tsx` (permission mapping)
-- `src/views/Resources.tsx` (resource cards are placeholders)
-- `src/views/Pricing.tsx` (billing copy)
+## Known gaps / open decisions
 
-## Content quality issues worth fixing (not addressed here)
-
-While reading the code, a few strings appear to contain character encoding artifacts (for example sequences like `ƒ?` or `youƒ?Tll`). This likely came from copy/paste through a bad encoding path and will show up in the UI.
-
-Places to check:
-
-- `src/views/Home.tsx`
-- `src/views/Features.tsx`
-- `src/views/Pricing.tsx`
-- `src/views/Contact.tsx`
-- `src/views/Faq.tsx`
-- `src/views/Integrations.tsx`
-- `src/views/Resources.tsx`
-
-Also, `src/components/SiteFooter.tsx` renders `Ac {year}` which looks like it was intended to be a copyright symbol.
-
-If you want, I can make a separate PR that cleans these strings up safely (with a quick pass through the rendered pages).
+- Global robots behavior currently treats `NODE_ENV=production` as indexable in `src/app/layout.tsx`.
+  - This can make preview-like production-mode environments indexable unless controlled elsewhere.
+- Host canonical redirect (`donnacrm.com` -> `www.donnacrm.com`) is not implemented in repo middleware.
+  - `src/middleware.ts` currently enforces HTTPS only.
+- `/compare` is included in sitemap paths even though route behavior is a redirect to `/streak-crm-alternative`.
+- The Shipping policy page exists at `/shipping` but is intentionally not linked in the footer (commented in `src/components/SiteFooter.tsx`).

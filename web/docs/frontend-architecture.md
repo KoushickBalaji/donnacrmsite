@@ -2,31 +2,44 @@
 
 ## Entry points
 
-- Global layout: `src/app/layout.tsx`
-- Route entry points: `src/app/**/page.tsx`
+- Root layout: `src/app/layout.tsx`
+- Route entry files: `src/app/**/page.tsx`
+- Metadata routes: `src/app/robots.ts`, `src/app/sitemap.ts`
 
 ## Layout composition
 
-`src/app/layout.tsx` provides the overall page frame:
+`src/app/layout.tsx` composes the global frame:
 
-- `src/components/SiteHeader.tsx` renders the top navigation (desktop + mobile menu).
-- `src/components/SiteFooter.tsx` renders footer links (Product + Company + legal pages).
+- `ConsentProvider` wraps the app and manages consent state.
+- `Ga4Script` conditionally injects Google tag script after consent.
+- `Ga4Analytics` tracks SPA route changes and install click events.
+- `SiteHeader` and `SiteFooter` render shared navigation.
+- `CookieConsentBanner` renders the consent UI.
+- `JsonLd` injects global Organization/WebSite schema.
 
-## Design system (lightweight)
+## Route composition pattern
 
-This codebase uses Tailwind utility classes directly in page/components. There is a minimal set of reusable UI primitives:
+Most routes are thin wrappers:
 
-- `src/components/ui/Button.tsx`: variants, sizes, and an `asChild` pattern (to style links as buttons).
-- `src/components/ui/Card.tsx`: card primitives used throughout pages.
+- Route file exports page metadata (usually via `pageMetadata(...)`).
+- Route file renders a view component from `src/views/`.
 
-For class name merging and Tailwind conflict resolution:
+Exceptions:
 
-- `src/lib/cn.ts` combines `clsx` and `tailwind-merge`.
+- `/` has explicit metadata in `src/app/page.tsx`.
+- `/resources/[slug]` uses `generateStaticParams` and `generateMetadata` from content.
+- `/home` and `/compare` are redirect routes.
 
-## Static assets
+## Content-driven resources
 
-Anything under `public/` is served at the site root. Screenshots used by pages live in:
+Resources pages are generated from `src/content/resources.ts`:
 
-- `public/screenshots/`
+- `/resources` renders cards from article data.
+- `/resources/[slug]` is statically generated with `dynamic = 'force-static'` and `dynamicParams = false`.
+- Article pages include BlogPosting JSON-LD.
 
-Pages reference these via paths like `/screenshots/Contacts.png`.
+## Styling model
+
+- Tailwind utility classes in components and views.
+- CSS variables in `src/app/globals.css` provide color/radius tokens.
+- Small primitive layer in `src/components/ui/` for `Button` and `Card`.

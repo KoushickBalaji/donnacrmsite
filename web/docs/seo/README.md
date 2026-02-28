@@ -1,42 +1,41 @@
 # SEO
 
-This folder tracks **SEO-specific** work for the Donna CRM marketing website.
+This folder documents SEO behavior implemented in code.
 
-Start here for GSC: `docs/seo/search-console.md`.
+Start here for Search Console workflow: `docs/seo/search-console.md`.
 
-## Current status
+## Current implementation
 
-- **Canonical host:** `https://www.donnacrm.com` (non-`www` redirects to `www`).
-- **Sitemap + robots:** served at `/sitemap.xml` and `/robots.txt` via Next.js metadata routes (`src/app/sitemap.ts`, `src/app/robots.ts`).
-- **Per-page metadata:** each route exports `metadata` in `src/app/**/page.tsx` (title/description/canonical/OpenGraph).
-- **Share image:** `public/og.png` is used as the default `og:image`.
-- **Structured data:** global `Organization` + `WebSite` via `src/app/layout.tsx`, plus page-level JSON-LD via `src/components/JsonLd.tsx`.
+- Canonical and metadata base use `resolveSiteOrigin()` from `src/lib/site.ts`.
+  - `NEXT_PUBLIC_SITE_ORIGIN` is used when set.
+  - Fallback is `https://www.donnacrm.com`.
+- Sitemap and robots are served by metadata routes:
+  - `/sitemap.xml` -> `src/app/sitemap.ts`
+  - `/robots.txt` -> `src/app/robots.ts`
+- Most pages export metadata via `pageMetadata(...)` helper (`src/lib/metadata.ts`).
+- Root page (`/`) has explicit metadata in `src/app/page.tsx`.
+- Resource article pages (`/resources/[slug]`) generate metadata dynamically per article.
+- Default Open Graph image is `public/og.png`.
+- Structured data includes:
+  - Global Organization + WebSite JSON-LD in `src/app/layout.tsx`
+  - Page JSON-LD on selected pages (for example Gmail CRM pages and resource articles)
 
-## Where SEO lives in the codebase
+## Redirects and indexing behavior
 
-- `src/app/layout.tsx` (global metadata + preview `noindex`)
-- `src/app/**/page.tsx` (per-route metadata)
-- `src/app/robots.ts` (crawler directives + sitemap location)
-- `src/app/sitemap.ts` (URL discovery list)
-- `public/og.png` (default share image)
+- `/home` redirects to `/`.
+- `/compare` redirects to `/streak-crm-alternative`.
+- Global robots metadata in `layout.tsx` uses:
+  - `index/follow = true` when `VERCEL_ENV === 'production'` or `NODE_ENV === 'production'`
+  - `index/follow = false` otherwise
+- `src/middleware.ts` enforces HTTPS in production requests.
 
-## Google Search Console checklist
+## Code locations
 
-1. Use the **Domain property** (`donnacrm.com`) for ongoing work.
-2. Submit the sitemap: `https://www.donnacrm.com/sitemap.xml`.
-3. For key URLs, run **URL inspection → Test live URL → Request indexing**:
-   - `https://www.donnacrm.com/`
-   - `https://www.donnacrm.com/features`
-   - `https://www.donnacrm.com/pricing`
-   - `https://www.donnacrm.com/contact`
-4. Monitor **Indexing → Pages**:
-   - *Discovered – currently not indexed*: usually needs time, stronger internal linking, and/or more authority (links).
-   - *Crawled – currently not indexed*: often indicates thin/duplicate/low-demand content; improve the page.
-
-## Pending / next actions
-
-- **Make the canonical redirect permanent:** ensure `donnacrm.com → www.donnacrm.com` is a **301/308**.
-- **Set `NEXT_PUBLIC_SITE_ORIGIN`:** in Vercel Production env, set `NEXT_PUBLIC_SITE_ORIGIN=https://www.donnacrm.com` for stable canonicals across environments.
-- **Improve content quality for non-brand queries:** add high-intent landing pages and deeper resource content (current `/resources` is placeholder-heavy).
-  - Good next candidates: `gmail crm`, `gmail crm extension`, `crm for consultants`, `crm for freelancers`.
-
+- `src/app/layout.tsx`
+- `src/app/page.tsx`
+- `src/lib/site.ts`
+- `src/lib/metadata.ts`
+- `src/app/sitemap.ts`
+- `src/app/robots.ts`
+- `src/app/resources/[slug]/page.tsx`
+- `src/components/JsonLd.tsx`

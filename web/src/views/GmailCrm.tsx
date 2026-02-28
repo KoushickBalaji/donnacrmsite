@@ -199,7 +199,7 @@ export function GmailCrmPage() {
                   {[
                     'Contacts with notes and lightweight context',
                     'A simple pipeline for stages you actually remember',
-                    'Tasks for next steps, follow-ups, and reminders',
+                    'Tasks with due dates for next steps and follow-ups',
                     'Email tracking signals (where supported) when timing matters',
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-3">

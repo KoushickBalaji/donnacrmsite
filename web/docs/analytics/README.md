@@ -1,49 +1,58 @@
 # Analytics
 
-This folder tracks **analytics/instrumentation** work for the Donna CRM marketing website.
+This folder documents analytics instrumentation in the website codebase.
 
-## Current status (what we did)
+## Current implementation
 
-- **GA4 is installed** and verified in Realtime (active users show up).
-- **SPA pageviews** are tracked on route changes.
-- **Chrome Web Store CTA clicks** are tracked as `install_click`.
-- **UTM parameters** are appended to all Chrome Web Store links so you can attribute which page/CTA drove the click.
+- GA4 and Google Ads tags are loaded from `Ga4Script` only when all are true:
+  - Runtime is considered production (`VERCEL_ENV === 'production'` or `NODE_ENV === 'production'`).
+  - At least one tag ID is configured.
+  - Consent is ready and opted in.
+  - Do Not Track is not enabled.
+- SPA page views are sent on route changes (`page_view`).
+- Chrome Web Store install CTA clicks are tracked as `install_click`.
+- Optional Google Ads conversion event is sent on install CTA clicks when `NEXT_PUBLIC_GOOGLE_ADS_INSTALL_SEND_TO` is configured.
 
-## Consent / cookies
+## Consent model
 
-- Google tags (GA4 + optional Google Ads) are **blocked until the user opts in** via the cookie banner.
-- Consent is stored in `localStorage` under `donna_consent_v1` and can be changed via the
-  “Cookie preferences” link in the site footer.
-- If the browser’s **Do Not Track** setting is enabled, the site does not load Google tags.
+- Consent is stored in `localStorage` key `donna_consent_v1`.
+- Consent schema has two categories: `analytics` and `marketing`.
+- If either category is disabled, corresponding Google cookies are cleared.
+- If tracking was previously enabled and then disabled, the page reloads to reset runtime state.
+- If browser DNT is enabled, tracking does not run.
 
-## Setup (Vercel)
+## Event details
 
-1. In Vercel → Project → Settings → Environment Variables (Production), set:
-   - `NEXT_PUBLIC_GA4_MEASUREMENT_ID=G-XXXXXXXXXX` (optional)
-   - `NEXT_PUBLIC_GOOGLE_ADS_TAG_ID=AW-XXXXXXXXX` (optional)
-   - `NEXT_PUBLIC_GOOGLE_ADS_INSTALL_SEND_TO=AW-XXXXXXXXX/XXXXXXXXXXXXXXX` (optional; records install CTA clicks as an Ads conversion)
-2. Trigger a **new deploy/build** (env vars are baked at build time).
-3. Verify:
-   - GA4 → Reports → Realtime
-   - Google Ads → Conversions / Diagnostics (after traffic)
+### `page_view`
 
-Tip: for local dev, copy `.env.example` → `.env` and set `NEXT_PUBLIC_GA4_MEASUREMENT_ID` if you want to test analytics locally. Note that tags/consent are production-only: use `npm run build` + `npm run start` to validate the full behavior.
+Triggered on pathname/search changes when analytics consent is on.
 
-## Where analytics lives in the codebase
+- `page_path` includes pathname plus allowed query params only.
+- Allowed query params: `utm_*`, `gclid`, `gbraid`, `wbraid`.
 
-- `src/lib/analytics/Ga4Script.tsx`: loads the Google tag (GA4 + optional Google Ads) after consent in production
-- `src/lib/analytics/ga4.ts`: GA4 init + event helpers
-- `src/lib/analytics/googleAds.ts`: Google Ads conversion helper for install clicks
-- `src/lib/analytics/Analytics.tsx`: SPA pageview tracking + click tracking
-- `src/app/layout.tsx`: mounts `Ga4Analytics`
-- `src/lib/chromeWebStore.ts`: builds Chrome Web Store URLs with UTMs
-- Consent: `src/lib/consent.ts`, `src/components/consent/*`
+### `install_click`
 
-## Events we track
+Triggered for clicks to Donna's Chrome Web Store listing when consent allows tracking.
 
-- `page_view` (SPA route changes)
-- `install_click` (Chrome Web Store listing link clicks; includes UTM params when present)
+Captured fields include:
 
-## Notes
+- `link_url`
+- `link_text`
+- `page_path`
+- `utm_source`, `utm_medium`, `utm_campaign`, `utm_content` (if present)
 
-- Website analytics can only measure “install intent” (the click). True installs must be measured in the Chrome Web Store dashboard, or emitted by the extension itself.
+## Environment variables
+
+- `NEXT_PUBLIC_GA4_MEASUREMENT_ID` (optional)
+- `NEXT_PUBLIC_GOOGLE_ADS_TAG_ID` (optional)
+- `NEXT_PUBLIC_GOOGLE_ADS_INSTALL_SEND_TO` (optional)
+
+## Code locations
+
+- `src/lib/analytics/Ga4Script.tsx`
+- `src/lib/analytics/Analytics.tsx`
+- `src/lib/analytics/ga4.ts`
+- `src/lib/analytics/googleAds.ts`
+- `src/lib/consent.ts`
+- `src/components/consent/*`
+- `src/lib/chromeWebStore.ts`

@@ -1,41 +1,36 @@
 # Home page scroll behavior
 
-The marketing home page (`/`) has a desktop-only "scroll to next section" behavior to help users progress through the page without needing to scroll all the way down.
+The home page (`/`) uses CSS scroll snapping that is toggled at runtime.
 
-This is implemented directly in:
-
-- `src/views/Home.tsx` (`HomePage()` - the wheel handler `useEffect`)
-
-## What it does
-
-- On desktop (fine pointer) and when `prefers-reduced-motion` is not enabled:
-  - As the user scrolls down, the code accumulates wheel distance.
-  - Once the accumulated distance is roughly equivalent to `wheelSnapNotches` wheel notches (regardless of timing), the page smoothly scrolls to the next home section.
-- The home sections that participate are the `<section>` blocks marked with `data-home-snap-section`.
-
-## Where to change copy
-
-Home page section copy and card text is defined in:
+Implementation:
 
 - `src/views/Home.tsx`
+- `src/app/globals.css`
 
-For example, the "Why Gmail alone isn't enough" card titles and descriptions are hard-coded strings in that file.
+## How it works
 
-## How to change it
+`HomePage` toggles `home-scroll-snap` on the root `<html>` element when:
 
-All tuning knobs live at the top of `src/views/Home.tsx`:
+- Pointer is fine (`(pointer: fine)`), and
+- Reduced motion is not requested (`(prefers-reduced-motion: reduce)` is false)
 
-- `wheelSnapNotches`: how much wheel intent is required before advancing to the next section.
-- `initialNotchEstimatePx`: initial estimate of "pixels per wheel notch" (the code auto-calibrates from real wheel input).
-- `minWheelDeltaPx`: ignore tiny wheel deltas/noise.
-- `snapAnimationDurationMs`: how long the transition takes (milliseconds).
-- `stickyHeaderOffsetPx`: keeps the destination section aligned below the sticky header.
+When enabled:
 
-To change which sections snap:
+- `html.home-scroll-snap` applies `scroll-snap-type: y mandatory`.
+- `--home-snap-offset` is set to `64px` for sticky header offset.
+- Sections marked with `data-home-snap-section` become snap targets.
 
-- Add/remove the `data-home-snap-section` attribute on a home `<section>`.
+When disabled, the class and CSS variable are removed.
 
-## Notes / constraints
+## Hash redirect behavior
 
-- The handler uses a non-passive `wheel` listener and calls `event.preventDefault()` only when it is taking over to animate to the next/previous section.
-- Scrolling is disabled entirely when `prefers-reduced-motion: reduce` is set.
+`HomePage` also listens to URL hash changes:
+
+- `#product` redirects to `/product`
+- `#how-it-works` redirects to `/how-it-works`
+
+## Tuning points
+
+- Sticky offset value: `stickyHeaderOffsetPx` in `src/views/Home.tsx`
+- Snap section participation: add/remove `data-home-snap-section` on home page `<section>` blocks
+- Scroll snap CSS: `src/app/globals.css`

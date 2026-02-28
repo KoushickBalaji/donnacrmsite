@@ -64,7 +64,7 @@ const comparisonRows: ComparisonRow[] = [
   },
   {
     label: 'Follow-ups',
-    donna: { title: 'Tasks and reminders', detail: 'Capture the next step tied to the thread.' },
+    donna: { title: 'Tasks and follow-ups', detail: 'Capture the next step tied to the thread.' },
     streak: { title: 'Pipeline-driven', detail: 'Often managed through boxes and stages.' },
   },
   {

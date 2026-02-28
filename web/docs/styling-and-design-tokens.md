@@ -2,32 +2,39 @@
 
 ## Tailwind setup
 
-- Tailwind config: `tailwind.config.js`
-- PostCSS config: `postcss.config.js`
-- Base CSS and design tokens: `src/app/globals.css`
+- Tailwind config: `tailwind.config.cjs`
+- PostCSS config: `postcss.config.cjs`
+- Global CSS and tokens: `src/app/globals.css`
 
-Tailwind scans these for class usage:
+Tailwind scans:
 
 - `./src/**/*.{ts,tsx}`
 
-## Design tokens (CSS variables)
+## Design tokens in `globals.css`
 
-`src/app/globals.css` defines HSL-based CSS variables on `:root`:
+`:root` defines HSL token variables used by Tailwind mappings:
 
-- `--background`, `--foreground`
-- `--primary`, `--primary-foreground`
-- `--secondary`, `--muted`, `--accent`, `--destructive`
-- `--border`, `--input`, `--ring`
-- `--radius`
+- Surface/text: `--background`, `--foreground`, `--card`, `--card-foreground`
+- Brand: `--primary`, `--primary-foreground`
+- UI neutrals: `--secondary`, `--secondary-foreground`, `--muted`, `--muted-foreground`, `--accent`, `--accent-foreground`
+- Status: `--destructive`, `--destructive-foreground`
+- Borders/inputs/focus: `--border`, `--input`, `--ring`
+- Shape: `--radius`
 
-`tailwind.config.js` maps Tailwind color names to these variables using `hsl(var(--...))`.
+`tailwind.config.cjs` maps Tailwind colors to these variables with `hsl(var(--...))`.
 
 ## Container sizing
 
-The Tailwind `container` is configured to:
+Tailwind `container` config:
 
-- Center content
-- Use `1.5rem` padding
-- Cap `2xl` at `1280px`
+- Centered content
+- Horizontal padding: `1.5rem`
+- `2xl` width cap: `1280px`
 
-This is why most pages use `className="container"` at the top level of sections.
+## Home scroll snapping styles
+
+`globals.css` defines optional home-page snapping styles:
+
+- `html.home-scroll-snap` enables vertical snap.
+- `[data-home-snap-section]` sections align to snap points.
+- `--home-snap-offset` is used for sticky-header offset.

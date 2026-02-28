@@ -1,7 +1,6 @@
-# SEO and analytics (moved)
+# SEO and analytics
 
-This documentation was split to keep SEO and analytics work separate:
+SEO and analytics docs are maintained separately:
 
 - SEO: `docs/seo/README.md`
 - Analytics: `docs/analytics/README.md`
-

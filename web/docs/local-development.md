@@ -3,36 +3,37 @@
 ## Prerequisites
 
 - Node.js 18+
-- npm (repo includes `package-lock.json`)
+- npm
 
 ## Commands
 
 - Install dependencies: `npm install`
 - Start dev server: `npm run dev`
 - Lint: `npm run lint`
+- Content QA checks: `npm run qa:content`
 - Build: `npm run build`
 - Start production server: `npm run start` (after `npm run build`)
 
-## Windows note (Next.js build artifacts)
+## Windows dist-dir behavior
 
-On Windows, this repo uses a dedicated dist dir (`.next-windows`) to avoid file-lock issues with Next.js tracing.
+`next.config.ts` sets a Windows-specific dist dir (`.next-windows`).
 
-If you see errors like `Cannot find module './<chunk>.js'`, it usually means the dist dir is in a stale/inconsistent state. The `dev` and `build` scripts automatically clean `.next-windows` before running Next.js.
+The `dev` and `build` scripts run `scripts/clean-next.mjs` first to remove stale build artifacts from the active dist dir.
 
 ## Environment variables
 
-The website itself does not require env vars to run.
+Common client env vars are documented in `web/.env.example`:
 
-The Contact form’s serverless email function (Vercel) requires env vars when deployed; see `docs/serverless-api.md`.
+- `NEXT_PUBLIC_SITE_ORIGIN`
+- `NEXT_PUBLIC_GA4_MEASUREMENT_ID`
+- `NEXT_PUBLIC_GOOGLE_ADS_TAG_ID`
+- `NEXT_PUBLIC_GOOGLE_ADS_INSTALL_SEND_TO`
 
-## Contact form in local dev (important)
+Contact API env vars are documented in `docs/serverless-api.md`.
 
-The Contact page (`src/views/Contact.tsx`) posts to `/api/contact`.
+## Contact form in local dev
 
-- In production on Vercel, `/api/contact` is served by `src/app/api/contact/route.ts`.
-- In local development (`npm run dev`), the API route runs locally, so the contact form can be tested end-to-end.
+`src/views/Contact.tsx` posts to `/api/contact`, served by `src/app/api/contact/route.ts`.
 
-## Linting and typechecking
-
-- ESLint config is in `eslint.config.js` (flat config).
-- `npm run build` runs `next build`, so type errors break builds.
+- In `npm run dev`, the route runs locally.
+- Without `RESEND_API_KEY` and `CONTACT_FROM_EMAIL`, the endpoint returns a `500` config error.
