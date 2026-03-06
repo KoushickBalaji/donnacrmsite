@@ -12,11 +12,11 @@ const primaryCtaLabel = 'Add to Gmail - Free Trial'
 const stickyHeaderOffsetPx = 64
 
 const surfaceTileClassName =
-  'h-full min-h-[200px] rounded-[20px] bg-[#F7F8FA] p-8 shadow-[0_12px_30px_rgba(0,0,0,0.06)] ring-1 ring-black/[0.04] transition-[transform,box-shadow] duration-[220ms] ease-out hover:-translate-y-1.5 hover:shadow-[0_18px_45px_rgba(0,0,0,0.10)]'
+  'h-full min-h-[200px] rounded-[20px] bg-card p-8 shadow-[0_12px_30px_rgba(0,0,0,0.06)] ring-1 ring-black/[0.04] transition-[transform,box-shadow] duration-[220ms] ease-out hover:-translate-y-1.5 hover:shadow-[0_18px_45px_rgba(0,0,0,0.10)]'
 
 function IconBubble({ Icon }: { Icon: typeof Inbox }) {
   return (
-    <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-primary">
+    <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-blue/10 text-brand-blue">
       <Icon className="h-5 w-5" />
     </div>
   )
@@ -24,8 +24,8 @@ function IconBubble({ Icon }: { Icon: typeof Inbox }) {
 
 function MiniTile({ Icon, label }: { Icon: typeof Inbox; label: string }) {
   return (
-    <div className="flex h-full items-start gap-3 rounded-[18px] bg-white/70 p-5 ring-1 ring-black/[0.04]">
-      <div className="inline-flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-2xl bg-primary/10 text-primary">
+    <div className="flex h-full items-start gap-3 rounded-[18px] bg-card/70 p-5 ring-1 ring-black/[0.04]">
+      <div className="inline-flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-2xl bg-brand-blue/10 text-brand-blue">
         <Icon className="h-5 w-5" />
       </div>
       <p className="pt-1 text-[15px] font-semibold leading-[1.4] text-foreground">
@@ -125,8 +125,8 @@ export function HomePage() {
             <Reveal>
               <div className="overflow-hidden rounded-xl border border-border bg-muted/30">
                 <img
-                  src="/stock/gmail.jpg"
-                  alt="Gmail"
+                  src="/stock/marquee-promo.jpg"
+                  alt="Donna CRM in action"
                   className="h-full w-full object-cover object-center"
                   loading="eager"
                 />
@@ -138,7 +138,7 @@ export function HomePage() {
 
       <section
         data-home-snap-section
-        className="flex min-h-[calc(100svh-4rem)] items-center bg-[#F6F7F9] py-14 lg:py-20"
+        className="flex min-h-[calc(100svh-4rem)] items-center bg-muted py-14 lg:py-20"
       >
         <div className="container">
           <Reveal>
@@ -158,7 +158,7 @@ export function HomePage() {
                     className="h-full w-full object-cover opacity-[0.16] saturate-0"
                     loading="lazy"
                   />
-                  <div className="absolute inset-0 bg-[#F6F7F9]/85" />
+                  <div className="absolute inset-0 bg-muted/85" />
                 </div>
 
                 <div className="grid grid-cols-1 items-stretch gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -255,7 +255,7 @@ export function HomePage() {
         <div className="container">
           <Reveal>
             <div className="mx-auto max-w-5xl">
-              <div className="overflow-hidden rounded-[24px] bg-[#F7F8FA] p-8 shadow-[0_18px_45px_rgba(0,0,0,0.06)] ring-1 ring-black/[0.04] lg:p-12">
+              <div className="overflow-hidden rounded-[24px] bg-card p-8 shadow-[0_18px_45px_rgba(0,0,0,0.06)] ring-1 ring-black/[0.04] lg:p-12">
                 <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
                   <div>
                     <h2 className="text-3xl font-semibold leading-[1.15] text-foreground sm:text-4xl">
@@ -313,9 +313,9 @@ export function HomePage() {
         <div className="container">
           <Reveal>
             <div className="mx-auto max-w-5xl">
-              <div className="overflow-hidden rounded-[24px] bg-[#F7F8FA] p-8 shadow-[0_18px_45px_rgba(0,0,0,0.06)] ring-1 ring-black/[0.04] lg:p-12">
+              <div className="overflow-hidden rounded-[24px] bg-card p-8 shadow-[0_18px_45px_rgba(0,0,0,0.06)] ring-1 ring-black/[0.04] lg:p-12">
                 <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:gap-10">
-                  <div className="mx-auto w-fit flex-shrink-0 rounded-2xl bg-[#0B1220] p-4 shadow-[0_18px_40px_rgba(0,0,0,0.14)] ring-1 ring-white/10 sm:mx-0">
+                  <div className="mx-auto w-fit flex-shrink-0 rounded-2xl bg-ink-deep p-4 shadow-[0_18px_40px_rgba(0,0,0,0.14)] ring-1 ring-white/10 sm:mx-0">
                     <img
                       src="/esof-shield.png"
                       alt="ESOF Shield Certified"
@@ -338,7 +338,7 @@ export function HomePage() {
         </div>
       </section>
 
-      <section data-home-snap-section className="bg-[#F6F7F9] py-14 lg:py-20">
+      <section data-home-snap-section className="bg-muted py-14 lg:py-20">
         <div className="container">
           <Reveal className="mx-auto max-w-2xl text-center">
             <h2 className="text-3xl font-bold text-foreground sm:text-4xl">

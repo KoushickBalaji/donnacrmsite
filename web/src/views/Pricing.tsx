@@ -1,131 +1,152 @@
+'use client'
+
+import { useState } from 'react'
 import { ArrowRight, Check } from 'lucide-react'
 import Link from 'next/link'
-import { FaqList, type FaqItem } from '../components/FaqList'
+import { FaqList } from '../components/FaqList'
 import { Button } from '../components/ui/Button'
 import { Card, CardContent, CardHeader } from '../components/ui/Card'
 import { chromeWebStoreInstallUrl } from '../lib/chromeWebStore'
+import { pricingFaqs } from './pricing-data'
 
-const plan = {
-  trialLabel: '14-day free trial',
-  priceAfterTrial: '$10',
-  period: 'month',
-  annualNote: '$8/month billed annually',
-  description: 'Start with 14 days free, then keep going for $10/month.',
-  features: [
-    'CRM inside Gmail (contacts, pipelines, tasks, templates, tracking)',
-    'Email campaigns + engagement tracking',
-    'AI Assistant access',
-    'Email support',
-  ],
-  cta: 'Start 14-day free trial',
+const features = [
+  'CRM inside Gmail (contacts, pipelines, tasks, templates, tracking)',
+  'Email campaigns + engagement tracking',
+  'AI Assistant access',
+  'Email support',
+] as const
+
+const plans = {
+  monthly: {
+    label: 'Monthly',
+    originalPrice: 39,
+    launchPrice: 10,
+    period: 'month' as const,
+    billingNote: 'Billed monthly',
+  },
+  annual: {
+    label: 'Annual',
+    originalPrice: 31,
+    launchPrice: 8,
+    period: 'month' as const,
+    billingNote: 'Billed annually at $96/year',
+  },
 } as const
 
-export const pricingFaqs: FaqItem[] = [
-  {
-    question: 'How does the 14-day free trial work?',
-    answer:
-      'Your trial starts on sign-up. You can use Donna CRM in your real Gmail workflow during the trial, and you can cancel anytime before the trial ends to avoid being charged.',
-  },
-  {
-    question: 'What happens after the trial?',
-    answer:
-      'After the trial, continue on the same plan for $10/month. Annual billing is available at an effective $8/month billed annually.',
-  },
-  {
-    question: 'Is there more than one plan?',
-    answer:
-      'No. Donna CRM keeps pricing simple with one plan that includes the core Gmail CRM workflow, tracking, campaigns, and AI assistant access.',
-  },
-  {
-    question: 'Can I cancel anytime?',
-    answer:
-      'Yes. You can cancel during the trial or later. You will not be charged if you cancel before the trial ends.',
-  },
-  {
-    question: 'Is this built for teams?',
-    answer:
-      'Donna CRM is optimized for individuals and solo operators. If you need complex team permissions and reporting, a team CRM may be a better fit.',
-  },
-]
+type BillingCycle = 'monthly' | 'annual'
 
 export function PricingPage() {
+  const [billing, setBilling] = useState<BillingCycle>('annual')
+
   return (
     <>
-      <section className="bg-gradient-to-b from-primary/5 to-background pt-14 pb-8 lg:pt-20 lg:pb-12">
+      <section className="bg-gradient-to-b from-primary/5 to-background pt-8 pb-4 lg:pt-12 lg:pb-6">
         <div className="container">
           <div className="mx-auto max-w-3xl text-center">
-            <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
+            <h1 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               Simple, Transparent Pricing
             </h1>
-            <p className="mt-6 text-lg text-muted-foreground">
-              Start with a 14-day free trial, then pay to keep using Donna CRM.
-            </p>
-            <p className="mt-3 text-sm text-muted-foreground">
-              Your trial starts on sign-up. After 14 days, continue for $10/month.
+            <p className="mt-3 text-base text-muted-foreground">
+              One plan. Everything included. Start with a 14-day free trial.
             </p>
           </div>
         </div>
       </section>
 
-      <section className="bg-background pt-6 pb-16 lg:pt-8 lg:pb-20">
+      <section className="bg-background pt-4 pb-16 lg:pt-6 lg:pb-20">
         <div className="container">
-          <div className="mx-auto flex max-w-3xl justify-center">
-            <div className="relative w-full">
-              <div className="absolute -top-4 left-1/2 z-10 -translate-x-1/2">
-                <span className="rounded-full bg-primary px-4 py-1 text-sm font-medium text-primary-foreground shadow-sm">
-                  {plan.trialLabel}
-                </span>
-              </div>
+          <div className="mx-auto max-w-lg">
+            {(() => {
+              const plan = plans[billing]
+              const savingsPercent = Math.round(
+                ((plan.originalPrice - plan.launchPrice) / plan.originalPrice) * 100,
+              )
+              return (
+                <Card className="relative w-full overflow-hidden border-brand-blue/40 shadow-lg">
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-brand-blue/10 via-transparent to-transparent" />
 
-              <Card className="relative w-full overflow-hidden border-primary/40 shadow-lg">
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent" />
-
-                <CardHeader className="relative text-center pb-4">
-                  <div className="mt-5">
-                    <div className="flex items-baseline justify-center gap-2">
-                      <span className="text-4xl font-bold text-foreground">Free</span>
-                      <span className="text-muted-foreground">for 14 days</span>
+                  <CardHeader className="relative pb-4 text-center">
+                    {/* Compact billing toggle */}
+                    <div className="mx-auto mb-5 inline-flex rounded-full bg-muted p-0.5">
+                      <button
+                        onClick={() => setBilling('monthly')}
+                        className={`rounded-full px-3.5 py-1 text-xs font-medium transition-colors ${
+                          billing === 'monthly'
+                            ? 'bg-primary text-primary-foreground shadow-sm'
+                            : 'text-muted-foreground hover:text-foreground'
+                        }`}
+                      >
+                        Monthly
+                      </button>
+                      <button
+                        onClick={() => setBilling('annual')}
+                        className={`rounded-full px-3.5 py-1 text-xs font-medium transition-colors ${
+                          billing === 'annual'
+                            ? 'bg-primary text-primary-foreground shadow-sm'
+                            : 'text-muted-foreground hover:text-foreground'
+                        }`}
+                      >
+                        Annual{' '}
+                        <span className={`${billing === 'annual' ? 'text-brand-orange-foreground' : 'text-brand-orange'} font-semibold`}>
+                          (save 20%)
+                        </span>
+                      </button>
                     </div>
-                    <p className="mt-2 text-sm text-muted-foreground">
-                      Then{' '}
-                      <span className="font-semibold text-foreground">
-                        {plan.priceAfterTrial}
+
+                    <div>
+                      <div className="flex items-baseline justify-center gap-2">
+                        <span className="text-lg text-muted-foreground line-through">
+                          ${plan.originalPrice}
+                        </span>
+                        <span className="text-5xl font-bold text-foreground">
+                          ${plan.launchPrice}
+                        </span>
+                        <span className="text-muted-foreground">/{plan.period}</span>
+                      </div>
+                      <p className="mt-2 text-xs text-muted-foreground">{plan.billingNote}</p>
+                    </div>
+
+                    <div className="mt-3 inline-flex items-center justify-center">
+                      <span className="rounded-full bg-brand-orange px-3.5 py-1 text-xs font-bold text-white shadow-sm">
+                        🚀 Launch offer — {savingsPercent}% off
                       </span>
-                      /{plan.period}
+                    </div>
+
+                    <p className="mt-3 text-sm text-muted-foreground">
+                      Includes 14-day free trial. Cancel anytime.
                     </p>
-                  </div>
+                  </CardHeader>
 
-                  <p className="mt-3 text-sm text-muted-foreground">{plan.description}</p>
-                  <p className="mt-2 text-xs text-muted-foreground">{plan.annualNote}</p>
-                </CardHeader>
+                  <CardContent className="relative space-y-6">
+                    <ul className="space-y-3">
+                      {features.map((f) => (
+                        <li key={f} className="flex items-start gap-3">
+                          <Check className="mt-0.5 h-5 w-5 flex-shrink-0 text-brand-blue" />
+                          <span className="text-sm text-muted-foreground">{f}</span>
+                        </li>
+                      ))}
+                    </ul>
 
-                <CardContent className="relative space-y-6">
-                  <ul className="space-y-3">
-                    {plan.features.map((f) => (
-                      <li key={f} className="flex items-start gap-3">
-                        <Check className="mt-0.5 h-5 w-5 flex-shrink-0 text-primary" />
-                        <span className="text-sm text-muted-foreground">{f}</span>
-                      </li>
-                    ))}
-                  </ul>
+                    <Button className="w-full" asChild>
+                      <a
+                        href={chromeWebStoreInstallUrl({
+                          content: `pricing_${billing}`,
+                        })}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Start 14-day free trial <ArrowRight className="ml-2 h-4 w-4" />
+                      </a>
+                    </Button>
+                  </CardContent>
+                </Card>
+              )
+            })()}
 
-                  <Button className="w-full" asChild>
-                    <a
-                      href={chromeWebStoreInstallUrl({
-                        content: 'pricing_primary',
-                      })}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      {plan.cta} <ArrowRight className="ml-2 h-4 w-4" />
-                    </a>
-                  </Button>
-                  <p className="text-center text-xs text-muted-foreground">
-                    Cancel anytime during your trial.
-                  </p>
-                </CardContent>
-              </Card>
-            </div>
+            <p className="mt-6 text-center text-xs text-muted-foreground">
+              Launch pricing is available for a limited time. Lock in your rate by starting a
+              trial today.
+            </p>
           </div>
         </div>
       </section>
@@ -136,7 +157,8 @@ export function PricingPage() {
             <div>
               <h2 className="text-2xl font-bold text-foreground sm:text-3xl">Pricing FAQs</h2>
               <p className="mt-4 text-muted-foreground">
-                Quick answers to common questions about the trial, billing, and whether Donna is a fit.
+                Quick answers to common questions about the trial, billing, and whether Donna
+                is a fit.
               </p>
               <div className="mt-8">
                 <FaqList items={pricingFaqs} />
@@ -146,7 +168,8 @@ export function PricingPage() {
             <div className="rounded-xl border border-border bg-background p-6">
               <p className="text-sm font-semibold text-foreground">Still not sure?</p>
               <p className="mt-2 text-sm text-muted-foreground">
-                If you want to confirm Donna fits your workflow, these pages cover the core Gmail-native model and common questions.
+                If you want to confirm Donna fits your workflow, these pages cover the core
+                Gmail-native model and common questions.
               </p>
               <div className="mt-5 flex flex-col gap-2 text-sm font-semibold">
                 <Link href="/gmail-crm" className="text-primary hover:underline">

@@ -17,7 +17,7 @@ import { chromeWebStoreInstallUrl } from '../lib/chromeWebStore'
 const primaryCtaLabel = 'Add to Gmail - Free Trial'
 
 const surfaceTileClassName =
-  'h-full min-h-[200px] rounded-[20px] bg-[#F7F8FA] p-8 shadow-[0_12px_30px_rgba(0,0,0,0.06)] ring-1 ring-black/[0.04] transition-[transform,box-shadow] duration-[220ms] ease-out hover:-translate-y-1.5 hover:shadow-[0_18px_45px_rgba(0,0,0,0.10)]'
+  'h-full min-h-[200px] rounded-[20px] bg-card p-8 shadow-[0_12px_30px_rgba(0,0,0,0.06)] ring-1 ring-black/[0.04] transition-[transform,box-shadow] duration-[220ms] ease-out hover:-translate-y-1.5 hover:shadow-[0_18px_45px_rgba(0,0,0,0.10)]'
 
 function Eyebrow({ children }: { children: string }) {
   return (
@@ -29,7 +29,7 @@ function Eyebrow({ children }: { children: string }) {
 
 function IconBubble({ Icon }: { Icon: typeof Inbox }) {
   return (
-    <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-primary">
+    <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-blue/10 text-brand-blue">
       <Icon className="h-5 w-5" />
     </div>
   )
@@ -38,7 +38,7 @@ function IconBubble({ Icon }: { Icon: typeof Inbox }) {
 function Bullet({ children }: { children: string }) {
   return (
     <li className="flex items-start gap-3">
-      <div className="mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-primary" />
+      <div className="mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-brand-blue" />
       <span className="text-foreground/70">{children}</span>
     </li>
   )
@@ -186,15 +186,13 @@ export function HowItWorksPage() {
                 </div>
 
                 <Reveal delayMs={120} durationMs={500} className="lg:pl-6">
-                  <div className="lg:mr-[calc(50%-50vw)]">
-                    <div className="overflow-hidden rounded-[28px] bg-muted/30 shadow-[0_24px_60px_rgba(0,0,0,0.10)] ring-1 ring-black/[0.04]">
-                      <img
-                        src="/stock/laptop-hands.jpg"
-                        alt="Working in an inbox"
-                        className="h-full w-full object-cover object-center"
-                        loading="lazy"
-                      />
-                    </div>
+                  <div className="overflow-hidden rounded-[28px] bg-muted/30 shadow-[0_24px_60px_rgba(0,0,0,0.10)] ring-1 ring-black/[0.04]">
+                    <img
+                      src="/stock/laptop-hands.jpg"
+                      alt="Working in an inbox"
+                      className="h-full w-full object-cover object-center"
+                      loading="lazy"
+                    />
                   </div>
                 </Reveal>
               </div>
@@ -203,7 +201,7 @@ export function HowItWorksPage() {
         </div>
       </section>
 
-      <section className="bg-[#F6F7F9] py-14 lg:py-20">
+      <section className="bg-muted py-14 lg:py-20">
         <div className="container">
           <Reveal>
             <div className="mx-auto max-w-5xl">
@@ -369,7 +367,7 @@ export function HowItWorksPage() {
         </div>
       </section>
 
-      <section className="bg-[#F6F7F9] py-14 lg:py-20">
+      <section className="bg-muted py-14 lg:py-20">
         <div className="container">
           <Reveal>
             <div className="mx-auto max-w-5xl">
@@ -386,7 +384,7 @@ export function HowItWorksPage() {
                 </div>
 
                 <div className="order-1 lg:order-2">
-                  <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-primary">
+                  <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-blue/10 text-brand-blue">
                     <Sparkles className="h-5 w-5" />
                   </div>
                   <h2 className="mt-5 text-3xl font-bold text-foreground sm:text-4xl">

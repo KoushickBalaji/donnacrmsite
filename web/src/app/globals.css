@@ -3,24 +3,31 @@
 @tailwind utilities;
 
 :root {
-  --background: 0 0% 100%;
-  --foreground: 222.2 84% 4.9%;
+  --background: 60 9.1% 97.8%;
+  --foreground: 220.9 39.3% 11.0%;
   --card: 0 0% 100%;
-  --card-foreground: 222.2 84% 4.9%;
-  --primary: 201 100% 36%;
-  --primary-foreground: 210 40% 98%;
-  --secondary: 210 40% 96.1%;
-  --secondary-foreground: 222.2 47.4% 11.2%;
-  --muted: 210 40% 96.1%;
-  --muted-foreground: 215.4 16.3% 46.9%;
-  --accent: 210 40% 96.1%;
-  --accent-foreground: 222.2 47.4% 11.2%;
-  --destructive: 0 84.2% 60.2%;
-  --destructive-foreground: 210 40% 98%;
-  --border: 214.3 31.8% 91.4%;
-  --input: 214.3 31.8% 91.4%;
-  --ring: 201 100% 36%;
+  --card-foreground: 220.9 39.3% 11.0%;
+  --primary: 220.9 39.3% 11.0%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 60 4.8% 95.9%;
+  --secondary-foreground: 220.9 39.3% 11.0%;
+  --muted: 60 4.8% 95.9%;
+  --muted-foreground: 220 8.9% 46.1%;
+  --accent: 60 4.8% 95.9%;
+  --accent-foreground: 220.9 39.3% 11.0%;
+  --destructive: 0 72.2% 50.6%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 20 5.9% 90.0%;
+  --input: 20 5.9% 90.0%;
+  --ring: 220.9 39.3% 11.0%;
   --radius: 0.75rem;
+
+  /* Brand accents */
+  --brand-blue: 217 91% 53%;
+  --brand-blue-foreground: 0 0% 100%;
+  --brand-orange: 25 95% 53%;
+  --brand-orange-foreground: 0 0% 100%;
+  --ink-deep: 222 49% 8%;
 }
 
 * {
@@ -73,9 +80,9 @@ body {
     inset: 0;
     pointer-events: none;
     z-index: 0;
-    background-image: radial-gradient(circle at 20% 20%, hsl(var(--primary) / 0.14), transparent 55%),
-      radial-gradient(circle at 80% 30%, hsl(var(--primary) / 0.10), transparent 50%),
-      radial-gradient(circle at 40% 80%, hsl(var(--primary) / 0.08), transparent 55%);
+    background-image: radial-gradient(circle at 20% 20%, hsl(var(--brand-blue) / 0.14), transparent 55%),
+      radial-gradient(circle at 80% 30%, hsl(var(--brand-blue) / 0.10), transparent 50%),
+      radial-gradient(circle at 70% 85%, hsl(var(--brand-orange) / 0.10), transparent 55%);
     background-size: 140% 140%, 160% 160%, 180% 180%;
     animation: gradientDrift 14s ease-in-out infinite alternate;
     opacity: 0.085;
@@ -96,9 +103,9 @@ body {
   }
 
   .donna-hero-mesh {
-    background-image: radial-gradient(circle at 20% 20%, hsl(var(--primary) / 0.14), transparent 55%),
-      radial-gradient(circle at 80% 30%, hsl(var(--primary) / 0.10), transparent 50%),
-      radial-gradient(circle at 40% 80%, hsl(var(--primary) / 0.08), transparent 55%);
+    background-image: radial-gradient(circle at 20% 20%, hsl(var(--brand-blue) / 0.14), transparent 55%),
+      radial-gradient(circle at 80% 30%, hsl(var(--brand-blue) / 0.10), transparent 50%),
+      radial-gradient(circle at 70% 85%, hsl(var(--brand-orange) / 0.10), transparent 55%);
     background-size: 140% 140%, 160% 160%, 180% 180%;
     animation: donna-hero-mesh 14s ease-in-out infinite alternate;
     opacity: 0.07;

@@ -44,9 +44,9 @@ function Screenshot({
         ) : (
           <div className="w-full">
             <div className="relative overflow-hidden rounded-md border border-border bg-background p-8 text-center">
-              <div className="absolute -right-16 -top-16 h-48 w-48 rounded-full bg-primary/10 blur-2xl" />
-              <div className="absolute -bottom-20 -left-20 h-56 w-56 rounded-full bg-primary/5 blur-2xl" />
-              <Icon className="mx-auto h-16 w-16 text-primary/25" />
+              <div className="absolute -right-16 -top-16 h-48 w-48 rounded-full bg-brand-blue/10 blur-2xl" />
+              <div className="absolute -bottom-20 -left-20 h-56 w-56 rounded-full bg-brand-blue/5 blur-2xl" />
+              <Icon className="mx-auto h-16 w-16 text-brand-blue/25" />
               <p className="mt-4 text-sm font-medium text-foreground">
                 Preview in Donna CRM
               </p>
@@ -111,7 +111,7 @@ const featureSections: FeatureSection[] = [
       'Set due dates and track completion',
       'Use the assistant to turn threads into clear next steps',
     ],
-    screenshotSrc: '/screenshots/Context%20Bar.png',
+    screenshotSrc: '/screenshots/Overview.png',
     screenshotAlt: 'Tasks in Donna CRM',
   },
   {
@@ -136,7 +136,7 @@ const featureSections: FeatureSection[] = [
       'Campaign analytics show to-date totals for opens, clicks, and unsubscribes',
       'Follow-ups: turn engagement into a clear next step',
     ],
-    screenshotSrc: '/screenshots/Campaigns.png',
+    screenshotSrc: '/screenshots/Context%20Bar.png',
     screenshotAlt: 'Email Tracking in Donna CRM',
   },
 ]
@@ -197,8 +197,8 @@ export function FeaturesPage() {
                 }`}
               >
                 <div className="flex-1 space-y-6">
-                  <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-primary/10">
-                    <section.icon className="h-7 w-7 text-primary" />
+                  <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-brand-blue/10">
+                    <section.icon className="h-7 w-7 text-brand-blue" />
                   </div>
                   <h2 className="text-3xl font-bold text-foreground">
                     {section.title}
@@ -207,7 +207,7 @@ export function FeaturesPage() {
                   <ul className="space-y-3">
                     {section.details.map((d) => (
                       <li key={d} className="flex items-start gap-3">
-                        <div className="mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-primary" />
+                        <div className="mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-brand-blue" />
                         <span className="text-muted-foreground">{d}</span>
                       </li>
                     ))}

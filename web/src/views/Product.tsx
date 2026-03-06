@@ -86,7 +86,7 @@ export function ProductPage() {
         </div>
       </section>
 
-      <section className="bg-[#F6F7F9] py-10 lg:py-14">
+      <section className="bg-muted py-10 lg:py-14">
         <div className="container">
           <Reveal>
             <div className="mx-auto max-w-5xl">

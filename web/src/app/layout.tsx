@@ -17,7 +17,7 @@ const isProduction =
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
-  themeColor: '#0077b8',
+  themeColor: '#111827',
 }
 
 export const metadata: Metadata = {

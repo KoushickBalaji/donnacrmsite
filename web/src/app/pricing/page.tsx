@@ -2,7 +2,8 @@ import type { Metadata } from 'next'
 import { JsonLd } from '../../components/JsonLd'
 import { pageMetadata } from '../../lib/metadata'
 import { resolveSiteOrigin } from '../../lib/site'
-import { PricingPage, pricingFaqs } from '../../views/Pricing'
+import { PricingPage } from '../../views/Pricing'
+import { pricingFaqs } from '../../views/pricing-data'
 
 export const metadata: Metadata = pageMetadata({
   title: 'Pricing',

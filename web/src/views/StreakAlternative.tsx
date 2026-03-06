@@ -149,7 +149,7 @@ export function StreakAlternativePage() {
                   <div className="mt-3 space-y-2">
                     {goodFitFor.slice(0, 3).map((item) => (
                       <div key={item} className="flex items-start gap-2">
-                        <Check className="mt-0.5 h-4 w-4 flex-shrink-0 text-primary" />
+                        <Check className="mt-0.5 h-4 w-4 flex-shrink-0 text-brand-blue" />
                         <p className="text-sm text-muted-foreground">{item}</p>
                       </div>
                     ))}
@@ -182,10 +182,6 @@ export function StreakAlternativePage() {
                       className="h-full w-full scale-[1.06] object-cover object-right"
                       loading="eager"
                     />
-                    <div className="pointer-events-none absolute inset-0">
-                      <div className="absolute right-[6%] top-[14%] h-[72%] w-[32%] rounded-lg ring-2 ring-primary/40 shadow-lg" />
-                      <div className="absolute right-[6%] top-[14%] h-[72%] w-[32%] rounded-lg bg-primary/10 blur-xl" />
-                    </div>
                   </div>
                   <p className="mt-4 text-sm text-muted-foreground">
                     Works where you already work: open any thread and see contact context, notes,
@@ -226,7 +222,7 @@ export function StreakAlternativePage() {
                     {comparisonRows.map((row) => (
                       <tr key={row.label} className="border-t border-border">
                         <td className="px-5 py-4 text-sm text-muted-foreground">{row.label}</td>
-                        <td className="bg-primary/5 px-5 py-4">
+                        <td className="bg-brand-blue/5 px-5 py-4">
                           <p className="text-sm font-semibold text-foreground">{row.donna.title}</p>
                           <p className="mt-1 text-sm text-muted-foreground">{row.donna.detail}</p>
                         </td>

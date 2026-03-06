@@ -1,6 +1,6 @@
 'use client'
 
-import { createContext, useCallback, useContext, useMemo, useState, useSyncExternalStore } from 'react'
+import { createContext, useCallback, useContext, useMemo, useRef, useState, useSyncExternalStore } from 'react'
 import type { Consent } from '../../lib/consent'
 import { clearGoogleCookies, isDoNotTrackEnabled, readConsent, writeConsent } from '../../lib/consent'
 
@@ -46,9 +46,31 @@ function subscribeConsent(callback: () => void) {
   }
 }
 
+let cachedConsent: Consent | null = null
+
 function getConsentSnapshot(): Consent | null {
-  if (isDoNotTrackEnabled()) return null
-  return readConsent()?.consent ?? null
+  if (isDoNotTrackEnabled()) {
+    cachedConsent = null
+    return null
+  }
+
+  const stored = readConsent()
+  if (!stored) {
+    cachedConsent = null
+    return null
+  }
+
+  const next = stored.consent
+  if (
+    cachedConsent &&
+    cachedConsent.analytics === next.analytics &&
+    cachedConsent.marketing === next.marketing
+  ) {
+    return cachedConsent
+  }
+
+  cachedConsent = next
+  return cachedConsent
 }
 
 function getConsentServerSnapshot(): Consent | null {
@@ -65,11 +87,14 @@ export function ConsentProvider({ children }: { children: React.ReactNode }) {
   )
   const consent = useSyncExternalStore(subscribeConsent, getConsentSnapshot, getConsentServerSnapshot)
 
+  const consentRef = useRef(consent)
+  consentRef.current = consent
+
   const openPreferences = useCallback(() => setPreferencesOpen(true), [])
   const closePreferences = useCallback(() => setPreferencesOpen(false), [])
 
   const setConsent = useCallback((next: Consent) => {
-    const prev = consent
+    const prev = consentRef.current
     writeConsent(next)
     setPreferencesOpen(false)
 
@@ -91,7 +116,7 @@ export function ConsentProvider({ children }: { children: React.ReactNode }) {
     if (didDisableTracking) {
       window.location.reload()
     }
-  }, [consent])
+  }, [])
 
   const value = useMemo(
     () => ({
