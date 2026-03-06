@@ -63,7 +63,14 @@ export function PricingPage() {
               )
               return (
                 <Card className="relative w-full overflow-hidden border-brand-blue/40 shadow-lg">
-                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-brand-blue/10 via-transparent to-transparent" />
+                  {/* Launch offer banner */}
+                  <div className="bg-gradient-to-r from-brand-orange to-brand-orange/85 px-4 py-2.5 text-center">
+                    <p className="text-sm font-bold tracking-wide text-white">
+                      🚀 LAUNCH OFFER — {savingsPercent}% OFF
+                    </p>
+                  </div>
+
+                  <div className="pointer-events-none absolute inset-0 top-10 bg-gradient-to-br from-brand-blue/10 via-transparent to-transparent" />
 
                   <CardHeader className="relative pb-4 text-center">
                     {/* Compact billing toggle */}
@@ -104,12 +111,6 @@ export function PricingPage() {
                         <span className="text-muted-foreground">/{plan.period}</span>
                       </div>
                       <p className="mt-2 text-xs text-muted-foreground">{plan.billingNote}</p>
-                    </div>
-
-                    <div className="mt-3 inline-flex items-center justify-center">
-                      <span className="rounded-full bg-brand-orange px-3.5 py-1 text-xs font-bold text-white shadow-sm">
-                        🚀 Launch offer — {savingsPercent}% off
-                      </span>
                     </div>
 
                     <p className="mt-3 text-sm text-muted-foreground">
