@@ -1,6 +1,6 @@
 'use client'
 
-import { createContext, useCallback, useContext, useMemo, useRef, useState, useSyncExternalStore } from 'react'
+import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, useSyncExternalStore } from 'react'
 import type { Consent } from '../../lib/consent'
 import { clearGoogleCookies, isDoNotTrackEnabled, readConsent, writeConsent } from '../../lib/consent'
 
@@ -88,7 +88,9 @@ export function ConsentProvider({ children }: { children: React.ReactNode }) {
   const consent = useSyncExternalStore(subscribeConsent, getConsentSnapshot, getConsentServerSnapshot)
 
   const consentRef = useRef(consent)
-  consentRef.current = consent
+  useEffect(() => {
+    consentRef.current = consent
+  }, [consent])
 
   const openPreferences = useCallback(() => setPreferencesOpen(true), [])
   const closePreferences = useCallback(() => setPreferencesOpen(false), [])
