@@ -38,21 +38,22 @@ html {
   scroll-behavior: smooth;
 }
 
-html.home-scroll-snap {
+html.scroll-snap-active {
   scroll-snap-type: y mandatory;
-  scroll-padding-top: var(--home-snap-offset, 64px);
+  scroll-padding-top: 64px;
   overscroll-behavior-y: contain;
 }
 
-html.home-scroll-snap [data-home-snap-section] {
+html.scroll-snap-active [data-snap-section] {
   scroll-snap-align: start;
+  scroll-snap-stop: always;
 }
 
 body {
   @apply bg-background text-foreground;
   margin: 0;
-  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Liberation Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 @layer utilities {
@@ -85,7 +86,7 @@ body {
       radial-gradient(circle at 70% 85%, hsl(var(--brand-orange) / 0.10), transparent 55%);
     background-size: 140% 140%, 160% 160%, 180% 180%;
     animation: gradientDrift 14s ease-in-out infinite alternate;
-    opacity: 0.085;
+    opacity: 0.14;
     filter: blur(60px);
     transform: translate3d(0, 0, 0);
   }
@@ -108,7 +109,7 @@ body {
       radial-gradient(circle at 70% 85%, hsl(var(--brand-orange) / 0.10), transparent 55%);
     background-size: 140% 140%, 160% 160%, 180% 180%;
     animation: donna-hero-mesh 14s ease-in-out infinite alternate;
-    opacity: 0.07;
+    opacity: 0.12;
   }
 
   .donna-hero-noise {

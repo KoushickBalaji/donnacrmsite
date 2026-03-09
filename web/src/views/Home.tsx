@@ -1,7 +1,19 @@
 'use client'
 
 import { useEffect } from 'react'
-import { History, Inbox, Kanban, ListChecks, Settings, User, Zap } from 'lucide-react'
+import { useScrollSnap } from '../lib/useScrollSnap'
+import {
+  ArrowRight,
+  Chrome,
+  History,
+  Inbox,
+  Kanban,
+  ListChecks,
+  Settings,
+  ShieldCheck,
+  User,
+  Zap,
+} from 'lucide-react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { Reveal } from '../components/Reveal'
@@ -9,14 +21,13 @@ import { Button } from '../components/ui/Button'
 import { chromeWebStoreInstallUrl } from '../lib/chromeWebStore'
 
 const primaryCtaLabel = 'Add to Gmail - Free Trial'
-const stickyHeaderOffsetPx = 64
 
 const surfaceTileClassName =
   'h-full min-h-[200px] rounded-[20px] bg-card p-8 shadow-[0_12px_30px_rgba(0,0,0,0.06)] ring-1 ring-black/[0.04] transition-[transform,box-shadow] duration-[220ms] ease-out hover:-translate-y-1.5 hover:shadow-[0_18px_45px_rgba(0,0,0,0.10)]'
 
 function IconBubble({ Icon }: { Icon: typeof Inbox }) {
   return (
-    <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-blue/10 text-brand-blue">
+    <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-blue/15 to-brand-blue/5 text-brand-blue shadow-sm">
       <Icon className="h-5 w-5" />
     </div>
   )
@@ -24,8 +35,8 @@ function IconBubble({ Icon }: { Icon: typeof Inbox }) {
 
 function MiniTile({ Icon, label }: { Icon: typeof Inbox; label: string }) {
   return (
-    <div className="flex h-full items-start gap-3 rounded-[18px] bg-card/70 p-5 ring-1 ring-black/[0.04]">
-      <div className="inline-flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-2xl bg-brand-blue/10 text-brand-blue">
+    <div className="flex h-full items-start gap-3 rounded-[18px] bg-card/70 p-5 ring-1 ring-black/[0.04] transition-[transform,box-shadow] duration-200 hover:-translate-y-0.5 hover:shadow-md">
+      <div className="inline-flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-blue/15 to-brand-blue/5 text-brand-blue">
         <Icon className="h-5 w-5" />
       </div>
       <p className="pt-1 text-[15px] font-semibold leading-[1.4] text-foreground">
@@ -50,60 +61,31 @@ export function HomePage() {
     return () => window.removeEventListener('hashchange', applyHashRedirect)
   }, [router])
 
-  useEffect(() => {
-    const root = document.documentElement
-    const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
-    const finePointerQuery = window.matchMedia('(pointer: fine)')
-
-    const updateHomeSnapMode = () => {
-      const shouldEnableSnap = finePointerQuery.matches && !reducedMotionQuery.matches
-      root.classList.toggle('home-scroll-snap', shouldEnableSnap)
-      if (shouldEnableSnap) {
-        root.style.setProperty('--home-snap-offset', `${stickyHeaderOffsetPx}px`)
-      } else {
-        root.style.removeProperty('--home-snap-offset')
-      }
-    }
-
-    const attachMediaListener = (query: MediaQueryList, handler: () => void) => {
-      query.addEventListener('change', handler)
-      return () => query.removeEventListener('change', handler)
-    }
-
-    updateHomeSnapMode()
-    const removeReducedMotionListener = attachMediaListener(reducedMotionQuery, updateHomeSnapMode)
-    const removeFinePointerListener = attachMediaListener(finePointerQuery, updateHomeSnapMode)
-
-    return () => {
-      removeReducedMotionListener()
-      removeFinePointerListener()
-      root.classList.remove('home-scroll-snap')
-      root.style.removeProperty('--home-snap-offset')
-    }
-  }, [])
+  useScrollSnap()
 
   return (
     <>
+      {/* ── Hero ── */}
       <section
-        data-home-snap-section
-        className="relative flex min-h-[calc(100svh-4rem)] items-center bg-background py-14 lg:py-20"
+        data-snap-section
+        className="donna-hero-drift relative flex min-h-[calc(100svh-4rem)] flex-col overflow-hidden bg-background"
       >
-        <div className="container">
-          <div className="grid items-center gap-10 lg:grid-cols-2">
+        {/* Main hero content */}
+        <div className="relative z-10 mx-auto flex w-full max-w-[1440px] flex-1 items-center px-6 pt-8 pb-6 lg:px-10 lg:pt-12 lg:pb-8">
+          <div className="grid w-full items-center gap-10 lg:grid-cols-[1fr_1.1fr] lg:gap-16">
             <Reveal className="max-w-xl">
-              <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
-                A lightweight CRM that works inside Gmail
+              <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl"
+                  style={{ letterSpacing: '-0.02em' }}>
+                The CRM you&apos;ll actually&nbsp;use
               </h1>
-              <p className="mt-5 text-lg text-muted-foreground">
-                Track deals, follow-ups, and contact context without leaving your inbox.
-                Built for people who actually live in Gmail.
-              </p>
-              <p className="mt-4 text-sm text-muted-foreground">
-                Best for founders, freelancers, agencies, recruiters, and consultants.
+              <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
+                Donna lives inside Gmail - right next to your conversations.
+                Track deals, follow-ups, and contacts without switching tabs
+                or learning new&nbsp;software.
               </p>
 
               <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
-                <Button size="lg" asChild>
+                <Button size="lg" className="shadow-lg shadow-primary/20 transition-all duration-200 hover:shadow-xl hover:shadow-primary/30 hover:scale-[1.02] active:scale-[0.98]" asChild>
                   <a
                     href={chromeWebStoreInstallUrl({ content: 'home_hero_primary' })}
                     target="_blank"
@@ -112,18 +94,21 @@ export function HomePage() {
                     {primaryCtaLabel}
                   </a>
                 </Button>
-                <Button size="lg" variant="outline" asChild>
-                  <Link href="/how-it-works">See how it works</Link>
+                <Button size="lg" variant="outline" className="group transition-all duration-200" asChild>
+                  <Link href="/how-it-works">
+                    See how it works
+                    <ArrowRight className="ml-1 h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
+                  </Link>
                 </Button>
               </div>
 
-              <p className="mt-4 text-sm text-muted-foreground">
-                No setup | No card needed for trial | Uninstall anytime
+              <p className="mt-4 text-xs text-muted-foreground">
+                Free trial &middot; No credit card &middot; Uninstall anytime
               </p>
             </Reveal>
 
-            <Reveal>
-              <div className="overflow-hidden rounded-xl border border-border bg-muted/30">
+            <Reveal durationMs={500}>
+              <div className="overflow-hidden rounded-2xl border border-border/60 shadow-2xl shadow-black/10 ring-1 ring-black/[0.04]">
                 <img
                   src="/stock/marquee-promo.jpg"
                   alt="Donna CRM in action"
@@ -134,221 +119,230 @@ export function HomePage() {
             </Reveal>
           </div>
         </div>
-      </section>
 
-      <section
-        data-home-snap-section
-        className="flex min-h-[calc(100svh-4rem)] items-center bg-muted py-14 lg:py-20"
-      >
-        <div className="container">
-          <Reveal>
-            <div className="w-full">
-              <h2 className="text-2xl font-semibold text-foreground sm:text-3xl">
-                Why Gmail alone isn't enough
-              </h2>
-
-              <div className="relative mt-10">
-                <div
-                  aria-hidden
-                  className="pointer-events-none absolute inset-0 -z-10 overflow-hidden rounded-[32px]"
-                >
-                  <img
-                    src="/stock/busy-woman.jpg"
-                    alt=""
-                    className="h-full w-full object-cover opacity-[0.16] saturate-0"
-                    loading="lazy"
-                  />
-                  <div className="absolute inset-0 bg-muted/85" />
-                </div>
-
-                <div className="grid grid-cols-1 items-stretch gap-6 sm:grid-cols-2 lg:grid-cols-4">
-                  <Reveal delayMs={0} durationMs={400}>
-                    <div className={`${surfaceTileClassName} flex flex-col`}>
-                      <div className="flex items-start justify-between gap-4">
-                        <IconBubble Icon={Inbox} />
-                      </div>
-
-                      <div className="mt-5 flex flex-1 flex-col">
-                        <p className="h-[3.5rem] overflow-hidden text-[22px] font-[650] leading-[1.2] text-foreground">
-                          Follow-ups slip
-                        </p>
-                        <p className="mt-2 h-[4.8rem] overflow-hidden text-[15px] leading-[1.6] text-foreground/70">
-                          Important conversations get buried. Next steps live in memory.
-                        </p>
-                        <p className="mt-auto h-[3.2rem] text-[15px] leading-[1.6] text-foreground">
-                          Donna adds a clear next step to every thread.
-                        </p>
-                      </div>
-                    </div>
-                  </Reveal>
-
-                  <Reveal delayMs={80} durationMs={400}>
-                    <div className={`${surfaceTileClassName} flex flex-col`}>
-                      <div className="flex items-start justify-between gap-4">
-                        <IconBubble Icon={History} />
-                      </div>
-
-                      <div className="mt-5 flex flex-1 flex-col">
-                        <p className="h-[3.5rem] overflow-hidden text-[22px] font-[650] leading-[1.2] text-foreground">
-                          No relationship context
-                        </p>
-                        <p className="mt-2 h-[4.8rem] overflow-hidden text-[15px] leading-[1.6] text-foreground/70">
-                          Gmail doesn't remember past conversations, deals, or notes.
-                        </p>
-                        <p className="mt-auto h-[3.2rem] text-[15px] leading-[1.6] text-foreground">
-                          Donna keeps context inside the inbox.
-                        </p>
-                      </div>
-                    </div>
-                  </Reveal>
-
-                  <Reveal delayMs={160} durationMs={400}>
-                    <div className={`${surfaceTileClassName} flex flex-col`}>
-                      <div className="flex items-start justify-between gap-4">
-                        <IconBubble Icon={Kanban} />
-                      </div>
-
-                      <div className="mt-5 flex flex-1 flex-col">
-                        <p className="h-[3.5rem] overflow-hidden text-[22px] font-[650] leading-[1.2] text-foreground">
-                          CRMs break flow
-                        </p>
-                        <p className="mt-2 h-[4.8rem] overflow-hidden text-[15px] leading-[1.6] text-foreground/70">
-                          Switching tools kills momentum. Tabs multiply and follow-ups stall.
-                        </p>
-                        <p className="mt-auto h-[3.2rem] text-[15px] leading-[1.6] text-foreground">
-                          Donna stays in Gmail.
-                        </p>
-                      </div>
-                    </div>
-                  </Reveal>
-
-                  <Reveal delayMs={240} durationMs={400}>
-                    <div className={`${surfaceTileClassName} flex flex-col`}>
-                      <div className="flex items-start justify-between gap-4">
-                        <IconBubble Icon={ListChecks} />
-                      </div>
-
-                      <div className="mt-5 flex flex-1 flex-col">
-                        <p className="h-[3.5rem] overflow-hidden text-[22px] font-[650] leading-[1.2] text-foreground">
-                          No deal clarity
-                        </p>
-                        <p className="mt-2 h-[4.8rem] overflow-hidden text-[15px] leading-[1.6] text-foreground/70">
-                          Deal stage, status, and notes end up scattered across threads and docs.
-                        </p>
-                        <p className="mt-auto h-[3.2rem] text-[15px] leading-[1.6] text-foreground">
-                          Donna keeps deal status next to the conversation.
-                        </p>
-                      </div>
-                    </div>
-                  </Reveal>
-                </div>
-              </div>
+        {/* Trust strip - anchored at bottom of viewport */}
+        <div className="relative z-10 mx-auto w-full max-w-[1440px] px-6 pb-8 lg:px-10">
+          <Reveal delayMs={300}>
+            <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-muted-foreground/70">
+              <span className="flex items-center gap-1.5">
+                <Chrome className="h-3.5 w-3.5" />
+                Chrome Extension
+              </span>
+              <span className="hidden h-3 w-px bg-border sm:block" aria-hidden />
+              <span>Works with Google Workspace &amp; personal Gmail</span>
+              <span className="hidden h-3 w-px bg-border sm:block" aria-hidden />
+              <span>Installs in 30 seconds</span>
             </div>
           </Reveal>
         </div>
       </section>
 
+      {/* ── The Problem ── */}
       <section
-        data-home-snap-section
-        className="flex min-h-[calc(100svh-4rem)] items-center bg-background py-14 lg:py-20"
+        data-snap-section
+        className="flex min-h-[calc(100svh-4rem)] items-center bg-primary py-20 lg:py-28"
       >
-        <div className="container">
+        <div className="mx-auto w-full max-w-[1440px] px-6 lg:px-10">
           <Reveal>
-            <div className="mx-auto max-w-5xl">
-              <div className="overflow-hidden rounded-[24px] bg-card p-8 shadow-[0_18px_45px_rgba(0,0,0,0.06)] ring-1 ring-black/[0.04] lg:p-12">
-                <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
-                  <div>
-                    <h2 className="text-3xl font-semibold leading-[1.15] text-foreground sm:text-4xl">
-                      Built to stay lightweight
-                    </h2>
-                    <p className="mt-4 text-[15px] leading-[1.6] text-foreground/70">
-                      Donna is designed for people who need a simple system - without turning
-                      relationship-tracking into a second job.
-                    </p>
-                    <div className="mt-6 flex flex-wrap gap-4">
-                      <Link
-                        href="/product"
-                        className="text-sm font-semibold text-primary hover:underline"
-                      >
-                        Explore the product
-                      </Link>
-                      <Link
-                        href="/gmail-crm"
-                        className="text-sm font-semibold text-primary hover:underline"
-                      >
-                        Read: Gmail CRM
-                      </Link>
-                      <Link
-                        href="/ai-gmail-crm"
-                        className="text-sm font-semibold text-primary hover:underline"
-                      >
-                        Read: AI assistant
-                      </Link>
-                      <Link
-                        href="/streak-crm-alternative"
-                        className="text-sm font-semibold text-primary hover:underline"
-                      >
-                        Compare Donna vs Streak
-                      </Link>
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                    <MiniTile Icon={Settings} label="No setup or configuration" />
-                    <MiniTile Icon={User} label="Designed for solo operators" />
-                    <MiniTile Icon={Inbox} label="Works entirely inside Gmail" />
-                    <MiniTile Icon={Zap} label="Fast and distraction-free" />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
-      <section
-        data-home-snap-section
-        className="flex min-h-[calc(100svh-4rem)] items-center bg-background py-14 lg:py-20"
-      >
-        <div className="container">
-          <Reveal>
-            <div className="mx-auto max-w-5xl">
-              <div className="overflow-hidden rounded-[24px] bg-card p-8 shadow-[0_18px_45px_rgba(0,0,0,0.06)] ring-1 ring-black/[0.04] lg:p-12">
-                <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:gap-10">
-                  <div className="mx-auto w-fit flex-shrink-0 rounded-2xl bg-ink-deep p-4 shadow-[0_18px_40px_rgba(0,0,0,0.14)] ring-1 ring-white/10 sm:mx-0">
-                    <img
-                      src="/esof-shield.png"
-                      alt="ESOF Shield Certified"
-                      width="150"
-                    />
-                  </div>
-
-                  <div>
-                    <h2 className="text-2xl font-semibold text-foreground sm:text-3xl">
-                      Rigorous testing. CASA certified.
-                    </h2>
-                    <p className="mt-4 text-[15px] leading-[1.6] text-foreground/70">
-                      Donna has undergone rigorous third-party security testing and earned CASA
-                      certification through an independent audit by TAC Security. Your data is stored and processed using industry standard methodologies.                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
-      <section data-home-snap-section className="bg-muted py-14 lg:py-20">
-        <div className="container">
-          <Reveal className="mx-auto max-w-2xl text-center">
-            <h2 className="text-3xl font-bold text-foreground sm:text-4xl">
-              Try Donna CRM inside Gmail
+            <h2 className="text-3xl font-bold text-primary-foreground sm:text-4xl"
+                style={{ letterSpacing: '-0.02em' }}>
+              Gmail wasn&apos;t built to manage relationships
             </h2>
-            <p className="mt-4 text-muted-foreground">
-              Install in under 2 minutes. No setup. Cancel anytime.
+            <p className="mt-3 max-w-2xl text-lg text-primary-foreground/60">
+              It handles email brilliantly. But tracking who you talked to, what you
+              promised, and what happens next? That&apos;s where things fall&nbsp;apart.
+            </p>
+          </Reveal>
+
+          <div className="mt-14 grid grid-cols-1 items-stretch gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            <Reveal delayMs={0} durationMs={400}>
+              <div className={surfaceTileClassName}>
+                <IconBubble Icon={Inbox} />
+                <h3 className="mt-5 text-xl font-bold text-foreground">
+                  Follow-ups vanish
+                </h3>
+                <p className="mt-2 text-[15px] leading-[1.65] text-foreground/65">
+                  You meant to circle back. That thread is now buried under
+                  hundreds of emails and the deal goes&nbsp;cold.
+                </p>
+              </div>
+            </Reveal>
+
+            <Reveal delayMs={80} durationMs={400}>
+              <div className={surfaceTileClassName}>
+                <IconBubble Icon={History} />
+                <h3 className="mt-5 text-xl font-bold text-foreground">
+                  Context lives in your head
+                </h3>
+                <p className="mt-2 text-[15px] leading-[1.65] text-foreground/65">
+                  Who is this person? What did you discuss last? You&apos;re scrolling
+                  through months of threads to piece it&nbsp;together.
+                </p>
+              </div>
+            </Reveal>
+
+            <Reveal delayMs={160} durationMs={400}>
+              <div className={surfaceTileClassName}>
+                <IconBubble Icon={Kanban} />
+                <h3 className="mt-5 text-xl font-bold text-foreground">
+                  CRMs break your flow
+                </h3>
+                <p className="mt-2 text-[15px] leading-[1.65] text-foreground/65">
+                  You&apos;re mid-conversation and need to switch tabs to update
+                  your CRM. So you don&apos;t. And the data&nbsp;rots.
+                </p>
+              </div>
+            </Reveal>
+
+            <Reveal delayMs={240} durationMs={400}>
+              <div className={surfaceTileClassName}>
+                <IconBubble Icon={ListChecks} />
+                <h3 className="mt-5 text-xl font-bold text-foreground">
+                  Deals have no&nbsp;home
+                </h3>
+                <p className="mt-2 text-[15px] leading-[1.65] text-foreground/65">
+                  Notes in spreadsheets, stages in your head, context scattered
+                  across threads. Nothing connects&nbsp;back.
+                </p>
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* ── How Donna works ── */}
+      <section
+        data-snap-section
+        className="flex min-h-[calc(100svh-4rem)] items-center bg-background py-20 lg:py-28"
+      >
+        <div className="mx-auto w-full max-w-[1440px] px-6 lg:px-10">
+          <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
+            <Reveal>
+              <h2 className="text-3xl font-bold leading-[1.15] text-foreground sm:text-4xl"
+                  style={{ letterSpacing: '-0.02em' }}>
+                Everything you need, nothing you&nbsp;don&apos;t
+              </h2>
+              <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
+                Donna adds a CRM sidebar right inside Gmail. See contact history,
+                track deals, and set follow-ups - all without opening
+                another&nbsp;app.
+              </p>
+              <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
+                <Link
+                  href="/product"
+                  className="group inline-flex items-center text-sm font-semibold text-primary hover:underline"
+                >
+                  Explore the product
+                  <ArrowRight className="ml-1 h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
+                </Link>
+                <Link
+                  href="/how-it-works"
+                  className="group inline-flex items-center text-sm font-semibold text-primary hover:underline"
+                >
+                  See how it works
+                  <ArrowRight className="ml-1 h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
+                </Link>
+              </div>
+            </Reveal>
+
+            <Reveal delayMs={100}>
+              <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+                <div className="rounded-2xl bg-card p-6 shadow-md ring-1 ring-black/[0.04] transition-all duration-200 hover:-translate-y-1 hover:shadow-lg">
+                  <IconBubble Icon={Zap} />
+                  <h3 className="mt-4 text-base font-bold text-foreground">Zero setup</h3>
+                  <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
+                    Install the extension and it just works. No integrations to configure, no data to&nbsp;import.
+                  </p>
+                </div>
+                <div className="rounded-2xl bg-card p-6 shadow-md ring-1 ring-black/[0.04] transition-all duration-200 hover:-translate-y-1 hover:shadow-lg">
+                  <IconBubble Icon={User} />
+                  <h3 className="mt-4 text-base font-bold text-foreground">Built for solo operators</h3>
+                  <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
+                    Founders, freelancers, recruiters, consultants - anyone who manages relationships from their&nbsp;inbox.
+                  </p>
+                </div>
+                <div className="rounded-2xl bg-card p-6 shadow-md ring-1 ring-black/[0.04] transition-all duration-200 hover:-translate-y-1 hover:shadow-lg">
+                  <IconBubble Icon={Inbox} />
+                  <h3 className="mt-4 text-base font-bold text-foreground">Lives in Gmail</h3>
+                  <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
+                    No new tabs, no context switching. Your CRM data appears right next to your&nbsp;conversations.
+                  </p>
+                </div>
+                <div className="rounded-2xl bg-card p-6 shadow-md ring-1 ring-black/[0.04] transition-all duration-200 hover:-translate-y-1 hover:shadow-lg">
+                  <IconBubble Icon={Settings} />
+                  <h3 className="mt-4 text-base font-bold text-foreground">Stays out of your way</h3>
+                  <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
+                    No bloated dashboards or 50-field forms. Donna keeps things fast, simple, and&nbsp;focused.
+                  </p>
+                </div>
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Security & Trust ── */}
+      <section
+        data-snap-section
+        className="flex min-h-[calc(100svh-4rem)] items-center bg-ink-deep py-20 lg:py-28"
+      >
+        <div className="mx-auto w-full max-w-[1440px] px-6 lg:px-10">
+          <div className="grid items-center gap-12 lg:grid-cols-[auto_1fr] lg:gap-20">
+            <Reveal>
+              <div className="mx-auto w-fit rounded-2xl bg-white/5 p-8 ring-1 ring-white/10 sm:mx-0">
+                <img
+                  src="/esof-shield.png"
+                  alt="CASA Security Certification by TAC Security"
+                  width="180"
+                  loading="lazy"
+                />
+              </div>
+            </Reveal>
+
+            <Reveal delayMs={100}>
+              <h2 className="text-3xl font-bold text-white sm:text-4xl"
+                  style={{ letterSpacing: '-0.02em' }}>
+                Your data, handled with&nbsp;care
+              </h2>
+              <p className="mt-4 max-w-2xl text-lg leading-relaxed text-white/60">
+                A CRM sees your contacts, your conversations, your deals. That&apos;s
+                a lot of trust. Donna has earned CASA certification through an independent
+                security audit by TAC Security - the same standard Google requires
+                for extensions that access sensitive&nbsp;data.
+              </p>
+              <div className="mt-8 flex flex-wrap items-center gap-6 text-sm text-white/40">
+                <span className="flex items-center gap-2">
+                  <ShieldCheck className="h-4 w-4" />
+                  Third-party audited
+                </span>
+                <span className="flex items-center gap-2">
+                  <ShieldCheck className="h-4 w-4" />
+                  CASA certified
+                </span>
+                <span className="flex items-center gap-2">
+                  <ShieldCheck className="h-4 w-4" />
+                  Industry-standard encryption
+                </span>
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Final CTA ── */}
+      <section data-snap-section className="bg-background py-24 lg:py-32">
+        <div className="mx-auto w-full max-w-[1440px] px-6 lg:px-10">
+          <Reveal className="mx-auto max-w-2xl text-center">
+            <h2 className="text-3xl font-bold text-foreground sm:text-4xl"
+                style={{ letterSpacing: '-0.02em' }}>
+              See Donna in your inbox today
+            </h2>
+            <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
+              Install the Chrome extension, open Gmail, and you&apos;re up and running.
+              No configuration, no onboarding calls, no credit card.
             </p>
             <div className="mt-8">
-              <Button size="lg" asChild>
+              <Button size="lg" className="shadow-lg shadow-primary/20 transition-all duration-200 hover:shadow-xl hover:shadow-primary/30 hover:scale-[1.02] active:scale-[0.98]" asChild>
                 <a
                   href={chromeWebStoreInstallUrl({ content: 'home_final_cta' })}
                   target="_blank"
@@ -358,6 +352,9 @@ export function HomePage() {
                 </a>
               </Button>
             </div>
+            <p className="mt-4 text-xs text-muted-foreground">
+              Free trial &middot; No credit card &middot; Uninstall anytime
+            </p>
           </Reveal>
         </div>
       </section>

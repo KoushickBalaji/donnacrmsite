@@ -30,26 +30,22 @@ export function ResourcesPage() {
 
   return (
     <>
-      <section className="bg-gradient-to-b from-primary/5 to-background py-16 lg:py-24">
-        <div className="container">
-          <div className="mx-auto max-w-3xl text-center">
-            <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
-              Resources for Gmail CRM Workflows
-            </h1>
-            <p className="mt-6 text-lg text-muted-foreground">
-              Practical guides, templates, and checklists for solo operators who sell and deliver from their inbox.
-            </p>
-            <p className="mt-3 text-sm text-muted-foreground">
-              Start with Gmail CRM basics, then pick a workflow guide that matches how you work.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-background py-20">
+      <section className="flex min-h-[calc(100svh-4rem)] flex-col justify-center bg-gradient-to-b from-primary/5 to-background py-14 lg:py-20">
         <div className="container">
           <div className="mx-auto max-w-5xl">
-            <div className="rounded-2xl border border-border bg-muted/30 p-8 shadow-sm">
+            <div className="mx-auto max-w-3xl text-center">
+              <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
+                Resources for Gmail CRM Workflows
+              </h1>
+              <p className="mt-5 text-lg text-muted-foreground">
+                Practical guides, templates, and checklists for solo operators who sell and deliver from their inbox.
+              </p>
+              <p className="mt-3 text-sm text-muted-foreground">
+                Start with Gmail CRM basics, then pick a workflow guide that matches how you work.
+              </p>
+            </div>
+
+            <div className="mt-10 rounded-2xl border border-border bg-muted/30 p-8 shadow-sm">
               <h2 className="text-2xl font-bold text-foreground">Start with the pillars</h2>
               <p className="mt-3 max-w-3xl text-muted-foreground">
                 If you are new to Gmail CRMs, these pages explain the core model: keep context next to
@@ -88,8 +84,14 @@ export function ResourcesPage() {
                 </Link>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
 
-            <div className="mt-14">
+      <section className="bg-background py-16">
+        <div className="container">
+          <div className="mx-auto max-w-5xl">
+            <div>
               <div className="flex items-end justify-between gap-6">
                 <div>
                   <h2 className="text-2xl font-bold text-foreground">Latest guides</h2>

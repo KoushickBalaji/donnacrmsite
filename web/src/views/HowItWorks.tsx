@@ -12,16 +12,18 @@ import {
 import Link from 'next/link'
 import { Reveal } from '../components/Reveal'
 import { Button } from '../components/ui/Button'
+import { ScrollSnapActivator } from '../components/ScrollSnapActivator'
 import { chromeWebStoreInstallUrl } from '../lib/chromeWebStore'
-
-const primaryCtaLabel = 'Add to Gmail - Free Trial'
 
 const surfaceTileClassName =
   'h-full min-h-[200px] rounded-[20px] bg-card p-8 shadow-[0_12px_30px_rgba(0,0,0,0.06)] ring-1 ring-black/[0.04] transition-[transform,box-shadow] duration-[220ms] ease-out hover:-translate-y-1.5 hover:shadow-[0_18px_45px_rgba(0,0,0,0.10)]'
 
-function Eyebrow({ children }: { children: string }) {
+const compactTileClassName =
+  'h-full rounded-[20px] bg-card p-6 shadow-[0_12px_30px_rgba(0,0,0,0.06)] ring-1 ring-black/[0.04] transition-[transform,box-shadow] duration-[220ms] ease-out hover:-translate-y-1.5 hover:shadow-[0_18px_45px_rgba(0,0,0,0.10)]'
+
+function Eyebrow({ children }: { children: React.ReactNode }) {
   return (
-    <p className="text-xs font-semibold uppercase tracking-[0.08em] text-foreground/50">
+    <p className="mb-3 text-xs font-semibold uppercase tracking-[0.12em] text-brand-blue">
       {children}
     </p>
   )
@@ -29,17 +31,17 @@ function Eyebrow({ children }: { children: string }) {
 
 function IconBubble({ Icon }: { Icon: typeof Inbox }) {
   return (
-    <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-blue/10 text-brand-blue">
+    <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-blue/15 to-brand-blue/5 text-brand-blue shadow-sm">
       <Icon className="h-5 w-5" />
     </div>
   )
 }
 
-function Bullet({ children }: { children: string }) {
+function LightBullet({ children }: { children: string }) {
   return (
     <li className="flex items-start gap-3">
       <div className="mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-brand-blue" />
-      <span className="text-foreground/70">{children}</span>
+      <span className="text-white/70">{children}</span>
     </li>
   )
 }
@@ -47,316 +49,194 @@ function Bullet({ children }: { children: string }) {
 export function HowItWorksPage() {
   return (
     <>
-      <section className="bg-gradient-to-b from-primary/5 to-background py-16 lg:py-24">
-        <div className="container">
-          <div className="mx-auto max-w-3xl text-center">
-            <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
-              How Donna works inside Gmail
-            </h1>
-            <p className="mt-6 text-lg text-muted-foreground">
-              Donna is a Gmail-native CRM for individuals. It keeps contacts, deal context,
-              tasks, and an AI assistant in your sidebar-so conversations turn into next
-              steps without switching tools.
-            </p>
-            <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
-              <Button size="lg" asChild>
-                <a
-                  href={chromeWebStoreInstallUrl({ content: 'how_it_works_hero' })}
-                  target="_blank"
-                  rel="noopener noreferrer"
+      <ScrollSnapActivator />
+
+      {/* ── Hero + Setup ── */}
+      <section
+        data-snap-section
+        className="donna-hero-drift relative flex min-h-[calc(100svh-4rem)] items-center overflow-hidden bg-background py-16 lg:py-24"
+      >
+        <div className="relative z-10 mx-auto w-full max-w-[1440px] px-6 lg:px-10">
+          <div className="grid w-full items-center gap-12 lg:grid-cols-2 lg:gap-16">
+            {/* Left column - headline + CTAs */}
+            <Reveal>
+              <Eyebrow>How it works</Eyebrow>
+              <h1
+                className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl"
+                style={{ letterSpacing: '-0.02em' }}
+              >
+                Up and running in 30&nbsp;seconds
+              </h1>
+              <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
+                Install a Chrome extension, open Gmail, and your CRM is right
+                there in the sidebar. No onboarding calls, no data migration,
+                no learning&nbsp;curve.
+              </p>
+
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+                <Button
+                  size="lg"
+                  className="shadow-lg shadow-primary/20 transition-all duration-200 hover:shadow-xl hover:shadow-primary/30 hover:scale-[1.02] active:scale-[0.98]"
+                  asChild
                 >
-                  {primaryCtaLabel}
-                </a>
-              </Button>
-              <Button size="lg" variant="outline" asChild>
-                <Link href="/features">Explore features</Link>
-              </Button>
-            </div>
-            <p className="mt-4 text-sm text-muted-foreground">
-              No setup | No credit card | Uninstall anytime
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-background py-14 lg:py-20">
-        <div className="container">
-          <Reveal>
-            <div className="w-full">
-              <div className="mx-auto max-w-5xl">
-                <h2 className="text-2xl font-semibold text-foreground sm:text-3xl">
-                  Install and connect in minutes
-                </h2>
-                <p className="mt-3 max-w-3xl text-muted-foreground">
-                  Donna installs as a Chrome extension and runs directly in the Gmail UI.
-                  After you grant permissions, it can show CRM context next to the threads
-                  you're already working on.
-                </p>
+                  <a
+                    href={chromeWebStoreInstallUrl({ content: 'how_it_works_hero' })}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Try it free
+                  </a>
+                </Button>
+                <Button size="lg" variant="outline" className="group" asChild>
+                  <Link href="/features">
+                    Explore features
+                    <ArrowRight className="ml-1 h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
+                  </Link>
+                </Button>
               </div>
 
-              <div className="mt-2 grid gap-10 lg:grid-cols-[1fr_1.1fr] lg:items-start">
-                <div className="grid grid-cols-1 items-stretch gap-6 sm:grid-cols-2">
-                  <Reveal delayMs={0} durationMs={400}>
-                    <div className={surfaceTileClassName}>
-                      <div className="flex items-start justify-between gap-4">
-                        <IconBubble Icon={Download} />
-                        <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground">
-                          1
-                        </span>
-                      </div>
+              <p className="mt-4 text-xs text-muted-foreground">
+                Free trial &middot; No credit card &middot; Uninstall anytime
+              </p>
+            </Reveal>
 
-                      <div className="mt-5 space-y-2">
-                        <Eyebrow>Step 1</Eyebrow>
-                        <p className="text-[22px] font-[650] leading-[1.2] text-foreground">
-                          Install Donna
-                        </p>
-                        <p className="text-[15px] leading-[1.6] text-foreground/70">
-                          Add Donna from the Chrome Web Store.
-                        </p>
-                      </div>
-                    </div>
-                  </Reveal>
-
-                  <Reveal delayMs={80} durationMs={400}>
-                    <div className={surfaceTileClassName}>
-                      <div className="flex items-start justify-between gap-4">
-                        <IconBubble Icon={MailOpen} />
-                        <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground">
-                          2
-                        </span>
-                      </div>
-
-                      <div className="mt-5 space-y-2">
-                        <Eyebrow>Step 2</Eyebrow>
-                        <p className="text-[22px] font-[650] leading-[1.2] text-foreground">
-                          Open Gmail
-                        </p>
-                        <p className="text-[15px] leading-[1.6] text-foreground/70">
-                          Donna appears in the Gmail sidebar.
-                        </p>
-                      </div>
-                    </div>
-                  </Reveal>
-
-                  <Reveal delayMs={160} durationMs={400}>
-                    <div className={surfaceTileClassName}>
-                      <div className="flex items-start justify-between gap-4">
-                        <IconBubble Icon={ShieldCheck} />
-                        <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground">
-                          3
-                        </span>
-                      </div>
-
-                      <div className="mt-5 space-y-2">
-                        <Eyebrow>Step 3</Eyebrow>
-                        <p className="text-[22px] font-[650] leading-[1.2] text-foreground">
-                          Grant permissions
-                        </p>
-                        <p className="text-[15px] leading-[1.6] text-foreground/70">
-                          Approve the prompts to connect Donna to your Gmail.
-                        </p>
-                        <p className="pt-1 text-[15px] leading-[1.6] text-foreground/70">
-                          You'll see two permission screens - one for the extension and one
-                          for Donna's service.
-                        </p>
-                      </div>
-                    </div>
-                  </Reveal>
-
-                  <Reveal delayMs={240} durationMs={400}>
-                    <div className={surfaceTileClassName}>
-                      <div className="flex items-start justify-between gap-4">
-                        <IconBubble Icon={Kanban} />
-                        <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground">
-                          4
-                        </span>
-                      </div>
-
-                      <div className="mt-5 space-y-2">
-                        <Eyebrow>Step 4</Eyebrow>
-                        <p className="text-[22px] font-[650] leading-[1.2] text-foreground">
-                          Start using Donna
-                        </p>
-                        <p className="text-[15px] leading-[1.6] text-foreground/70">
-                          Deals, notes, and follow-ups - right where you reply.
-                        </p>
-                      </div>
-                    </div>
-                  </Reveal>
-                </div>
-
-                <Reveal delayMs={120} durationMs={500} className="lg:pl-6">
-                  <div className="overflow-hidden rounded-[28px] bg-muted/30 shadow-[0_24px_60px_rgba(0,0,0,0.10)] ring-1 ring-black/[0.04]">
-                    <img
-                      src="/stock/laptop-hands.jpg"
-                      alt="Working in an inbox"
-                      className="h-full w-full object-cover object-center"
-                      loading="lazy"
-                    />
-                  </div>
-                </Reveal>
-              </div>
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
-      <section className="bg-muted py-14 lg:py-20">
-        <div className="container">
-          <Reveal>
-            <div className="mx-auto max-w-5xl">
-              <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
-                <div>
-                  <h2 className="text-3xl font-bold text-foreground sm:text-4xl">
-                    What Donna adds to your inbox
-                  </h2>
-                  <p className="mt-4 text-muted-foreground">
-                    Instead of jumping between Gmail, a CRM, and notes, Donna keeps the
-                    essentials attached to the conversation.
-                  </p>
-
-                  <ul className="mt-6 space-y-3">
-                    <Bullet>
-                      Contact context: notes, tags, and recent activity alongside a thread.
-                    </Bullet>
-                    <Bullet>
-                      Deals and pipelines: turn an email into a deal and track stage as it
-                      progresses.
-                    </Bullet>
-                    <Bullet>
-                      Tasks and follow-ups: capture next steps with due dates so nothing
-                      stalls.
-                    </Bullet>
-                    <Bullet>
-                      Outreach and tracking: send campaigns and understand opens/clicks as
-                      signals.
-                    </Bullet>
-                    <Bullet>
-                      AI assistant: ask for summaries and drafts, then edit before sending.
-                    </Bullet>
-                  </ul>
-
-                  <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
-                    <Button asChild>
-                      <Link href="/features">
-                        Explore features <ArrowRight className="ml-2 h-4 w-4" />
-                      </Link>
-                    </Button>
-                    <Button variant="outline" asChild>
-                      <Link href="/resources">Read the guides</Link>
-                    </Button>
-                  </div>
-                </div>
-
-                <div className="overflow-hidden rounded-[24px] border border-border bg-background shadow-sm">
-                  <div className="bg-muted/10 p-4">
-                    <img
-                      src="/screenshots/Context%20Bar.png"
-                      alt="Donna CRM showing contact context inside Gmail"
-                      className="w-full object-contain"
-                      loading="lazy"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
-      <section className="bg-background py-14 lg:py-20">
-        <div className="container">
-          <Reveal>
-            <div className="mx-auto max-w-5xl">
-              <div className="text-center">
-                <h2 className="text-3xl font-bold text-foreground sm:text-4xl">
-                  A simple workflow that stays in Gmail
-                </h2>
-                <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
-                  Use Donna where the work already happens: inside threads, and inside your
-                  inbox.
-                </p>
-              </div>
-
-              <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-                <div className={surfaceTileClassName}>
+            {/* Right column - 4 setup steps */}
+            <Reveal delayMs={100}>
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                <div className={compactTileClassName}>
                   <div className="flex items-start justify-between gap-4">
-                    <IconBubble Icon={Inbox} />
+                    <IconBubble Icon={Download} />
                     <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground">
                       1
                     </span>
                   </div>
-                  <div className="mt-5 space-y-2">
-                    <Eyebrow>Step 1</Eyebrow>
-                    <p className="text-[22px] font-[650] leading-[1.2] text-foreground">
-                      Open a real thread
-                    </p>
+                  <div className="mt-3 space-y-1">
+                    <h3 className="text-lg font-bold text-foreground">Install Donna</h3>
                     <p className="text-[15px] leading-[1.6] text-foreground/70">
-                      Donna anchors CRM context to the conversation you're working on.
+                      One click from the Chrome Web&nbsp;Store.
                     </p>
                   </div>
                 </div>
 
-                <div className={surfaceTileClassName}>
+                <div className={compactTileClassName}>
                   <div className="flex items-start justify-between gap-4">
-                    <IconBubble Icon={Users} />
+                    <IconBubble Icon={MailOpen} />
                     <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground">
                       2
                     </span>
                   </div>
-                  <div className="mt-5 space-y-2">
-                    <Eyebrow>Step 2</Eyebrow>
-                    <p className="text-[22px] font-[650] leading-[1.2] text-foreground">
-                      Save contact context
-                    </p>
+                  <div className="mt-3 space-y-1">
+                    <h3 className="text-lg font-bold text-foreground">Open Gmail</h3>
                     <p className="text-[15px] leading-[1.6] text-foreground/70">
-                      Add notes and tags so you remember what matters next time.
+                      Donna is already waiting in the&nbsp;sidebar.
                     </p>
                   </div>
                 </div>
 
-                <div className={surfaceTileClassName}>
+                <div className={compactTileClassName}>
                   <div className="flex items-start justify-between gap-4">
-                    <IconBubble Icon={ClipboardList} />
+                    <IconBubble Icon={ShieldCheck} />
                     <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground">
                       3
                     </span>
                   </div>
-                  <div className="mt-5 space-y-2">
-                    <Eyebrow>Step 3</Eyebrow>
-                    <p className="text-[22px] font-[650] leading-[1.2] text-foreground">
-                      Capture the next step
-                    </p>
+                  <div className="mt-3 space-y-1">
+                    <h3 className="text-lg font-bold text-foreground">
+                      Grant permissions
+                    </h3>
                     <p className="text-[15px] leading-[1.6] text-foreground/70">
-                      Create a task or follow-up with a due date while you reply.
+                      Two quick prompts. Nothing&nbsp;complicated.
                     </p>
                   </div>
                 </div>
 
-                <div className={surfaceTileClassName}>
+                <div className={compactTileClassName}>
                   <div className="flex items-start justify-between gap-4">
                     <IconBubble Icon={Kanban} />
                     <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground">
                       4
                     </span>
                   </div>
-                  <div className="mt-5 space-y-2">
-                    <Eyebrow>Step 4</Eyebrow>
-                    <p className="text-[22px] font-[650] leading-[1.2] text-foreground">
-                      Review your pipeline
-                    </p>
+                  <div className="mt-3 space-y-1">
+                    <h3 className="text-lg font-bold text-foreground">
+                      Start using Donna
+                    </h3>
                     <p className="text-[15px] leading-[1.6] text-foreground/70">
-                      See what's in motion, what's blocked, and what needs attention.
+                      Deals, notes, and follow-ups - right where you&nbsp;reply.
                     </p>
                   </div>
                 </div>
               </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
 
-              <div className="mt-10 overflow-hidden rounded-[24px] border border-border bg-background shadow-sm">
-                <div className="bg-muted/10 p-4">
+      {/* ── Your inbox, transformed (dark) ── */}
+      <section
+        data-snap-section
+        className="flex min-h-[calc(100svh-4rem)] items-center bg-primary py-20 lg:py-28"
+      >
+        <div className="mx-auto w-full max-w-[1440px] px-6 lg:px-10">
+          <Reveal>
+            <div className="grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-20">
+              <div>
+                <Eyebrow>Inside your inbox</Eyebrow>
+                <h2
+                  className="text-3xl font-bold text-primary-foreground sm:text-4xl"
+                  style={{ letterSpacing: '-0.02em' }}
+                >
+                  Everything you need, right where you&nbsp;work
+                </h2>
+                <p className="mt-4 text-lg leading-relaxed text-primary-foreground/60">
+                  Stop jumping between Gmail, a CRM, and a notes app. Donna keeps
+                  everything attached to the conversation it belongs&nbsp;to.
+                </p>
+
+                <ul className="mt-6 space-y-3">
+                  <LightBullet>
+                    See who you&apos;re talking to - notes, tags, and history appear next to every thread
+                  </LightBullet>
+                  <LightBullet>
+                    Turn any email into a deal and track it through your pipeline
+                  </LightBullet>
+                  <LightBullet>
+                    Capture follow-ups with due dates so nothing falls through the cracks
+                  </LightBullet>
+                  <LightBullet>
+                    Send targeted outreach and see who opens, clicks, and replies
+                  </LightBullet>
+                  <LightBullet>
+                    Get AI-powered summaries and draft replies you can edit before sending
+                  </LightBullet>
+                </ul>
+
+                <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+                  <Button
+                    variant="secondary"
+                    className="group"
+                    asChild
+                  >
+                    <Link href="/features">
+                      Explore features
+                      <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                    </Link>
+                  </Button>
+                  <Button
+                    variant="outline"
+                    className="border-white/20 bg-transparent text-primary-foreground hover:bg-white/10 hover:text-primary-foreground"
+                    asChild
+                  >
+                    <Link href="/resources">Read the guides</Link>
+                  </Button>
+                </div>
+              </div>
+
+              <div className="overflow-hidden rounded-2xl border border-white/10 bg-white/5 shadow-lg ring-1 ring-white/[0.04]">
+                <div className="p-4">
                   <img
-                    src="/screenshots/Pipeline.png"
-                    alt="Pipeline tracking in Donna CRM"
+                    src="/screenshots/Context%20Bar.png"
+                    alt="Donna CRM showing contact context inside Gmail"
                     className="w-full object-contain"
                     loading="lazy"
                   />
@@ -367,50 +247,191 @@ export function HowItWorksPage() {
         </div>
       </section>
 
-      <section className="bg-muted py-14 lg:py-20">
-        <div className="container">
+      {/* ── Daily workflow ── */}
+      <section
+        data-snap-section
+        className="flex min-h-[calc(100svh-4rem)] items-center bg-background py-20 lg:py-28"
+      >
+        <div className="mx-auto w-full max-w-[1440px] px-6 lg:px-10">
           <Reveal>
-            <div className="mx-auto max-w-5xl">
-              <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
-                <div className="order-2 overflow-hidden rounded-[24px] border border-border bg-background shadow-sm lg:order-1">
-                  <div className="bg-muted/10 p-4">
-                    <img
-                      src="/screenshots/Overview.png"
-                      alt="Donna CRM AI assistant in the Gmail sidebar"
-                      className="w-full object-contain"
-                      loading="lazy"
-                    />
-                  </div>
+            <div className="text-center">
+              <Eyebrow>Your daily workflow</Eyebrow>
+              <h2
+                className="text-3xl font-bold text-foreground sm:text-4xl"
+                style={{ letterSpacing: '-0.02em' }}
+              >
+                The routine that actually&nbsp;sticks
+              </h2>
+              <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
+                Donna works because it fits the way you already work. Open your inbox,
+                handle your conversations, and the CRM updates along the&nbsp;way.
+              </p>
+            </div>
+
+            <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+              <div className={surfaceTileClassName}>
+                <div className="flex items-start justify-between gap-4">
+                  <IconBubble Icon={Inbox} />
+                  <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground">
+                    1
+                  </span>
+                </div>
+                <div className="mt-5 space-y-2">
+                  <h3 className="text-xl font-bold text-foreground">
+                    Open a thread
+                  </h3>
+                  <p className="text-[15px] leading-[1.6] text-foreground/70">
+                    Click into any conversation and Donna pulls up everything
+                    you know about that&nbsp;contact.
+                  </p>
+                </div>
+              </div>
+
+              <div className={surfaceTileClassName}>
+                <div className="flex items-start justify-between gap-4">
+                  <IconBubble Icon={Users} />
+                  <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground">
+                    2
+                  </span>
+                </div>
+                <div className="mt-5 space-y-2">
+                  <h3 className="text-xl font-bold text-foreground">
+                    Save context
+                  </h3>
+                  <p className="text-[15px] leading-[1.6] text-foreground/70">
+                    Jot down what matters while it&apos;s fresh. Notes and tags
+                    are right there next&nbsp;time.
+                  </p>
+                </div>
+              </div>
+
+              <div className={surfaceTileClassName}>
+                <div className="flex items-start justify-between gap-4">
+                  <IconBubble Icon={ClipboardList} />
+                  <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground">
+                    3
+                  </span>
+                </div>
+                <div className="mt-5 space-y-2">
+                  <h3 className="text-xl font-bold text-foreground">
+                    Capture the next step
+                  </h3>
+                  <p className="text-[15px] leading-[1.6] text-foreground/70">
+                    Set a task or follow-up before you move on. Nothing
+                    slips&nbsp;through.
+                  </p>
+                </div>
+              </div>
+
+              <div className={surfaceTileClassName}>
+                <div className="flex items-start justify-between gap-4">
+                  <IconBubble Icon={Kanban} />
+                  <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground">
+                    4
+                  </span>
+                </div>
+                <div className="mt-5 space-y-2">
+                  <h3 className="text-xl font-bold text-foreground">
+                    Review your pipeline
+                  </h3>
+                  <p className="text-[15px] leading-[1.6] text-foreground/70">
+                    See what&apos;s moving, what&apos;s stalled, and what needs
+                    your&nbsp;attention.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-10 overflow-hidden rounded-2xl border border-border bg-background shadow-lg ring-1 ring-black/[0.04]">
+              <div className="bg-muted/10 p-4">
+                <img
+                  src="/screenshots/Pipeline.png"
+                  alt="Pipeline tracking in Donna CRM"
+                  className="w-full object-contain"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ── AI + Trust ── */}
+      <section
+        data-snap-section
+        className="flex min-h-[calc(100svh-4rem)] items-center bg-ink-deep py-20 lg:py-28"
+      >
+        <div className="mx-auto w-full max-w-[1440px] px-6 lg:px-10">
+          <Reveal>
+            <div className="grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-20">
+              <div className="order-2 overflow-hidden rounded-2xl border border-white/10 bg-white/5 shadow-lg ring-1 ring-white/[0.04] lg:order-1">
+                <div className="p-4">
+                  <img
+                    src="/screenshots/Overview.png"
+                    alt="Donna CRM AI assistant in the Gmail sidebar"
+                    className="w-full object-contain"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+
+              <div className="order-1 lg:order-2">
+                <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-blue/25 to-brand-blue/10 text-brand-blue shadow-sm">
+                  <Sparkles className="h-5 w-5" />
+                </div>
+                <Eyebrow>AI assistant</Eyebrow>
+                <h2
+                  className="text-3xl font-bold text-white sm:text-4xl"
+                  style={{ letterSpacing: '-0.02em' }}
+                >
+                  Move faster without losing&nbsp;control
+                </h2>
+                <p className="mt-4 text-lg leading-relaxed text-white/60">
+                  Donna&apos;s AI helps you move through your inbox faster. You always
+                  review and edit before anything&nbsp;sends.
+                </p>
+                <ul className="mt-6 space-y-3">
+                  <LightBullet>Get a quick summary before diving into a long thread</LightBullet>
+                  <LightBullet>Generate a first draft, then tweak it in your own voice</LightBullet>
+                  <LightBullet>
+                    Turn conversations into tasks, notes, and deal updates automatically
+                  </LightBullet>
+                  <LightBullet>
+                    Built with privacy in mind - your data is handled the way you&apos;d expect
+                  </LightBullet>
+                </ul>
+
+                {/* Trust strip */}
+                <div className="mt-8 flex flex-wrap items-center gap-6 text-sm text-white/40">
+                  <span className="flex items-center gap-2">
+                    <ShieldCheck className="h-4 w-4" />
+                    Third-party audited
+                  </span>
+                  <span className="flex items-center gap-2">
+                    <ShieldCheck className="h-4 w-4" />
+                    CASA certified
+                  </span>
+                  <span className="flex items-center gap-2">
+                    <ShieldCheck className="h-4 w-4" />
+                    Industry-standard encryption
+                  </span>
                 </div>
 
-                <div className="order-1 lg:order-2">
-                  <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-blue/10 text-brand-blue">
-                    <Sparkles className="h-5 w-5" />
-                  </div>
-                  <h2 className="mt-5 text-3xl font-bold text-foreground sm:text-4xl">
-                    An AI assistant, built into the workflow
-                  </h2>
-                  <p className="mt-4 text-muted-foreground">
-                    Use the assistant to move faster without losing accuracy or control.
-                  </p>
-                  <ul className="mt-6 space-y-3">
-                    <Bullet>Summarize a thread before you respond.</Bullet>
-                    <Bullet>Generate a first draft, then edit in your own voice.</Bullet>
-                    <Bullet>
-                      Turn a conversation into concrete next steps (tasks, notes, deal updates).
-                    </Bullet>
-                    <Bullet>
-                      Stay mindful of sensitive data, just like you would in email.
-                    </Bullet>
-                  </ul>
-                  <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
-                    <Button variant="outline" asChild>
-                      <Link href="/integrations">Permissions and integrations</Link>
-                    </Button>
-                    <Button variant="outline" asChild>
-                      <Link href="/privacy">Privacy policy</Link>
-                    </Button>
-                  </div>
+                <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
+                  <Button
+                    variant="outline"
+                    className="border-white/20 bg-transparent text-white hover:bg-white/10 hover:text-white"
+                    asChild
+                  >
+                    <Link href="/integrations">Permissions &amp; integrations</Link>
+                  </Button>
+                  <Button
+                    variant="outline"
+                    className="border-white/20 bg-transparent text-white hover:bg-white/10 hover:text-white"
+                    asChild
+                  >
+                    <Link href="/privacy">Privacy policy</Link>
+                  </Button>
                 </div>
               </div>
             </div>
@@ -418,29 +439,39 @@ export function HowItWorksPage() {
         </div>
       </section>
 
-      <section className="bg-background py-14 lg:py-20">
-        <div className="container">
+      {/* ── CTA ── */}
+      <section data-snap-section className="bg-background py-24 lg:py-32">
+        <div className="mx-auto w-full max-w-[1440px] px-6 lg:px-10">
           <Reveal className="mx-auto max-w-2xl text-center">
-            <h2 className="text-3xl font-bold text-foreground sm:text-4xl">
-              Try Donna CRM inside Gmail
+            <Eyebrow>Ready to try it?</Eyebrow>
+            <h2
+              className="text-3xl font-bold text-foreground sm:text-4xl"
+              style={{ letterSpacing: '-0.02em' }}
+            >
+              See Donna in your inbox&nbsp;today
             </h2>
-            <p className="mt-4 text-muted-foreground">
-              Install in under 2 minutes. No card required for trial. Cancel anytime.
+            <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
+              Install the Chrome extension, open Gmail, and you&apos;re up and running.
+              No configuration, no onboarding calls, no credit&nbsp;card.
             </p>
-            <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-              <Button size="lg" asChild>
+            <div className="mt-8">
+              <Button
+                size="lg"
+                className="shadow-lg shadow-primary/20 transition-all duration-200 hover:shadow-xl hover:shadow-primary/30 hover:scale-[1.02] active:scale-[0.98]"
+                asChild
+              >
                 <a
                   href={chromeWebStoreInstallUrl({ content: 'how_it_works_bottom_cta' })}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  {primaryCtaLabel}
+                  Start your free trial
                 </a>
               </Button>
-              <Button size="lg" variant="outline" asChild>
-                <Link href="/pricing">View pricing</Link>
-              </Button>
             </div>
+            <p className="mt-4 text-xs text-muted-foreground">
+              Free trial &middot; No credit card &middot; Uninstall anytime
+            </p>
           </Reveal>
         </div>
       </section>

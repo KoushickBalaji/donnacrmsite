@@ -4,62 +4,134 @@ import { ChevronDown } from 'lucide-react'
 import { useState } from 'react'
 import Link from 'next/link'
 import { Button } from '../components/ui/Button'
-import { faqs } from '../content/faqs'
+import { Reveal } from '../components/Reveal'
+import { faqCategories } from '../content/faqs'
+
+function FaqAccordion({
+  catIndex,
+  faqIdx,
+  question,
+  answer,
+  isOpen,
+  onToggle,
+}: {
+  catIndex: number
+  faqIdx: number
+  question: string
+  answer: string
+  isOpen: boolean
+  onToggle: (id: string) => void
+}) {
+  const id = `${catIndex}-${faqIdx}`
+  return (
+    <div className="rounded-xl border border-border bg-background px-6 shadow-sm transition-shadow hover:shadow-md">
+      <button
+        className="flex w-full items-center justify-between py-4 text-left text-foreground hover:text-primary"
+        onClick={() => onToggle(id)}
+        aria-expanded={isOpen}
+      >
+        <span className="pr-4 font-semibold">{question}</span>
+        <ChevronDown
+          className={`h-5 w-5 flex-shrink-0 text-muted-foreground transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
+        />
+      </button>
+      {isOpen && (
+        <div className="pb-5 text-[15px] leading-relaxed text-muted-foreground">
+          {answer}
+        </div>
+      )}
+    </div>
+  )
+}
 
 export function FaqPage() {
-  const [open, setOpen] = useState<string | null>('item-0')
+  const [openItems, setOpenItems] = useState<Set<string>>(new Set(['0-0']))
+
+  const toggle = (id: string) => {
+    setOpenItems((prev) => {
+      const next = new Set(prev)
+      if (next.has(id)) {
+        next.delete(id)
+      } else {
+        next.add(id)
+      }
+      return next
+    })
+  }
+
   return (
     <>
-      <section className="bg-gradient-to-b from-primary/5 to-background py-16 lg:py-24">
+      {/* ── Hero ── */}
+      <section className="bg-gradient-to-b from-primary/5 to-background pb-10 pt-14 lg:pb-14 lg:pt-20">
         <div className="container">
-          <div className="mx-auto max-w-3xl text-center">
-            <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
-              Frequently Asked Questions
-            </h1>
-            <p className="mt-6 text-lg text-muted-foreground">
-              Find answers to common questions about Donna CRM.
-            </p>
-          </div>
+          <Reveal>
+            <div className="mx-auto max-w-3xl text-center">
+              <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
+                Questions? Answers.
+              </h1>
+              <p className="mt-4 text-lg text-muted-foreground">
+                Everything you need to know about Donna CRM - from setup to
+                security.
+              </p>
+            </div>
+          </Reveal>
         </div>
       </section>
 
-      <section className="bg-background py-20">
-        <div className="container max-w-3xl">
-          <div className="space-y-4">
-            {faqs.map((faq, index) => {
-              const id = `item-${index}`
-              const isOpen = open === id
-              return (
-                <div key={faq.question} className="rounded-lg border border-border px-6">
-                  <button
-                    className="flex w-full items-center justify-between py-5 text-left text-foreground hover:text-primary"
-                    onClick={() => setOpen((v) => (v === id ? null : id))}
-                    aria-expanded={isOpen}
-                  >
-                    <span className="font-medium">{faq.question}</span>
-                    <ChevronDown
-                      className={`h-5 w-5 transition-transform ${isOpen ? 'rotate-180' : ''}`}
-                    />
-                  </button>
-                  {isOpen ? (
-                    <div className="pb-5 text-muted-foreground">{faq.answer}</div>
-                  ) : null}
+      {/* ── FAQ categories with sticky sidebar labels ── */}
+      <section className="bg-background py-12 lg:py-16">
+        <div className="mx-auto w-full max-w-[1120px] px-6 lg:px-10">
+          {faqCategories.map((category, catIdx) => (
+            <Reveal key={category.title} delayMs={catIdx * 60}>
+              <div
+                className={`grid grid-cols-1 gap-4 lg:grid-cols-[200px_1fr] lg:gap-12 ${catIdx > 0 ? 'mt-14' : ''}`}
+              >
+                {/* Sticky sidebar label */}
+                <div className="lg:sticky lg:top-24 lg:self-start">
+                  <h2 className="text-xs font-semibold uppercase tracking-[0.12em] text-brand-blue">
+                    {category.title}
+                  </h2>
                 </div>
-              )
-            })}
-          </div>
+
+                {/* Accordion items */}
+                <div className="space-y-3">
+                  {category.items.map((faq, faqIdx) => (
+                    <FaqAccordion
+                      key={faq.question}
+                      catIndex={catIdx}
+                      faqIdx={faqIdx}
+                      question={faq.question}
+                      answer={faq.answer}
+                      isOpen={openItems.has(`${catIdx}-${faqIdx}`)}
+                      onToggle={toggle}
+                    />
+                  ))}
+                </div>
+              </div>
+            </Reveal>
+          ))}
         </div>
       </section>
 
+      {/* ── CTA ── */}
       <section className="bg-muted/30 py-16">
-        <div className="container text-center">
-          <h2 className="mb-4 text-2xl font-bold text-foreground">Still Have Questions?</h2>
-          <p className="mb-6 text-muted-foreground">
-            Our team is here to help. Reach out and we'll get back to you as soon as possible.
-          </p>
-          <Button asChild>
-            <Link href="/contact">Contact Us</Link>
-          </Button>
+        <div className="container">
+          <Reveal className="mx-auto max-w-2xl text-center">
+            <h2 className="text-2xl font-bold text-foreground">
+              Still have questions?
+            </h2>
+            <p className="mt-3 text-muted-foreground">
+              Reach out and we will get back to you within one business day.
+            </p>
+            <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
+              <Button asChild>
+                <Link href="/contact">Contact us</Link>
+              </Button>
+              <Button variant="outline" asChild>
+                <Link href="/resources">Browse resources</Link>
+              </Button>
+            </div>
+          </Reveal>
         </div>
       </section>
     </>

@@ -14,7 +14,7 @@ export const pricingFaqs: FaqItem[] = [
   {
     question: 'What is the launch offer?',
     answer:
-      'Donna CRM is in early access. The current pricing is a launch offer \u2014 significantly lower than the standard price. Lock in launch pricing by starting your trial now.',
+      'Donna CRM is in early access. The current pricing is a launch offer - significantly lower than the standard price. Lock in launch pricing by starting your trial now.',
   },
   {
     question: 'Can I cancel anytime?',
