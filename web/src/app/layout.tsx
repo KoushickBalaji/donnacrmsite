@@ -8,7 +8,7 @@ import { ScrollSnapReset } from '../components/ScrollSnapReset'
 import { SiteFooter } from '../components/SiteFooter'
 import { SiteHeader } from '../components/SiteHeader'
 import { Ga4Analytics } from '../lib/analytics/Analytics'
-import { Ga4Script } from '../lib/analytics/Ga4Script'
+import { GoogleTagScripts } from '../lib/analytics/GoogleTagScripts'
 import { resolveSiteOrigin, SITE_NAME } from '../lib/site'
 import './globals.css'
 
@@ -19,8 +19,8 @@ const inter = Inter({
 })
 
 const siteOrigin = resolveSiteOrigin()
-const isProduction =
-  process.env.VERCEL_ENV === 'production' || process.env.NODE_ENV === 'production'
+const vercelEnv = process.env.VERCEL_ENV
+const isProduction = vercelEnv ? vercelEnv === 'production' : process.env.NODE_ENV === 'production'
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -67,21 +67,21 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={inter.variable} suppressHydrationWarning>
       <body className={inter.className} suppressHydrationWarning>
+        <GoogleTagScripts />
         <ConsentProvider>
-          <Ga4Script />
           <JsonLd id="donna-jsonld-global" data={globalJsonLd} />
           <div className="min-h-screen bg-background">
             <div className="flex min-h-screen flex-col">
               <SiteHeader />
               <ScrollSnapReset />
               <Suspense fallback={null}>
-                <Ga4Analytics />
+                {isProduction ? <Ga4Analytics /> : null}
               </Suspense>
               <main className="flex-1">{children}</main>
               <SiteFooter />
             </div>
           </div>
-          <CookieConsentBanner />
+          <CookieConsentBanner enabled={isProduction} />
         </ConsentProvider>
       </body>
     </html>

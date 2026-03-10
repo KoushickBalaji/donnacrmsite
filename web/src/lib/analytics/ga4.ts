@@ -7,7 +7,7 @@ declare global {
   }
 }
 
-const measurementId = process.env.NEXT_PUBLIC_GA4_MEASUREMENT_ID as string | undefined
+const measurementId = process.env.NEXT_PUBLIC_GA4_MEASUREMENT_ID?.trim()
 
 function ensureGtagShim() {
   window.dataLayer ??= []
@@ -16,28 +16,16 @@ function ensureGtagShim() {
   }
 }
 
-let initialized = false
-
-export function initGa4(options?: { allowAdPersonalizationSignals?: boolean }) {
-  if (initialized) return
-  if (!measurementId) return
-  if (isDoNotTrackEnabled()) return
-
-  ensureGtagShim()
-
-  window.gtag?.('js', new Date())
-  window.gtag?.('config', measurementId, {
-    send_page_view: false,
-    allow_google_signals: false,
-    allow_ad_personalization_signals: Boolean(options?.allowAdPersonalizationSignals),
-  })
-
-  initialized = true
+function canTrack() {
+  if (!measurementId) return false
+  if (isDoNotTrackEnabled()) return false
+  return true
 }
 
 export function trackPageView(path: string, location?: string) {
-  if (!initialized) return
-  if (!measurementId) return
+  if (!canTrack()) return
+
+  ensureGtagShim()
 
   window.gtag?.('event', 'page_view', {
     page_path: path,
@@ -47,6 +35,8 @@ export function trackPageView(path: string, location?: string) {
 }
 
 export function trackEvent(name: string, params?: Record<string, unknown>) {
-  if (!initialized) return
+  if (!canTrack()) return
+
+  ensureGtagShim()
   window.gtag?.('event', name, params)
 }

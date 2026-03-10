@@ -69,8 +69,6 @@ export function ProductPage() {
     [activeId, showcaseItems],
   )
 
-  const activeItem = showcaseItems[activeIndex]
-
   useScrollSnap()
 
   /* ── Collapsing hero animation ── */
@@ -82,16 +80,9 @@ export function ProductPage() {
     // Respect reduced-motion preference - skip animation entirely
     const mq = window.matchMedia('(prefers-reduced-motion: reduce)')
     prefersReducedMotion.current = mq.matches
-    if (mq.matches) {
-      setCollapsed(true)
-      return
-    }
-
-    const timer = setTimeout(() => setCollapsed(true), 1800)
+    const timer = setTimeout(() => setCollapsed(true), mq.matches ? 0 : 1800)
     return () => clearTimeout(timer)
   }, [])
-
-  const skipTransition = prefersReducedMotion.current
 
   /* ── Auto-cycle tabs after hero collapses ── */
   useEffect(() => {
@@ -128,7 +119,6 @@ export function ProductPage() {
     userInteracted.current = true
     if (intervalRef.current) {
       clearInterval(intervalRef.current)
-      intervalRef.current = null
     }
     setActiveId(id)
   }
@@ -138,7 +128,6 @@ export function ProductPage() {
     userInteracted.current = true
     if (intervalRef.current) {
       clearInterval(intervalRef.current)
-      intervalRef.current = null
     }
     setActiveId((prev) => {
       const currentIdx = showcaseItems.findIndex((item) => item.id === prev)
@@ -158,13 +147,12 @@ export function ProductPage() {
 
           {/* ── Expanded hero (fades out) ── */}
           <div
-            className="overflow-hidden"
+            className="overflow-hidden motion-reduce:!transition-none"
             style={{
               maxHeight: collapsed ? '0px' : '300px',
               opacity: collapsed ? 0 : 1,
-              transition: skipTransition
-                ? 'none'
-                : 'max-height 600ms cubic-bezier(0.4,0,0.2,1), opacity 400ms ease',
+              transition:
+                'max-height 600ms cubic-bezier(0.4,0,0.2,1), opacity 400ms ease',
             }}
             aria-hidden={collapsed}
           >
@@ -183,13 +171,12 @@ export function ProductPage() {
 
           {/* ── Collapsed bar (fades in) ── */}
           <div
-            className="overflow-hidden"
+            className="overflow-hidden motion-reduce:!transition-none"
             style={{
               maxHeight: collapsed ? '60px' : '0px',
               opacity: collapsed ? 1 : 0,
-              transition: skipTransition
-                ? 'none'
-                : 'max-height 600ms cubic-bezier(0.4,0,0.2,1), opacity 400ms 200ms ease',
+              transition:
+                'max-height 600ms cubic-bezier(0.4,0,0.2,1), opacity 400ms 200ms ease',
             }}
             aria-hidden={!collapsed}
           >
@@ -236,13 +223,11 @@ export function ProductPage() {
               <div className="group/carousel relative lg:flex-[7] lg:self-stretch">
                 <div className="h-full overflow-hidden rounded-2xl border border-border/60 bg-muted/30 shadow-lg ring-1 ring-black/[0.04]">
                   <div
-                    className="flex h-full"
+                    className="flex h-full motion-reduce:!transition-none"
                     style={{
                       width: `${showcaseItems.length * 100}%`,
                       transform: `translateX(-${activeIndex * (100 / showcaseItems.length)}%)`,
-                      transition: skipTransition
-                        ? 'none'
-                        : 'transform 500ms cubic-bezier(0.4,0,0.2,1)',
+                      transition: 'transform 500ms cubic-bezier(0.4,0,0.2,1)',
                     }}
                   >
                     {showcaseItems.map((item) => (
@@ -288,10 +273,10 @@ export function ProductPage() {
                 {showcaseItems.map((item, i) => (
                   <div
                     key={item.id}
-                    className="lg:absolute lg:inset-0"
+                    className="lg:absolute lg:inset-0 motion-reduce:!transition-none"
                     style={{
                       opacity: i === activeIndex ? 1 : 0,
-                      transition: skipTransition ? 'none' : 'opacity 350ms ease',
+                      transition: 'opacity 350ms ease',
                       pointerEvents: i === activeIndex ? 'auto' : 'none',
                     }}
                     aria-hidden={i !== activeIndex}

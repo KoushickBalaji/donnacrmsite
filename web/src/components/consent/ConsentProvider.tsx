@@ -4,6 +4,9 @@ import { createContext, useCallback, useContext, useEffect, useMemo, useRef, use
 import type { Consent } from '../../lib/consent'
 import { clearGoogleCookies, isDoNotTrackEnabled, readConsent, writeConsent } from '../../lib/consent'
 
+const ga4MeasurementId = process.env.NEXT_PUBLIC_GA4_MEASUREMENT_ID?.trim()
+const googleAdsTagId = process.env.NEXT_PUBLIC_GOOGLE_ADS_TAG_ID?.trim()
+
 type ConsentContextValue = {
   isReady: boolean
   consent: Consent | null
@@ -99,6 +102,27 @@ export function ConsentProvider({ children }: { children: React.ReactNode }) {
     const prev = consentRef.current
     writeConsent(next)
     setPreferencesOpen(false)
+
+    if (!isDoNotTrackEnabled()) {
+      window.gtag?.('consent', 'update', {
+        ad_storage: next.marketing ? 'granted' : 'denied',
+        analytics_storage: next.analytics ? 'granted' : 'denied',
+        ad_user_data: next.marketing ? 'granted' : 'denied',
+        ad_personalization: next.marketing ? 'granted' : 'denied',
+      })
+
+      if (ga4MeasurementId) {
+        window.gtag?.('config', ga4MeasurementId, {
+          send_page_view: false,
+          allow_google_signals: false,
+          allow_ad_personalization_signals: Boolean(next.marketing),
+        })
+      }
+
+      if (googleAdsTagId) {
+        window.gtag?.('config', googleAdsTagId)
+      }
+    }
 
     const disabledAnalytics = Boolean(prev?.analytics && !next.analytics)
     const disabledMarketing = Boolean(prev?.marketing && !next.marketing)

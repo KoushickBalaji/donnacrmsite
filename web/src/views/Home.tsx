@@ -33,19 +33,6 @@ function IconBubble({ Icon }: { Icon: typeof Inbox }) {
   )
 }
 
-function MiniTile({ Icon, label }: { Icon: typeof Inbox; label: string }) {
-  return (
-    <div className="flex h-full items-start gap-3 rounded-[18px] bg-card/70 p-5 ring-1 ring-black/[0.04] transition-[transform,box-shadow] duration-200 hover:-translate-y-0.5 hover:shadow-md">
-      <div className="inline-flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-blue/15 to-brand-blue/5 text-brand-blue">
-        <Icon className="h-5 w-5" />
-      </div>
-      <p className="pt-1 text-[15px] font-semibold leading-[1.4] text-foreground">
-        {label}
-      </p>
-    </div>
-  )
-}
-
 export function HomePage() {
   const router = useRouter()
 

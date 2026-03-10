@@ -9,15 +9,17 @@ import { useConsent } from './ConsentProvider'
 const ga4MeasurementId = process.env.NEXT_PUBLIC_GA4_MEASUREMENT_ID?.trim()
 const googleAdsTagId = process.env.NEXT_PUBLIC_GOOGLE_ADS_TAG_ID?.trim()
 const hasGoogleTags = Boolean(ga4MeasurementId || googleAdsTagId)
-const isProduction =
-  process.env.VERCEL_ENV === 'production' || process.env.NODE_ENV === 'production'
 
-export function CookieConsentBanner() {
+type CookieConsentBannerProps = {
+  enabled: boolean
+}
+
+export function CookieConsentBanner({ enabled }: CookieConsentBannerProps) {
   const { isReady, consent, setConsent, preferencesOpen, closePreferences } = useConsent()
 
   const [customizeOpen, setCustomizeOpen] = useState(false)
 
-  if (!isProduction) return null
+  if (!enabled) return null
   if (!hasGoogleTags) return null
   if (!isReady) return null
   if (isDoNotTrackEnabled()) return null
@@ -39,7 +41,7 @@ export function CookieConsentBanner() {
           <div className="space-y-1">
             <p className="text-sm font-semibold text-foreground">Cookie preferences</p>
             <p className="text-sm text-muted-foreground">
-              We use cookies to understand site usage and measure marketing performance.{' '}
+              We use cookies (and cookieless signals) to understand site usage and measure marketing performance.{' '}
               <Link
                 href="/privacy#cookies-and-analytics"
                 className="text-primary hover:underline"
@@ -122,7 +124,7 @@ export function CookieConsentBanner() {
                     Analytics
                   </span>
                   <span className="block text-xs text-muted-foreground">
-                    Helps us understand traffic and improve the website (GA4).
+                    Enables analytics cookies (GA4). When disabled, we may still receive cookieless, aggregated measurement.
                   </span>
                 </span>
               </label>
@@ -140,7 +142,7 @@ export function CookieConsentBanner() {
                     Marketing
                   </span>
                   <span className="block text-xs text-muted-foreground">
-                    Helps us measure marketing performance (Google Ads conversions).
+                    Enables marketing cookies (Google Ads). When disabled, conversions may be measured in a cookieless, modeled way.
                   </span>
                 </span>
               </label>
