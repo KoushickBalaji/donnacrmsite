@@ -235,7 +235,7 @@ export function HowItWorksPage() {
               <div className="overflow-hidden rounded-2xl border border-white/10 bg-white/5 shadow-lg ring-1 ring-white/[0.04]">
                 <div className="p-4">
                   <img
-                    src="/screenshots/Context%20Bar.png"
+                    src="/screenshots/Context%20Bar%20V2.png"
                     alt="Donna CRM showing contact context inside Gmail"
                     className="w-full object-contain"
                     loading="lazy"
@@ -345,7 +345,7 @@ export function HowItWorksPage() {
             <div className="mt-10 overflow-hidden rounded-2xl border border-border bg-background shadow-lg ring-1 ring-black/[0.04]">
               <div className="bg-muted/10 p-4">
                 <img
-                  src="/screenshots/Pipeline.png"
+                  src="/screenshots/Pipeline%20V2.png"
                   alt="Pipeline tracking in Donna CRM"
                   className="w-full object-contain"
                   loading="lazy"
@@ -367,7 +367,7 @@ export function HowItWorksPage() {
               <div className="order-2 overflow-hidden rounded-2xl border border-white/10 bg-white/5 shadow-lg ring-1 ring-white/[0.04] lg:order-1">
                 <div className="p-4">
                   <img
-                    src="/screenshots/Overview.png"
+                    src="/screenshots/Overview%20V2.png"
                     alt="Donna CRM AI assistant in the Gmail sidebar"
                     className="w-full object-contain"
                     loading="lazy"

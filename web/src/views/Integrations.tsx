@@ -30,7 +30,7 @@ export function IntegrationsPage() {
               </p>
               <div className="mt-5 overflow-hidden rounded-lg border border-border bg-muted/30">
                 <img
-                  src="/screenshots/Context%20Bar.png"
+                  src="/screenshots/Context%20Bar%20V2.png"
                   alt="Donna CRM running inside the Gmail interface"
                   className="w-full object-contain"
                   loading="lazy"

@@ -177,7 +177,7 @@ export function StreakAlternativePage() {
                   </p>
                   <div className="relative aspect-[16/10] overflow-hidden rounded-lg border border-border bg-background">
                     <img
-                      src="/screenshots/Context%20Bar.png"
+                      src="/screenshots/Context%20Bar%20V2.png"
                       alt="Donna CRM running in the Gmail sidebar"
                       className="h-full w-full scale-[1.06] object-cover object-right"
                       loading="eager"

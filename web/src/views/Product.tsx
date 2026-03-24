@@ -26,7 +26,7 @@ export function ProductPage() {
           title: 'Simple pipelines',
           description:
             'Stage-based boards that keep every deal moving. Drag, drop, done.',
-          screenshotSrc: '/screenshots/Pipeline.png',
+          screenshotSrc: '/screenshots/Pipeline%20V2.png',
           screenshotAlt: 'Pipeline tracking in Donna CRM',
         },
         {
@@ -35,7 +35,7 @@ export function ProductPage() {
           title: 'Your CRM dashboard inside Gmail',
           description:
             'Tasks, AI summaries, and campaign performance - all in one view without leaving your inbox.',
-          screenshotSrc: '/screenshots/Overview.png',
+          screenshotSrc: '/screenshots/Overview%20V2.png',
           screenshotAlt: 'Donna CRM overview dashboard inside Gmail',
         },
         {
@@ -44,7 +44,7 @@ export function ProductPage() {
           title: 'Mail merge campaigns',
           description:
             'Send personalized messages to your contacts in bulk. Templates keep your voice consistent.',
-          screenshotSrc: '/screenshots/Campaigns.png',
+          screenshotSrc: '/screenshots/Campaigns%20V2.png',
           screenshotAlt: 'Campaigns in Donna CRM',
         },
         {
@@ -53,7 +53,7 @@ export function ProductPage() {
           title: 'Full context at a glance',
           description:
             'Notes, past interactions, deal history, and tags - all visible in the sidebar while you read the thread.',
-          screenshotSrc: '/screenshots/Context%20Bar.png',
+          screenshotSrc: '/screenshots/Context%20Bar%20V2.png',
           screenshotAlt: 'Contact context bar in Donna CRM',
         },
       ] as const,

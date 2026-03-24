@@ -80,7 +80,7 @@ export function CrmForConsultantsPage() {
             </div>
 
             <ScreenshotCard
-              src="/screenshots/Context%20Bar.png"
+              src="/screenshots/Context%20Bar%20V2.png"
               alt="Consulting client context shown next to a Gmail thread"
             />
           </div>
@@ -149,7 +149,7 @@ export function CrmForConsultantsPage() {
                 ))}
               </div>
               <ScreenshotCard
-                src="/screenshots/Pipeline.png"
+                src="/screenshots/Pipeline%20V2.png"
                 alt="Consulting engagement stages shown in a pipeline"
               />
             </div>

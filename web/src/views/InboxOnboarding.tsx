@@ -86,7 +86,7 @@ export function InboxOnboardingPage() {
             </div>
 
             <ScreenshotCard
-              src="/screenshots/Context%20Bar.png"
+              src="/screenshots/Context%20Bar%20V2.png"
               alt="Donna CRM context sidebar inside Gmail"
             />
           </div>

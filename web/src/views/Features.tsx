@@ -84,7 +84,7 @@ const featureSections: FeatureSection[] = [
       'Drafts replies in your voice, you edit before sending',
       'Turns conversations into tasks, notes, and deal updates',
     ],
-    screenshotSrc: '/screenshots/Overview.png',
+    screenshotSrc: '/screenshots/Overview%20V2.png',
     screenshotAlt: 'AI Assistant in Donna CRM',
   },
   {
@@ -98,7 +98,7 @@ const featureSections: FeatureSection[] = [
       'Search and filter to find anyone instantly',
       'Import from CSV or Google Sheets to get started fast',
     ],
-    screenshotSrc: '/screenshots/Contacts.png',
+    screenshotSrc: '/screenshots/Contacts%20V2.png',
     screenshotAlt: 'Contacts in Donna CRM',
   },
   {
@@ -112,7 +112,7 @@ const featureSections: FeatureSection[] = [
       'Custom stages that match how you actually sell',
       'Works for sales, recruiting, partnerships, and more',
     ],
-    screenshotSrc: '/screenshots/Pipeline.png',
+    screenshotSrc: '/screenshots/Pipeline%20V2.png',
     screenshotAlt: 'Pipeline Tracking in Donna CRM',
   },
   {
@@ -126,7 +126,7 @@ const featureSections: FeatureSection[] = [
       'Set due dates so nothing slips through',
       'AI can suggest next steps from your threads',
     ],
-    screenshotSrc: '/screenshots/Overview.png',
+    screenshotSrc: '/screenshots/Overview%20V2.png',
     screenshotAlt: 'Tasks in Donna CRM',
   },
   {
@@ -140,7 +140,7 @@ const featureSections: FeatureSection[] = [
       'Reusable templates with merge fields',
       'Personalize with names, companies, and custom data',
     ],
-    screenshotSrc: '/screenshots/Campaigns.png',
+    screenshotSrc: '/screenshots/Campaigns%20V2.png',
     screenshotAlt: 'Bulk Email Campaigns in Donna CRM',
   },
   {
@@ -154,7 +154,7 @@ const featureSections: FeatureSection[] = [
       'Campaign analytics for opens, clicks, and unsubscribes',
       'Use engagement signals to time your follow-ups',
     ],
-    screenshotSrc: '/screenshots/Context%20Bar.png',
+    screenshotSrc: '/screenshots/Context%20Bar%20V2.png',
     screenshotAlt: 'Email Tracking in Donna CRM',
   },
 ]

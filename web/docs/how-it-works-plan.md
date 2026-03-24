@@ -97,7 +97,7 @@ Secondary CTAs: "Explore features" + "Read the guides"
   inbox, handle your conversations, and the CRM updates along the way."
 - **Layout:** Centered heading, then 4 step tiles in a row (lg:grid-cols-4),
   then Pipeline screenshot below.
-- **Screenshot:** Pipeline.png
+- **Screenshot:** Pipeline V2.png
 
 Step tiles use surfaceTileClassName (the standard size, not compact - these
 are the main content of this section and have room to breathe).
@@ -117,7 +117,7 @@ Steps:
 ### Section 5: AI + Trust (very dark navy)
 - **Background:** bg-ink-deep (very dark navy - dramatic before the final CTA)
 - **Layout:** Two-column grid. Overview screenshot left, text + trust strip right.
-- **Screenshot:** Overview.png
+- **Screenshot:** Overview V2.png
 
 **AI portion:**
 - IconBubble with Sparkles icon

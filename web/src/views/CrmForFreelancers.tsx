@@ -76,7 +76,7 @@ export function CrmForFreelancersPage() {
             </div>
 
             <ScreenshotCard
-              src="/screenshots/Contacts.png"
+              src="/screenshots/Contacts%20V2.png"
               alt="Freelancer client contacts tracked inside Gmail"
             />
           </div>
@@ -108,7 +108,7 @@ export function CrmForFreelancersPage() {
 
             <div className="space-y-6">
               <ScreenshotCard
-                src="/screenshots/Pipeline.png"
+                src="/screenshots/Pipeline%20V2.png"
                 alt="Freelance gig stages shown as a pipeline"
               />
             </div>

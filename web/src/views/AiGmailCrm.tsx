@@ -94,11 +94,11 @@ export function AiGmailCrmPage() {
 
             <div className="space-y-6">
               <ScreenshotCard
-                src="/screenshots/Overview.png"
+                src="/screenshots/Overview%20V2.png"
                 alt="Donna CRM AI assistant in the Gmail sidebar"
               />
               <ScreenshotCard
-                src="/screenshots/Context%20Bar.png"
+                src="/screenshots/Context%20Bar%20V2.png"
                 alt="Donna CRM context sidebar inside Gmail"
               />
             </div>

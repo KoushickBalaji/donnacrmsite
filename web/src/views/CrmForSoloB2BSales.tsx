@@ -76,7 +76,7 @@ export function CrmForSoloB2BSalesPage() {
             </div>
 
             <ScreenshotCard
-              src="/screenshots/Pipeline.png"
+              src="/screenshots/Pipeline%20V2.png"
               alt="Solo sales deal stages tracked in a pipeline"
             />
           </div>

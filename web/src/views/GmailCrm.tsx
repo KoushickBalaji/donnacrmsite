@@ -89,7 +89,7 @@ export function GmailCrmPage() {
             </div>
 
             <ScreenshotCard
-              src="/screenshots/Context%20Bar.png"
+              src="/screenshots/Context%20Bar%20V2.png"
               alt="Donna CRM running in the Gmail sidebar"
             />
           </div>
@@ -137,11 +137,11 @@ export function GmailCrmPage() {
 
             <div className="space-y-6">
               <ScreenshotCard
-                src="/screenshots/Contacts.png"
+                src="/screenshots/Contacts%20V2.png"
                 alt="Contact management inside Gmail"
               />
               <ScreenshotCard
-                src="/screenshots/Pipeline.png"
+                src="/screenshots/Pipeline%20V2.png"
                 alt="Pipeline tracking inside Gmail"
               />
             </div>
