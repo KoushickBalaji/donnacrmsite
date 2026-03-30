@@ -61,39 +61,39 @@ export function FaqPage() {
 
   return (
     <>
-      {/* ── Hero ── */}
-      <section className="bg-gradient-to-b from-primary/5 to-background pb-10 pt-14 lg:pb-14 lg:pt-20">
-        <div className="container">
+      {/* -- Hero -- */}
+      <section className="bg-background pb-10 pt-20 lg:pb-14 lg:pt-28">
+        <div className="mx-auto w-full max-w-[1440px] px-6 lg:px-10">
           <Reveal>
             <div className="mx-auto max-w-3xl text-center">
-              <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
-                Questions? Answers.
+              <h1
+                className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl"
+                style={{ letterSpacing: '-0.02em' }}
+              >
+                Donna CRM - frequently asked questions
               </h1>
               <p className="mt-4 text-lg text-muted-foreground">
-                Everything you need to know about Donna CRM - from setup to
-                security.
+                Everything you need to know about getting started, features, pricing, and privacy - in plain language.
               </p>
             </div>
           </Reveal>
         </div>
       </section>
 
-      {/* ── FAQ categories with sticky sidebar labels ── */}
-      <section className="bg-background py-12 lg:py-16">
+      {/* -- FAQ categories with sticky sidebar labels -- */}
+      <section className="bg-background py-10 lg:py-16">
         <div className="mx-auto w-full max-w-[1120px] px-6 lg:px-10">
           {faqCategories.map((category, catIdx) => (
             <Reveal key={category.title} delayMs={catIdx * 60}>
               <div
                 className={`grid grid-cols-1 gap-4 lg:grid-cols-[200px_1fr] lg:gap-12 ${catIdx > 0 ? 'mt-14' : ''}`}
               >
-                {/* Sticky sidebar label */}
                 <div className="lg:sticky lg:top-24 lg:self-start">
                   <h2 className="text-xs font-semibold uppercase tracking-[0.12em] text-brand-blue">
                     {category.title}
                   </h2>
                 </div>
 
-                {/* Accordion items */}
                 <div className="space-y-3">
                   {category.items.map((faq, faqIdx) => (
                     <FaqAccordion
@@ -113,23 +113,56 @@ export function FaqPage() {
         </div>
       </section>
 
-      {/* ── CTA ── */}
-      <section className="bg-muted/30 py-16">
-        <div className="container">
-          <Reveal className="mx-auto max-w-2xl text-center">
-            <h2 className="text-2xl font-bold text-foreground">
-              Still have questions?
-            </h2>
-            <p className="mt-3 text-muted-foreground">
-              Reach out and we will get back to you within one business day.
-            </p>
-            <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
-              <Button asChild>
-                <Link href="/contact">Contact us</Link>
-              </Button>
-              <Button variant="outline" asChild>
-                <Link href="/resources">Browse resources</Link>
-              </Button>
+      {/* -- CTA (dark) -- */}
+      <section className="bg-primary py-20 lg:py-28">
+        <div className="mx-auto w-full max-w-[1440px] px-6 lg:px-10">
+          <Reveal>
+            <div className="mx-auto max-w-3xl text-center">
+              <h2
+                className="text-3xl font-bold text-primary-foreground sm:text-4xl"
+                style={{ letterSpacing: '-0.02em' }}
+              >
+                Still have questions?
+              </h2>
+              <p className="mt-4 text-lg text-primary-foreground/70">
+                Reach out and we will get back to you within one business day.
+              </p>
+            </div>
+          </Reveal>
+
+          <div className="mx-auto mt-10 grid max-w-4xl gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {[
+              { label: 'Contact us', href: '/contact' },
+              { label: 'Browse resources', href: '/resources' },
+              { label: 'How it works', href: '/how-it-works' },
+              { label: 'All features', href: '/features' },
+              { label: 'Gmail CRM overview', href: '/gmail-crm' },
+              { label: 'Pricing', href: '/pricing' },
+            ].map((link, index) => (
+              <Reveal key={link.href} delayMs={index * 60}>
+                <Link
+                  href={link.href}
+                  className="block rounded-xl bg-white/10 px-5 py-4 text-sm font-semibold text-primary-foreground ring-1 ring-white/[0.08] transition-all duration-200 hover:bg-white/[0.15] hover:-translate-y-0.5"
+                >
+                  {link.label}
+                </Link>
+              </Reveal>
+            ))}
+          </div>
+
+          <Reveal delayMs={360}>
+            <div className="mx-auto mt-10 max-w-md text-center">
+              <p className="text-sm text-primary-foreground/60">Ready to try it?</p>
+              <div className="mt-3 flex flex-col gap-3 sm:flex-row sm:justify-center">
+                <Button
+                  size="lg"
+                  variant="secondary"
+                  className="shadow-lg shadow-black/20 transition-all duration-200 hover:shadow-xl hover:scale-[1.02] active:scale-[0.98]"
+                  asChild
+                >
+                  <Link href="/contact">Contact us</Link>
+                </Button>
+              </div>
             </div>
           </Reveal>
         </div>

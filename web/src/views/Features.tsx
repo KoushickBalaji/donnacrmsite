@@ -8,6 +8,7 @@ import {
 } from 'lucide-react'
 import type { ComponentType } from 'react'
 import Link from 'next/link'
+import { Eyebrow } from '../components/Eyebrow'
 import { FaqList, type FaqItem } from '../components/FaqList'
 import { Reveal } from '../components/Reveal'
 import { Button } from '../components/ui/Button'
@@ -25,13 +26,6 @@ type FeatureSection = {
   screenshotAlt: string
 }
 
-function Eyebrow({ children }: { children: React.ReactNode }) {
-  return (
-    <p className="mb-3 text-xs font-semibold uppercase tracking-[0.12em] text-brand-blue">
-      {children}
-    </p>
-  )
-}
 
 function Screenshot({
   icon: Icon,
@@ -191,7 +185,7 @@ export function FeaturesPage() {
   return (
     <>
       <ScrollSnapActivator />
-      {/* ── Hero ── */}
+      {/* -- Hero -- */}
       <section data-snap-section className="donna-hero-drift relative overflow-hidden bg-background py-16 lg:py-24">
         <div className="relative z-10 mx-auto w-full max-w-[1440px] px-6 lg:px-10">
           <div className="mx-auto max-w-3xl text-center">
@@ -213,7 +207,7 @@ export function FeaturesPage() {
         </div>
       </section>
 
-      {/* ── Feature sections ── */}
+      {/* -- Feature sections -- */}
       <section data-snap-section className="bg-background py-20">
         <div className="mx-auto w-full max-w-[1440px] px-6 lg:px-10">
           <div className="space-y-24">
@@ -258,7 +252,7 @@ export function FeaturesPage() {
         </div>
       </section>
 
-      {/* ── FAQ ── */}
+      {/* -- FAQ -- */}
       <section data-snap-section className="bg-muted/30 py-16 lg:py-20">
         <div className="mx-auto w-full max-w-[1440px] px-6 lg:px-10">
           <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
@@ -294,7 +288,7 @@ export function FeaturesPage() {
         </div>
       </section>
 
-      {/* ── CTA ── */}
+      {/* -- CTA -- */}
       <section data-snap-section className="bg-primary py-20 lg:py-28">
         <div className="mx-auto w-full max-w-[1440px] px-6 lg:px-10">
           <Reveal className="mx-auto max-w-2xl text-center">

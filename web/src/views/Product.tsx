@@ -1,19 +1,13 @@
 'use client'
 
 import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react'
+import { Eyebrow } from '../components/Eyebrow'
 import { Reveal } from '../components/Reveal'
 import { Button } from '../components/ui/Button'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import Link from 'next/link'
 import { useScrollSnap } from '../lib/useScrollSnap'
 
-function Eyebrow({ children }: { children: React.ReactNode }) {
-  return (
-    <p className="mb-1 text-xs font-semibold uppercase tracking-[0.12em] text-brand-blue">
-      {children}
-    </p>
-  )
-}
 
 export function ProductPage() {
   const showcaseItems = useMemo(
@@ -71,7 +65,7 @@ export function ProductPage() {
 
   useScrollSnap()
 
-  /* ── Collapsing hero animation ── */
+  /* -- Collapsing hero animation -- */
   const [collapsed, setCollapsed] = useState(false)
   const prefersReducedMotion = useRef(false)
   const userInteracted = useRef(false)
@@ -84,7 +78,7 @@ export function ProductPage() {
     return () => clearTimeout(timer)
   }, [])
 
-  /* ── Auto-cycle tabs after hero collapses ── */
+  /* -- Auto-cycle tabs after hero collapses -- */
   useEffect(() => {
     if (!collapsed || prefersReducedMotion.current) return
 
@@ -141,11 +135,11 @@ export function ProductPage() {
 
   return (
     <>
-      {/* ── Hero + Feature showcase ── */}
+      {/* -- Hero + Feature showcase -- */}
       <section data-snap-section className="donna-hero-drift relative overflow-hidden bg-background pt-2 pb-6 lg:pt-4 lg:pb-10">
         <div className="relative z-10 mx-auto w-full max-w-[1440px] px-6 lg:px-10">
 
-          {/* ── Expanded hero (fades out) ── */}
+          {/* -- Expanded hero (fades out) -- */}
           <div
             className="overflow-hidden motion-reduce:!transition-none"
             style={{
@@ -169,7 +163,7 @@ export function ProductPage() {
             </div>
           </div>
 
-          {/* ── Collapsed bar (fades in) ── */}
+          {/* -- Collapsed bar (fades in) -- */}
           <div
             className="overflow-hidden motion-reduce:!transition-none"
             style={{
@@ -300,11 +294,11 @@ export function ProductPage() {
         </div>
       </section>
 
-      {/* ── CTA ── */}
+      {/* -- CTA -- */}
       <section data-snap-section className="bg-primary py-20 lg:py-28">
         <div className="mx-auto w-full max-w-[1440px] px-6 lg:px-10">
           <Reveal className="mx-auto max-w-2xl text-center">
-            <Eyebrow>Curious?</Eyebrow>
+            <Eyebrow className="mb-1 text-xs font-semibold uppercase tracking-[0.12em] text-brand-blue">Curious?</Eyebrow>
             <h2
               className="text-3xl font-bold text-primary-foreground sm:text-4xl"
               style={{ letterSpacing: '-0.02em' }}

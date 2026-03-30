@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { ArrowRight, Check } from 'lucide-react'
 import Link from 'next/link'
+import { Eyebrow } from '../components/Eyebrow'
 import { FaqList } from '../components/FaqList'
 import { Reveal } from '../components/Reveal'
 import { Button } from '../components/ui/Button'
@@ -11,13 +12,6 @@ import { chromeWebStoreInstallUrl } from '../lib/chromeWebStore'
 import { useScrollSnap } from '../lib/useScrollSnap'
 import { pricingFaqs } from './pricing-data'
 
-function Eyebrow({ children }: { children: React.ReactNode }) {
-  return (
-    <p className="mb-3 text-xs font-semibold uppercase tracking-[0.12em] text-brand-blue">
-      {children}
-    </p>
-  )
-}
 
 const features = [
   'CRM inside Gmail (contacts, pipelines, tasks, templates, tracking)',
@@ -51,7 +45,7 @@ export function PricingPage() {
 
   return (
     <>
-      {/* ── Hero + Pricing card ── */}
+      {/* -- Hero + Pricing card -- */}
       <section data-snap-section className="donna-hero-drift relative flex min-h-[calc(100svh-4rem)] items-start overflow-hidden bg-background pt-6 pb-6 lg:pt-10 lg:pb-8">
         <div className="relative z-10 mx-auto w-full max-w-[1440px] px-6 lg:px-10">
           <Reveal>
@@ -173,7 +167,7 @@ export function PricingPage() {
         </div>
       </section>
 
-      {/* ── FAQ ── */}
+      {/* -- FAQ -- */}
       <section data-snap-section className="bg-muted/30 py-16 lg:py-20 min-h-screen">
         <div className="mx-auto w-full max-w-[1440px] px-6 lg:px-10">
           <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
@@ -212,7 +206,7 @@ export function PricingPage() {
         </div>
       </section>
 
-      {/* ── CTA ── */}
+      {/* -- CTA -- */}
       <section data-snap-section className="bg-primary py-16 lg:py-20">
         <div className="mx-auto w-full max-w-[1440px] px-6 lg:px-10">
           <Reveal className="mx-auto max-w-2xl text-center">

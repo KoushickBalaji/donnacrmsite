@@ -2,7 +2,8 @@ import type { Metadata } from 'next'
 import { JsonLd } from '../../components/JsonLd'
 import { pageMetadata } from '../../lib/metadata'
 import { resolveSiteOrigin } from '../../lib/site'
-import { GmailCrmPage, gmailCrmFaqs } from '../../views/GmailCrm'
+import { GmailCrmPage } from '../../views/GmailCrm'
+import { gmailCrmFaqs } from '../../views/gmail-crm-data'
 
 export const metadata: Metadata = pageMetadata({
   title: 'Gmail CRM',

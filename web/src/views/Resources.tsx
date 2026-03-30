@@ -1,8 +1,9 @@
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
+import { Eyebrow } from '../components/Eyebrow'
 import { FaqList, type FaqItem } from '../components/FaqList'
+import { Reveal } from '../components/Reveal'
 import { Button } from '../components/ui/Button'
-import { Card, CardContent } from '../components/ui/Card'
 import { resourceArticles } from '../content/resources'
 
 const resourcesFaqs: FaqItem[] = [
@@ -30,132 +31,193 @@ export function ResourcesPage() {
 
   return (
     <>
-      <section className="flex min-h-[calc(100svh-4rem)] flex-col justify-center bg-gradient-to-b from-primary/5 to-background py-14 lg:py-20">
-        <div className="container">
-          <div className="mx-auto max-w-5xl">
-            <div className="mx-auto max-w-3xl text-center">
-              <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
-                Resources for Gmail CRM Workflows
+      {/* -- Hero -- */}
+      <section className="bg-background py-20 lg:py-28">
+        <div className="mx-auto w-full max-w-[1440px] px-6 lg:px-10">
+          <Reveal>
+            <div className="max-w-3xl">
+              <Eyebrow>Resources</Eyebrow>
+              <h1
+                className="mt-3 text-4xl font-bold tracking-tight text-foreground sm:text-5xl"
+                style={{ letterSpacing: '-0.02em' }}
+              >
+                Practical guides for Gmail-native CRM workflows
               </h1>
               <p className="mt-5 text-lg text-muted-foreground">
-                Practical guides, templates, and checklists for solo operators who sell and deliver from their inbox.
-              </p>
-              <p className="mt-3 text-sm text-muted-foreground">
-                Start with Gmail CRM basics, then pick a workflow guide that matches how you work.
+                Templates, frameworks, and step-by-step workflows for consultants, freelancers, and
+                solo B2B sellers who manage relationships from Gmail.
               </p>
             </div>
+          </Reveal>
 
-            <div className="mt-10 rounded-2xl border border-border bg-muted/30 p-8 shadow-sm">
-              <h2 className="text-2xl font-bold text-foreground">Start with the pillars</h2>
-              <p className="mt-3 max-w-3xl text-muted-foreground">
-                If you are new to Gmail CRMs, these pages explain the core model: keep context next to
-                email threads, track work in simple pipelines, and capture the next step as a task.
+          <Reveal delayMs={80}>
+            <div className="mt-10 rounded-2xl bg-card p-8 shadow-md ring-1 ring-black/[0.04]">
+              <p className="text-sm font-bold text-foreground">Start with the pillars</p>
+              <p className="mt-2 text-sm text-muted-foreground">
+                If you are new to Gmail CRMs, these pages explain the core model: keep context next
+                to email threads, track work in simple pipelines, and capture the next step as a task.
               </p>
-              <div className="mt-6 flex flex-wrap gap-3 text-sm font-semibold">
+              <div className="mt-5 flex flex-wrap gap-3 text-sm font-semibold">
                 <Link
                   href="/gmail-crm"
-                  className="rounded-full bg-background px-4 py-2 text-primary ring-1 ring-black/[0.04] hover:underline"
+                  className="rounded-full bg-muted px-4 py-2 text-primary ring-1 ring-black/[0.04] transition-colors hover:bg-muted/70"
                 >
                   Gmail CRM overview
                 </Link>
                 <Link
                   href="/ai-gmail-crm"
-                  className="rounded-full bg-background px-4 py-2 text-primary ring-1 ring-black/[0.04] hover:underline"
+                  className="rounded-full bg-muted px-4 py-2 text-primary ring-1 ring-black/[0.04] transition-colors hover:bg-muted/70"
                 >
                   AI assistant in Gmail
                 </Link>
                 <Link
                   href="/inbox-onboarding"
-                  className="rounded-full bg-background px-4 py-2 text-primary ring-1 ring-black/[0.04] hover:underline"
+                  className="rounded-full bg-muted px-4 py-2 text-primary ring-1 ring-black/[0.04] transition-colors hover:bg-muted/70"
                 >
                   Inbox onboarding
                 </Link>
                 <Link
                   href="/email-tracking-in-gmail"
-                  className="rounded-full bg-background px-4 py-2 text-primary ring-1 ring-black/[0.04] hover:underline"
+                  className="rounded-full bg-muted px-4 py-2 text-primary ring-1 ring-black/[0.04] transition-colors hover:bg-muted/70"
                 >
                   Email tracking in Gmail
                 </Link>
                 <Link
                   href="/pricing"
-                  className="rounded-full bg-background px-4 py-2 text-primary ring-1 ring-black/[0.04] hover:underline"
+                  className="rounded-full bg-muted px-4 py-2 text-primary ring-1 ring-black/[0.04] transition-colors hover:bg-muted/70"
                 >
                   Pricing
                 </Link>
               </div>
             </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* -- Article grid -- */}
+      <section className="bg-muted py-20 lg:py-28">
+        <div className="mx-auto w-full max-w-[1440px] px-6 lg:px-10">
+          <Reveal>
+            <div className="flex items-end justify-between gap-6">
+              <div>
+                <Eyebrow>Guides</Eyebrow>
+                <h2
+                  className="text-3xl font-bold text-foreground sm:text-4xl"
+                  style={{ letterSpacing: '-0.02em' }}
+                >
+                  Latest guides
+                </h2>
+                <p className="mt-3 text-lg text-muted-foreground">
+                  Pick a workflow guide, copy the templates, and keep your system lightweight.
+                </p>
+              </div>
+              <Link
+                href="/contact"
+                className="hidden text-sm font-semibold text-primary hover:underline sm:inline"
+              >
+                Suggest a topic
+              </Link>
+            </div>
+          </Reveal>
+
+          <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {articles.map((article, index) => (
+              <Reveal key={article.slug} delayMs={index * 40}>
+                <Link
+                  href={`/resources/${article.slug}`}
+                  className="group block rounded-2xl bg-card p-6 shadow-md ring-1 ring-black/[0.04] transition-all duration-200 hover:-translate-y-1 hover:shadow-lg"
+                >
+                  <p className="text-xs font-semibold uppercase tracking-[0.12em] text-brand-blue">
+                    {article.category}
+                  </p>
+                  <h3 className="mt-3 text-lg font-semibold text-foreground">
+                    {article.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                    {article.description}
+                  </p>
+                  <p className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-primary">
+                    Read guide{' '}
+                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                  </p>
+                </Link>
+              </Reveal>
+            ))}
           </div>
         </div>
       </section>
 
-      <section className="bg-background py-16">
-        <div className="container">
-          <div className="mx-auto max-w-5xl">
-            <div>
-              <div className="flex items-end justify-between gap-6">
-                <div>
-                  <h2 className="text-2xl font-bold text-foreground">Latest guides</h2>
-                  <p className="mt-2 text-muted-foreground">
-                    Pick a workflow guide, copy the templates, and keep your system lightweight.
-                  </p>
-                </div>
-                <Link href="/contact" className="hidden text-sm font-semibold text-primary hover:underline sm:inline">
-                  Suggest a topic
-                </Link>
-              </div>
-
-              <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-                {articles.map((article) => (
-                  <Link
-                    key={article.slug}
-                    href={`/resources/${article.slug}`}
-                    className="group rounded-lg outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-                  >
-                    <Card className="h-full border-border transition-colors group-hover:border-primary/50">
-                      <CardContent className="flex h-full flex-col p-6">
-                        <p className="text-xs font-semibold uppercase tracking-[0.08em] text-foreground/50">
-                          {article.category}
-                        </p>
-                        <h3 className="mt-3 text-lg font-semibold text-foreground">
-                          {article.title}
-                        </h3>
-                        <p className="mt-3 text-sm text-muted-foreground">{article.description}</p>
-                        <p className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-primary">
-                          Read guide <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-                        </p>
-                      </CardContent>
-                    </Card>
-                  </Link>
-                ))}
-              </div>
-            </div>
-
-            <div className="mt-16 rounded-2xl border border-border bg-background p-8 shadow-sm">
-              <h2 className="text-2xl font-bold text-foreground">Resources FAQ</h2>
-              <p className="mt-3 max-w-3xl text-muted-foreground">
-                A few quick answers before you dive into the templates and workflows.
-              </p>
-              <div className="mt-6">
-                <FaqList items={resourcesFaqs} />
-              </div>
-            </div>
-
-            <div className="mt-16 rounded-lg border border-border bg-muted/30 p-8 text-center">
-              <h2 className="text-2xl font-bold text-foreground">Need help?</h2>
-              <p className="mx-auto mt-3 max-w-2xl text-muted-foreground">
-                If you have a question about setup, billing, or whether Donna is a fit for your workflow,
-                reach out and we will get back to you.
-              </p>
-              <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
-                <Button asChild>
-                  <Link href="/contact">Contact support</Link>
-                </Button>
-                <Button variant="outline" asChild>
-                  <Link href="/faq">View FAQ</Link>
-                </Button>
-              </div>
-            </div>
+      {/* -- FAQ -- */}
+      <section className="bg-background py-20 lg:py-28">
+        <div className="mx-auto w-full max-w-[1440px] px-6 lg:px-10">
+          <Reveal>
+            <Eyebrow>FAQ</Eyebrow>
+            <h2
+              className="text-3xl font-bold text-foreground sm:text-4xl"
+              style={{ letterSpacing: '-0.02em' }}
+            >
+              Resources FAQ
+            </h2>
+            <p className="mt-3 max-w-2xl text-lg text-muted-foreground">
+              Common questions about the guides, templates, and how they work inside Gmail.
+            </p>
+          </Reveal>
+          <div className="mt-10">
+            <FaqList items={resourcesFaqs} />
           </div>
+        </div>
+      </section>
+
+      {/* -- CTA (dark) -- */}
+      <section className="bg-primary py-20 lg:py-28">
+        <div className="mx-auto w-full max-w-[1440px] px-6 lg:px-10">
+          <Reveal>
+            <div className="mx-auto max-w-3xl text-center">
+              <h2
+                className="text-3xl font-bold text-primary-foreground sm:text-4xl"
+                style={{ letterSpacing: '-0.02em' }}
+              >
+                Start putting it into practice
+              </h2>
+              <p className="mt-4 text-lg text-primary-foreground/70">
+                Install Donna and use these workflows in your real inbox - or explore the features
+                and pricing first.
+              </p>
+            </div>
+          </Reveal>
+
+          <div className="mx-auto mt-10 grid max-w-4xl gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {[
+              { label: 'Contact support', href: '/contact' },
+              { label: 'View FAQ', href: '/faq' },
+              { label: 'How it works', href: '/how-it-works' },
+              { label: 'All features', href: '/features' },
+              { label: 'Gmail CRM overview', href: '/gmail-crm' },
+              { label: 'Pricing', href: '/pricing' },
+            ].map((link, index) => (
+              <Reveal key={link.href} delayMs={index * 60}>
+                <Link
+                  href={link.href}
+                  className="block rounded-xl bg-white/10 px-5 py-4 text-sm font-semibold text-primary-foreground ring-1 ring-white/[0.08] transition-all duration-200 hover:bg-white/[0.15] hover:-translate-y-0.5"
+                >
+                  {link.label}
+                </Link>
+              </Reveal>
+            ))}
+          </div>
+
+          <Reveal delayMs={360}>
+            <div className="mx-auto mt-10 max-w-md text-center">
+              <Button
+                size="lg"
+                variant="secondary"
+                className="shadow-lg shadow-black/20 transition-all duration-200 hover:shadow-xl hover:scale-[1.02] active:scale-[0.98]"
+                asChild
+              >
+                <Link href="/contact">Contact support</Link>
+              </Button>
+            </div>
+          </Reveal>
         </div>
       </section>
     </>

@@ -2,10 +2,8 @@ import type { Metadata } from 'next'
 import { JsonLd } from '../../components/JsonLd'
 import { pageMetadata } from '../../lib/metadata'
 import { resolveSiteOrigin } from '../../lib/site'
-import {
-  CrmForSoloB2BSalesPage,
-  crmForSoloB2BSalesFaqs,
-} from '../../views/CrmForSoloB2BSales'
+import { CrmForSoloB2BSalesPage } from '../../views/CrmForSoloB2BSales'
+import { crmForSoloB2BSalesFaqs } from '../../views/crm-for-solo-b2b-sales-data'
 
 export const metadata: Metadata = pageMetadata({
   title: 'A Solo B2B Sales CRM Inside Gmail',

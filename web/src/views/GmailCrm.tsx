@@ -1,75 +1,42 @@
-import Link from 'next/link'
-import { FaqList, type FaqItem } from '../components/FaqList'
-import { ResourceCardGrid } from '../components/ResourceCardGrid'
-import { Button } from '../components/ui/Button'
-import { Card, CardContent } from '../components/ui/Card'
-import { chromeWebStoreInstallUrl } from '../lib/chromeWebStore'
+'use client'
 
-export const gmailCrmFaqs: FaqItem[] = [
-  {
-    question: 'What is a Gmail CRM?',
-    answer:
-      'A Gmail CRM is a lightweight CRM that lives inside Gmail, so you can track contacts, deals, notes, and follow-ups while you work in email.',
-  },
-  {
-    question: 'Is Donna CRM a full CRM replacement?',
-    answer:
-      'Donna CRM is designed for individuals who live in Gmail and want a simple system for contacts, deal stages, and next steps-without a heavy admin setup.',
-  },
-  {
-    question: 'Do I need to set up pipelines and fields?',
-    answer:
-      'You can start simple and keep it lightweight. Most solo workflows work well with a small pipeline and a handful of stages.',
-  },
-  {
-    question: 'Does Donna work for teams?',
-    answer:
-      'Donna is optimized for solo operators. If you need deep role permissions and complex reporting, a team CRM may be a better fit.',
-  },
-  {
-    question: 'How do I get started?',
-    answer:
-      'Install the Chrome extension, open Gmail, and start tracking a real thread: add the contact, add context, and capture the next step as a task.',
-  },
-]
+import Link from 'next/link'
+import { Eyebrow } from '../components/Eyebrow'
+import { FaqList } from '../components/FaqList'
+import { ResourceCardGrid } from '../components/ResourceCardGrid'
+import { Reveal } from '../components/Reveal'
+import { Button } from '../components/ui/Button'
+import { chromeWebStoreInstallUrl } from '../lib/chromeWebStore'
+import { gmailCrmFaqs } from './gmail-crm-data'
 
 const primaryCtaLabel = 'Add to Gmail - Free Trial'
-
-function ScreenshotCard({ src, alt }: { src: string; alt: string }) {
-  return (
-    <Card className="border-border bg-muted/30">
-      <CardContent className="p-6">
-        <img
-          src={src}
-          alt={alt}
-          className="w-full rounded-md border border-border bg-background object-contain"
-          loading="lazy"
-        />
-      </CardContent>
-    </Card>
-  )
-}
 
 export function GmailCrmPage() {
   return (
     <>
-      <section className="bg-gradient-to-b from-primary/5 to-background py-16 lg:py-24">
-        <div className="container">
-          <div className="mx-auto grid max-w-5xl items-center gap-10 lg:grid-cols-2">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.08em] text-foreground/50">
-                Gmail CRM for solo operators
-              </p>
-              <h1 className="mt-3 text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
+      {/* -- Hero -- */}
+      <section className="bg-background py-20 lg:py-28">
+        <div className="mx-auto w-full max-w-[1440px] px-6 lg:px-10">
+          <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
+            <Reveal>
+              <Eyebrow>Gmail CRM</Eyebrow>
+              <h1
+                className="mt-3 text-4xl font-bold tracking-tight text-foreground sm:text-5xl"
+                style={{ letterSpacing: '-0.02em' }}
+              >
                 Manage contacts, deals, and follow-ups without leaving Gmail
               </h1>
-              <p className="mt-5 text-lg text-muted-foreground">
+              <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
                 Donna CRM is a Gmail-native CRM for solo operators. Keep relationship context next
                 to the conversation-and capture next steps before they slip.
               </p>
 
               <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
-                <Button size="lg" asChild>
+                <Button
+                  size="lg"
+                  className="shadow-lg shadow-primary/20 transition-all duration-200 hover:shadow-xl hover:shadow-primary/30 hover:scale-[1.02] active:scale-[0.98]"
+                  asChild
+                >
                   <a
                     href={chromeWebStoreInstallUrl({ content: 'gmail_crm_hero_primary' })}
                     target="_blank"
@@ -83,38 +50,49 @@ export function GmailCrmPage() {
                 </Button>
               </div>
 
-              <p className="mt-4 text-sm text-muted-foreground">
-                Minimal setup | No credit card | Uninstall anytime
+              <p className="mt-4 text-xs text-muted-foreground/70">
+                Free trial · No credit card · Uninstall anytime
               </p>
-            </div>
+            </Reveal>
 
-            <ScreenshotCard
-              src="/screenshots/Context%20Bar%20V2.png"
-              alt="Donna CRM running in the Gmail sidebar"
-            />
+            <Reveal durationMs={500}>
+              <div className="overflow-hidden rounded-2xl border border-border/60 shadow-lg ring-1 ring-black/[0.04]">
+                <img
+                  src="/screenshots/Context%20Bar%20V2.png"
+                  alt="Donna CRM running in the Gmail sidebar"
+                  className="w-full object-contain"
+                  loading="eager"
+                />
+              </div>
+            </Reveal>
           </div>
         </div>
       </section>
 
-      <section className="bg-background py-16 lg:py-20">
-        <div className="container">
-          <div className="mx-auto grid max-w-5xl gap-10 lg:grid-cols-2 lg:items-start">
-            <div>
-              <h2 className="text-2xl font-semibold text-foreground sm:text-3xl">
+      {/* -- What is a Gmail CRM? -- text left / Contacts screenshot right */}
+      <section className="bg-muted py-20 lg:py-28">
+        <div className="mx-auto w-full max-w-[1440px] px-6 lg:px-10">
+          <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
+            <Reveal>
+              <Eyebrow>Overview</Eyebrow>
+              <h2
+                className="text-3xl font-bold text-foreground sm:text-4xl"
+                style={{ letterSpacing: '-0.02em' }}
+              >
                 What is a Gmail CRM?
               </h2>
-              <p className="mt-4 leading-relaxed text-muted-foreground">
+              <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
                 A Gmail CRM helps you run a simple client or deal workflow from your inbox. Instead
                 of switching tools, you keep contact context, deal stage, and tasks alongside real
                 email threads.
               </p>
-              <p className="mt-4 leading-relaxed text-muted-foreground">
+              <p className="mt-4 text-muted-foreground">
                 Donna CRM is built for individuals who want a lightweight system: enough structure
                 to stay consistent, without the overhead of a traditional CRM.
               </p>
 
-              <div className="mt-6 rounded-lg border border-border bg-muted/30 p-5">
-                <p className="text-sm font-semibold text-foreground">Best for</p>
+              <div className="mt-8 rounded-2xl bg-card p-6 shadow-md ring-1 ring-black/[0.04]">
+                <p className="text-sm font-bold text-foreground">Best for</p>
                 <p className="mt-1 text-sm text-muted-foreground">
                   Consultants, freelancers, and solo B2B sellers who live in Gmail.
                 </p>
@@ -133,103 +111,118 @@ export function GmailCrmPage() {
                   </Link>
                 </div>
               </div>
-            </div>
+            </Reveal>
 
-            <div className="space-y-6">
-              <ScreenshotCard
-                src="/screenshots/Contacts%20V2.png"
-                alt="Contact management inside Gmail"
-              />
-              <ScreenshotCard
-                src="/screenshots/Pipeline%20V2.png"
-                alt="Pipeline tracking inside Gmail"
-              />
-            </div>
+            <Reveal delayMs={80} durationMs={500}>
+              <div className="overflow-hidden rounded-2xl border border-border/60 shadow-lg ring-1 ring-black/[0.04]">
+                <img
+                  src="/screenshots/Contacts%20V2.png"
+                  alt="Contact management inside Gmail"
+                  className="w-full object-contain"
+                  loading="lazy"
+                />
+              </div>
+            </Reveal>
           </div>
         </div>
       </section>
 
-      <section className="bg-muted/30 py-16 lg:py-20">
-        <div className="container">
-          <div className="mx-auto max-w-5xl">
-            <h2 className="text-2xl font-semibold text-foreground sm:text-3xl">
-              A workflow that stays in your inbox
-            </h2>
-            <p className="mt-4 max-w-3xl text-muted-foreground">
-              Keep your process simple and repeatable. A good Gmail CRM is less about fields, and
-              more about capturing the next step consistently.
-            </p>
-
-            <div className="mt-10 grid gap-6 md:grid-cols-3">
-              {[
-                {
-                  title: 'Thread to contact',
-                  body: 'Turn real conversations into a contact record with notes and context.',
-                },
-                {
-                  title: 'Contact to deal stage',
-                  body: "Track what's happening right now: lead, proposal, active, renewal.",
-                },
-                {
-                  title: 'Deal stage to next step',
-                  body: 'Capture follow-ups as tasks so nothing gets forgotten.',
-                },
-              ].map((step) => (
-                <Card key={step.title} className="border-border bg-background">
-                  <CardContent className="p-6">
-                    <p className="text-base font-semibold text-foreground">{step.title}</p>
-                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                      {step.body}
-                    </p>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-
-            <div className="mt-12 grid gap-6 rounded-xl border border-border bg-background p-8 lg:grid-cols-[1fr_1.1fr] lg:items-start">
-              <div>
-                <h3 className="text-xl font-semibold text-foreground">
-                  What you can track in Donna
-                </h3>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                  Start with one real thread. As you go, add just enough structure to keep your
-                  follow-ups consistent and your context easy to find.
-                </p>
-                <ul className="mt-6 space-y-3 text-sm">
-                  {[
-                    'Contacts with notes and lightweight context',
-                    'A simple pipeline for stages you actually remember',
-                    'Tasks with due dates for next steps and follow-ups',
-                    'Email tracking signals (where supported) when timing matters',
-                  ].map((item) => (
-                    <li key={item} className="flex items-start gap-3">
-                      <div className="mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-primary" />
-                      <span className="text-muted-foreground">{item}</span>
-                    </li>
-                  ))}
-                </ul>
+      {/* -- Workflow -- Pipeline screenshot left / steps right (flipped) */}
+      <section className="bg-background py-20 lg:py-28">
+        <div className="mx-auto w-full max-w-[1440px] px-6 lg:px-10">
+          <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
+            <Reveal durationMs={500}>
+              <div className="overflow-hidden rounded-2xl border border-border/60 shadow-lg ring-1 ring-black/[0.04]">
+                <img
+                  src="/screenshots/Pipeline%20V2.png"
+                  alt="Pipeline tracking inside Gmail"
+                  className="w-full object-contain"
+                  loading="lazy"
+                />
               </div>
+            </Reveal>
 
-              <div className="grid gap-4 sm:grid-cols-2">
+            <Reveal delayMs={80}>
+              <Eyebrow>How it works</Eyebrow>
+              <h2
+                className="text-3xl font-bold text-foreground sm:text-4xl"
+                style={{ letterSpacing: '-0.02em' }}
+              >
+                A workflow that stays in your inbox
+              </h2>
+              <p className="mt-3 text-lg text-muted-foreground">
+                Keep your process simple and repeatable. A good Gmail CRM is less about fields, and
+                more about capturing the next step consistently.
+              </p>
+
+              <div className="mt-8 space-y-4">
                 {[
-                  { title: 'Contacts', body: 'Keep relationship context next to the conversation.' },
-                  { title: 'Pipelines', body: 'Use stages as a simple "where are we?" truth.' },
-                  { title: 'Tasks', body: 'Capture next steps before you close the tab.' },
-                  { title: 'Tracking', body: 'Use opens/clicks as signals-not guarantees.' },
-                ].map((card) => (
-                  <Card key={card.title} className="border-border bg-muted/30">
-                    <CardContent className="p-6">
-                      <p className="text-sm font-semibold text-foreground">{card.title}</p>
-                      <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                        {card.body}
+                  {
+                    title: 'Thread to contact',
+                    body: 'Turn real conversations into a contact record with notes and context.',
+                  },
+                  {
+                    title: 'Contact to deal stage',
+                    body: "Track what's happening right now: lead, proposal, active, renewal.",
+                  },
+                  {
+                    title: 'Deal stage to next step',
+                    body: 'Capture follow-ups as tasks so nothing gets forgotten.',
+                  },
+                ].map((step) => (
+                  <div key={step.title} className="flex items-start gap-3">
+                    <div className="mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-brand-blue" />
+                    <div>
+                      <p className="text-sm font-bold text-foreground">{step.title}</p>
+                      <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
+                        {step.body}
                       </p>
-                    </CardContent>
-                  </Card>
+                    </div>
+                  </div>
                 ))}
               </div>
-            </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
 
-            <div className="mt-10 flex flex-wrap gap-4 text-sm font-semibold">
+      {/* -- What you can track -- */}
+      <section className="bg-muted py-20 lg:py-28">
+        <div className="mx-auto w-full max-w-[1440px] px-6 lg:px-10">
+          <Reveal>
+            <Eyebrow>Capabilities</Eyebrow>
+            <h2
+              className="text-3xl font-bold text-foreground sm:text-4xl"
+              style={{ letterSpacing: '-0.02em' }}
+            >
+              What you can track in Donna
+            </h2>
+            <p className="mt-3 max-w-2xl text-lg text-muted-foreground">
+              Start with one real thread. As you go, add just enough structure to keep your
+              follow-ups consistent and your context easy to find.
+            </p>
+          </Reveal>
+
+          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              { title: 'Contacts', body: 'Keep relationship context next to the conversation.' },
+              { title: 'Pipelines', body: 'Use stages as a simple "where are we?" truth.' },
+              { title: 'Tasks', body: 'Capture next steps before you close the tab.' },
+              { title: 'Tracking', body: 'Use opens/clicks as signals - not guarantees.' },
+            ].map((card, index) => (
+              <Reveal key={card.title} delayMs={index * 80}>
+                <div className="rounded-2xl bg-card p-6 shadow-md ring-1 ring-black/[0.04] transition-all duration-200 hover:-translate-y-1 hover:shadow-lg">
+                  <p className="text-base font-bold text-foreground">{card.title}</p>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                    {card.body}
+                  </p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+
+          <Reveal delayMs={320}>
+            <div className="mt-10 flex flex-wrap gap-x-6 gap-y-2 text-sm font-semibold">
               <Link href="/features" className="text-primary hover:underline">
                 Explore features
               </Link>
@@ -249,11 +242,13 @@ export function GmailCrmPage() {
                 Resources
               </Link>
             </div>
-          </div>
+          </Reveal>
         </div>
       </section>
 
+      {/* -- Resource articles -- */}
       <ResourceCardGrid
+        sectionClassName="bg-background py-20 lg:py-28"
         title="Popular Gmail CRM guides"
         description="Practical templates and checklists to help you build a lightweight system that stays updated while you work in Gmail."
         slugs={[
@@ -263,31 +258,83 @@ export function GmailCrmPage() {
         ]}
       />
 
-      <section className="bg-background py-16 lg:py-20">
-        <div className="container">
-          <div className="mx-auto grid max-w-5xl gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
-            <div>
-              <h2 className="text-2xl font-semibold text-foreground sm:text-3xl">
-                FAQs
+      {/* -- FAQ -- */}
+      <section className="bg-muted py-20 lg:py-28">
+        <div className="mx-auto w-full max-w-[1440px] px-6 lg:px-10">
+          <Reveal>
+            <Eyebrow>FAQ</Eyebrow>
+            <h2
+              className="text-3xl font-bold text-foreground sm:text-4xl"
+              style={{ letterSpacing: '-0.02em' }}
+            >
+              FAQs
+            </h2>
+            <p className="mt-3 max-w-2xl text-lg text-muted-foreground">
+              Quick answers for common "is this for me?" questions.
+            </p>
+          </Reveal>
+          <div className="mt-10">
+            <FaqList items={gmailCrmFaqs} />
+          </div>
+          <Reveal delayMs={80}>
+            <p className="mt-8 text-sm text-muted-foreground">
+              For data and privacy details, see our{' '}
+              <Link className="text-primary hover:underline" href="/privacy">
+                Privacy Policy
+              </Link>
+              .
+            </p>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* -- Explore more (dark) -- */}
+      <section className="bg-primary py-20 lg:py-28">
+        <div className="mx-auto w-full max-w-[1440px] px-6 lg:px-10">
+          <Reveal>
+            <div className="mx-auto max-w-3xl text-center">
+              <h2
+                className="text-3xl font-bold text-primary-foreground sm:text-4xl"
+                style={{ letterSpacing: '-0.02em' }}
+              >
+                Keep exploring
               </h2>
-              <p className="mt-4 text-muted-foreground">
-                Quick answers for common "is this for me?" questions.
-              </p>
-              <div className="mt-8">
-                <FaqList items={gmailCrmFaqs} />
-              </div>
-              <p className="mt-6 text-sm text-muted-foreground">
-                For data and privacy details, see our <Link className="text-primary hover:underline" href="/privacy">Privacy Policy</Link>.
+              <p className="mt-4 text-lg text-primary-foreground/70">
+                Learn more about how Donna works, or dive into a specific workflow.
               </p>
             </div>
+          </Reveal>
 
-            <div className="rounded-xl border border-border bg-muted/30 p-6">
-              <p className="text-sm font-semibold text-foreground">Ready to try it?</p>
-              <p className="mt-2 text-sm text-muted-foreground">
-                Install in under 2 minutes and start tracking a real thread today.
-              </p>
-              <div className="mt-5">
-                <Button asChild>
+          <div className="mx-auto mt-10 grid max-w-4xl gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {[
+              { label: 'How it works', href: '/how-it-works' },
+              { label: 'All features', href: '/features' },
+              { label: 'CRM for consultants', href: '/crm-for-consultants' },
+              { label: 'CRM for freelancers', href: '/crm-for-freelancers' },
+              { label: 'CRM for solo sales', href: '/crm-for-solo-b2b-sales' },
+              { label: 'Pricing', href: '/pricing' },
+            ].map((link, index) => (
+              <Reveal key={link.href} delayMs={index * 60}>
+                <Link
+                  href={link.href}
+                  className="block rounded-xl bg-white/10 px-5 py-4 text-sm font-semibold text-primary-foreground ring-1 ring-white/[0.08] transition-all duration-200 hover:bg-white/[0.15] hover:-translate-y-0.5"
+                >
+                  {link.label}
+                </Link>
+              </Reveal>
+            ))}
+          </div>
+
+          <Reveal delayMs={360}>
+            <div className="mx-auto mt-10 max-w-md text-center">
+              <p className="text-sm text-primary-foreground/60">Ready to try it?</p>
+              <div className="mt-3">
+                <Button
+                  size="lg"
+                  variant="secondary"
+                  className="shadow-lg shadow-black/20 transition-all duration-200 hover:shadow-xl hover:scale-[1.02] active:scale-[0.98]"
+                  asChild
+                >
                   <a
                     href={chromeWebStoreInstallUrl({ content: 'gmail_crm_bottom_cta' })}
                     target="_blank"
@@ -297,11 +344,8 @@ export function GmailCrmPage() {
                   </a>
                 </Button>
               </div>
-              <p className="mt-3 text-xs text-muted-foreground">
-                Human-in-the-loop: review AI suggestions before acting.
-              </p>
             </div>
-          </div>
+          </Reveal>
         </div>
       </section>
     </>

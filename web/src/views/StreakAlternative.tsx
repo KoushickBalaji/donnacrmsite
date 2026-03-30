@@ -2,9 +2,9 @@
 
 import { ArrowRight, Check, Minus } from 'lucide-react'
 import Link from 'next/link'
+import { Eyebrow } from '../components/Eyebrow'
 import { Reveal } from '../components/Reveal'
 import { Button } from '../components/ui/Button'
-import { Card, CardContent } from '../components/ui/Card'
 import { chromeWebStoreInstallUrl } from '../lib/chromeWebStore'
 
 type ComparisonCell = {
@@ -104,26 +104,32 @@ export function StreakAlternativePage() {
 
   return (
     <>
-      <section className="bg-gradient-to-b from-primary/5 to-background py-10 lg:py-12">
-        <div className="container">
-          <div className="grid items-start gap-10 lg:grid-cols-2">
+      {/* -- Hero -- */}
+      <section className="bg-background py-20 lg:py-28">
+        <div className="mx-auto w-full max-w-[1440px] px-6 lg:px-10">
+          <div className="grid items-start gap-12 lg:grid-cols-2 lg:gap-20">
             <Reveal className="mx-auto max-w-xl text-center lg:mx-0 lg:text-left">
-              <p className="text-sm font-semibold text-primary">
-                Looking for a Streak CRM alternative?
-              </p>
+              <Eyebrow>Streak Alternative</Eyebrow>
 
-              <h1 className="mt-4 text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
+              <h1
+                className="mt-4 text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl"
+                style={{ letterSpacing: '-0.02em' }}
+              >
                 A simpler Streak alternative for Gmail users
               </h1>
 
-              <p className="mt-6 text-lg text-muted-foreground sm:text-xl">
+              <p className="mt-6 text-lg leading-relaxed text-muted-foreground sm:text-xl">
                 Streak is great when your workflow is a pipeline. Donna is built for solo operators
                 who want relationship context and follow-ups next to the thread, without turning
                 Gmail into a pipeline dashboard.
               </p>
 
               <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
-                <Button size="lg" asChild>
+                <Button
+                  size="lg"
+                  className="shadow-lg shadow-primary/20 transition-all duration-200 hover:shadow-xl hover:shadow-primary/30 hover:scale-[1.02] active:scale-[0.98]"
+                  asChild
+                >
                   <a
                     className="group"
                     href={chromeWebStoreInstallUrl({ content: 'streak_alt_hero' })}
@@ -139,8 +145,8 @@ export function StreakAlternativePage() {
                 </Button>
               </div>
 
-              <p className="mt-4 text-sm text-muted-foreground">
-                Free trial | Minimal setup | Cancel anytime
+              <p className="mt-4 text-xs text-muted-foreground/70">
+                Free trial · Minimal setup · Cancel anytime
               </p>
 
               <div className="mt-7 grid gap-6 text-left sm:grid-cols-2">
@@ -169,13 +175,13 @@ export function StreakAlternativePage() {
               </div>
             </Reveal>
 
-            <Reveal className="mx-auto w-full max-w-2xl">
-              <Card className="border-border bg-muted/20">
-                <CardContent className="p-4 sm:p-6">
+            <Reveal durationMs={500} className="mx-auto w-full max-w-2xl">
+              <div className="overflow-hidden rounded-2xl border border-border/60 shadow-lg ring-1 ring-black/[0.04]">
+                <div className="bg-muted/30 px-4 pt-4 sm:px-6 sm:pt-6">
                   <p className="mb-3 text-xs font-semibold text-muted-foreground">
                     Donna inside Gmail
                   </p>
-                  <div className="relative aspect-[16/10] overflow-hidden rounded-lg border border-border bg-background">
+                  <div className="relative aspect-[16/10] overflow-hidden rounded-t-lg border border-b-0 border-border bg-background">
                     <img
                       src="/screenshots/Context%20Bar%20V2.png"
                       alt="Donna CRM running in the Gmail sidebar"
@@ -183,78 +189,88 @@ export function StreakAlternativePage() {
                       loading="eager"
                     />
                   </div>
-                  <p className="mt-4 text-sm text-muted-foreground">
+                </div>
+                <div className="px-4 pb-4 pt-3 sm:px-6 sm:pb-6">
+                  <p className="text-sm text-muted-foreground">
                     Works where you already work: open any thread and see contact context, notes,
                     and next steps.
                   </p>
-                </CardContent>
-              </Card>
+                </div>
+              </div>
             </Reveal>
           </div>
         </div>
       </section>
 
-      <section id="comparison" className="bg-background py-16 scroll-mt-24 lg:py-20">
-        <div className="container">
-          <Reveal durationMs={180}>
-            <div className="mx-auto max-w-5xl">
-              <div className="mx-auto max-w-3xl text-center">
-                <h2 className="text-3xl font-bold text-foreground sm:text-4xl">
-                  Donna vs Streak: feature comparison
-                </h2>
-                <p className="mt-4 text-muted-foreground">
-                  A practical comparison for Gmail users. If you need a pipeline-first CRM for a
-                  team, Streak can be a better fit. If you want a simpler solo workflow for
-                  follow-ups and relationship context, Donna is built for that.
-                </p>
-              </div>
-
-              <div className="mt-10 overflow-hidden rounded-xl border border-border">
-                <table className="w-full text-left">
-                  <thead className="bg-muted/30">
-                    <tr>
-                      <th className="px-5 py-4 text-sm font-semibold text-foreground">Category</th>
-                      <th className="px-5 py-4 text-sm font-semibold text-foreground">Donna CRM</th>
-                      <th className="px-5 py-4 text-sm font-semibold text-foreground">Streak</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {comparisonRows.map((row) => (
-                      <tr key={row.label} className="border-t border-border">
-                        <td className="px-5 py-4 text-sm text-muted-foreground">{row.label}</td>
-                        <td className="bg-brand-blue/5 px-5 py-4">
-                          <p className="text-sm font-semibold text-foreground">{row.donna.title}</p>
-                          <p className="mt-1 text-sm text-muted-foreground">{row.donna.detail}</p>
-                        </td>
-                        <td className="px-5 py-4">
-                          <p className="text-sm font-semibold text-foreground">
-                            {row.streak.title}
-                          </p>
-                          <p className="mt-1 text-sm text-muted-foreground">{row.streak.detail}</p>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-
-              <p className="mt-4 text-xs text-muted-foreground">
-                Note: This page is a high-level comparison for typical solo workflows. If you have
-                a specific use case, contact us and we will point you to the best fit.
+      {/* -- Comparison table -- */}
+      <section id="comparison" className="bg-muted py-20 scroll-mt-24 lg:py-28">
+        <div className="mx-auto w-full max-w-[1440px] px-6 lg:px-10">
+          <Reveal>
+            <div className="mx-auto max-w-3xl text-center">
+              <Eyebrow>Comparison</Eyebrow>
+              <h2
+                className="text-3xl font-bold text-foreground sm:text-4xl"
+                style={{ letterSpacing: '-0.02em' }}
+              >
+                Donna vs Streak: feature comparison
+              </h2>
+              <p className="mt-4 text-lg text-muted-foreground">
+                A practical comparison for Gmail users. If you need a pipeline-first CRM for a
+                team, Streak can be a better fit. If you want a simpler solo workflow for
+                follow-ups and relationship context, Donna is built for that.
               </p>
             </div>
+
+            <div className="mt-10 overflow-hidden rounded-2xl border border-border shadow-md ring-1 ring-black/[0.04]">
+              <table className="w-full text-left">
+                <thead className="bg-card">
+                  <tr>
+                    <th className="px-5 py-4 text-sm font-semibold text-foreground">Category</th>
+                    <th className="px-5 py-4 text-sm font-semibold text-foreground">Donna CRM</th>
+                    <th className="px-5 py-4 text-sm font-semibold text-foreground">Streak</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {comparisonRows.map((row) => (
+                    <tr key={row.label} className="border-t border-border">
+                      <td className="px-5 py-4 text-sm text-muted-foreground">{row.label}</td>
+                      <td className="bg-brand-blue/5 px-5 py-4">
+                        <p className="text-sm font-semibold text-foreground">{row.donna.title}</p>
+                        <p className="mt-1 text-sm text-muted-foreground">{row.donna.detail}</p>
+                      </td>
+                      <td className="px-5 py-4">
+                        <p className="text-sm font-semibold text-foreground">
+                          {row.streak.title}
+                        </p>
+                        <p className="mt-1 text-sm text-muted-foreground">{row.streak.detail}</p>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            <p className="mt-4 text-xs text-muted-foreground">
+              Note: This page is a high-level comparison for typical solo workflows. If you have
+              a specific use case, contact us and we will point you to the best fit.
+            </p>
           </Reveal>
         </div>
       </section>
 
-      <section className="bg-background py-16 lg:py-20">
-        <div className="container">
-          <Reveal durationMs={180}>
+      {/* -- Why people move away -- */}
+      <section className="bg-background py-20 lg:py-28">
+        <div className="mx-auto w-full max-w-[1440px] px-6 lg:px-10">
+          <Reveal>
             <div className="mx-auto max-w-3xl text-center">
-              <h2 className="text-3xl font-bold text-foreground sm:text-4xl">
+              <Eyebrow>Common reasons</Eyebrow>
+              <h2
+                className="text-3xl font-bold text-foreground sm:text-4xl"
+                style={{ letterSpacing: '-0.02em' }}
+              >
                 Why some people move away from Streak
               </h2>
-              <p className="mt-4 text-muted-foreground">
+              <p className="mt-4 text-lg text-muted-foreground">
                 Streak is a strong product for pipeline-driven teams. Many solo operators switch
                 when the pipeline model starts to feel like work.
               </p>
@@ -263,27 +279,30 @@ export function StreakAlternativePage() {
 
           <div className="mx-auto mt-10 grid max-w-5xl grid-cols-1 gap-6 md:grid-cols-3">
             {whyMoveAway.map((item, index) => (
-              <Reveal key={item.title} delayMs={index * 80} durationMs={180}>
-                <Card className="border-border transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-md">
-                  <CardContent className="p-7">
-                    <h3 className="text-lg font-semibold text-foreground">{item.title}</h3>
-                    <p className="mt-2 text-sm text-muted-foreground">{item.text}</p>
-                  </CardContent>
-                </Card>
+              <Reveal key={item.title} delayMs={index * 80}>
+                <div className="rounded-2xl bg-card p-7 shadow-md ring-1 ring-black/[0.04] transition-all duration-200 hover:-translate-y-1 hover:shadow-lg">
+                  <h3 className="text-lg font-bold text-foreground">{item.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.text}</p>
+                </div>
               </Reveal>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="bg-muted/20 py-16 lg:py-20">
-        <div className="container">
-          <Reveal durationMs={180}>
+      {/* -- Why Donna -- */}
+      <section className="bg-muted py-20 lg:py-28">
+        <div className="mx-auto w-full max-w-[1440px] px-6 lg:px-10">
+          <Reveal>
             <div className="mx-auto max-w-3xl text-center">
-              <h2 className="text-3xl font-bold text-foreground sm:text-4xl">
+              <Eyebrow>The alternative</Eyebrow>
+              <h2
+                className="text-3xl font-bold text-foreground sm:text-4xl"
+                style={{ letterSpacing: '-0.02em' }}
+              >
                 Why Donna is a Streak alternative
               </h2>
-              <p className="mt-4 text-muted-foreground">
+              <p className="mt-4 text-lg text-muted-foreground">
                 A Gmail-native CRM that helps you keep context and execute the next step
                 consistently, without building your day around pipelines.
               </p>
@@ -305,13 +324,11 @@ export function StreakAlternativePage() {
                 text: 'Use the assistant as a drafting and organization tool. Review suggestions before taking action.',
               },
             ].map((item, index) => (
-              <Reveal key={item.title} delayMs={index * 80} durationMs={180}>
-                <Card className="border-border bg-background/70">
-                  <CardContent className="p-7">
-                    <h3 className="text-lg font-semibold text-foreground">{item.title}</h3>
-                    <p className="mt-2 text-sm text-muted-foreground">{item.text}</p>
-                  </CardContent>
-                </Card>
+              <Reveal key={item.title} delayMs={index * 80}>
+                <div className="rounded-2xl bg-card p-7 shadow-md ring-1 ring-black/[0.04] transition-all duration-200 hover:-translate-y-1 hover:shadow-lg">
+                  <h3 className="text-lg font-bold text-foreground">{item.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.text}</p>
+                </div>
               </Reveal>
             ))}
           </div>
@@ -321,7 +338,7 @@ export function StreakAlternativePage() {
               Read: What is a Gmail CRM?
             </Link>
             <span aria-hidden className="mx-3 text-border">
-              |
+              ·
             </span>
             <Link href="/ai-gmail-crm" className="text-sm font-semibold text-primary hover:underline">
               Read: AI Gmail CRM
@@ -330,74 +347,104 @@ export function StreakAlternativePage() {
         </div>
       </section>
 
-      <section className="bg-muted/20 py-16 lg:py-20">
-        <div className="container">
-          <Reveal durationMs={180}>
-            <div className="mx-auto max-w-3xl">
-              <h2 className="text-3xl font-bold text-foreground sm:text-4xl">
-                Common questions
-              </h2>
-              <div className="mt-10 space-y-8">
-                <div>
-                  <h3 className="text-lg font-semibold text-foreground">
-                    Is Donna a full CRM like Streak?
-                  </h3>
-                  <p className="mt-2 text-muted-foreground">
-                    No. Donna is intentionally lightweight. It is built for people who want a
-                    simple system for context and follow-ups inside Gmail, with optional deal
-                    stages when you want a bit more structure.
-                  </p>
-                </div>
-                <div>
-                  <h3 className="text-lg font-semibold text-foreground">
-                    Can I migrate data from Streak?
-                  </h3>
-                  <p className="mt-2 text-muted-foreground">
-                    You can, but you do not have to migrate everything on day one. Many users start
-                    by importing the contacts that matter and tracking new conversations going
-                    forward.
-                  </p>
-                </div>
-                <div>
-                  <h3 className="text-lg font-semibold text-foreground">
-                    Who should stick with Streak?
-                  </h3>
-                  <p className="mt-2 text-muted-foreground">
-                    Teams that rely heavily on pipelines, reporting, and shared workflows inside
-                    Gmail.
-                  </p>
-                </div>
-              </div>
-            </div>
+      {/* -- FAQ -- */}
+      <section className="bg-background py-20 lg:py-28">
+        <div className="mx-auto w-full max-w-[1440px] px-6 lg:px-10">
+          <Reveal>
+            <Eyebrow>FAQ</Eyebrow>
+            <h2
+              className="text-3xl font-bold text-foreground sm:text-4xl"
+              style={{ letterSpacing: '-0.02em' }}
+            >
+              Common questions
+            </h2>
           </Reveal>
+
+          <div className="mx-auto mt-10 max-w-3xl space-y-8">
+            {[
+              {
+                q: 'Is Donna a full CRM like Streak?',
+                a: 'No. Donna is intentionally lightweight. It is built for people who want a simple system for context and follow-ups inside Gmail, with optional deal stages when you want a bit more structure.',
+              },
+              {
+                q: 'Can I migrate data from Streak?',
+                a: 'You can, but you do not have to migrate everything on day one. Many users start by importing the contacts that matter and tracking new conversations going forward.',
+              },
+              {
+                q: 'Who should stick with Streak?',
+                a: 'Teams that rely heavily on pipelines, reporting, and shared workflows inside Gmail.',
+              },
+            ].map((item) => (
+              <Reveal key={item.q}>
+                <div>
+                  <h3 className="text-lg font-bold text-foreground">{item.q}</h3>
+                  <p className="mt-2 text-muted-foreground">{item.a}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
 
-      <section className="bg-primary py-14">
-        <div className="container">
-          <Reveal durationMs={180} className="mx-auto max-w-2xl text-center">
-            <h2 className="text-3xl font-bold text-primary-foreground sm:text-4xl">
-              Try a simpler Gmail CRM
-            </h2>
-            <p className="mt-4 text-primary-foreground/80">
-              Install Donna CRM and manage relationships without leaving Gmail.
-            </p>
-            <div className="mt-8">
-              <Button size="lg" variant="secondary" asChild>
-                <a
-                  className="group"
-                  href={chromeWebStoreInstallUrl({ content: 'streak_alt_bottom_cta' })}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Add to Gmail - Free Trial
-                  <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-150 group-hover:translate-x-1" />
-                </a>
-              </Button>
+      {/* -- Explore more (dark) -- */}
+      <section className="bg-primary py-20 lg:py-28">
+        <div className="mx-auto w-full max-w-[1440px] px-6 lg:px-10">
+          <Reveal>
+            <div className="mx-auto max-w-3xl text-center">
+              <h2
+                className="text-3xl font-bold text-primary-foreground sm:text-4xl"
+                style={{ letterSpacing: '-0.02em' }}
+              >
+                Keep exploring
+              </h2>
+              <p className="mt-4 text-lg text-primary-foreground/70">
+                Learn more about how Donna works, or dive into a specific workflow.
+              </p>
             </div>
-            <p className="mt-4 text-sm text-primary-foreground/80">
-              Free trial | Minimal setup | Cancel anytime
-            </p>
+          </Reveal>
+
+          <div className="mx-auto mt-10 grid max-w-4xl gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {[
+              { label: 'How it works', href: '/how-it-works' },
+              { label: 'All features', href: '/features' },
+              { label: 'Gmail CRM overview', href: '/gmail-crm' },
+              { label: 'AI assistant', href: '/ai-gmail-crm' },
+              { label: 'Email tracking', href: '/email-tracking-in-gmail' },
+              { label: 'Pricing', href: '/pricing' },
+            ].map((link, index) => (
+              <Reveal key={link.href} delayMs={index * 60}>
+                <Link
+                  href={link.href}
+                  className="block rounded-xl bg-white/10 px-5 py-4 text-sm font-semibold text-primary-foreground ring-1 ring-white/[0.08] transition-all duration-200 hover:bg-white/[0.15] hover:-translate-y-0.5"
+                >
+                  {link.label}
+                </Link>
+              </Reveal>
+            ))}
+          </div>
+
+          <Reveal delayMs={360}>
+            <div className="mx-auto mt-10 max-w-md text-center">
+              <p className="text-sm text-primary-foreground/60">Ready to try it?</p>
+              <div className="mt-3">
+                <Button
+                  size="lg"
+                  variant="secondary"
+                  className="shadow-lg shadow-black/20 transition-all duration-200 hover:shadow-xl hover:scale-[1.02] active:scale-[0.98]"
+                  asChild
+                >
+                  <a
+                    className="group"
+                    href={chromeWebStoreInstallUrl({ content: 'streak_alt_bottom_cta' })}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {primaryCtaLabel}
+                    <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-150 group-hover:translate-x-1" />
+                  </a>
+                </Button>
+              </div>
+            </div>
           </Reveal>
         </div>
       </section>

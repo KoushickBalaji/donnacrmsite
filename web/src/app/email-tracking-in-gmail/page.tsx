@@ -2,10 +2,8 @@ import type { Metadata } from 'next'
 import { JsonLd } from '../../components/JsonLd'
 import { pageMetadata } from '../../lib/metadata'
 import { resolveSiteOrigin } from '../../lib/site'
-import {
-  EmailTrackingInGmailPage,
-  emailTrackingFaqs,
-} from '../../views/EmailTrackingInGmail'
+import { EmailTrackingInGmailPage } from '../../views/EmailTrackingInGmail'
+import { emailTrackingFaqs } from '../../views/email-tracking-data'
 
 export const metadata: Metadata = pageMetadata({
   title: 'Email Tracking in Gmail (Open & Click)',

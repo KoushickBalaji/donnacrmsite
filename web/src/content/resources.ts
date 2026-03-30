@@ -33,6 +33,7 @@ export type ResourceArticle = {
   supportingInternalLinks: ResourceArticleLink[]
   sections: ResourceArticleSection[]
   faqs: ResourceArticleFaq[]
+  faqSubtitle?: string
 }
 
 export const resourceArticles: ResourceArticle[] = [
@@ -43,7 +44,9 @@ export const resourceArticles: ResourceArticle[] = [
       'A practical Gmail-first workflow for solo consultants: track client context, engagement stages, and next steps without turning CRM into a second job.',
     category: 'Consulting workflows',
     publishedAt: '2026-02-16',
+    updatedAt: '2026-03-24',
     readingTimeMinutes: 7,
+    faqSubtitle: 'Common questions about running a consulting workflow inside Gmail.',
     primaryInternalLink: { href: '/crm-for-consultants', label: 'CRM for consultants' },
     supportingInternalLinks: [
       { href: '/gmail-crm', label: 'Gmail CRM overview' },
@@ -157,7 +160,9 @@ export const resourceArticles: ResourceArticle[] = [
       'A repeatable follow-up system you can run directly from Gmail: clear next steps, a light cadence, and email templates that do not feel spammy.',
     category: 'Follow-up systems',
     publishedAt: '2026-02-16',
+    updatedAt: '2026-03-17',
     readingTimeMinutes: 9,
+    faqSubtitle: 'Common questions about follow-up cadences, templates, and timing.',
     primaryInternalLink: { href: '/gmail-crm', label: 'Gmail CRM' },
     supportingInternalLinks: [
       { href: '/crm-for-solo-b2b-sales', label: 'Solo B2B sales workflow' },
@@ -271,6 +276,7 @@ export const resourceArticles: ResourceArticle[] = [
     category: 'Gmail CRM workflows',
     publishedAt: '2026-02-16',
     readingTimeMinutes: 8,
+    faqSubtitle: 'Common questions about turning email threads into a tracked pipeline.',
     primaryInternalLink: { href: '/ai-gmail-crm', label: 'AI Gmail CRM' },
     supportingInternalLinks: [
       { href: '/gmail-crm', label: 'Gmail CRM overview' },
@@ -360,7 +366,9 @@ export const resourceArticles: ResourceArticle[] = [
       'A Gmail-first approach to tracking deals: simple stages, clear exit criteria, and next steps that keep your pipeline honest without manual spreadsheet updates.',
     category: 'Solo sales workflows',
     publishedAt: '2026-02-16',
+    updatedAt: '2026-03-10',
     readingTimeMinutes: 8,
+    faqSubtitle: 'Common questions about deal tracking and pipeline maintenance.',
     primaryInternalLink: {
       href: '/crm-for-solo-b2b-sales',
       label: 'Solo B2B sales CRM inside Gmail',
@@ -459,6 +467,7 @@ export const resourceArticles: ResourceArticle[] = [
     category: 'Getting started',
     publishedAt: '2026-02-16',
     readingTimeMinutes: 6,
+    faqSubtitle: 'Common questions about getting started with a personal Gmail CRM.',
     primaryInternalLink: { href: '/gmail-crm', label: 'Gmail CRM overview' },
     supportingInternalLinks: [
       { href: '/inbox-onboarding', label: 'Inbox onboarding' },
@@ -536,6 +545,7 @@ export const resourceArticles: ResourceArticle[] = [
     category: 'Email tracking',
     publishedAt: '2026-02-16',
     readingTimeMinutes: 7,
+    faqSubtitle: 'Common questions about email tracking accuracy and ethical use.',
     primaryInternalLink: {
       href: '/email-tracking-in-gmail',
       label: 'Email tracking in Gmail',
@@ -632,7 +642,9 @@ export const resourceArticles: ResourceArticle[] = [
       'A plain-English explanation of agentic CRMs: what "agentic" means, why human-in-the-loop matters, and how an assistant can help without taking control away from you.',
     category: 'AI workflows',
     publishedAt: '2026-02-16',
+    updatedAt: '2026-03-03',
     readingTimeMinutes: 8,
+    faqSubtitle: 'Common questions about agentic CRMs, AI assistants, and human-in-the-loop design.',
     primaryInternalLink: { href: '/ai-gmail-crm', label: 'AI Gmail CRM' },
     supportingInternalLinks: [
       { href: '/inbox-onboarding', label: 'Inbox onboarding' },
@@ -724,6 +736,7 @@ export const resourceArticles: ResourceArticle[] = [
     category: 'Consulting workflows',
     publishedAt: '2026-02-16',
     readingTimeMinutes: 7,
+    faqSubtitle: 'Common questions about pipeline design for solo consultants.',
     primaryInternalLink: { href: '/crm-for-consultants', label: 'CRM for consultants' },
     supportingInternalLinks: [
       { href: '/gmail-crm', label: 'Gmail CRM overview' },
@@ -816,6 +829,7 @@ export const resourceArticles: ResourceArticle[] = [
     category: 'Freelance workflows',
     publishedAt: '2026-02-16',
     readingTimeMinutes: 8,
+    faqSubtitle: 'Common questions about freelance client tracking and project management.',
     primaryInternalLink: { href: '/crm-for-freelancers', label: 'CRM for freelancers' },
     supportingInternalLinks: [
       { href: '/gmail-crm', label: 'Gmail CRM overview' },
@@ -907,6 +921,7 @@ export const resourceArticles: ResourceArticle[] = [
     category: 'Solo sales workflows',
     publishedAt: '2026-02-16',
     readingTimeMinutes: 10,
+    faqSubtitle: 'Common questions about follow-up templates and B2B outreach.',
     primaryInternalLink: {
       href: '/crm-for-solo-b2b-sales',
       label: 'Solo B2B sales CRM inside Gmail',
@@ -1009,7 +1024,9 @@ export const resourceArticles: ResourceArticle[] = [
       'A practical system for keeping CRM data fresh: capture updates in context, keep stages lightweight, and use a human-in-the-loop assistant to reduce repetitive work.',
     category: 'Gmail CRM workflows',
     publishedAt: '2026-02-16',
+    updatedAt: '2026-02-24',
     readingTimeMinutes: 9,
+    faqSubtitle: 'Common questions about reducing manual CRM updates and keeping data fresh.',
     primaryInternalLink: { href: '/ai-gmail-crm', label: 'AI assistant in Gmail' },
     supportingInternalLinks: [
       { href: '/gmail-crm', label: 'Gmail CRM overview' },
@@ -1101,7 +1118,9 @@ export const resourceArticles: ResourceArticle[] = [
       'A practical checklist for evaluating Gmail CRM extensions: workflow fit, pipelines and tasks, AI safety, permissions, privacy, and the details that matter for solo operators.',
     category: 'Buying guides',
     publishedAt: '2026-02-16',
+    updatedAt: '2026-03-17',
     readingTimeMinutes: 10,
+    faqSubtitle: 'Common questions about evaluating and choosing a Gmail CRM extension.',
     primaryInternalLink: { href: '/gmail-crm', label: 'Gmail CRM overview' },
     supportingInternalLinks: [
       { href: '/features', label: 'Features' },

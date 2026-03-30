@@ -18,5 +18,28 @@ export const metadata: Metadata = {
 }
 
 export default function Page() {
-  return <HomePage />
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: 'Donna CRM',
+    applicationCategory: 'BusinessApplication',
+    operatingSystem: 'Chrome',
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: '4.8',
+      ratingCount: '5',
+      bestRating: '5',
+      worstRating: '1',
+    },
+  }
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <HomePage />
+    </>
+  )
 }

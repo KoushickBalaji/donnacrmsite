@@ -2,7 +2,8 @@ import type { Metadata } from 'next'
 import { JsonLd } from '../../components/JsonLd'
 import { pageMetadata } from '../../lib/metadata'
 import { resolveSiteOrigin } from '../../lib/site'
-import { AiGmailCrmPage, aiGmailCrmFaqs } from '../../views/AiGmailCrm'
+import { AiGmailCrmPage } from '../../views/AiGmailCrm'
+import { aiGmailCrmFaqs } from '../../views/ai-gmail-crm-data'
 
 export const metadata: Metadata = pageMetadata({
   title: 'AI Gmail CRM (Human-in-the-loop)',

@@ -9,7 +9,7 @@ import { useLayoutEffect } from 'react'
  *
  * Uses useLayoutEffect (fires before paint) so the browser never sees
  * a stale scroll-snap-active class on non-snap pages like Resources.
- * useEffect was too late — the browser would snap to the footer before
+ * useEffect was too late - the browser would snap to the footer before
  * the class was removed.
  */
 export function ScrollSnapReset() {

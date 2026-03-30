@@ -18,7 +18,7 @@ export function ResourceCardGrid({
   slugs,
   viewAllHref = '/resources',
   viewAllLabel = 'View all resources',
-  sectionClassName = 'bg-muted/30 py-16 lg:py-20',
+  sectionClassName = 'bg-muted py-20 lg:py-28',
 }: ResourceCardGridProps) {
   const articles = slugs
     .map((slug) => getResourceArticleBySlug(slug))
@@ -28,8 +28,8 @@ export function ResourceCardGrid({
 
   return (
     <section className={sectionClassName}>
-      <div className="container">
-        <div className="mx-auto max-w-5xl">
+      <div className="mx-auto w-full max-w-[1440px] px-6 lg:px-10">
+        <div>
           <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
             <div>
               <h2 className="text-2xl font-semibold text-foreground sm:text-3xl">{title}</h2>
@@ -47,9 +47,9 @@ export function ResourceCardGrid({
                 href={`/resources/${article.slug}`}
                 className="group rounded-lg outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
               >
-                <Card className="h-full border-border transition-colors group-hover:border-primary/50">
+                <Card className="h-full border-border transition-all duration-200 group-hover:border-primary/50 group-hover:-translate-y-0.5 group-hover:shadow-md">
                   <CardContent className="flex h-full flex-col p-6">
-                    <p className="text-xs font-semibold uppercase tracking-[0.08em] text-foreground/50">
+                    <p className="text-xs font-semibold uppercase tracking-[0.12em] text-brand-blue">
                       {article.category}
                     </p>
                     <h3 className="mt-3 text-lg font-semibold text-foreground">{article.title}</h3>

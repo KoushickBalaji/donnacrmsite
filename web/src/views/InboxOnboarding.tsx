@@ -1,8 +1,9 @@
 import Link from 'next/link'
+import { Eyebrow } from '../components/Eyebrow'
 import { FaqList, type FaqItem } from '../components/FaqList'
 import { ResourceCardGrid } from '../components/ResourceCardGrid'
+import { Reveal } from '../components/Reveal'
 import { Button } from '../components/ui/Button'
-import { Card, CardContent } from '../components/ui/Card'
 import { chromeWebStoreInstallUrl } from '../lib/chromeWebStore'
 
 export const inboxOnboardingFaqs: FaqItem[] = [
@@ -14,7 +15,7 @@ export const inboxOnboardingFaqs: FaqItem[] = [
   {
     question: 'What does it do (and not do)?',
     answer:
-      "It helps you get to a sensible starting point quickly. It's not a fully automated background agent, and it won't replace your judgment about which contacts and deals matter.",
+      'Inbox onboarding reads your recent threads and recommends contacts to add, pipeline stages to start with, and initial tasks to capture - all based on what is already happening in your inbox. You review every suggestion before anything gets created. It does not send emails, modify threads, or act without your confirmation.',
   },
   {
     question: 'Do I need to connect anything besides Gmail?',
@@ -28,45 +29,39 @@ export const inboxOnboardingFaqs: FaqItem[] = [
   },
   {
     question: 'Where can I read about data and privacy?',
-    answer: 'Read the Privacy Policy for details about data handling and permissions.',
+    answer:
+      'Donna is CASA certified and has passed an independent third-party security audit. Inbox onboarding reads recent thread subjects and snippets to make recommendations - it does not store email body content. Full details on data handling, permissions, and retention are in the Privacy Policy at /privacy.',
   },
 ]
 
 const primaryCtaLabel = 'Start onboarding - Free Trial'
 
-function ScreenshotCard({ src, alt }: { src: string; alt: string }) {
-  return (
-    <Card className="border-border bg-muted/30">
-      <CardContent className="p-6">
-        <img
-          src={src}
-          alt={alt}
-          className="w-full rounded-md border border-border bg-background object-contain"
-          loading="lazy"
-        />
-      </CardContent>
-    </Card>
-  )
-}
-
 export function InboxOnboardingPage() {
   return (
     <>
-      <section className="bg-gradient-to-b from-primary/5 to-background py-16 lg:py-24">
-        <div className="container">
-          <div className="mx-auto grid max-w-5xl items-center gap-10 lg:grid-cols-2">
-            <div>
-              <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
+      {/* -- Hero -- */}
+      <section className="bg-background py-20 lg:py-28">
+        <div className="mx-auto w-full max-w-[1440px] px-6 lg:px-10">
+          <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
+            <Reveal>
+              <Eyebrow>Inbox onboarding</Eyebrow>
+              <h1
+                className="mt-3 text-4xl font-bold tracking-tight text-foreground sm:text-5xl"
+                style={{ letterSpacing: '-0.02em' }}
+              >
                 Set up your CRM from your Gmail inbox
               </h1>
-              <p className="mt-5 text-lg text-muted-foreground">
-                Don't start from blank fields. Start from real conversations. Inbox onboarding helps
-                you get to a lightweight setup fast-so you can track deals and follow-ups without
-                leaving Gmail.
+              <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
+                Don't start from blank fields. Start from real conversations. Inbox onboarding turns
+                your existing threads into a lightweight CRM setup in about five minutes.
               </p>
 
               <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
-                <Button size="lg" asChild>
+                <Button
+                  size="lg"
+                  className="shadow-lg shadow-primary/20 transition-all duration-200 hover:shadow-xl hover:shadow-primary/30 hover:scale-[1.02] active:scale-[0.98]"
+                  asChild
+                >
                   <a
                     href={chromeWebStoreInstallUrl({ content: 'inbox_onboarding_hero_primary' })}
                     target="_blank"
@@ -80,28 +75,39 @@ export function InboxOnboardingPage() {
                 </Button>
               </div>
 
-              <p className="mt-4 text-sm text-muted-foreground">
-                Lightweight setup | Human-in-the-loop | You stay in control
+              <p className="mt-4 text-xs text-muted-foreground/70">
+                Lightweight setup - Human-in-the-loop - You stay in control
               </p>
-            </div>
+            </Reveal>
 
-            <ScreenshotCard
-              src="/screenshots/Context%20Bar%20V2.png"
-              alt="Donna CRM context sidebar inside Gmail"
-            />
+            <Reveal durationMs={500}>
+              <div className="overflow-hidden rounded-2xl border border-border/60 shadow-lg ring-1 ring-black/[0.04]">
+                <img
+                  src="/screenshots/Context%20Bar%20V2.png"
+                  alt="Donna CRM context sidebar inside Gmail"
+                  className="w-full object-contain"
+                  loading="eager"
+                />
+              </div>
+            </Reveal>
           </div>
         </div>
       </section>
 
-      <section className="bg-background py-16 lg:py-20">
-        <div className="container">
-          <div className="mx-auto grid max-w-5xl gap-10 lg:grid-cols-2 lg:items-start">
-            <div>
-              <h2 className="text-2xl font-semibold text-foreground sm:text-3xl">
+      {/* -- How it works -- */}
+      <section className="bg-muted py-20 lg:py-28">
+        <div className="mx-auto w-full max-w-[1440px] px-6 lg:px-10">
+          <div className="grid items-start gap-12 lg:grid-cols-2 lg:gap-20">
+            <Reveal>
+              <Eyebrow>How it works</Eyebrow>
+              <h2
+                className="text-3xl font-bold text-foreground sm:text-4xl"
+                style={{ letterSpacing: '-0.02em' }}
+              >
                 Start with what you already do
               </h2>
-              <p className="mt-4 text-muted-foreground">
-                Most solo operators already have a system-it's just scattered across threads,
+              <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
+                Most solo operators already have a system - it's just scattered across threads,
                 calendar reminders, and notes. Inbox onboarding helps you turn that into a simple,
                 repeatable workflow inside Gmail.
               </p>
@@ -112,102 +118,103 @@ export function InboxOnboardingPage() {
                 </Link>
                 .
               </p>
-            </div>
+            </Reveal>
 
-            <div className="rounded-xl border border-border bg-muted/30 p-6">
-              <p className="text-sm font-semibold text-foreground">
-                A sensible first setup (about 5 minutes)
-              </p>
-              <ul className="mt-4 space-y-3">
-                {[
-                  'The assistant scans recent threads to understand your workflow',
-                  'It recommends a lightweight pipeline and stages you will remember',
-                  'It proposes initial contacts and context based on what you select',
-                  'It suggests follow-up tasks and drafts; you confirm what gets created',
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-3">
-                    <div className="mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-primary" />
-                    <span className="text-muted-foreground">{item}</span>
-                  </li>
-                ))}
-              </ul>
+            <Reveal delayMs={80}>
+              <div className="rounded-2xl bg-card p-8 shadow-md ring-1 ring-black/[0.04]">
+                <p className="text-sm font-bold text-foreground">
+                  A sensible first setup (about 5 minutes)
+                </p>
+                <ul className="mt-6 space-y-4">
+                  {[
+                    'The assistant scans recent threads to understand your workflow',
+                    'It recommends a lightweight pipeline and stages you will remember',
+                    'It proposes initial contacts and context based on what you select',
+                    'It suggests follow-up tasks and drafts; you confirm what gets created',
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-3">
+                      <div className="mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-brand-blue" />
+                      <span className="text-sm text-muted-foreground">{item}</span>
+                    </li>
+                  ))}
+                </ul>
 
-              <div className="mt-6 flex flex-wrap gap-4 text-sm font-semibold">
-                <Link href="/pricing" className="text-primary hover:underline">
-                  Pricing
-                </Link>
-                <Link href="/features" className="text-primary hover:underline">
-                  Features
-                </Link>
-                <Link href="/faq" className="text-primary hover:underline">
-                  FAQ
-                </Link>
+                <div className="mt-8 flex flex-wrap gap-4 text-sm font-semibold">
+                  <Link href="/pricing" className="text-primary hover:underline">
+                    Pricing
+                  </Link>
+                  <Link href="/features" className="text-primary hover:underline">
+                    Features
+                  </Link>
+                  <Link href="/faq" className="text-primary hover:underline">
+                    FAQ
+                  </Link>
+                </div>
               </div>
-            </div>
-          </div>
-
-          <div className="mx-auto mt-14 max-w-5xl">
-            <h2 className="text-2xl font-semibold text-foreground sm:text-3xl">
-              What onboarding can set up (with confirmation)
-            </h2>
-            <p className="mt-4 max-w-3xl text-muted-foreground">
-              Inbox onboarding is designed to get you to a sensible starting point fast. The
-              assistant can recommend a lightweight structure based on real threads, and you choose
-              what to apply.
-            </p>
-
-            <div className="mt-8 grid gap-6 md:grid-cols-3">
-              {[
-                {
-                  title: 'Pipelines + stages',
-                  body: "Start with a simple pipeline you'll actually maintain (and remember).",
-                },
-                {
-                  title: 'Contacts + context',
-                  body: 'Turn important threads into contacts with lightweight notes and tags.',
-                },
-                {
-                  title: 'Next-step tasks',
-                  body: "Capture follow-ups as tasks so the \"next step\" doesn't disappear.",
-                },
-              ].map((item) => (
-                <Card key={item.title} className="border-border bg-muted/30">
-                  <CardContent className="p-6">
-                    <p className="text-base font-semibold text-foreground">{item.title}</p>
-                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                      {item.body}
-                    </p>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-
-            <p className="mt-6 text-sm text-muted-foreground">
-              Important: Donna is human-in-the-loop. Review recommendations before you create
-              records or send anything client-facing.
-            </p>
-          </div>
-
-          <div className="mx-auto mt-14 max-w-5xl rounded-xl border border-border bg-background p-8">
-            <h2 className="text-2xl font-semibold text-foreground sm:text-3xl">
-              Permissions and privacy
-            </h2>
-            <p className="mt-4 max-w-3xl text-muted-foreground">
-              Inbox workflows can touch sensitive information. Keep the mental model simple:
-              treat AI like a drafting and organization tool, and review suggestions before you
-              take action, especially anything client-facing.
-            </p>
-            <p className="mt-4 text-sm text-muted-foreground">
-              See the{' '}
-              <Link href="/privacy" className="text-primary hover:underline">
-                Privacy Policy
-              </Link>{' '}
-              for details.
-            </p>
+            </Reveal>
           </div>
         </div>
       </section>
 
+      {/* -- What gets set up -- */}
+      <section className="bg-background py-20 lg:py-28">
+        <div className="mx-auto w-full max-w-[1440px] px-6 lg:px-10">
+          <Reveal>
+            <Eyebrow>What gets set up</Eyebrow>
+            <h2
+              className="text-3xl font-bold text-foreground sm:text-4xl"
+              style={{ letterSpacing: '-0.02em' }}
+            >
+              What onboarding can set up (with confirmation)
+            </h2>
+            <p className="mt-3 max-w-2xl text-lg text-muted-foreground">
+              The assistant recommends a lightweight structure based on real threads. You choose
+              what to apply - nothing is created without your review.
+            </p>
+          </Reveal>
+
+          <div className="mt-10 grid gap-6 md:grid-cols-3">
+            {[
+              {
+                title: 'Pipelines + stages',
+                body: "Start with a simple pipeline you'll actually maintain (and remember).",
+              },
+              {
+                title: 'Contacts + context',
+                body: 'Turn important threads into contacts with lightweight notes and tags.',
+              },
+              {
+                title: 'Next-step tasks',
+                body: "Capture follow-ups as tasks so the \"next step\" doesn't disappear.",
+              },
+            ].map((item, index) => (
+              <Reveal key={item.title} delayMs={index * 80}>
+                <div className="rounded-2xl bg-card p-6 shadow-md ring-1 ring-black/[0.04] transition-all duration-200 hover:-translate-y-1 hover:shadow-lg">
+                  <p className="text-base font-bold text-foreground">{item.title}</p>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.body}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+
+          <Reveal delayMs={240}>
+            <div className="mt-10 rounded-2xl bg-muted p-6 ring-1 ring-black/[0.04]">
+              <p className="text-sm font-bold text-foreground">Permissions and privacy</p>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                Inbox workflows can touch sensitive information. Treat AI like a drafting and
+                organization tool, and review suggestions before you take action - especially
+                anything client-facing. See the{' '}
+                <Link href="/privacy" className="text-primary hover:underline">
+                  Privacy Policy
+                </Link>{' '}
+                for details.
+              </p>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* -- Resource articles -- */}
       <ResourceCardGrid
         title="Next guides to read"
         description="If you are building a Gmail-first system, these guides help you keep it lightweight and consistent."
@@ -218,45 +225,82 @@ export function InboxOnboardingPage() {
         ]}
       />
 
-      <section className="bg-background py-16 lg:py-20">
-        <div className="container">
-          <div className="mx-auto max-w-5xl">
-            <h2 className="text-2xl font-semibold text-foreground sm:text-3xl">FAQs</h2>
-            <div className="mt-8 grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
-              <div>
-                <FaqList items={inboxOnboardingFaqs} />
-              </div>
+      {/* -- FAQ -- */}
+      <section className="bg-background py-20 lg:py-28">
+        <div className="mx-auto w-full max-w-[1440px] px-6 lg:px-10">
+          <Reveal>
+            <Eyebrow>FAQ</Eyebrow>
+            <h2
+              className="text-3xl font-bold text-foreground sm:text-4xl"
+              style={{ letterSpacing: '-0.02em' }}
+            >
+              FAQs
+            </h2>
+          </Reveal>
+          <div className="mt-10">
+            <FaqList items={inboxOnboardingFaqs} />
+          </div>
+        </div>
+      </section>
 
-              <div className="rounded-xl border border-border bg-muted/30 p-6">
-                <p className="text-sm font-semibold text-foreground">Ready to start?</p>
-                <p className="mt-2 text-sm text-muted-foreground">
-                  Install the extension and let the assistant recommend a first setup from recent
-                  threads in about 5 minutes.
-                </p>
-                <div className="mt-5">
-                  <Button asChild>
-                    <a
-                      href={chromeWebStoreInstallUrl({ content: 'inbox_onboarding_bottom_cta' })}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      {primaryCtaLabel}
-                    </a>
-                  </Button>
-                </div>
-                <p className="mt-4 text-xs text-muted-foreground">
-                  Also useful:{' '}
-                  <Link
-                    href="/email-tracking-in-gmail"
-                    className="underline underline-offset-2"
+      {/* -- Explore more (dark) -- */}
+      <section className="bg-primary py-20 lg:py-28">
+        <div className="mx-auto w-full max-w-[1440px] px-6 lg:px-10">
+          <Reveal>
+            <div className="mx-auto max-w-3xl text-center">
+              <h2
+                className="text-3xl font-bold text-primary-foreground sm:text-4xl"
+                style={{ letterSpacing: '-0.02em' }}
+              >
+                Keep exploring
+              </h2>
+              <p className="mt-4 text-lg text-primary-foreground/70">
+                Learn more about how Donna works, or dive into a specific workflow.
+              </p>
+            </div>
+          </Reveal>
+
+          <div className="mx-auto mt-10 grid max-w-4xl gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {[
+              { label: 'How it works', href: '/how-it-works' },
+              { label: 'All features', href: '/features' },
+              { label: 'AI assistant', href: '/ai-gmail-crm' },
+              { label: 'Gmail CRM overview', href: '/gmail-crm' },
+              { label: 'Email tracking', href: '/email-tracking-in-gmail' },
+              { label: 'Pricing', href: '/pricing' },
+            ].map((link, index) => (
+              <Reveal key={link.href} delayMs={index * 60}>
+                <Link
+                  href={link.href}
+                  className="block rounded-xl bg-white/10 px-5 py-4 text-sm font-semibold text-primary-foreground ring-1 ring-white/[0.08] transition-all duration-200 hover:bg-white/[0.15] hover:-translate-y-0.5"
+                >
+                  {link.label}
+                </Link>
+              </Reveal>
+            ))}
+          </div>
+
+          <Reveal delayMs={360}>
+            <div className="mx-auto mt-10 max-w-md text-center">
+              <p className="text-sm text-primary-foreground/60">Ready to try it?</p>
+              <div className="mt-3">
+                <Button
+                  size="lg"
+                  variant="secondary"
+                  className="shadow-lg shadow-black/20 transition-all duration-200 hover:shadow-xl hover:scale-[1.02] active:scale-[0.98]"
+                  asChild
+                >
+                  <a
+                    href={chromeWebStoreInstallUrl({ content: 'inbox_onboarding_bottom_cta' })}
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
-                    email tracking in Gmail
-                  </Link>
-                  .
-                </p>
+                    {primaryCtaLabel}
+                  </a>
+                </Button>
               </div>
             </div>
-          </div>
+          </Reveal>
         </div>
       </section>
     </>

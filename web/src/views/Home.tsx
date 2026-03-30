@@ -22,6 +22,36 @@ import { chromeWebStoreInstallUrl } from '../lib/chromeWebStore'
 
 const primaryCtaLabel = 'Add to Gmail - Free Trial'
 
+const cwsReviews = [
+  {
+    author: 'Daniela James',
+    stars: 5,
+    body: 'Feels like having a simple CRM without needing another tab or complicated software. Everything stays inside Gmail where I already work.',
+  },
+  {
+    author: 'Dominic Zeabur',
+    stars: 4,
+    body: 'Nice tool if live in Gmail all day. Tasks, contacts, and notes are all connected to the email thread.',
+  },
+  {
+    author: 'Williams',
+    stars: 5,
+    body: 'Pretty cool idea - it turns Gmail into a mini CRM.',
+  },
+]
+
+function StarRating({ rating, max = 5 }: { rating: number; max?: number }) {
+  return (
+    <div className="flex items-center gap-0.5" aria-label={`${rating} out of ${max} stars`}>
+      {Array.from({ length: max }, (_, i) => (
+        <span key={i} className={i < rating ? 'text-brand-orange' : 'text-border'}>
+          {i < rating ? '★' : '☆'}
+        </span>
+      ))}
+    </div>
+  )
+}
+
 const surfaceTileClassName =
   'h-full min-h-[200px] rounded-[20px] bg-card p-8 shadow-[0_12px_30px_rgba(0,0,0,0.06)] ring-1 ring-black/[0.04] transition-[transform,box-shadow] duration-[220ms] ease-out hover:-translate-y-1.5 hover:shadow-[0_18px_45px_rgba(0,0,0,0.10)]'
 
@@ -52,7 +82,7 @@ export function HomePage() {
 
   return (
     <>
-      {/* ── Hero ── */}
+      {/* -- Hero -- */}
       <section
         data-snap-section
         className="donna-hero-drift relative flex min-h-[calc(100svh-4rem)] flex-col overflow-hidden bg-background"
@@ -124,7 +154,7 @@ export function HomePage() {
         </div>
       </section>
 
-      {/* ── The Problem ── */}
+      {/* -- The Problem -- */}
       <section
         data-snap-section
         className="flex min-h-[calc(100svh-4rem)] items-center bg-primary py-20 lg:py-28"
@@ -197,7 +227,7 @@ export function HomePage() {
         </div>
       </section>
 
-      {/* ── How Donna works ── */}
+      {/* -- How Donna works -- */}
       <section
         data-snap-section
         className="flex min-h-[calc(100svh-4rem)] items-center bg-background py-20 lg:py-28"
@@ -268,7 +298,7 @@ export function HomePage() {
         </div>
       </section>
 
-      {/* ── Security & Trust ── */}
+      {/* -- Security & Trust -- */}
       <section
         data-snap-section
         className="flex min-h-[calc(100svh-4rem)] items-center bg-ink-deep py-20 lg:py-28"
@@ -316,7 +346,54 @@ export function HomePage() {
         </div>
       </section>
 
-      {/* ── Final CTA ── */}
+      {/* -- Reviews -- */}
+      <section
+        data-snap-section
+        className="flex min-h-[calc(100svh-4rem)] items-center bg-muted py-20 lg:py-28"
+      >
+        <div className="mx-auto w-full max-w-[1440px] px-6 lg:px-10">
+          <Reveal className="mb-12 text-center">
+            <div className="inline-flex items-center gap-2 rounded-full bg-card px-4 py-2 text-xs font-semibold uppercase tracking-[0.1em] text-muted-foreground shadow-sm ring-1 ring-black/[0.06]">
+              <Chrome className="h-3.5 w-3.5 text-brand-blue" />
+              Featured on Chrome Web Store
+            </div>
+            <div className="mt-5 flex items-center justify-center gap-3">
+              <span className="text-5xl font-bold text-foreground" style={{ letterSpacing: '-0.02em' }}>4.8</span>
+              <div className="text-left">
+                <div className="flex gap-0.5 text-lg text-brand-orange">★★★★★</div>
+                <p className="text-sm text-muted-foreground">5 ratings</p>
+              </div>
+            </div>
+          </Reveal>
+
+          <div className="grid gap-6 sm:grid-cols-3">
+            {cwsReviews.map((review, i) => (
+              <Reveal key={review.author} delayMs={i * 80}>
+                <div className="flex h-full flex-col rounded-2xl bg-card p-6 shadow-md ring-1 ring-black/[0.04]">
+                  <StarRating rating={review.stars} />
+                  <p className="mt-3 flex-1 text-[15px] leading-relaxed text-foreground">
+                    &ldquo;{review.body}&rdquo;
+                  </p>
+                  <p className="mt-5 text-sm font-medium text-muted-foreground">{review.author}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+
+          <Reveal className="mt-10 text-center">
+            <a
+              href="https://chromewebstore.google.com/detail/donna-crm/fadjjpednmcoomcpajkfbpchankdoiip/reviews"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm text-muted-foreground/70 underline-offset-2 hover:text-muted-foreground hover:underline"
+            >
+              Read all reviews on Chrome Web Store
+            </a>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* -- Final CTA -- */}
       <section data-snap-section className="bg-background py-24 lg:py-32">
         <div className="mx-auto w-full max-w-[1440px] px-6 lg:px-10">
           <Reveal className="mx-auto max-w-2xl text-center">

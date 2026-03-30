@@ -10,6 +10,7 @@ import {
   Users,
 } from 'lucide-react'
 import Link from 'next/link'
+import { Eyebrow } from '../components/Eyebrow'
 import { Reveal } from '../components/Reveal'
 import { Button } from '../components/ui/Button'
 import { ScrollSnapActivator } from '../components/ScrollSnapActivator'
@@ -21,13 +22,6 @@ const surfaceTileClassName =
 const compactTileClassName =
   'h-full rounded-[20px] bg-card p-6 shadow-[0_12px_30px_rgba(0,0,0,0.06)] ring-1 ring-black/[0.04] transition-[transform,box-shadow] duration-[220ms] ease-out hover:-translate-y-1.5 hover:shadow-[0_18px_45px_rgba(0,0,0,0.10)]'
 
-function Eyebrow({ children }: { children: React.ReactNode }) {
-  return (
-    <p className="mb-3 text-xs font-semibold uppercase tracking-[0.12em] text-brand-blue">
-      {children}
-    </p>
-  )
-}
 
 function IconBubble({ Icon }: { Icon: typeof Inbox }) {
   return (
@@ -51,7 +45,7 @@ export function HowItWorksPage() {
     <>
       <ScrollSnapActivator />
 
-      {/* ── Hero + Setup ── */}
+      {/* -- Hero + Setup -- */}
       <section
         data-snap-section
         className="donna-hero-drift relative flex min-h-[calc(100svh-4rem)] items-center overflow-hidden bg-background py-16 lg:py-24"
@@ -172,7 +166,7 @@ export function HowItWorksPage() {
         </div>
       </section>
 
-      {/* ── Your inbox, transformed (dark) ── */}
+      {/* -- Your inbox, transformed (dark) -- */}
       <section
         data-snap-section
         className="flex min-h-[calc(100svh-4rem)] items-center bg-primary py-20 lg:py-28"
@@ -247,7 +241,7 @@ export function HowItWorksPage() {
         </div>
       </section>
 
-      {/* ── Daily workflow ── */}
+      {/* -- Daily workflow -- */}
       <section
         data-snap-section
         className="flex min-h-[calc(100svh-4rem)] items-center bg-background py-20 lg:py-28"
@@ -356,7 +350,7 @@ export function HowItWorksPage() {
         </div>
       </section>
 
-      {/* ── AI + Trust ── */}
+      {/* -- AI + Trust -- */}
       <section
         data-snap-section
         className="flex min-h-[calc(100svh-4rem)] items-center bg-ink-deep py-20 lg:py-28"
@@ -439,7 +433,7 @@ export function HowItWorksPage() {
         </div>
       </section>
 
-      {/* ── CTA ── */}
+      {/* -- CTA -- */}
       <section data-snap-section className="bg-background py-24 lg:py-32">
         <div className="mx-auto w-full max-w-[1440px] px-6 lg:px-10">
           <Reveal className="mx-auto max-w-2xl text-center">

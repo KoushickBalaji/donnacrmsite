@@ -1,66 +1,41 @@
-import Link from 'next/link'
-import { FaqList, type FaqItem } from '../components/FaqList'
-import { Button } from '../components/ui/Button'
-import { Card, CardContent } from '../components/ui/Card'
-import { chromeWebStoreInstallUrl } from '../lib/chromeWebStore'
+'use client'
 
-export const crmForConsultantsFaqs: FaqItem[] = [
-  {
-    question: 'How is this different from a traditional consultant CRM?',
-    answer:
-      "Donna is optimized for staying in Gmail. It's a lightweight system for tracking client context, engagement stage, and next steps-without heavy configuration.",
-  },
-  {
-    question: 'What pipeline stages work well for consulting?',
-    answer:
-      'A simple default is Discovery - Proposal - Active - Renewal. Keep stages minimal and focus on always capturing the next step.',
-  },
-  {
-    question: 'Can I use Donna for multiple engagement types?',
-    answer:
-      'Yes. Use separate pipelines for different workflows (for example, advisory work vs retainer renewals) while keeping your day-to-day inside Gmail.',
-  },
-  {
-    question: 'Is Donna a project management tool?',
-    answer:
-      'Donna focuses on relationship and follow-up tracking in Gmail. If you need full project planning, pair it with your preferred PM tool.',
-  },
-]
+import Link from 'next/link'
+import { Eyebrow } from '../components/Eyebrow'
+import { FaqList } from '../components/FaqList'
+import { Reveal } from '../components/Reveal'
+import { Button } from '../components/ui/Button'
+import { chromeWebStoreInstallUrl } from '../lib/chromeWebStore'
+import { crmForConsultantsFaqs } from './crm-for-consultants-data'
 
 const primaryCtaLabel = 'Add to Gmail - Free Trial'
-
-function ScreenshotCard({ src, alt }: { src: string; alt: string }) {
-  return (
-    <Card className="border-border bg-muted/30">
-      <CardContent className="p-6">
-        <img
-          src={src}
-          alt={alt}
-          className="w-full rounded-md border border-border bg-background object-contain"
-          loading="lazy"
-        />
-      </CardContent>
-    </Card>
-  )
-}
 
 export function CrmForConsultantsPage() {
   return (
     <>
-      <section className="bg-gradient-to-b from-primary/5 to-background py-16 lg:py-24">
-        <div className="container">
-          <div className="mx-auto grid max-w-5xl items-center gap-10 lg:grid-cols-2">
-            <div>
-              <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
+      {/* -- Hero -- */}
+      <section className="bg-background py-20 lg:py-28">
+        <div className="mx-auto w-full max-w-[1440px] px-6 lg:px-10">
+          <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
+            <Reveal>
+              <Eyebrow>CRM for Consultants</Eyebrow>
+              <h1
+                className="mt-3 text-4xl font-bold tracking-tight text-foreground sm:text-5xl"
+                style={{ letterSpacing: '-0.02em' }}
+              >
                 CRM for consultants inside Gmail
               </h1>
-              <p className="mt-5 text-lg text-muted-foreground">
+              <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
                 Stay on top of follow-ups, engagement status, and client context without switching
                 tabs. Built for solo consultants who live in Gmail.
               </p>
 
               <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
-                <Button size="lg" asChild>
+                <Button
+                  size="lg"
+                  className="shadow-lg shadow-primary/20 transition-all duration-200 hover:shadow-xl hover:shadow-primary/30 hover:scale-[1.02] active:scale-[0.98]"
+                  asChild
+                >
                   <a
                     href={chromeWebStoreInstallUrl({ content: 'crm_for_consultants_hero_primary' })}
                     target="_blank"
@@ -74,27 +49,38 @@ export function CrmForConsultantsPage() {
                 </Button>
               </div>
 
-              <p className="mt-4 text-sm text-muted-foreground">
-                Lightweight by design | Minimal setup | Works from your inbox
+              <p className="mt-4 text-xs text-muted-foreground/70">
+                Free trial · No credit card · Uninstall anytime
               </p>
-            </div>
+            </Reveal>
 
-            <ScreenshotCard
-              src="/screenshots/Context%20Bar%20V2.png"
-              alt="Consulting client context shown next to a Gmail thread"
-            />
+            <Reveal durationMs={500}>
+              <div className="overflow-hidden rounded-2xl border border-border/60 shadow-lg ring-1 ring-black/[0.04]">
+                <img
+                  src="/screenshots/Context%20Bar%20V2.png"
+                  alt="Consulting client context shown next to a Gmail thread"
+                  className="w-full object-contain"
+                  loading="eager"
+                />
+              </div>
+            </Reveal>
           </div>
         </div>
       </section>
 
-      <section className="bg-background py-16 lg:py-20">
-        <div className="container">
-          <div className="mx-auto grid max-w-5xl gap-10 lg:grid-cols-2 lg:items-start">
-            <div>
-              <h2 className="text-2xl font-semibold text-foreground sm:text-3xl">
+      {/* -- Problem -- */}
+      <section className="bg-muted py-20 lg:py-28">
+        <div className="mx-auto w-full max-w-[1440px] px-6 lg:px-10">
+          <div className="grid gap-12 lg:grid-cols-2 lg:gap-20 lg:items-start">
+            <Reveal>
+              <Eyebrow>The problem</Eyebrow>
+              <h2
+                className="text-3xl font-bold text-foreground sm:text-4xl"
+                style={{ letterSpacing: '-0.02em' }}
+              >
                 Common consulting workflow problems
               </h2>
-              <ul className="mt-6 space-y-3">
+              <ul className="mt-8 space-y-4">
                 {[
                   'Follow-ups get buried in threads',
                   'Engagement status lives in docs or memory',
@@ -102,69 +88,95 @@ export function CrmForConsultantsPage() {
                   'A "team CRM" is too heavy for a solo workflow',
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-3">
-                    <div className="mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-primary" />
+                    <div className="mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-brand-blue" />
                     <span className="text-muted-foreground">{item}</span>
                   </li>
                 ))}
               </ul>
-            </div>
+            </Reveal>
 
-            <div className="rounded-xl border border-border bg-muted/30 p-6">
-              <p className="text-sm font-semibold text-foreground">The consultant-friendly loop</p>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                Thread to client context to engagement stage to next step. The goal isn't perfect data.
-                It's consistent follow-through.
-              </p>
-              <div className="mt-4 text-sm">
-                <Link href="/pricing" className="text-primary hover:underline">
-                  See pricing
-                </Link>
+            <Reveal delayMs={80}>
+              <div className="rounded-2xl bg-card p-8 shadow-md ring-1 ring-black/[0.04]">
+                <p className="text-base font-bold text-foreground">
+                  The consultant-friendly loop
+                </p>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                  Thread to client context to engagement stage to next step. The goal isn't perfect
+                  data. It's consistent follow-through.
+                </p>
+                <div className="mt-5 text-sm">
+                  <Link href="/pricing" className="text-primary hover:underline">
+                    See pricing
+                  </Link>
+                </div>
               </div>
-            </div>
-          </div>
-
-          <div className="mx-auto mt-14 max-w-5xl">
-            <h2 className="text-2xl font-semibold text-foreground sm:text-3xl">
-              Use pipelines as engagement stages
-            </h2>
-            <p className="mt-4 max-w-3xl text-muted-foreground">
-              A simple consulting pipeline keeps you honest about where each client stands:
-              Discovery - Proposal - Active - Renewal.
-            </p>
-
-            <div className="mt-8 grid gap-6 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
-              <div className="space-y-4">
-                {[
-                  { title: 'Discovery', body: 'Early conversations and fit assessment.' },
-                  { title: 'Proposal', body: 'Scope, pricing, and decision timelines.' },
-                  { title: 'Active', body: 'Deliverables, check-ins, and next milestones.' },
-                  { title: 'Renewal', body: 'Retainer renewal or follow-on work.' },
-                ].map((stage) => (
-                  <Card key={stage.title} className="border-border bg-background">
-                    <CardContent className="p-5">
-                      <p className="font-semibold text-foreground">{stage.title}</p>
-                      <p className="mt-1 text-sm text-muted-foreground">{stage.body}</p>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-              <ScreenshotCard
-                src="/screenshots/Pipeline%20V2.png"
-                alt="Consulting engagement stages shown in a pipeline"
-              />
-            </div>
+            </Reveal>
           </div>
         </div>
       </section>
 
-      <section className="bg-muted/30 py-16 lg:py-20">
-        <div className="container">
-          <div className="mx-auto grid max-w-5xl gap-10 lg:grid-cols-2 lg:items-start">
-            <div>
-              <h2 className="text-2xl font-semibold text-foreground sm:text-3xl">
+      {/* -- Pipeline stages -- */}
+      <section className="bg-background py-20 lg:py-28">
+        <div className="mx-auto w-full max-w-[1440px] px-6 lg:px-10">
+          <Reveal>
+            <Eyebrow>Pipeline stages</Eyebrow>
+            <h2
+              className="text-3xl font-bold text-foreground sm:text-4xl"
+              style={{ letterSpacing: '-0.02em' }}
+            >
+              Use pipelines as engagement stages
+            </h2>
+            <p className="mt-3 max-w-2xl text-lg text-muted-foreground">
+              A simple consulting pipeline keeps you honest about where each client stands:
+              Discovery - Proposal - Active - Renewal.
+            </p>
+          </Reveal>
+
+          <div className="mt-10 grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+            <div className="space-y-4">
+              {[
+                { title: 'Discovery', body: 'Early conversations and fit assessment.' },
+                { title: 'Proposal', body: 'Scope, pricing, and decision timelines.' },
+                { title: 'Active', body: 'Deliverables, check-ins, and next milestones.' },
+                { title: 'Renewal', body: 'Retainer renewal or follow-on work.' },
+              ].map((stage, index) => (
+                <Reveal key={stage.title} delayMs={index * 80}>
+                  <div className="rounded-2xl bg-card p-6 shadow-md ring-1 ring-black/[0.04] transition-all duration-200 hover:-translate-y-1 hover:shadow-lg">
+                    <p className="text-base font-bold text-foreground">{stage.title}</p>
+                    <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
+                      {stage.body}
+                    </p>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+            <Reveal durationMs={500} delayMs={160}>
+              <div className="overflow-hidden rounded-2xl border border-border/60 shadow-lg ring-1 ring-black/[0.04]">
+                <img
+                  src="/screenshots/Pipeline%20V2.png"
+                  alt="Consulting engagement stages shown in a pipeline"
+                  className="w-full object-contain"
+                  loading="lazy"
+                />
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* -- Tasks & related pages -- */}
+      <section className="bg-muted py-20 lg:py-28">
+        <div className="mx-auto w-full max-w-[1440px] px-6 lg:px-10">
+          <div className="grid gap-12 lg:grid-cols-2 lg:gap-20 lg:items-start">
+            <Reveal>
+              <Eyebrow>Follow-ups</Eyebrow>
+              <h2
+                className="text-3xl font-bold text-foreground sm:text-4xl"
+                style={{ letterSpacing: '-0.02em' }}
+              >
                 Tasks and follow-ups tied to clients
               </h2>
-              <p className="mt-4 text-muted-foreground">
+              <p className="mt-4 text-lg text-muted-foreground">
                 Consulting work is follow-up work: scheduling, confirming, nudging, and closing the
                 loop. Capture tasks right where the conversation happens.
               </p>
@@ -175,14 +187,15 @@ export function CrmForConsultantsPage() {
                 </Link>
                 .
               </p>
-            </div>
+            </Reveal>
 
-            <div className="rounded-xl border border-border bg-background p-6">
-              <p className="text-sm font-semibold text-foreground">Related pages</p>
-              <p className="mt-2 text-sm text-muted-foreground">
-                If you're evaluating Donna, these pages fill in the details.
-              </p>
-                <div className="mt-3 flex flex-col gap-2 text-sm">
+            <Reveal delayMs={80}>
+              <div className="rounded-2xl bg-card p-8 shadow-md ring-1 ring-black/[0.04]">
+                <p className="text-base font-bold text-foreground">Related pages</p>
+                <p className="mt-2 text-sm text-muted-foreground">
+                  If you're evaluating Donna, these pages fill in the details.
+                </p>
+                <div className="mt-4 flex flex-col gap-2.5 text-sm">
                   <Link href="/gmail-crm" className="text-primary hover:underline">
                     Gmail CRM overview
                   </Link>
@@ -204,46 +217,97 @@ export function CrmForConsultantsPage() {
                   <Link href="/email-tracking-in-gmail" className="text-primary hover:underline">
                     Email tracking in Gmail
                   </Link>
-                <Link href="/pricing" className="text-primary hover:underline">
-                  Pricing
-                </Link>
-                <Link href="/resources" className="text-primary hover:underline">
-                  Resources
-                </Link>
+                  <Link href="/pricing" className="text-primary hover:underline">
+                    Pricing
+                  </Link>
+                  <Link href="/resources" className="text-primary hover:underline">
+                    Resources
+                  </Link>
+                </div>
               </div>
-            </div>
+            </Reveal>
           </div>
         </div>
       </section>
 
-      <section className="bg-background py-16 lg:py-20">
-        <div className="container">
-          <div className="mx-auto max-w-5xl">
-            <h2 className="text-2xl font-semibold text-foreground sm:text-3xl">FAQs</h2>
-            <div className="mt-8 grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
-              <div>
-                <FaqList items={crmForConsultantsFaqs} />
-              </div>
+      {/* -- FAQ -- */}
+      <section className="bg-background py-20 lg:py-28">
+        <div className="mx-auto w-full max-w-[1440px] px-6 lg:px-10">
+          <Reveal>
+            <Eyebrow>FAQ</Eyebrow>
+            <h2
+              className="text-3xl font-bold text-foreground sm:text-4xl"
+              style={{ letterSpacing: '-0.02em' }}
+            >
+              FAQs
+            </h2>
+          </Reveal>
+          <div className="mt-10">
+            <FaqList items={crmForConsultantsFaqs} />
+          </div>
+        </div>
+      </section>
 
-              <div className="rounded-xl border border-border bg-muted/30 p-6">
-                <p className="text-sm font-semibold text-foreground">Install Donna CRM</p>
-                <p className="mt-2 text-sm text-muted-foreground">
-                  Install the extension and start tracking a real consulting thread in minutes.
-                </p>
-                <div className="mt-5">
-                  <Button asChild>
-                    <a
-                      href={chromeWebStoreInstallUrl({ content: 'crm_for_consultants_bottom_cta' })}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      {primaryCtaLabel}
-                    </a>
-                  </Button>
-                </div>
+      {/* -- Explore more (dark) -- */}
+      <section className="bg-primary py-20 lg:py-28">
+        <div className="mx-auto w-full max-w-[1440px] px-6 lg:px-10">
+          <Reveal>
+            <div className="mx-auto max-w-3xl text-center">
+              <h2
+                className="text-3xl font-bold text-primary-foreground sm:text-4xl"
+                style={{ letterSpacing: '-0.02em' }}
+              >
+                Keep exploring
+              </h2>
+              <p className="mt-4 text-lg text-primary-foreground/70">
+                Learn more about how Donna works, or dive into a specific workflow.
+              </p>
+            </div>
+          </Reveal>
+
+          <div className="mx-auto mt-10 grid max-w-4xl gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {[
+              { label: 'How it works', href: '/how-it-works' },
+              { label: 'All features', href: '/features' },
+              { label: 'Consultant workflow guide', href: '/resources/gmail-crm-for-consultants-workflow' },
+              { label: 'AI assistant', href: '/ai-gmail-crm' },
+              { label: 'Email tracking', href: '/email-tracking-in-gmail' },
+              { label: 'Pricing', href: '/pricing' },
+            ].map((link, index) => (
+              <Reveal key={link.href} delayMs={index * 60}>
+                <Link
+                  href={link.href}
+                  className="block rounded-xl bg-white/10 px-5 py-4 text-sm font-semibold text-primary-foreground ring-1 ring-white/[0.08] transition-all duration-200 hover:bg-white/[0.15] hover:-translate-y-0.5"
+                >
+                  {link.label}
+                </Link>
+              </Reveal>
+            ))}
+          </div>
+
+          <Reveal delayMs={360}>
+            <div className="mx-auto mt-10 max-w-md text-center">
+              <p className="text-sm text-primary-foreground/60">
+                Ready to try it?
+              </p>
+              <div className="mt-3">
+                <Button
+                  size="lg"
+                  variant="secondary"
+                  className="shadow-lg shadow-black/20 transition-all duration-200 hover:shadow-xl hover:scale-[1.02] active:scale-[0.98]"
+                  asChild
+                >
+                  <a
+                    href={chromeWebStoreInstallUrl({ content: 'crm_for_consultants_bottom_cta' })}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {primaryCtaLabel}
+                  </a>
+                </Button>
               </div>
             </div>
-          </div>
+          </Reveal>
         </div>
       </section>
     </>
