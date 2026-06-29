@@ -11,7 +11,8 @@ This file tracks code-observable gaps and open decisions.
 
 - Global robots behavior currently treats `NODE_ENV=production` as indexable in `src/app/layout.tsx`.
   - This can make preview-like production-mode environments indexable unless controlled elsewhere.
-- Host canonical redirect (`donnacrm.com` -> `www.donnacrm.com`) is not implemented in repo middleware.
-  - `src/middleware.ts` currently enforces HTTPS only.
-- `/compare` is included in sitemap paths even though route behavior is a redirect to `/streak-crm-alternative`.
-- The Shipping policy page exists at `/shipping` but is intentionally not linked in the footer (commented in `src/components/SiteFooter.tsx`).
+- Host canonical redirect (`donnacrm.com` -> `www.donnacrm.com`) is implemented in repo middleware.
+  - `src/middleware.ts` enforces HTTPS and canonical host redirects in production.
+- Redirect routes such as `/home` and `/compare` should stay out of `src/app/sitemap.ts`.
+  - `npm run qa:seo` checks for accidental sitemap entries for these routes.
+- The Shipping policy page exists at `/shipping` for direct policy access, but it is noindexed and omitted from the sitemap because it is intentionally not a discoverable SEO page.

@@ -4,7 +4,8 @@ import { ContactPage } from '../../views/Contact'
 
 export const metadata: Metadata = pageMetadata({
   title: 'Contact',
-  description: 'Contact Donna CRM support or get help with setup, billing, and product questions.',
+  description:
+    'Contact Donna CRM for setup help, billing questions, product support, or guidance on getting a Gmail-first CRM workflow running.',
   canonicalPath: '/contact',
 })
 

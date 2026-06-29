@@ -6,10 +6,14 @@ export function middleware(request: NextRequest) {
     process.env.VERCEL_ENV === 'production' || process.env.NODE_ENV === 'production'
   if (!isProduction) return NextResponse.next()
 
+  const url = new URL(request.url)
   const forwardedProto = request.headers.get('x-forwarded-proto')
-  if (forwardedProto && forwardedProto !== 'https') {
-    const url = new URL(request.url)
+  const shouldRedirectToHttps = forwardedProto && forwardedProto !== 'https'
+  const shouldRedirectToWww = url.hostname === 'donnacrm.com'
+
+  if (shouldRedirectToHttps || shouldRedirectToWww) {
     url.protocol = 'https:'
+    if (shouldRedirectToWww) url.hostname = 'www.donnacrm.com'
     return NextResponse.redirect(url, 308)
   }
 

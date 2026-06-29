@@ -8,6 +8,7 @@ Prereqs: Node.js 18+.
 
 - Install: `npm install`
 - Run: `npm run dev`
+- Page QA: `npm run qa`
 - Lint: `npm run lint`
 - Build: `npm run build`
 - Production-like run (recommended for perf checks): `npm run build` then `npm run start`
@@ -15,6 +16,8 @@ Prereqs: Node.js 18+.
 ### Dev-mode note
 
 In `next dev`, Next.js compiles routes on-demand the first time you visit them (and prefetching is intentionally limited in development). If page-to-page navigation feels slow locally, validate the real user experience with `npm run build` + `npm run start` or a Vercel preview deploy.
+
+Run `npm run qa` before publishing new or changed pages. It runs content QA, internal link QA, SEO QA, and ESLint.
 
 ## Documentation
 

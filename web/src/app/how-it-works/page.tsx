@@ -5,7 +5,7 @@ import { HowItWorksPage } from '../../views/HowItWorks'
 export const metadata: Metadata = pageMetadata({
   title: 'How Donna works inside Gmail',
   description:
-    'How Donna CRM works inside Gmail: install the extension, see contact context in every thread, track deals in pipelines, and stay on top of follow-ups without leaving your inbox.',
+    'See how Donna CRM works inside Gmail: install the extension, view contact context, track deals in pipelines, and stay on top of follow-ups.',
   canonicalPath: '/how-it-works',
 })
 

@@ -5,12 +5,12 @@ export function SiteFooter() {
   return (
     <footer data-snap-section className="border-t border-border bg-primary text-primary-foreground">
       <div className="container py-14">
-        <div className="grid grid-cols-1 gap-10 md:grid-cols-3">
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-4">
           <div className="space-y-3">
             <div className="flex items-center gap-2 font-semibold">
               <img
                 src="/donna-48-v3.png"
-                alt=""
+                alt="Donna CRM logo"
                 width={48}
                 height={48}
                 className="h-7 w-7 brightness-200"
@@ -51,6 +51,36 @@ export function SiteFooter() {
               </Link>
               <Link href="/faq" className="text-primary-foreground/70 transition-colors hover:text-white">
                 FAQ
+              </Link>
+            </div>
+          </div>
+
+          <div className="space-y-3">
+            <p className="text-xs font-semibold uppercase tracking-[0.1em] text-primary-foreground/50">Compare</p>
+            <div className="flex flex-col gap-2 text-sm">
+              <Link
+                href="/streak-crm-alternative"
+                className="text-primary-foreground/70 transition-colors hover:text-white"
+              >
+                Streak alternative
+              </Link>
+              <Link
+                href="/hubspot-crm-alternative"
+                className="text-primary-foreground/70 transition-colors hover:text-white"
+              >
+                HubSpot alternative
+              </Link>
+              <Link
+                href="/pipedrive-crm-alternative"
+                className="text-primary-foreground/70 transition-colors hover:text-white"
+              >
+                Pipedrive alternative
+              </Link>
+              <Link
+                href="/copper-crm-alternative"
+                className="text-primary-foreground/70 transition-colors hover:text-white"
+              >
+                Copper alternative
               </Link>
             </div>
           </div>

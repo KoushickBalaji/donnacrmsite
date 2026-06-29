@@ -1,23 +1,24 @@
 import type { Metadata } from 'next'
 import { JsonLd } from '../../components/JsonLd'
 import { pageMetadata } from '../../lib/metadata'
+import { softwareApplicationJsonLd } from '../../lib/structuredData'
 import { ProductPage } from '../../views/Product'
+
+const description =
+  'Donna CRM brings pipelines, task tracking, mail merge, and contact context into Gmail so solo operators can manage follow-ups without a heavy CRM.'
 
 export const metadata: Metadata = pageMetadata({
   title: 'Product',
-  description: 'Donna CRM brings lightweight pipelines, task tracking, mail merge, and contact context into Gmail.',
+  description,
   canonicalPath: '/product',
 })
 
 const productJsonLd = {
   '@context': 'https://schema.org',
-  '@type': 'SoftwareApplication',
-  name: 'Donna CRM',
-  applicationCategory: 'BusinessApplication',
-  operatingSystem: 'Chrome',
-  url: 'https://www.donnacrm.com/product',
-  description:
-    'Donna CRM brings lightweight pipelines, task tracking, mail merge, and contact context into Gmail.',
+  ...softwareApplicationJsonLd({
+    canonicalPath: '/product',
+    description,
+  }),
 }
 
 export default function Page() {

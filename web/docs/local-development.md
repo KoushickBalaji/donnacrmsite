@@ -43,9 +43,14 @@ The server should be ready in 2-5 seconds. You'll see output like:
 - Install dependencies: `npm install`
 - Start dev server: `npm run dev`
 - Lint: `npm run lint`
+- Page publication QA: `npm run qa`
 - Content QA checks: `npm run qa:content`
+- Internal link QA checks: `npm run qa:links`
+- SEO QA checks: `npm run qa:seo`
 - Build: `npm run build`
 - Start production server: `npm run start` (after `npm run build`)
+
+Run `npm run qa` before publishing new or changed pages. It checks copy hygiene, internal links, SEO metadata, sitemap discoverability, duplicate H1s, image alt text, and lint errors without requiring a local production build.
 
 ## Windows dist-dir behavior
 

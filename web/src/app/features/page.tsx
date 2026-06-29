@@ -1,30 +1,25 @@
 import type { Metadata } from 'next'
 import { JsonLd } from '../../components/JsonLd'
 import { pageMetadata } from '../../lib/metadata'
-import { resolveSiteOrigin } from '../../lib/site'
+import { softwareApplicationJsonLd } from '../../lib/structuredData'
 import { FeaturesPage, featuresFaqs } from '../../views/Features'
+
+const description =
+  'Explore Donna CRM features for Gmail workflows: contact management, pipelines, tasks, campaigns, email tracking, and AI-assisted follow-ups.'
 
 export const metadata: Metadata = pageMetadata({
   title: 'Features',
-  description:
-    'Explore Donna CRM features for Gmail workflows: contact management, pipelines, tasks, campaigns, and tracking.',
+  description,
   canonicalPath: '/features',
 })
-
-const origin = resolveSiteOrigin()
 
 const jsonLd = {
   '@context': 'https://schema.org',
   '@graph': [
-    {
-      '@type': 'SoftwareApplication',
-      name: 'Donna CRM',
-      applicationCategory: 'BusinessApplication',
-      operatingSystem: 'Chrome',
-      url: `${origin}/features`,
-      description:
-        'Explore Donna CRM features for Gmail workflows: contact management, pipelines, tasks, campaigns, and tracking.',
-    },
+    softwareApplicationJsonLd({
+      canonicalPath: '/features',
+      description,
+    }),
     {
       '@type': 'FAQPage',
       mainEntity: featuresFaqs.map((faq) => ({

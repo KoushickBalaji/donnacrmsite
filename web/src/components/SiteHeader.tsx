@@ -49,7 +49,7 @@ export function SiteHeader() {
         <Link href="/" className="flex items-center gap-2 font-semibold text-foreground">
           <img
             src="/donna-48-v3.png"
-            alt=""
+            alt="Donna CRM logo"
             width={48}
             height={48}
             className="h-7 w-7"

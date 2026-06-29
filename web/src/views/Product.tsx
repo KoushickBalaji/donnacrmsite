@@ -175,12 +175,12 @@ export function ProductPage() {
             aria-hidden={!collapsed}
           >
             <div className="pb-2">
-              <h1
+              <p
                 className="text-lg font-bold tracking-tight text-foreground sm:text-xl"
                 style={{ letterSpacing: '-0.01em' }}
               >
                 Your inbox, upgraded
-              </h1>
+              </p>
             </div>
           </div>
 

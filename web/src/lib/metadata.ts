@@ -5,6 +5,7 @@ type PageMetadataInput = {
   title: string
   description?: string
   canonicalPath: string
+  robots?: Metadata['robots']
 }
 
 export function pageMetadata(input: PageMetadataInput): Metadata {
@@ -13,6 +14,7 @@ export function pageMetadata(input: PageMetadataInput): Metadata {
     title: input.title,
     description,
     alternates: { canonical: input.canonicalPath },
+    robots: input.robots,
     openGraph: {
       title: input.title,
       description,

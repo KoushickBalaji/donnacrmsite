@@ -4,7 +4,8 @@ import { TermsPage } from '../../views/Terms'
 
 export const metadata: Metadata = pageMetadata({
   title: 'Terms & Conditions',
-  description: 'Terms and conditions for using Donna CRM, including eligibility, subscriptions, acceptable use, and legal policies.',
+  description:
+    'Read Donna CRM terms and conditions, including account eligibility, subscription rules, acceptable use, service limits, and legal policies.',
   canonicalPath: '/terms',
 })
 

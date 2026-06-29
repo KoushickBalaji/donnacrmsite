@@ -24,8 +24,10 @@ const paths = [
   '/privacy',
   '/cancellation-refunds',
   '/terms',
-  '/shipping',
   '/streak-crm-alternative',
+  '/copper-crm-alternative',
+  '/hubspot-crm-alternative',
+  '/pipedrive-crm-alternative',
 ] as const
 
 export default function sitemap(): MetadataRoute.Sitemap {

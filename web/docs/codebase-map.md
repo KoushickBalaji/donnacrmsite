@@ -9,7 +9,10 @@ This is a "where do I change X?" guide for `web/`.
   - `build`: clean dist dir, then run Next build through wrapper
   - `start`: run Next start through wrapper
   - `lint`: run ESLint
+  - `qa`: run content QA, internal link QA, SEO QA, and ESLint
   - `qa:content`: run static content QA checks
+  - `qa:links`: run static internal link checks
+  - `qa:seo`: run static SEO publication checks
 - `next.config.ts`
   - Next.js config (`reactStrictMode`, `poweredByHeader`, Windows dist dir override)
 - `eslint.config.js`
@@ -27,6 +30,10 @@ This is a "where do I change X?" guide for `web/`.
   - Starts Next with a Windows trace workaround.
 - `scripts/content-qa.mjs`
   - Detects placeholders, mojibake patterns, suspicious artifacts, and non-ASCII in source content.
+- `scripts/link-qa.mjs`
+  - Detects broken source-level internal links against App Router routes and public assets.
+- `scripts/seo-qa.mjs`
+  - Detects title/description length issues, duplicate H1s, missing image alt text, redirect routes in the sitemap, and sitemap paths without source-level internal links.
 
 ## Frontend app (`src/`)
 

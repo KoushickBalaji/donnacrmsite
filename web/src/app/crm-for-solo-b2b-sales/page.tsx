@@ -1,31 +1,26 @@
 import type { Metadata } from 'next'
 import { JsonLd } from '../../components/JsonLd'
 import { pageMetadata } from '../../lib/metadata'
-import { resolveSiteOrigin } from '../../lib/site'
+import { softwareApplicationJsonLd } from '../../lib/structuredData'
 import { CrmForSoloB2BSalesPage } from '../../views/CrmForSoloB2BSales'
 import { crmForSoloB2BSalesFaqs } from '../../views/crm-for-solo-b2b-sales-data'
 
+const description =
+  'Track deal stages and follow-ups from Gmail. Donna CRM keeps deal context next to email threads so solo B2B sellers can move faster.'
+
 export const metadata: Metadata = pageMetadata({
   title: 'A Solo B2B Sales CRM Inside Gmail',
-  description:
-    'Track deal stages and follow-ups from Gmail. Donna CRM keeps deal context next to email threads so you can move faster as a solo seller.',
+  description,
   canonicalPath: '/crm-for-solo-b2b-sales',
 })
-
-const origin = resolveSiteOrigin()
 
 const jsonLd = {
   '@context': 'https://schema.org',
   '@graph': [
-    {
-      '@type': 'SoftwareApplication',
-      name: 'Donna CRM',
-      applicationCategory: 'BusinessApplication',
-      operatingSystem: 'Chrome',
-      url: `${origin}/crm-for-solo-b2b-sales`,
-      description:
-        'Track deal stages and follow-ups from Gmail. Donna CRM keeps deal context next to email threads so you can move faster as a solo seller.',
-    },
+    softwareApplicationJsonLd({
+      canonicalPath: '/crm-for-solo-b2b-sales',
+      description,
+    }),
     {
       '@type': 'FAQPage',
       mainEntity: crmForSoloB2BSalesFaqs.map((faq) => ({
@@ -45,4 +40,3 @@ export default function Page() {
     </>
   )
 }
-

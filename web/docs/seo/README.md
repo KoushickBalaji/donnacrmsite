@@ -15,19 +15,40 @@ Start here for Search Console workflow: `docs/seo/search-console.md`.
 - Most pages export metadata via `pageMetadata(...)` helper (`src/lib/metadata.ts`).
 - Root page (`/`) has explicit metadata in `src/app/page.tsx`.
 - Resource article pages (`/resources/[slug]`) generate metadata dynamically per article.
+  - Use `title` for the visible article headline.
+  - Use optional `seoTitle` when the visible headline is too long for the browser/search title.
 - Default Open Graph image is `public/og.png`.
 - Structured data includes:
   - Global Organization + WebSite JSON-LD in `src/app/layout.tsx`
   - Page JSON-LD on selected pages (for example Gmail CRM pages and resource articles)
+  - Reusable SoftwareApplication JSON-LD from `src/lib/structuredData.ts`
+
+## Publishing rules
+
+- Keep final page titles at or below 60 characters, including the ` | Donna CRM` suffix applied by the root metadata template.
+- Keep meta descriptions between 110 and 160 characters.
+- Every indexable page needs exactly one H1 in the rendered view.
+- Every image needs non-empty alt text or a data-backed alt expression.
+- Every indexable sitemap URL needs at least one source-level internal link.
+  - Use header/footer links for evergreen sections.
+  - Use contextual links for niche landing pages.
+  - Use the resources listing for article pages.
+- Do not add redirect routes, noindex pages, or utility/policy pages to the sitemap.
+- Use `robots: { index: false, follow: true }` for direct-access policy/support pages that should not be search landing pages.
+- Use `softwareApplicationJsonLd(...)` for product/feature/pricing/segment pages that describe the app.
+- Do not publish fake ratings, review counts, adoption metrics, or unavailable offer data in structured data.
 
 ## Redirects and indexing behavior
 
 - `/home` redirects to `/`.
 - `/compare` redirects to `/streak-crm-alternative`.
+- Production middleware redirects `http` requests to `https` and redirects `donnacrm.com` to `www.donnacrm.com` in one hop when both apply.
 - Global robots metadata in `layout.tsx` uses:
   - `index/follow = true` when `VERCEL_ENV === 'production'` or `NODE_ENV === 'production'`
   - `index/follow = false` otherwise
 - `src/middleware.ts` enforces HTTPS in production requests.
+- `npm run qa:seo` checks page title lengths, meta description lengths, empty image alt text, duplicate H1s, sitemap discoverability, and redirect routes accidentally listed in the sitemap.
+- `npm run qa` runs content QA, internal link QA, SEO QA, and lint before publishing.
 
 ## Code locations
 
@@ -39,3 +60,5 @@ Start here for Search Console workflow: `docs/seo/search-console.md`.
 - `src/app/robots.ts`
 - `src/app/resources/[slug]/page.tsx`
 - `src/components/JsonLd.tsx`
+- `src/lib/structuredData.ts`
+- `scripts/seo-qa.mjs`

@@ -3,9 +3,9 @@ import { pageMetadata } from '../../lib/metadata'
 import { StreakAlternativePage } from '../../views/StreakAlternative'
 
 export const metadata: Metadata = pageMetadata({
-  title: 'Donna CRM vs Streak - A Simpler Gmail CRM Alternative',
+  title: 'Streak CRM Alternative',
   description:
-    'Looking for a Streak CRM alternative? Donna CRM is a lightweight CRM that works inside Gmail with no setup, no clutter, and no admin overhead.',
+    'Looking for a Streak CRM alternative? Donna CRM keeps CRM context, follow-ups, and next steps inside Gmail without pipeline clutter.',
   canonicalPath: '/streak-crm-alternative',
 })
 

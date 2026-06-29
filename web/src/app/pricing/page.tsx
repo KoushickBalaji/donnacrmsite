@@ -1,30 +1,26 @@
 import type { Metadata } from 'next'
 import { JsonLd } from '../../components/JsonLd'
 import { pageMetadata } from '../../lib/metadata'
-import { resolveSiteOrigin } from '../../lib/site'
+import { softwareApplicationJsonLd } from '../../lib/structuredData'
 import { PricingPage } from '../../views/Pricing'
 import { pricingFaqs } from '../../views/pricing-data'
 
+const description =
+  'Simple Donna CRM pricing for solo Gmail workflows. Start free, then upgrade when you need more contacts, campaigns, and CRM automation.'
+
 export const metadata: Metadata = pageMetadata({
   title: 'Pricing',
-  description: 'Simple pricing for Donna CRM, a Chrome extension that brings CRM workflows into Gmail.',
+  description,
   canonicalPath: '/pricing',
 })
-
-const origin = resolveSiteOrigin()
 
 const jsonLd = {
   '@context': 'https://schema.org',
   '@graph': [
-    {
-      '@type': 'SoftwareApplication',
-      name: 'Donna CRM',
-      applicationCategory: 'BusinessApplication',
-      operatingSystem: 'Chrome',
-      url: `${origin}/pricing`,
-      description:
-        'Simple pricing for Donna CRM, a Chrome extension that brings CRM workflows into Gmail.',
-    },
+    softwareApplicationJsonLd({
+      canonicalPath: '/pricing',
+      description,
+    }),
     {
       '@type': 'FAQPage',
       mainEntity: pricingFaqs.map((faq) => ({

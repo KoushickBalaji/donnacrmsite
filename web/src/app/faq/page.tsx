@@ -6,7 +6,8 @@ import { FaqPage } from '../../views/Faq'
 
 export const metadata: Metadata = pageMetadata({
   title: 'FAQ',
-  description: 'Answers to common questions about Donna CRM: installation, features, tracking, and billing.',
+  description:
+    'Answers to common questions about Donna CRM, including installation, Gmail workflows, email tracking, pricing, billing, privacy, and support.',
   canonicalPath: '/faq',
 })
 

@@ -1,31 +1,26 @@
 import type { Metadata } from 'next'
 import { JsonLd } from '../../components/JsonLd'
 import { pageMetadata } from '../../lib/metadata'
-import { resolveSiteOrigin } from '../../lib/site'
+import { softwareApplicationJsonLd } from '../../lib/structuredData'
 import { GmailCrmPage } from '../../views/GmailCrm'
 import { gmailCrmFaqs } from '../../views/gmail-crm-data'
 
+const description =
+  'Donna CRM is a Gmail-native CRM for solo operators. Track contacts, deal stages, and follow-ups without leaving your inbox.'
+
 export const metadata: Metadata = pageMetadata({
   title: 'Gmail CRM',
-  description:
-    'Donna CRM is a Gmail-native CRM for solo operators. Track contacts, deal stages, and follow-ups without leaving your inbox.',
+  description,
   canonicalPath: '/gmail-crm',
 })
-
-const origin = resolveSiteOrigin()
 
 const jsonLd = {
   '@context': 'https://schema.org',
   '@graph': [
-    {
-      '@type': 'SoftwareApplication',
-      name: 'Donna CRM',
-      applicationCategory: 'BusinessApplication',
-      operatingSystem: 'Chrome',
-      url: `${origin}/gmail-crm`,
-      description:
-        'Donna CRM is a Gmail-native CRM for solo operators. Track contacts, deal stages, and follow-ups without leaving your inbox.',
-    },
+    softwareApplicationJsonLd({
+      canonicalPath: '/gmail-crm',
+      description,
+    }),
     {
       '@type': 'FAQPage',
       mainEntity: gmailCrmFaqs.map((faq) => ({
@@ -45,4 +40,3 @@ export default function Page() {
     </>
   )
 }
-

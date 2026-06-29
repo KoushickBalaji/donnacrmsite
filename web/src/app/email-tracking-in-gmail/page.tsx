@@ -1,31 +1,26 @@
 import type { Metadata } from 'next'
 import { JsonLd } from '../../components/JsonLd'
 import { pageMetadata } from '../../lib/metadata'
-import { resolveSiteOrigin } from '../../lib/site'
+import { softwareApplicationJsonLd } from '../../lib/structuredData'
 import { EmailTrackingInGmailPage } from '../../views/EmailTrackingInGmail'
 import { emailTrackingFaqs } from '../../views/email-tracking-data'
 
+const description =
+  'Understand email opens and link clicks in Gmail where supported. Use engagement signals to time follow-ups and prioritize outreach.'
+
 export const metadata: Metadata = pageMetadata({
   title: 'Email Tracking in Gmail (Open & Click)',
-  description:
-    'Understand email opens and link clicks in Gmail (where supported). Use engagement signals to time follow-ups and prioritize outreach.',
+  description,
   canonicalPath: '/email-tracking-in-gmail',
 })
-
-const origin = resolveSiteOrigin()
 
 const jsonLd = {
   '@context': 'https://schema.org',
   '@graph': [
-    {
-      '@type': 'SoftwareApplication',
-      name: 'Donna CRM',
-      applicationCategory: 'BusinessApplication',
-      operatingSystem: 'Chrome',
-      url: `${origin}/email-tracking-in-gmail`,
-      description:
-        'Understand email opens and link clicks in Gmail (where supported). Use engagement signals to time follow-ups and prioritize outreach.',
-    },
+    softwareApplicationJsonLd({
+      canonicalPath: '/email-tracking-in-gmail',
+      description,
+    }),
     {
       '@type': 'FAQPage',
       mainEntity: emailTrackingFaqs.map((faq) => ({
@@ -45,4 +40,3 @@ export default function Page() {
     </>
   )
 }
-

@@ -7,6 +7,7 @@ export const metadata: Metadata = pageMetadata({
   description:
     'Shipping and delivery policy for Donna CRM (a digital service), including how access is provided and how to get help with delivery issues.',
   canonicalPath: '/shipping',
+  robots: { index: false, follow: true },
 })
 
 export default function Page() {

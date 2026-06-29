@@ -158,6 +158,14 @@ Every section needs this hierarchy:
 
 Don't skip levels. Eyebrow orients, heading makes the point, subtext elaborates.
 
+### One H1 per page
+
+Each page should render exactly one `<h1>`. Use `<h2>` for section headings and non-heading text (`<p>` or `<span>`) for repeated hero labels, sticky labels, or collapsed hero states. If a visual state repeats the page title, it should not become a second H1.
+
+### Images need meaningful alt text
+
+Every `<img>` needs non-empty alt text unless it is intentionally handled by a data-backed alt expression such as `alt={item.screenshotAlt}`. Use concise descriptions of the actual product state or trust asset, not generic text like "image" or "screenshot".
+
 ---
 
 ## Trust & social proof

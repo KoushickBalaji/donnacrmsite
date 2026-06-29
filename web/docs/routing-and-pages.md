@@ -31,9 +31,13 @@ Routes come from Next.js App Router files under `src/app/`.
 - `/privacy`
 - `/terms`
 - `/cancellation-refunds`
-- `/shipping`
 - `/streak-crm-alternative`
+- `/copper-crm-alternative`
+- `/hubspot-crm-alternative`
+- `/pipedrive-crm-alternative`
 - `/unsubscribe`
+
+`/shipping` exists for direct policy access, but it is noindexed and omitted from the sitemap because it is not intended to be a discoverable SEO page.
 
 ### Redirect routes
 
@@ -64,6 +68,10 @@ Routes come from Next.js App Router files under `src/app/`.
 
 1. Add `src/app/<route>/page.tsx`.
 2. Add or reuse a view component in `src/views/`.
-3. Export metadata for indexable pages.
-4. Add links in header/footer as needed.
-5. If it should be discoverable by crawlers, add it to `src/app/sitemap.ts`.
+3. Export metadata for indexable pages with `pageMetadata(...)`.
+4. Add at least one source-level internal link before adding the page to the sitemap. Use header/footer links for evergreen pages, resource cards for articles, or contextual links inside related pages.
+5. If the page should be discoverable by crawlers, add it to `src/app/sitemap.ts`.
+6. If the page is required for policy/support but should not be discoverable, set `robots: { index: false, follow: true }` and keep it out of `src/app/sitemap.ts`.
+7. Run `npm run qa` before publishing.
+
+Do not put redirect routes, noindex pages, or one-off utility pages in the sitemap. Redirect routes should point users and crawlers to the canonical page in one hop.

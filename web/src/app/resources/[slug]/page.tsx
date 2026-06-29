@@ -22,12 +22,13 @@ export async function generateMetadata({
   if (!article) return {}
 
   const canonicalPath = `/resources/${article.slug}`
+  const title = article.seoTitle ?? article.title
   return {
-    title: article.title,
+    title,
     description: article.description,
     alternates: { canonical: canonicalPath },
     openGraph: {
-      title: article.title,
+      title,
       description: article.description,
       siteName: SITE_NAME,
       url: canonicalPath,
