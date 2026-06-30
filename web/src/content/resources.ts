@@ -2185,6 +2185,1733 @@ export const resourceArticles: ResourceArticle[] = [
       },
     ],
   },
+
+  {
+    slug: 'ai-tools-for-solo-founders-sales',
+    title: 'AI tools for solo founders doing sales',
+    seoTitle: 'AI Tools for Solo Founder Sales',
+    description:
+      'A practical guide to using AI tools for solo founder sales: inbox context, follow-ups, pipeline hygiene, and human-reviewed CRM actions.',
+    category: 'AI workflows',
+    publishedAt: '2026-06-29',
+    readingTimeMinutes: 9,
+    faqSubtitle: 'Common questions about using AI tools for solo founder sales.',
+    primaryInternalLink: { href: '/crm-for-solo-b2b-sales', label: 'CRM for solo B2B sales' },
+    supportingInternalLinks: [
+      { href: '/ai-gmail-crm', label: 'AI Gmail CRM' },
+      { href: '/gmail-crm', label: 'Gmail CRM overview' },
+      { href: '/email-tracking-in-gmail', label: 'Email tracking in Gmail' },
+    ],
+    sections: [
+      {
+        id: 'what-ai-should-do',
+        heading: 'What AI should actually do for founder-led sales',
+        paragraphs: [
+          'A solo founder does not need an AI tool that invents a new sales process. You need help keeping up with the process you already have: replying, following up, remembering context, and deciding what deserves attention today.',
+          'The best use of AI in founder-led sales is support work. It can summarize a long thread, draft a reply, suggest a next step, and help keep CRM notes current. The founder still owns the relationship, the judgment, and the final message.',
+        ],
+      },
+      {
+        id: 'tool-categories',
+        heading: 'The AI tool categories that matter',
+        paragraphs: [
+          'Before comparing tools, separate the jobs. Most solo founder sales workflows need a small stack, not a giant platform.',
+        ],
+        bullets: [
+          'Inbox assistant: helps summarize threads, draft replies, and turn messages into next steps.',
+          'Gmail-native CRM: keeps contacts, pipeline stages, notes, and tasks close to email.',
+          'Email tracking: gives timing signals for opens and clicks, with the usual caveat that tracking is imperfect.',
+          'Calendar and meeting tools: help with scheduling and meeting notes when calls become part of the sales motion.',
+          'Document or proposal tools: help create and share proposals once the conversation has a clear shape.',
+        ],
+      },
+      {
+        id: 'workflow',
+        heading: 'A simple AI-assisted sales workflow',
+        steps: [
+          'Start from the active Gmail thread, not a blank CRM record.',
+          'Ask AI to summarize the thread into current status, buyer concern, and next step.',
+          'Create or update the contact and pipeline item while the context is fresh.',
+          'Draft a short follow-up that references one real detail from the thread.',
+          'Review the draft, remove unsupported claims, and send only when it sounds like you.',
+          'Set a follow-up task so the thread does not depend on memory.',
+        ],
+        note:
+          'This workflow is deliberately human-in-the-loop. AI prepares the work; you approve the action.',
+      },
+      {
+        id: 'prompt-templates',
+        heading: 'Prompts solo founders can reuse',
+        paragraphs: [
+          'Use prompts that produce sales operations output, not generic writing. These templates work best when run against a real thread.',
+        ],
+        templates: [
+          {
+            label: 'Thread summary for CRM',
+            content:
+              'Summarize this sales thread for my CRM. Include: buyer goal, current status, objections or risks, promised follow-ups, and the next action I should take.',
+          },
+          {
+            label: 'Founder follow-up draft',
+            content:
+              'Draft a concise follow-up in my voice. Keep it under 120 words, reference one specific detail from the thread, ask one clear question, and include a concrete next step.',
+          },
+          {
+            label: 'Pipeline hygiene check',
+            content:
+              'Based on this thread, suggest the current pipeline stage and the next task. If the stage is unclear, list the question I should ask before updating it.',
+          },
+        ],
+      },
+      {
+        id: 'where-donna-fits',
+        heading: 'Where Donna fits in the stack',
+        paragraphs: [
+          'Donna CRM is built for founders who want sales context inside Gmail instead of a separate admin system. It combines Gmail-native CRM records, pipelines, contacts, tasks, tracking signals, inbox onboarding, and an AI assistant for reviewed actions.',
+          'That matters because founder-led sales moves quickly. If the CRM is detached from email, it becomes stale. If the AI sends or changes things without your review, it can create risk. Donna is designed around keeping the workspace close to the inbox while leaving important decisions with you.',
+        ],
+      },
+      {
+        id: 'selection-checklist',
+        heading: 'Selection checklist for AI sales tools',
+        bullets: [
+          'Does the tool work where your sales conversations already happen?',
+          'Can you review AI-generated drafts and actions before they matter?',
+          'Does it support contacts, pipeline stages, tasks, and notes without heavy setup?',
+          'Can tracking signals be used as hints without being treated as facts?',
+          'Will you still use it during a busy week?',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: 'Can AI replace a founder in early sales?',
+        answer:
+          'Not for relationship judgment. AI can help with summaries, drafts, reminders, and CRM hygiene, but the founder should still own positioning, promises, pricing context, and final communication.',
+      },
+      {
+        question: 'What is the first AI sales workflow to set up?',
+        answer:
+          'Start with follow-ups. Use AI to summarize a thread, draft a short reply, and create a next-step task. That removes daily friction without changing your whole sales process.',
+      },
+      {
+        question: 'Should solo founders use email tracking?',
+        answer:
+          'Tracking can help with timing, especially after proposals or important follow-ups. Treat opens and clicks as imperfect signals, not proof of intent.',
+      },
+    ],
+  },
+  {
+    slug: 'ai-tools-for-freelancers-client-management',
+    title: 'AI tools for freelancers managing clients',
+    seoTitle: 'AI Tools for Freelancer Client Management',
+    description:
+      'A freelancer-focused guide to using AI for client management: inbox summaries, scope clarity, follow-ups, project notes, and CRM hygiene.',
+    category: 'AI workflows',
+    publishedAt: '2026-06-29',
+    readingTimeMinutes: 9,
+    faqSubtitle: 'Common questions about AI tools for freelancer client management.',
+    primaryInternalLink: { href: '/crm-for-freelancers', label: 'CRM for freelancers' },
+    supportingInternalLinks: [
+      { href: '/gmail-crm', label: 'Gmail CRM overview' },
+      { href: '/crm-for-consultants', label: 'CRM for consultants' },
+      { href: '/ai-gmail-crm', label: 'AI Gmail CRM' },
+    ],
+    sections: [
+      {
+        id: 'freelancer-problem',
+        heading: 'The client management problem freelancers actually have',
+        paragraphs: [
+          'Freelancers usually do not need a heavy sales suite. They need a calm way to manage active clients, prospects, renewals, unanswered questions, and small promises scattered across Gmail threads.',
+          'AI can help, but only if it stays attached to the work. A generic writing assistant is useful for drafts. A better client-management workflow also turns thread context into notes, tasks, follow-ups, and clear project state.',
+        ],
+      },
+      {
+        id: 'best-use-cases',
+        heading: 'Best AI use cases for freelancer client work',
+        bullets: [
+          'Summarize long client threads before a reply or call.',
+          'Extract action items after a meeting recap or project update.',
+          'Draft follow-ups that are specific, short, and polite.',
+          'Turn scope changes into clear decision emails.',
+          'Prepare weekly client review notes from recent conversations.',
+          'Suggest CRM updates that you review before saving.',
+        ],
+      },
+      {
+        id: 'client-management-system',
+        heading: 'A simple AI-assisted client management system',
+        steps: [
+          'Keep one contact or client record tied to the Gmail conversation.',
+          'Use a small pipeline: Prospect, Proposal, Active, Waiting, Renewal, Dormant.',
+          'After each important thread, summarize the status in one CRM note.',
+          'Create one next-step task with an owner and date.',
+          'Use AI to draft the next email, then edit for tone and accuracy.',
+          'Review active and waiting clients once a week.',
+        ],
+      },
+      {
+        id: 'templates',
+        heading: 'Templates freelancers can copy',
+        templates: [
+          {
+            label: 'Client status note',
+            content:
+              'Create a CRM note for this client. Include: current project status, what the client is waiting on, what I am waiting on, any scope risk, and the next step with a date.',
+          },
+          {
+            label: 'Scope clarification email',
+            content:
+              'Draft a short email that clarifies scope. Include what is currently included, what the new request adds, the impact on timeline or cost if known, and one clear decision question.',
+          },
+          {
+            label: 'Weekly client review',
+            content:
+              'Review these client notes and list: clients needing a reply, clients waiting on me, clients waiting on them, and renewal or upsell opportunities I should inspect manually.',
+          },
+        ],
+      },
+      {
+        id: 'how-donna-helps',
+        heading: 'How Donna supports freelancer workflows',
+        paragraphs: [
+          'Donna CRM keeps client context in Gmail so you do not have to switch into a separate system every time a client replies. You can manage contacts, pipeline stages, notes, tasks, and tracking signals from the place where the conversation is happening.',
+          'The AI assistant is useful for the repetitive parts: summarizing, drafting, and suggesting next steps. The important part is that you stay in control. You review the output and decide what gets saved or sent.',
+        ],
+      },
+      {
+        id: 'avoid',
+        heading: 'What freelancers should avoid',
+        bullets: [
+          'Letting AI promise delivery dates, scope, or pricing without your review.',
+          'Using long generic email drafts when a short specific reply would work.',
+          'Building a complicated CRM setup before you have a weekly review habit.',
+          'Treating email tracking as certainty instead of a timing signal.',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: 'What AI tool should a freelancer start with?',
+        answer:
+          'Start with the tool closest to your inbox. If most client work happens in Gmail, an AI-assisted Gmail CRM is more useful than a separate system you have to remember to update.',
+      },
+      {
+        question: 'Can AI help prevent scope creep?',
+        answer:
+          'It can help you spot and phrase scope issues. Use AI to draft recap and change-request emails, but confirm the business decision yourself before sending.',
+      },
+      {
+        question: 'How much should freelancers automate?',
+        answer:
+          'Automate preparation, not judgment. Summaries, drafts, and suggested tasks are useful. Sending sensitive client messages without review is usually not worth the risk.',
+      },
+    ],
+  },
+  {
+    slug: 'founder-led-sales-crm-in-gmail',
+    title: 'Founder-led sales CRM in Gmail: a practical setup',
+    seoTitle: 'Founder-Led Sales CRM in Gmail',
+    description:
+      'Set up a founder-led sales CRM inside Gmail with simple stages, next-step tasks, thread context, and a weekly review that does not become admin work.',
+    category: 'Solo sales workflows',
+    publishedAt: '2026-06-29',
+    readingTimeMinutes: 8,
+    faqSubtitle: 'Common questions about running founder-led sales from Gmail.',
+    primaryInternalLink: { href: '/gmail-crm', label: 'Gmail CRM' },
+    supportingInternalLinks: [
+      { href: '/crm-for-solo-b2b-sales', label: 'CRM for solo B2B sales' },
+      { href: '/inbox-onboarding', label: 'Inbox onboarding' },
+      { href: '/features', label: 'Features' },
+    ],
+    sections: [
+      {
+        id: 'why-gmail',
+        heading: 'Why founder-led sales often belongs in Gmail',
+        paragraphs: [
+          'In founder-led sales, the real context usually lives in Gmail: objections, buying triggers, stakeholder names, proposals, and the tone of the relationship.',
+          'A separate CRM can still be useful, but it often fails when the founder is busy. If updates require switching tabs and rebuilding context, they get skipped. A Gmail-native CRM keeps the sales system next to the conversation.',
+        ],
+      },
+      {
+        id: 'minimum-setup',
+        heading: 'The minimum CRM setup',
+        paragraphs: [
+          'Start with the smallest setup that answers three questions: who is this, where are they in the process, and what happens next?',
+        ],
+        bullets: [
+          'Contacts: people and companies you are actively speaking with.',
+          'Pipeline stages: a small set of commitment-based stages.',
+          'Tasks: the next action that keeps the relationship moving.',
+          'Notes: short context that saves you from rereading the thread.',
+          'Tracking signals: optional hints for timing follow-ups.',
+        ],
+      },
+      {
+        id: 'pipeline',
+        heading: 'Pipeline stages for founder-led sales',
+        bullets: [
+          'New: interesting thread or intro, not yet qualified.',
+          'Qualified: problem and potential fit are clear enough to continue.',
+          'Meeting: discovery, demo, or decision conversation scheduled.',
+          'Proposal: proposal, pilot, or next-step offer sent.',
+          'Decision: buyer is evaluating, negotiating, or aligning internally.',
+          'Closed or Dormant: outcome known, or no active next step.',
+        ],
+      },
+      {
+        id: 'daily-loop',
+        heading: 'The daily loop: thread to task',
+        steps: [
+          'Open the active sales thread in Gmail.',
+          'Read the latest reply and update the stage only if commitment changed.',
+          'Add one short note if new context matters.',
+          'Create or update the next-step task.',
+          'Draft the reply, review it, and send from Gmail.',
+        ],
+        note:
+          'The stage should not change just because someone opened an email. Move stages when the conversation changes.',
+      },
+      {
+        id: 'weekly-review',
+        heading: 'A 20-minute weekly review',
+        paragraphs: [
+          'A founder-led CRM works when it gives you a weekly operating view. The review should be short enough that you actually do it.',
+        ],
+        steps: [
+          'Scan Decision and Proposal first because stalled late-stage deals are expensive.',
+          'Find every active item with no next-step task.',
+          'Move cold items to Dormant instead of letting them clutter the board.',
+          'Choose the 3 follow-ups most likely to move a real conversation.',
+          'Update notes only where context changed.',
+        ],
+      },
+      {
+        id: 'donna-fit',
+        heading: 'How Donna helps keep the setup lightweight',
+        paragraphs: [
+          'Donna CRM is designed around this Gmail-first motion. It gives you contacts, pipelines, tasks, tracking signals, inbox onboarding, and an AI assistant without forcing every sales action into a separate workspace.',
+          'The goal is not to make the CRM bigger. The goal is to make the founder-led process easier to keep current while you stay responsible for the relationship.',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: 'Is Gmail enough for founder-led sales?',
+        answer:
+          'Gmail alone is usually not enough because it does not provide a clean pipeline or next-step system. Gmail plus a lightweight CRM can be enough for many solo founder workflows.',
+      },
+      {
+        question: 'How many pipeline stages should I use?',
+        answer:
+          'Use 5-6 stages at most when you are starting. If two stages do not change your next action, combine them.',
+      },
+      {
+        question: 'Should I track every conversation?',
+        answer:
+          'No. Track conversations that have a real next step, commercial value, or relationship value. A CRM filled with low-intent threads becomes hard to trust.',
+      },
+    ],
+  },
+  {
+    slug: 'simple-sales-stack-for-solo-founders',
+    title: 'A simple sales stack for solo founders',
+    seoTitle: 'Simple Sales Stack for Solo Founders',
+    description:
+      'Build a simple solo founder sales stack around Gmail, CRM, follow-ups, tracking signals, proposals, and review habits without overcomplicating sales.',
+    category: 'Solo sales workflows',
+    publishedAt: '2026-06-29',
+    readingTimeMinutes: 8,
+    faqSubtitle: 'Common questions about building a simple solo founder sales stack.',
+    primaryInternalLink: { href: '/crm-for-solo-b2b-sales', label: 'CRM for solo B2B sales' },
+    supportingInternalLinks: [
+      { href: '/gmail-crm', label: 'Gmail CRM overview' },
+      { href: '/email-tracking-in-gmail', label: 'Email tracking in Gmail' },
+      { href: '/pricing', label: 'Pricing' },
+    ],
+    sections: [
+      {
+        id: 'stack-principle',
+        heading: 'The principle: fewer tools, clearer habits',
+        paragraphs: [
+          'A solo founder sales stack should reduce dropped balls, not create a second operations job. The wrong stack creates more places to check and more fields to maintain.',
+          'Start with the jobs that must happen every week: manage conversations, track active opportunities, follow up, schedule meetings, send proposals, and review what is stuck.',
+        ],
+      },
+      {
+        id: 'core-stack',
+        heading: 'The core stack',
+        bullets: [
+          'Gmail: the source of relationship context and conversation history.',
+          'Gmail-native CRM: contacts, pipelines, notes, and next-step tasks close to email.',
+          'AI assistant: summaries, draft replies, and suggested updates you review.',
+          'Email tracking: optional open and click signals for timing, not certainty.',
+          'Calendar: meetings, reminders, and decision dates.',
+          'Proposal or document tool: scoped offers, recaps, and decision materials.',
+        ],
+      },
+      {
+        id: 'do-not-add-yet',
+        heading: 'Tools you probably do not need yet',
+        paragraphs: [
+          'More tooling can help later, but it can also hide a weak process. Add tools only when the underlying habit is already working.',
+        ],
+        bullets: [
+          'A complex team CRM before you have a repeatable founder-led process.',
+          'A large outbound automation system before you can handle replies well.',
+          'A reporting dashboard before your stages and next steps are reliable.',
+          'Multiple enrichment tools before you have a clear ideal customer profile.',
+        ],
+      },
+      {
+        id: 'operating-system',
+        heading: 'The weekly operating system',
+        steps: [
+          'Review every active pipeline item from latest stage to earliest stage.',
+          'Confirm each item has a next-step task with a date.',
+          'Send or schedule the most important follow-ups.',
+          'Move stale items to Dormant if there is no realistic action.',
+          'Inspect tracking signals only as context for timing.',
+          'Write down one improvement to your sales process for next week.',
+        ],
+      },
+      {
+        id: 'email-templates',
+        heading: 'Three templates your stack should support',
+        templates: [
+          {
+            label: 'After discovery',
+            content:
+              'Subject: Recap + next step\n\nHi {first_name},\n\nQuick recap from our conversation: {problem_summary}.\n\nThe next useful step is {next_step}. Does {date_or_time} work, or should I send details by email first?\n\nBest,\n{your_name}',
+          },
+          {
+            label: 'After proposal',
+            content:
+              'Subject: Proposal follow-up\n\nHi {first_name},\n\nChecking in on the proposal for {project_or_goal}. Are there any questions about scope, timing, or next steps that would help you decide?\n\nBest,\n{your_name}',
+          },
+          {
+            label: 'Dormant lead',
+            content:
+              'Subject: Should I keep this open?\n\nHi {first_name},\n\nShould I keep this on my radar, or is now not the right time?\n\nEither answer is fine. I just want to keep my side clean.\n\nThanks,\n{your_name}',
+          },
+        ],
+      },
+      {
+        id: 'where-donna-fits',
+        heading: 'Where Donna fits in a solo founder stack',
+        paragraphs: [
+          'Donna can cover the Gmail-native CRM layer: contacts, pipelines, tasks, tracking signals, inbox onboarding, and AI-assisted drafting or CRM hygiene. That makes it a practical center for a lean founder-led sales stack.',
+          'You can still use separate tools for calendar, proposals, billing, or documents. The key is that the core sales memory stays close to the Gmail conversations where sales actually happen.',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: 'What is the minimum sales stack for a solo founder?',
+        answer:
+          'Gmail, a lightweight CRM, calendar, and a simple proposal or document tool are enough to start. Add AI and tracking where they reduce follow-up and context-switching friction.',
+      },
+      {
+        question: 'When should I move to a bigger CRM?',
+        answer:
+          'Consider a bigger CRM when you need team permissions, complex reporting, territory management, or integrations that your sales process truly depends on.',
+      },
+      {
+        question: 'Should outbound automation be part of the first stack?',
+        answer:
+          'Usually not. First make sure you can manage replies, follow-ups, and pipeline hygiene. Automation creates more conversations to manage.',
+      },
+    ],
+  },
+  {
+    slug: 'ai-prompts-for-founder-led-sales',
+    title: 'AI prompts for founder-led sales',
+    seoTitle: 'AI Prompts for Founder-Led Sales',
+    description:
+      'Copy-paste AI prompts for founder-led sales: thread summaries, follow-up drafts, objection handling, CRM notes, and weekly pipeline review.',
+    category: 'AI workflows',
+    publishedAt: '2026-06-29',
+    readingTimeMinutes: 10,
+    faqSubtitle: 'Common questions about using AI prompts for founder-led sales.',
+    primaryInternalLink: { href: '/ai-gmail-crm', label: 'AI Gmail CRM' },
+    supportingInternalLinks: [
+      { href: '/crm-for-solo-b2b-sales', label: 'CRM for solo B2B sales' },
+      { href: '/gmail-crm', label: 'Gmail CRM overview' },
+      { href: '/privacy', label: 'Privacy policy' },
+    ],
+    sections: [
+      {
+        id: 'prompting-principles',
+        heading: 'Prompting principles for sales work',
+        paragraphs: [
+          'Founder-led sales prompts should be specific, grounded in the thread, and easy to verify. The goal is not to produce impressive copy. The goal is to reduce the effort of doing careful follow-up work.',
+          'Treat AI output as a draft. Check names, dates, numbers, commitments, and anything that sounds like a promise before sending or saving it.',
+        ],
+        bullets: [
+          'Ask for structured output so you can turn it into CRM notes or tasks.',
+          'Limit drafts by length so they do not become generic essays.',
+          'Require one concrete detail from the thread.',
+          'Ask the model to call out uncertainty instead of guessing.',
+        ],
+      },
+      {
+        id: 'thread-prompts',
+        heading: 'Prompts for understanding a sales thread',
+        templates: [
+          {
+            label: 'Fast thread summary',
+            content:
+              'Summarize this thread for founder-led sales. Return: buyer goal, current status, key people, objections or risks, promised follow-ups, and the next action.',
+          },
+          {
+            label: 'Decision context',
+            content:
+              'Based only on this thread, what decision is the buyer trying to make? List what they know, what they still need, and the best next question I should ask.',
+          },
+          {
+            label: 'Stalled thread diagnosis',
+            content:
+              'This sales thread has gone quiet. Diagnose the likely reason using only thread evidence. Then suggest one respectful follow-up and one reason not to follow up yet if applicable.',
+          },
+        ],
+      },
+      {
+        id: 'follow-up-prompts',
+        heading: 'Prompts for follow-up drafts',
+        templates: [
+          {
+            label: 'Short follow-up',
+            content:
+              'Draft a follow-up under 100 words. Use a calm founder tone, reference one specific detail from the thread, ask one clear question, and avoid pressure.',
+          },
+          {
+            label: 'Proposal follow-up',
+            content:
+              'Draft a proposal follow-up. Ask whether scope, timing, or next steps need clarification. Do not add new claims. Keep it concise and easy to reply to.',
+          },
+          {
+            label: 'Close-the-loop email',
+            content:
+              'Draft a polite close-the-loop email. Make it clear I am closing this on my side for now, and they can reply later if priorities change.',
+          },
+        ],
+      },
+      {
+        id: 'crm-prompts',
+        heading: 'Prompts for CRM notes and tasks',
+        templates: [
+          {
+            label: 'CRM note',
+            content:
+              'Create a CRM note from this thread with: context in one sentence, stage recommendation, next step, owner, due date if mentioned, and risks. Mark unknowns as unknown.',
+          },
+          {
+            label: 'Task extraction',
+            content:
+              'Extract action items from this thread. For each item, include owner, due date, dependency, and the next message I should send if I own it.',
+          },
+          {
+            label: 'Stage recommendation',
+            content:
+              'Suggest the best pipeline stage from: New, Qualified, Meeting, Proposal, Decision, Closed, Dormant. Explain the reason in one sentence and flag ambiguity.',
+          },
+        ],
+      },
+      {
+        id: 'objection-prompts',
+        heading: 'Prompts for objections and positioning',
+        templates: [
+          {
+            label: 'Objection map',
+            content:
+              'List objections or concerns in this thread. For each one, identify whether it is about fit, timing, budget, trust, urgency, or implementation. Suggest a response angle without inventing facts.',
+          },
+          {
+            label: 'Clarifying question',
+            content:
+              'Write 3 possible clarifying questions I can ask. Each question should be short, non-defensive, and useful for understanding the buyer concern.',
+          },
+          {
+            label: 'Recap before decision',
+            content:
+              'Draft a neutral recap before a decision. Include what we discussed, open questions, and the next decision point. Do not oversell.',
+          },
+        ],
+      },
+      {
+        id: 'review-workflow',
+        heading: 'Weekly review prompt',
+        paragraphs: [
+          'Once a week, use AI to prepare the review, then make the decisions yourself. The prompt should surface stuck work rather than pretend to close it for you.',
+        ],
+        templates: [
+          {
+            label: 'Weekly pipeline review',
+            content:
+              'Review these pipeline notes and group items into: needs my reply, waiting on them, proposal pending, unclear next step, and should be marked dormant. For each item, suggest one next task.',
+          },
+        ],
+        note:
+          'Before acting on the output, verify it against the actual Gmail threads and your current priorities.',
+      },
+    ],
+    faqs: [
+      {
+        question: 'Can I paste full sales threads into AI prompts?',
+        answer:
+          'Use the minimum context needed and follow your privacy obligations. If you use a product connected to Gmail, review its privacy terms and controls before relying on it for sensitive work.',
+      },
+      {
+        question: 'How do I keep AI follow-ups from sounding generic?',
+        answer:
+          'Require one specific thread detail, keep the draft short, and edit the final message yourself. Generic output usually comes from vague prompts and too much length.',
+      },
+      {
+        question: 'Should AI decide my pipeline stage?',
+        answer:
+          'It can suggest a stage, but you should confirm it. Stage changes should reflect real buyer commitment or process movement, not weak signals.',
+      },
+    ],
+  },
+
+  {
+    slug: 'use-apollo-with-gmail-crm',
+    title: 'How to use Apollo with a Gmail CRM workflow',
+    seoTitle: 'Use Apollo with a Gmail CRM',
+    description:
+      'A practical handoff workflow for using Apollo for prospecting while Donna keeps Gmail replies, contact context, stages, and follow-ups organized.',
+    category: 'Solo sales workflows',
+    publishedAt: '2026-06-29',
+    readingTimeMinutes: 8,
+    faqSubtitle: 'Common questions about using Apollo alongside a Gmail-native CRM.',
+    primaryInternalLink: { href: '/gmail-crm', label: 'Gmail CRM overview' },
+    supportingInternalLinks: [
+      { href: '/crm-for-solo-b2b-sales', label: 'CRM for solo B2B sales' },
+      { href: '/email-tracking-in-gmail', label: 'Email tracking in Gmail' },
+      { href: '/privacy', label: 'Privacy' },
+    ],
+    sections: [
+      {
+        id: 'split-the-workflow',
+        heading: 'Split the workflow: Apollo for sourcing, Gmail for replies',
+        paragraphs: [
+          'Apollo can be useful for building lists, researching accounts, and running outbound prospecting. But once real replies land in Gmail, the workflow changes from list management to relationship management.',
+          'That is where a Gmail CRM fits. Donna is a Gmail-native CRM and Chrome extension for keeping contact context, pipeline stages, tasks, and follow-up hygiene close to the email thread.',
+          'The practical rule is simple: prospecting data can start in Apollo, but active conversations should be handled where the conversation happens.',
+        ],
+      },
+      {
+        id: 'handoff-model',
+        heading: 'The handoff model: prospect -> reply -> contact -> stage',
+        paragraphs: [
+          'Do not try to make every prospect a full CRM record on day one. Most outbound lists include people who will never reply. Keep the CRM focused on conversations that show intent.',
+        ],
+        steps: [
+          'Build and qualify your list in Apollo.',
+          'Send compliant, relevant outreach from the outbound system you already use.',
+          'When someone replies in Gmail, review the thread before creating or updating CRM context.',
+          'Create or update the contact in Donna with the source, company, role, and a short note.',
+          'Move the opportunity into a simple stage such as Replied, Meeting, Proposal, or Dormant.',
+          'Add the next task before leaving the thread.',
+        ],
+      },
+      {
+        id: 'csv-workflow',
+        heading: 'A clean CSV workflow for context without clutter',
+        paragraphs: [
+          'If you move data manually, keep the export small and useful. A lean CSV is easier to trust than a giant list full of fields no one maintains.',
+          'Use CSV fields that help you understand the reply and decide the next step. Avoid importing every enrichment field just because it exists.',
+        ],
+        bullets: [
+          'Recommended fields: first name, last name, email, company, role, website, source list, segment, and last outbound date.',
+          'Optional fields: company size, industry, location, account notes, and a short reason for outreach.',
+          'Avoid fields you will not use in Gmail, such as noisy scoring columns or stale enrichment metadata.',
+        ],
+        note:
+          'Donna should not be treated as a cold list warehouse. Keep Donna focused on people you are actively working, following up with, or deliberately parking for later.',
+      },
+      {
+        id: 'pipeline-stages',
+        heading: 'Pipeline stages for Apollo-sourced conversations',
+        paragraphs: [
+          'A simple outbound pipeline should reflect commitment, not the number of emails sent. Use stages that tell you what action is needed next.',
+        ],
+        bullets: [
+          'Replied: the prospect responded and needs qualification or a next question.',
+          'Meeting: a call is booked or being scheduled.',
+          'Proposal: a clear offer, scope, or next step has been sent.',
+          'Waiting: you are waiting on the prospect after a meaningful exchange.',
+          'Dormant: the thread went quiet and should not distract from active work.',
+        ],
+      },
+      {
+        id: 'deliverability-caveats',
+        heading: 'Deliverability and tracking caveats',
+        paragraphs: [
+          'Outbound tooling can make it easy to send more email than your process can responsibly handle. That is not a CRM problem. It is a targeting, consent, and deliverability problem.',
+          'Keep outreach relevant, respect opt-outs, and avoid tactics that depend on pressure or misleading personalization. Tracking signals can help with timing, but they are imperfect and should not be treated as proof of interest.',
+        ],
+        bullets: [
+          'Do not mention opens or clicks in follow-up messages.',
+          'Do not keep emailing people who clearly opted out or are not a fit.',
+          'Use tracking as a hint, not a reason to make aggressive claims.',
+        ],
+      },
+      {
+        id: 'how-donna-helps',
+        heading: 'How Donna fits after the reply',
+        paragraphs: [
+          'Donna helps after the conversation becomes real: contact context next to Gmail, stages for active opportunities, tasks for follow-ups, and lightweight notes so you do not depend on memory.',
+          'For solo B2B sales, this keeps the system practical. Apollo can remain the source for prospecting, while Donna becomes the Gmail-side workspace for the relationships worth managing.',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: 'Does Donna integrate natively with Apollo?',
+        answer:
+          'This draft does not assume a native Apollo integration. Treat Apollo as the prospecting tool and Donna as the Gmail-native CRM for replies, contact context, pipeline stages, tasks, and follow-up hygiene.',
+      },
+      {
+        question: 'Should every Apollo prospect go into my Gmail CRM?',
+        answer:
+          'No. Importing every prospect creates clutter. Start with people who reply, show intent, book a meeting, or are important enough to track manually.',
+      },
+      {
+        question: 'Can I use email tracking to prioritize Apollo follow-ups?',
+        answer:
+          'Tracking can help with timing, but it is not definitive. Opens and clicks can be blocked, inflated, or misread. Use them as weak signals alongside actual replies and thread context.',
+      },
+    ],
+  },
+  {
+    slug: 'apollo-to-gmail-follow-up-workflow',
+    title: 'Apollo to Gmail follow-up workflow for solo sales',
+    seoTitle: 'Apollo to Gmail Follow-up Workflow',
+    description:
+      'A step-by-step workflow for moving Apollo-sourced replies into Gmail follow-ups, CRM stages, tasks, and clean weekly review habits.',
+    category: 'Follow-up systems',
+    publishedAt: '2026-06-29',
+    readingTimeMinutes: 9,
+    faqSubtitle: 'Common questions about follow-up after Apollo-sourced outreach.',
+    primaryInternalLink: { href: '/crm-for-solo-b2b-sales', label: 'CRM for solo B2B sales' },
+    supportingInternalLinks: [
+      { href: '/gmail-crm', label: 'Gmail CRM overview' },
+      { href: '/ai-gmail-crm', label: 'AI Gmail CRM' },
+      { href: '/resources', label: 'Resources' },
+    ],
+    sections: [
+      {
+        id: 'why-handoff-matters',
+        heading: 'Why the handoff matters',
+        paragraphs: [
+          'Outbound systems are good at sequencing, list building, and top-of-funnel operations. Gmail is where the personal conversation often becomes real.',
+          'If you do not have a handoff process, warm replies get mixed with cold sequence activity. The result is missed context, duplicated follow-ups, and a pipeline that does not reflect reality.',
+        ],
+      },
+      {
+        id: 'reply-triage',
+        heading: 'Step 1: triage replies inside Gmail',
+        paragraphs: [
+          'Start with the reply, not the campaign report. Read the full thread and decide what kind of response you are looking at.',
+        ],
+        bullets: [
+          'Positive intent: they asked a question, accepted a meeting, or requested details.',
+          'Neutral: they are not sure, asked for later timing, or redirected you to someone else.',
+          'Negative: not interested, not a fit, or opted out.',
+          'Operational: bounce, auto-reply, vacation responder, or address change.',
+        ],
+        note:
+          'Only positive and useful neutral replies usually deserve CRM work. Negative and operational replies should be handled cleanly and kept out of your active pipeline.',
+      },
+      {
+        id: 'capture-context',
+        heading: 'Step 2: capture just enough CRM context',
+        paragraphs: [
+          'A reply does not need a long dossier. It needs enough context that future-you can act quickly.',
+        ],
+        steps: [
+          'Create or update the contact from the Gmail thread.',
+          'Add the Apollo source list or campaign name as a short note if it helps.',
+          'Write one sentence about why they replied.',
+          'Add the company, role, and any relevant buying context you can verify.',
+          'Avoid adding unverified enrichment details that could confuse the next follow-up.',
+        ],
+      },
+      {
+        id: 'follow-up-stages',
+        heading: 'Step 3: use stages that drive follow-up',
+        paragraphs: [
+          'Stages should answer one question: what should happen next? Use a small stage set that keeps replies moving.',
+        ],
+        bullets: [
+          'Needs response: you owe them a reply.',
+          'Meeting requested: scheduling is the next step.',
+          'Waiting on prospect: you replied and need a follow-up date.',
+          'Nurture later: timing is not right, but the relationship is worth keeping.',
+          'Closed: not a fit, opted out, or no longer worth pursuing.',
+        ],
+      },
+      {
+        id: 'templates',
+        heading: 'Short follow-up templates for replied leads',
+        templates: [
+          {
+            label: 'After a positive reply',
+            content:
+              'Subject: Re: {{topic}}\n\nHi {{first_name}},\n\nThanks for the reply. Based on what you shared, the best next step is probably {{next_step}}.\n\nWould {{option_1}} or {{option_2}} work better?\n\nBest,\n{{your_name}}',
+          },
+          {
+            label: 'After a timing objection',
+            content:
+              'Subject: Re: {{topic}}\n\nHi {{first_name}},\n\nThat timing makes sense. I will check back around {{date}} unless you want me to close this out for now.\n\nBefore I do, is {{pain_or_priority}} still the right thing to reference when I follow up?\n\nThanks,\n{{your_name}}',
+          },
+          {
+            label: 'After a referral',
+            content:
+              'Subject: Re: {{topic}}\n\nHi {{first_name}},\n\nThanks for pointing me in the right direction. I will reach out to {{referral_name}} with a short note and keep the context specific to {{context}}.\n\nAppreciate it,\n{{your_name}}',
+          },
+        ],
+      },
+      {
+        id: 'weekly-review',
+        heading: 'Step 4: run a weekly reply review',
+        paragraphs: [
+          'Once replies move from Apollo into Gmail, the CRM needs a review habit. Keep it short and focused on next steps.',
+        ],
+        steps: [
+          'Review Needs response first and clear anything you owe.',
+          'Check Meeting requested and confirm every item has a scheduling action.',
+          'Scan Waiting on prospect for follow-ups due this week.',
+          'Move dead threads to Closed or Dormant so the active pipeline stays honest.',
+          'Pick the highest-value follow-ups before starting new prospecting.',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: 'Should I keep following up from Apollo after someone replies?',
+        answer:
+          'For real replies, it is usually cleaner to manage the conversation from Gmail and your CRM workflow. That keeps context, next steps, and follow-up tasks close to the actual thread.',
+      },
+      {
+        question: 'What should I do with out-of-office replies?',
+        answer:
+          'Do not treat them as active opportunities. If the account is still relevant, set a future follow-up date based on the return date and keep the item out of your active sales pipeline.',
+      },
+      {
+        question: 'Can Donna write the follow-up for me?',
+        answer:
+          'Donna is positioned as a Gmail-native CRM with AI assistance. Use AI drafts as a starting point when available, then review facts, tone, and the specific ask before sending.',
+      },
+    ],
+  },
+  {
+    slug: 'instantly-to-crm-workflow',
+    title: 'Instantly to CRM workflow: keep replies organized in Gmail',
+    seoTitle: 'Instantly to CRM Workflow',
+    description:
+      'A practical workflow for using Instantly for outbound while managing Gmail replies, CRM context, pipeline stages, and follow-up tasks in Donna.',
+    category: 'Gmail CRM workflows',
+    publishedAt: '2026-06-29',
+    readingTimeMinutes: 8,
+    faqSubtitle: 'Common questions about using Instantly alongside a Gmail CRM.',
+    primaryInternalLink: { href: '/gmail-crm', label: 'Gmail CRM overview' },
+    supportingInternalLinks: [
+      { href: '/features', label: 'Features' },
+      { href: '/email-tracking-in-gmail', label: 'Email tracking in Gmail' },
+      { href: '/privacy', label: 'Privacy' },
+    ],
+    sections: [
+      {
+        id: 'where-instantly-ends',
+        heading: 'Where Instantly ends and CRM work begins',
+        paragraphs: [
+          'Instantly can support outbound sending and campaign operations. But a CRM workflow starts when a reply needs judgment: qualification, context, follow-up timing, and a next action.',
+          'Donna should be positioned on the Gmail side of that handoff. It is not necessary to claim a native Instantly integration to make the workflow useful.',
+        ],
+      },
+      {
+        id: 'manual-handoff',
+        heading: 'Manual handoff: from campaign reply to Gmail CRM',
+        paragraphs: [
+          'For many solo operators, a manual handoff is enough. The goal is not perfect synchronization. The goal is to stop real replies from disappearing into campaign noise.',
+        ],
+        steps: [
+          'Review replies from Instantly-connected inboxes in Gmail.',
+          'Open the thread and classify the reply: interested, later, referral, not a fit, or opt-out.',
+          'Create or update the contact in Donna only when the conversation deserves tracking.',
+          'Add one source note such as "Source: Instantly campaign - {{campaign_name}}".',
+          'Assign a pipeline stage and create the next follow-up task.',
+          'Remove closed, bounced, or opted-out conversations from active CRM review.',
+        ],
+      },
+      {
+        id: 'csv-handoff',
+        heading: 'CSV handoff for warm replies and account context',
+        paragraphs: [
+          'If you are working from exported campaign data, keep the CSV focused on warm reply context. Avoid turning Donna into a mirror of every outbound campaign row.',
+        ],
+        bullets: [
+          'Useful columns: email, first name, last name, company, website, campaign name, reply status, last reply date, and owner note.',
+          'Optional columns: segment, persona, region, account priority, and reason for outreach.',
+          'Skip columns that do not help with Gmail follow-up, especially stale deliverability diagnostics or sequence internals.',
+        ],
+        note:
+          'Export and manual entry workflows should follow your privacy obligations and your own data retention rules. Keep only what you need to manage the relationship.',
+      },
+      {
+        id: 'stages',
+        heading: 'Stages for Instantly-sourced opportunities',
+        paragraphs: [
+          'Use stages that distinguish reply handling from sales progress. This keeps campaign activity from pretending to be pipeline.',
+        ],
+        bullets: [
+          'Needs triage: a reply arrived but has not been classified.',
+          'Qualified reply: there is a real reason to continue.',
+          'Meeting or next step: the conversation has a clear action.',
+          'Waiting: you replied and need a follow-up date.',
+          'Dormant or closed: not active enough for weekly attention.',
+        ],
+      },
+      {
+        id: 'follow-up-hygiene',
+        heading: 'Follow-up hygiene after the handoff',
+        paragraphs: [
+          'Once a reply is in Donna, stop thinking like a sequence manager and start thinking like a relationship owner. The next message should reflect the actual reply, not a generic campaign step.',
+        ],
+        bullets: [
+          'Reference one specific detail from the thread.',
+          'Ask one clear question or propose one clear next step.',
+          'Set a task date before leaving the thread.',
+          'Close the loop when timing or fit is not there.',
+        ],
+      },
+      {
+        id: 'deliverability',
+        heading: 'Deliverability, opt-outs, and tracking',
+        paragraphs: [
+          'Cold outreach should be relevant, compliant, and easy to decline. Do not use a CRM workflow to keep pushing on people who opted out or clearly said no.',
+          'Tracking can be useful for prioritization, but it is incomplete. Treat opens and clicks as rough timing hints, not as proof that someone is interested or ready to buy.',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: 'Does Donna have a native Instantly integration?',
+        answer:
+          'This draft does not assume a native Instantly integration. The recommended workflow is adjacent: Instantly handles outbound activity, while Donna helps manage Gmail replies, context, stages, tasks, and follow-ups.',
+      },
+      {
+        question: 'What should I import from Instantly into a CRM?',
+        answer:
+          'Start with warm replies and useful account context. Importing every campaign row can make your CRM noisy and harder to review.',
+      },
+      {
+        question: 'Should opt-outs stay in the pipeline?',
+        answer:
+          'No. Handle opt-outs according to your process, remove them from active follow-up, and avoid creating CRM tasks that could lead to more outreach.',
+      },
+    ],
+  },
+  {
+    slug: 'manage-instantly-replies-in-gmail',
+    title: 'How to manage Instantly replies in Gmail without losing context',
+    seoTitle: 'Manage Instantly Replies in Gmail',
+    description:
+      'A Gmail-first reply triage workflow for Instantly campaigns: classify replies, preserve context, set CRM stages, and follow up without spammy behavior.',
+    category: 'Follow-up systems',
+    publishedAt: '2026-06-29',
+    readingTimeMinutes: 8,
+    faqSubtitle: 'Common questions about managing Instantly campaign replies in Gmail.',
+    primaryInternalLink: { href: '/gmail-crm', label: 'Gmail CRM overview' },
+    supportingInternalLinks: [
+      { href: '/ai-gmail-crm', label: 'AI Gmail CRM' },
+      { href: '/email-tracking-in-gmail', label: 'Email tracking in Gmail' },
+      { href: '/pricing', label: 'Pricing' },
+    ],
+    sections: [
+      {
+        id: 'reply-problem',
+        heading: 'The reply problem: campaigns create noise, Gmail holds context',
+        paragraphs: [
+          'Outbound campaigns can create a mix of useful replies, soft declines, referrals, auto-replies, and hard no messages. Treating all of them the same creates clutter.',
+          'Gmail is where the thread context is easiest to inspect. Donna can help you keep the useful replies organized with contact context, pipeline stages, notes, and tasks next to the conversation.',
+        ],
+      },
+      {
+        id: 'triage-categories',
+        heading: 'Use five reply categories',
+        paragraphs: [
+          'Before you add anything to a CRM stage, classify the reply. A small triage model prevents messy follow-up.',
+        ],
+        bullets: [
+          'Interested: asks for details, time, pricing, or next steps.',
+          'Referral: points you to another person or team.',
+          'Later: timing is not right but there is possible future fit.',
+          'No fit: clear decline or mismatch.',
+          'Operational: auto-reply, bounce, unsubscribe, or delivery issue.',
+        ],
+      },
+      {
+        id: 'gmail-workflow',
+        heading: 'The Gmail workflow after triage',
+        steps: [
+          'Open the reply thread and read the previous outbound message before responding.',
+          'Create or update the contact in Donna only for interested, referral, or credible later replies.',
+          'Add a short note with the campaign/source and the reason the reply matters.',
+          'Move the contact or opportunity to the right stage.',
+          'Create a task with a specific date and action.',
+          'Close or archive no-fit and operational replies so they do not pollute the active pipeline.',
+        ],
+      },
+      {
+        id: 'templates',
+        heading: 'Reply templates that keep the thread human',
+        templates: [
+          {
+            label: 'Interested reply',
+            content:
+              'Subject: Re: {{topic}}\n\nHi {{first_name}},\n\nThanks for getting back to me. The most relevant next step is {{next_step}} because {{reason}}.\n\nWould you prefer {{option_1}} or {{option_2}}?\n\nBest,\n{{your_name}}',
+          },
+          {
+            label: 'Referral reply',
+            content:
+              'Subject: Re: {{topic}}\n\nHi {{first_name}},\n\nThanks for the pointer. I will reach out to {{referral_name}} with the short version and keep it specific to {{context}}.\n\nAppreciate the help,\n{{your_name}}',
+          },
+          {
+            label: 'Later timing reply',
+            content:
+              'Subject: Re: {{topic}}\n\nHi {{first_name}},\n\nTotally fair. I will check back around {{date}} unless priorities change sooner.\n\nWhen I follow up, should I reference {{specific_context}}?\n\nThanks,\n{{your_name}}',
+          },
+        ],
+      },
+      {
+        id: 'what-not-to-do',
+        heading: 'What not to do with campaign replies',
+        bullets: [
+          'Do not keep sequence-style messaging after a human reply.',
+          'Do not mention that someone opened, clicked, or viewed an email.',
+          'Do not create tasks for people who opted out or clearly declined.',
+          'Do not add unverified enrichment data as if it came from the thread.',
+        ],
+      },
+      {
+        id: 'review-loop',
+        heading: 'A 15-minute reply review loop',
+        paragraphs: [
+          'Set one recurring review for campaign replies that moved into Donna. The goal is to protect warm conversations from getting buried.',
+        ],
+        steps: [
+          'Clear all Needs response items.',
+          'Check all Waiting tasks due this week.',
+          'Move Later items to a realistic future follow-up date.',
+          'Close no-fit threads that should not stay visible.',
+          'Write the next message from the thread context, not from the original campaign copy.',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: 'Should I respond to every Instantly reply from Gmail?',
+        answer:
+          'Respond where the thread context is clearest and where you can manage the next step. For many solo workflows, Gmail plus a Gmail-native CRM is the cleanest place for real replies.',
+      },
+      {
+        question: 'How do I avoid messy CRM data from cold campaigns?',
+        answer:
+          'Use triage first. Only create active CRM records for replies that need a next step, useful context, or future follow-up.',
+      },
+      {
+        question: 'Can AI help summarize campaign replies?',
+        answer:
+          'AI can help draft summaries and follow-ups, but you should review the actual thread before saving notes or sending anything. Cold outreach replies often contain nuance that matters.',
+      },
+    ],
+  },
+  {
+    slug: 'cold-email-to-pipeline-workflow',
+    title: 'Cold email to pipeline workflow: from reply to next step',
+    seoTitle: 'Cold Email to Pipeline Workflow',
+    description:
+      'Turn cold email replies into an honest Gmail CRM pipeline with triage rules, stages, tasks, CSV/manual handoffs, and respectful follow-up habits.',
+    category: 'Solo sales workflows',
+    publishedAt: '2026-06-29',
+    readingTimeMinutes: 9,
+    faqSubtitle: 'Common questions about turning cold email replies into pipeline.',
+    primaryInternalLink: { href: '/crm-for-solo-b2b-sales', label: 'CRM for solo B2B sales' },
+    supportingInternalLinks: [
+      { href: '/gmail-crm', label: 'Gmail CRM overview' },
+      { href: '/email-tracking-in-gmail', label: 'Email tracking in Gmail' },
+      { href: '/features', label: 'Features' },
+    ],
+    sections: [
+      {
+        id: 'pipeline-starts-at-reply',
+        heading: 'Pipeline starts when there is a real signal',
+        paragraphs: [
+          'Cold email activity is not the same as pipeline. A sent email, an open, or a sequence step does not mean there is a relationship to manage.',
+          'A practical pipeline starts when there is a reply, a referral, a booked meeting, or a clear reason to follow up later. That keeps your CRM honest and your review list manageable.',
+        ],
+      },
+      {
+        id: 'triage',
+        heading: 'Triage cold replies before creating pipeline',
+        paragraphs: [
+          'Reply triage is the difference between a useful CRM and a noisy one. Classify the reply first, then decide whether it deserves a stage and task.',
+        ],
+        bullets: [
+          'Create pipeline: interested replies, meeting requests, qualified referrals, or specific future timing.',
+          'Track lightly: credible later replies where a future follow-up is welcome.',
+          'Close: clear no, bad fit, unsubscribe, bounce, or generic auto-reply.',
+        ],
+      },
+      {
+        id: 'handoff-steps',
+        heading: 'Step-by-step: cold reply to Gmail CRM pipeline',
+        steps: [
+          'Open the Gmail thread and read the original cold email plus the reply.',
+          'Create or update the contact in Donna if the reply is worth tracking.',
+          'Add a note with source, segment, and the reason the conversation is active.',
+          'Choose a stage based on commitment, not enthusiasm.',
+          'Create one task with a date, owner, and specific next action.',
+          'If the person is not a fit or opted out, close the loop and keep them out of active follow-up.',
+        ],
+      },
+      {
+        id: 'stages',
+        heading: 'Stages for a cold-email-sourced pipeline',
+        bullets: [
+          'New reply: needs review and response.',
+          'Qualified: there is a real problem, role fit, or account fit.',
+          'Meeting: scheduling or completed discovery.',
+          'Proposal or next step: a concrete offer, scope, or decision is pending.',
+          'Waiting: you need to follow up after a meaningful exchange.',
+          'Dormant or closed: no current action, no fit, or no permission to continue.',
+        ],
+      },
+      {
+        id: 'templates',
+        heading: 'Follow-up templates after a cold reply',
+        templates: [
+          {
+            label: 'Qualified reply',
+            content:
+              'Subject: Re: {{topic}}\n\nHi {{first_name}},\n\nThanks for the context. Based on what you said about {{specific_detail}}, I think the useful next step is {{next_step}}.\n\nWould {{time_or_option}} work?\n\nBest,\n{{your_name}}',
+          },
+          {
+            label: 'Not the right person',
+            content:
+              'Subject: Re: {{topic}}\n\nHi {{first_name}},\n\nThanks for letting me know. Is there someone else who owns {{area}} that I should contact, or should I close this out?\n\nAppreciate it,\n{{your_name}}',
+          },
+          {
+            label: 'Permission-based later follow-up',
+            content:
+              'Subject: Re: {{topic}}\n\nHi {{first_name}},\n\nThat makes sense. Would it be useful if I checked back around {{date}}, or would you rather I close the loop here?\n\nThanks,\n{{your_name}}',
+          },
+        ],
+      },
+      {
+        id: 'responsible-follow-up',
+        heading: 'Responsible follow-up rules',
+        paragraphs: [
+          'Cold email follow-up should be specific, easy to decline, and grounded in the reply. The moment someone replies, stop relying on generic sequence copy.',
+          'Deliverability and trust matter more than squeezing out one more touch. Respect opt-outs, avoid misleading personalization, and do not use tracking language as a pressure tactic.',
+        ],
+        bullets: [
+          'Use one clear ask per message.',
+          'Reference the actual reply, not just the campaign theme.',
+          'Set a follow-up task only when follow-up is appropriate.',
+          'Close inactive or no-fit threads so your pipeline stays accurate.',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: 'When should a cold email lead become a pipeline item?',
+        answer:
+          'Usually after a meaningful reply, referral, meeting request, or specific future timing. Do not treat every sent email or open as pipeline.',
+      },
+      {
+        question: 'Should cold email tracking affect pipeline priority?',
+        answer:
+          'Only lightly. Tracking can be blocked or misleading. Actual replies, meeting activity, fit, and next-step clarity are stronger prioritization signals.',
+      },
+      {
+        question: 'How does Donna help with cold email follow-up?',
+        answer:
+          'Donna helps once the conversation is in Gmail: contact context, notes, stages, tasks, and follow-up hygiene next to the thread. It should not be described as a cold email sending platform.',
+      },
+    ],
+  },
+
+  {
+    slug: 'what-to-do-after-cold-email-reply',
+    title: 'What to do after a cold email reply',
+    seoTitle: 'What to Do After a Cold Email Reply',
+    description:
+      'A practical workflow for handling cold email replies: qualify the response, capture context, set the next step, and keep follow-up organized in Gmail.',
+    category: 'Solo sales workflows',
+    publishedAt: '2026-06-29',
+    readingTimeMinutes: 8,
+    primaryInternalLink: { href: '/crm-for-solo-b2b-sales', label: 'CRM for solo B2B sales' },
+    supportingInternalLinks: [
+      { href: '/gmail-crm', label: 'Gmail CRM overview' },
+      { href: '/ai-gmail-crm', label: 'AI assistant in Gmail' },
+      { href: '/email-tracking-in-gmail', label: 'Email tracking in Gmail' },
+    ],
+    sections: [
+      {
+        id: 'reply-is-start',
+        heading: 'A reply is the start of the workflow, not the finish line',
+        paragraphs: [
+          'A cold email reply creates momentum, but it also creates risk. If you respond from memory, forget the context, or fail to set a next step, the opportunity can disappear back into the inbox.',
+          'The best response workflow is simple: understand the reply, qualify the conversation, capture the relationship context, and create one clear next step before you move on.',
+        ],
+      },
+      {
+        id: 'classify-reply',
+        heading: 'First, classify the reply',
+        paragraphs: [
+          'Do not treat every reply the same. Before you write back, decide what kind of reply you received.',
+        ],
+        bullets: [
+          'Interested: they asked for details, pricing, a call, or a next step.',
+          'Curious but vague: they replied, but the buying need is still unclear.',
+          'Referral: they pointed you to someone else.',
+          'Not now: the timing is wrong, but the fit may still exist.',
+          'Not a fit: there is no useful reason to keep pursuing this thread.',
+        ],
+        note:
+          'This classification determines your next step. An interested reply needs speed. A vague reply needs one clear question. A not-now reply needs a future follow-up date.',
+      },
+      {
+        id: 'capture-context',
+        heading: 'Capture context while the thread is fresh',
+        paragraphs: [
+          'The first few minutes after a reply are the easiest time to keep your CRM accurate. You still remember why you reached out and what the reply means.',
+          'Add a short contact note instead of a long narrative. The note should help future you understand the relationship without rereading the whole thread.',
+        ],
+        bullets: [
+          'Why you contacted them.',
+          'What they replied with.',
+          'What they seem to care about.',
+          'The current stage of the conversation.',
+          'The next step and owner.',
+        ],
+      },
+      {
+        id: 'reply-templates',
+        heading: 'Reply templates for common cold email responses',
+        paragraphs: [
+          'Keep replies short and specific. The goal is to make the next step easy, not to send a full sales pitch.',
+        ],
+        templates: [
+          {
+            label: 'Interested reply',
+            content:
+              'Subject: Re: {topic}\n\nHi {first_name},\n\nThanks for getting back to me. Based on your note, the most useful next step is probably a quick look at {specific_context}.\n\nWould {option_1} or {option_2} work for a short call, or would you prefer I send a brief summary first?\n\nBest,\n{your_name}',
+          },
+          {
+            label: 'Vague positive reply',
+            content:
+              'Subject: Re: {topic}\n\nHi {first_name},\n\nMakes sense. To point you in the right direction, what is the main thing you are trying to improve right now: {option_a}, {option_b}, or something else?\n\nOnce I know that, I can suggest a practical next step.\n\nThanks,\n{your_name}',
+          },
+          {
+            label: 'Not now reply',
+            content:
+              'Subject: Re: {topic}\n\nHi {first_name},\n\nTotally understand. When would be a better time to revisit this?\n\nIf helpful, I can follow up around {future_month} with a short note and you can tell me if it is relevant then.\n\nBest,\n{your_name}',
+          },
+        ],
+      },
+      {
+        id: 'pipeline-and-tasks',
+        heading: 'Move the conversation into a pipeline and set one task',
+        paragraphs: [
+          'After you reply, place the conversation somewhere you can review it. A simple solo sales pipeline is enough.',
+        ],
+        bullets: [
+          'Replied: they responded, but the next step is not booked yet.',
+          'Qualified: there is a real problem, fit, and reason to continue.',
+          'Meeting: a call is scheduled or completed.',
+          'Proposal: terms, pricing, or scope are being discussed.',
+          'Nurture: useful fit, but timing is later.',
+        ],
+        steps: [
+          'Attach the thread to the right contact.',
+          'Add the contact or opportunity to the right stage.',
+          'Create one task with a date: reply, book call, send recap, or follow up.',
+          'Update the note after the next meaningful reply.',
+        ],
+      },
+      {
+        id: 'how-donna-helps',
+        heading: 'How Donna helps inside Gmail',
+        paragraphs: [
+          'Donna CRM is designed for this Gmail-native workflow. You can keep contact context close to the thread, use pipelines to track where replies stand, and create tasks for the next step before the conversation gets buried.',
+          'The AI assistant can help summarize the thread or draft a reply, but you should still review the context and decide what to send. Tracking signals can also help with timing, as long as you treat them as signals rather than certainty.',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: 'How fast should I answer a cold email reply?',
+        answer:
+          'Reply as soon as you can write something useful and accurate. Speed helps, but a rushed generic reply can hurt the conversation. Classify the reply first, then send one clear next step.',
+      },
+      {
+        question: 'Should every cold email reply become a CRM item?',
+        answer:
+          'No. Track replies that have potential value: interest, timing, referral, or future fit. If the reply is clearly not a fit, close it cleanly and keep your pipeline focused.',
+      },
+      {
+        question: 'Can email tracking tell me when to follow up?',
+        answer:
+          'It can help with timing, especially after a proposal or important reply, but it is not proof of intent. Use tracking signals as one input alongside the actual thread context.',
+      },
+    ],
+  },
+  {
+    slug: 'gmail-contact-notes-system',
+    title: 'A Gmail contact notes system for people who sell from email',
+    seoTitle: 'Gmail Contact Notes System',
+    description:
+      'Build a simple contact notes system in Gmail: what to capture, what to skip, and how to keep relationship context useful without heavy CRM admin.',
+    category: 'Gmail CRM workflows',
+    publishedAt: '2026-06-29',
+    readingTimeMinutes: 9,
+    primaryInternalLink: { href: '/gmail-crm', label: 'Gmail CRM overview' },
+    supportingInternalLinks: [
+      { href: '/ai-gmail-crm', label: 'AI Gmail CRM' },
+      { href: '/features', label: 'Features' },
+      { href: '/privacy', label: 'Privacy' },
+    ],
+    sections: [
+      {
+        id: 'why-notes-matter',
+        heading: 'Why contact notes matter in a Gmail workflow',
+        paragraphs: [
+          'Email has the conversation, but it does not always surface the relationship context at the moment you need it. That is where contact notes help.',
+          'A good note system lets you answer basic questions quickly: who is this person, what do they care about, what did we last agree to, and what happens next?',
+        ],
+      },
+      {
+        id: 'note-format',
+        heading: 'Use a short note format you can maintain',
+        paragraphs: [
+          'The mistake most people make is writing notes that are too long. Long notes become another inbox. Keep the format small enough to update after a real conversation.',
+        ],
+        bullets: [
+          'Context: who they are and why the relationship matters.',
+          'Need: the problem, goal, or opportunity they mentioned.',
+          'Status: current stage, active project, or open question.',
+          'Next step: what happens next, who owns it, and when.',
+          'Personal detail: only if it is relevant and appropriate.',
+        ],
+      },
+      {
+        id: 'examples',
+        heading: 'Contact note examples you can copy',
+        templates: [
+          {
+            label: 'Sales lead note',
+            content:
+              'Context: Founder at {company}; replied to outreach about {topic}.\nNeed: Wants a lighter way to manage follow-ups from Gmail.\nStatus: Interested, needs pricing and setup details.\nNext step: Send short recap and pricing link by {date}.',
+          },
+          {
+            label: 'Consulting client note',
+            content:
+              'Context: Existing client on {project_name}.\nNeed: Wants help reducing manual reporting time.\nStatus: Phase 1 active; decision needed on scope change.\nNext step: Send change request summary by {date}.',
+          },
+          {
+            label: 'Freelance prospect note',
+            content:
+              'Context: Referred by {referrer}; looking for {service}.\nNeed: Needs proposal with timeline and deliverables.\nStatus: Discovery complete, proposal pending.\nNext step: Send proposal and follow-up task for {date}.',
+          },
+        ],
+      },
+      {
+        id: 'when-to-update',
+        heading: 'When to update contact notes',
+        paragraphs: [
+          'You do not need to update notes after every email. Update when the relationship state changes.',
+        ],
+        steps: [
+          'After a first meaningful reply, add the starting context.',
+          'After a call or discovery exchange, capture the need and next step.',
+          'After sending a proposal, record what was sent and when to follow up.',
+          'After a decision, update status and archive or move the pipeline item.',
+          'Before a re-engagement email, review the note so your message is specific.',
+        ],
+      },
+      {
+        id: 'what-to-skip',
+        heading: 'What not to put in contact notes',
+        paragraphs: [
+          'A note system is useful only if it stays clean. Do not turn it into a transcript or a private scratchpad full of sensitive details you do not need.',
+        ],
+        bullets: [
+          'Do not copy full email threads into notes.',
+          'Do not record sensitive personal details unless they are necessary for the work and appropriate to store.',
+          'Do not write opinions you would be uncomfortable explaining later.',
+          'Do not create a note for every tiny interaction.',
+        ],
+      },
+      {
+        id: 'donna-workflow',
+        heading: 'How to run this with Donna CRM',
+        paragraphs: [
+          'Donna keeps the relationship workflow close to Gmail, so notes can live next to the conversations that create them. Pair notes with pipelines and tasks so context turns into action.',
+          'If a thread is long, the AI assistant can help summarize it into a draft note. Review the summary before relying on it, especially for names, dates, pricing, and commitments.',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: 'How long should a contact note be?',
+        answer:
+          'Short enough to scan in a few seconds. For most Gmail CRM workflows, 4-6 lines covering context, need, status, and next step is more useful than a long history.',
+      },
+      {
+        question: 'Should I keep notes by contact or by deal?',
+        answer:
+          'Use contact notes for stable relationship context and pipeline items for specific deals, projects, or opportunities. That keeps the relationship record clean while still tracking active work.',
+      },
+      {
+        question: 'Can AI write my contact notes?',
+        answer:
+          'AI can help create a first draft from thread context, but you should review it. Contact notes affect follow-ups and decisions, so accuracy matters more than speed.',
+      },
+    ],
+  },
+  {
+    slug: 'gmail-pipeline-tracker',
+    title: 'How to build a Gmail pipeline tracker',
+    seoTitle: 'Gmail Pipeline Tracker',
+    description:
+      'A step-by-step Gmail pipeline tracker for solo sales, consulting, and freelance workflows: stages, task rules, weekly review, and cleanup habits.',
+    category: 'Gmail CRM workflows',
+    publishedAt: '2026-06-29',
+    readingTimeMinutes: 8,
+    primaryInternalLink: { href: '/gmail-crm', label: 'Gmail CRM overview' },
+    supportingInternalLinks: [
+      { href: '/crm-for-solo-b2b-sales', label: 'CRM for solo B2B sales' },
+      { href: '/crm-for-freelancers', label: 'CRM for freelancers' },
+      { href: '/features', label: 'Features' },
+    ],
+    sections: [
+      {
+        id: 'pipeline-purpose',
+        heading: 'What a Gmail pipeline tracker should do',
+        paragraphs: [
+          'A pipeline tracker should help you see open work, not create more work. For Gmail-first operators, the tracker needs to stay close to the inbox because that is where context arrives.',
+          'The goal is to turn active email threads into visible stages and next steps. If the tracker does not help you decide what to do next, it is too complicated.',
+        ],
+      },
+      {
+        id: 'choose-stages',
+        heading: 'Choose stages based on commitment',
+        paragraphs: [
+          'Avoid stages that describe vague activity. Use stages that show how committed the conversation is.',
+        ],
+        bullets: [
+          'New: a lead, referral, or thread worth tracking.',
+          'Replied: the person engaged and needs a response or qualification.',
+          'Meeting: a call is scheduled or recently completed.',
+          'Proposal: a concrete offer, scope, or price is under review.',
+          'Active: work is underway or the relationship is live.',
+          'Dormant: useful context, but no active next step right now.',
+        ],
+      },
+      {
+        id: 'entry-rules',
+        heading: 'Set rules for what enters the pipeline',
+        paragraphs: [
+          'Not every email belongs in your tracker. If you track everything, your pipeline becomes another noisy inbox.',
+        ],
+        bullets: [
+          'Track conversations with a clear business outcome: deal, project, onboarding, renewal, referral, or partnership.',
+          'Track people you intend to follow up with.',
+          'Skip one-off admin emails, newsletters, and threads with no future action.',
+          'Move items to Dormant when there is no active next step but the relationship may matter later.',
+        ],
+      },
+      {
+        id: 'task-rule',
+        heading: 'Use the one-task rule',
+        paragraphs: [
+          'Every active pipeline item should have one next task. That task is the difference between a pipeline and a static list.',
+        ],
+        steps: [
+          'Open the thread and decide the real next action.',
+          'Write the task as an action, not a status: "send recap" instead of "waiting".',
+          'Add a due date based on the conversation.',
+          'When the task is done, update the stage or create the next task.',
+        ],
+        note:
+          'If an item has no next task and no reason to stay active, move it to Dormant or close it.',
+      },
+      {
+        id: 'weekly-review',
+        heading: 'Run a 15-minute weekly review',
+        paragraphs: [
+          'A Gmail pipeline tracker stays useful when you review it. Keep the review short and decision-oriented.',
+        ],
+        steps: [
+          'Start with the latest stages: Proposal, Active, or equivalent.',
+          'Confirm every active item has a next task.',
+          'Move conversations that changed stage during the week.',
+          'Close or mark dormant anything that is no longer real.',
+          'Choose the 3 highest-value follow-ups for the next week.',
+        ],
+      },
+      {
+        id: 'donna-fit',
+        heading: 'How Donna supports a Gmail pipeline',
+        paragraphs: [
+          'Donna CRM brings contacts, pipelines, tasks, and thread context into a Gmail-native workflow. That makes the pipeline easier to maintain because updates happen close to the emails that drive them.',
+          'The AI assistant can help summarize long threads or draft follow-ups during review, while you decide what should move stages and what should be sent.',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: 'Can I track multiple workflows in one Gmail pipeline?',
+        answer:
+          'You can, but it is usually cleaner to start with one workflow and one stage model. If freelance proposals and client delivery have different stages, separate pipelines may be easier to maintain.',
+      },
+      {
+        question: 'How many stages should a Gmail pipeline have?',
+        answer:
+          'Most solo workflows work well with 4-6 stages. If you need more, make sure each stage changes what you do next. Otherwise it is probably extra admin.',
+      },
+      {
+        question: 'What should I do with stale pipeline items?',
+        answer:
+          'Decide whether there is a real follow-up. If yes, create a task. If no, move the item to Dormant or close it so your active pipeline stays honest.',
+      },
+    ],
+  },
+  {
+    slug: 'freelance-proposal-tracker-in-gmail',
+    title: 'Freelance proposal tracker in Gmail',
+    seoTitle: 'Freelance Proposal Tracker in Gmail',
+    description:
+      'Track freelance proposals from Gmail with simple stages, follow-up tasks, proposal notes, and templates for nudging clients without sounding pushy.',
+    category: 'Freelance workflows',
+    publishedAt: '2026-06-29',
+    readingTimeMinutes: 9,
+    primaryInternalLink: { href: '/crm-for-freelancers', label: 'CRM for freelancers' },
+    supportingInternalLinks: [
+      { href: '/gmail-crm', label: 'Gmail CRM overview' },
+      { href: '/email-tracking-in-gmail', label: 'Email tracking in Gmail' },
+      { href: '/pricing', label: 'Pricing' },
+    ],
+    sections: [
+      {
+        id: 'why-track-proposals',
+        heading: 'Why freelance proposals need a tracker',
+        paragraphs: [
+          'Freelance proposals often fail quietly. You send the scope, the client gets busy, and the thread slides down your inbox. Without a tracker, you either forget to follow up or follow up from anxiety.',
+          'A proposal tracker gives every proposal a stage, a note, and a next task so you can follow up professionally.',
+        ],
+      },
+      {
+        id: 'proposal-stages',
+        heading: 'Proposal stages you can use',
+        bullets: [
+          'Discovery: client need and fit are still being clarified.',
+          'Drafting: you owe the client a proposal.',
+          'Sent: proposal delivered, awaiting response.',
+          'Questions: client is reviewing scope, timing, or pricing.',
+          'Accepted: project is moving to onboarding.',
+          'Dormant or closed: no active path forward.',
+        ],
+      },
+      {
+        id: 'proposal-note',
+        heading: 'What to record when you send a proposal',
+        paragraphs: [
+          'The note should help you follow up without rereading the proposal every time.',
+        ],
+        bullets: [
+          'Proposal sent date.',
+          'Project goal and main deliverables.',
+          'Price or package name, if appropriate to record.',
+          'Decision maker and any other stakeholders.',
+          'Decision timeline or expected response date.',
+          'Follow-up date and message angle.',
+        ],
+      },
+      {
+        id: 'follow-up-templates',
+        heading: 'Proposal follow-up templates',
+        templates: [
+          {
+            label: 'First proposal follow-up',
+            content:
+              'Subject: Re: Proposal for {project_name}\n\nHi {first_name},\n\nChecking in on the proposal I sent for {project_name}. Are there any questions about scope, timing, or pricing that I can clarify?\n\nIf helpful, I can also send a short version with the options side by side.\n\nBest,\n{your_name}',
+          },
+          {
+            label: 'Decision timeline follow-up',
+            content:
+              'Subject: Timeline for {project_name}\n\nHi {first_name},\n\nWanted to ask about timing for the proposal. Are you hoping to make a decision this week, or should I follow up later?\n\nThat will help me plan capacity on my side.\n\nThanks,\n{your_name}',
+          },
+          {
+            label: 'Close the loop',
+            content:
+              'Subject: Closing the loop on {project_name}\n\nHi {first_name},\n\nI have not heard back, so I am going to close the loop for now. If the project becomes active again, reply here and I can revisit scope and timing.\n\nThanks,\n{your_name}',
+          },
+        ],
+      },
+      {
+        id: 'tracking-signals',
+        heading: 'Use tracking signals carefully',
+        paragraphs: [
+          'Open and click signals can help you decide when to follow up after sending a proposal, but they should not change your tone. Never mention that someone opened an email or clicked a proposal link.',
+          'Use signals as a timing hint. The message should still be based on the client need, proposal scope, or decision timeline.',
+        ],
+      },
+      {
+        id: 'donna-workflow',
+        heading: 'How Donna supports freelance proposal tracking',
+        paragraphs: [
+          'Donna CRM fits this workflow because proposals usually begin and continue in Gmail. You can keep the client contact, proposal stage, notes, and follow-up tasks close to the original thread.',
+          'For longer proposal threads, the AI assistant can help draft summaries or follow-up emails that you review before sending.',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: 'When should I follow up after sending a freelance proposal?',
+        answer:
+          'A common default is 2-3 business days after sending, unless the client gave you a specific decision date. Larger projects may need more time, but every proposal should have a follow-up task.',
+      },
+      {
+        question: 'Should I discount if a client does not reply?',
+        answer:
+          'Not as a default follow-up tactic. First ask whether they have questions about scope, timing, or fit. Discounting without context can train the conversation around price instead of value.',
+      },
+      {
+        question: 'How do I keep proposal tracking from becoming admin work?',
+        answer:
+          'Use a small stage list and capture only the details needed for the next follow-up: what you sent, when you sent it, what decision is pending, and when you will follow up.',
+      },
+    ],
+  },
+  {
+    slug: 'consultant-client-onboarding-email-workflow',
+    title: 'Consultant client onboarding email workflow',
+    seoTitle: 'Consultant Client Onboarding Email Workflow',
+    description:
+      'A consultant-friendly client onboarding workflow for Gmail: kickoff stages, email templates, task checklist, and handoff notes after a proposal is accepted.',
+    category: 'Consulting workflows',
+    publishedAt: '2026-06-29',
+    readingTimeMinutes: 10,
+    primaryInternalLink: { href: '/crm-for-consultants', label: 'CRM for consultants' },
+    supportingInternalLinks: [
+      { href: '/gmail-crm', label: 'Gmail CRM overview' },
+      { href: '/ai-gmail-crm', label: 'AI assistant in Gmail' },
+      { href: '/features', label: 'Features' },
+    ],
+    sections: [
+      {
+        id: 'why-onboarding',
+        heading: 'Why onboarding should start in the email thread',
+        paragraphs: [
+          'For many consultants, the first client experience after a proposal is accepted happens in Gmail. That thread sets expectations for kickoff, access, scope, timing, and communication.',
+          'A clear onboarding workflow turns an accepted proposal into a working engagement without making the client wonder what happens next.',
+        ],
+      },
+      {
+        id: 'onboarding-stages',
+        heading: 'Client onboarding stages',
+        paragraphs: [
+          'Use stages that show where the engagement stands between acceptance and active delivery.',
+        ],
+        bullets: [
+          'Accepted: client agreed to move forward, but onboarding has not started.',
+          'Admin: contract, invoice, payment, or procurement steps are underway.',
+          'Kickoff scheduled: first working meeting is booked.',
+          'Inputs needed: waiting on access, documents, stakeholders, or answers.',
+          'Ready to start: kickoff complete and required inputs are available.',
+          'Active: delivery has started and onboarding is complete.',
+        ],
+      },
+      {
+        id: 'kickoff-checklist',
+        heading: 'Onboarding checklist for consultants',
+        steps: [
+          'Confirm the accepted scope and expected outcome.',
+          'Send any contract, invoice, or payment instructions that apply.',
+          'Schedule kickoff and name the people who should attend.',
+          'Request required access, documents, and background context.',
+          'Set the communication cadence and where updates will happen.',
+          'Create the first delivery task and owner after kickoff.',
+        ],
+      },
+      {
+        id: 'email-templates',
+        heading: 'Client onboarding email templates',
+        templates: [
+          {
+            label: 'Acceptance to next steps',
+            content:
+              'Subject: Next steps for {project_name}\n\nHi {first_name},\n\nGreat, excited to move forward on {project_name}. Here are the next steps so we stay aligned:\n\n1. {admin_step}\n2. Schedule kickoff: {scheduling_link_or_options}\n3. Please send {inputs_needed} before kickoff if possible.\n\nOnce kickoff is scheduled, I will send a short agenda.\n\nBest,\n{your_name}',
+          },
+          {
+            label: 'Kickoff agenda',
+            content:
+              'Subject: Kickoff agenda for {project_name}\n\nHi {first_name},\n\nHere is a simple agenda for our kickoff:\n\n- Confirm goals and success criteria\n- Review scope and timeline\n- Confirm stakeholders and communication cadence\n- Identify access or inputs still needed\n- Agree on the first delivery milestone\n\nIf there is anything else you want to cover, send it over before the call.\n\nBest,\n{your_name}',
+          },
+          {
+            label: 'Waiting on inputs',
+            content:
+              'Subject: Inputs needed for {project_name}\n\nHi {first_name},\n\nTo start cleanly, I still need the following:\n\n- {input_1}\n- {input_2}\n- {input_3}\n\nOnce I have those, I can begin {first_delivery_step}. If any item will take longer, tell me and I will adjust the plan.\n\nThanks,\n{your_name}',
+          },
+        ],
+      },
+      {
+        id: 'handoff-note',
+        heading: 'Create a handoff note before delivery starts',
+        paragraphs: [
+          'Before you move the client into active delivery, write one handoff note. This prevents the sales thread from becoming the only source of truth.',
+        ],
+        bullets: [
+          'Goal: what the client hired you to accomplish.',
+          'Scope: what is included in this phase.',
+          'Inputs: what has been received and what is still missing.',
+          'Cadence: meeting rhythm, reporting rhythm, and main contact.',
+          'First milestone: the first concrete delivery step and date.',
+        ],
+      },
+      {
+        id: 'donna-workflow',
+        heading: 'How Donna supports consultant onboarding',
+        paragraphs: [
+          'Donna CRM helps keep onboarding close to the Gmail threads where acceptance, kickoff planning, and inputs happen. Contacts, pipelines, and tasks can help you move from accepted proposal to active delivery without losing context.',
+          'The AI assistant can help summarize long pre-sales threads into onboarding notes or draft kickoff emails. Review the details before sending or relying on the summary.',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: 'What should happen immediately after a consulting proposal is accepted?',
+        answer:
+          'Send a next-steps email that confirms scope, admin steps, kickoff scheduling, and required inputs. Then create tasks for anything you or the client must do before kickoff.',
+      },
+      {
+        question: 'How do I avoid onboarding delays?',
+        answer:
+          'Name the exact inputs needed, who owns them, and when they are needed. If something is late, follow up on that item specifically instead of sending a vague check-in.',
+      },
+      {
+        question: 'Should onboarding live in a separate project tool?',
+        answer:
+          'Delivery may move into a project tool later, but early onboarding often starts in Gmail. Keep the first workflow close to the thread, then hand off cleanly once delivery begins.',
+      },
+    ],
+  },
 ]
 
 export function getResourceArticleBySlug(slug: string) {

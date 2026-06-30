@@ -47,16 +47,24 @@ The server should be ready in 2-5 seconds. You'll see output like:
 - Content QA checks: `npm run qa:content`
 - Internal link QA checks: `npm run qa:links`
 - SEO QA checks: `npm run qa:seo`
-- Build: `npm run build`
-- Start production server: `npm run start` (after `npm run build`)
 
 Run `npm run qa` before publishing new or changed pages. It checks copy hygiene, internal links, SEO metadata, sitemap discoverability, duplicate H1s, image alt text, and lint errors without requiring a local production build.
+
+## Build and preview verification
+
+Do not use local production builds as the normal verification path for this project. On this Windows workspace, `.next-windows` artifacts can be locked by prior processes, which makes `npm run build` unreliable as a local signal.
+
+Use this sequence instead:
+
+1. Run `npm run qa` locally.
+2. Deploy or inspect a Vercel preview.
+3. Use the preview URL for runtime, layout, and content review.
 
 ## Windows dist-dir behavior
 
 `next.config.ts` sets a Windows-specific dist dir (`.next-windows`).
 
-The `dev` and `build` scripts run `scripts/clean-next.mjs` first to remove stale build artifacts from the active dist dir.
+The `dev` and `build` scripts run `scripts/clean-next.mjs` first to remove stale build artifacts from the active dist dir. Because these artifacts can be locked locally, treat Vercel preview deployments as the build authority.
 
 ## Environment variables
 
