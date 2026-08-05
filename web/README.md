@@ -22,6 +22,8 @@ Run `npm run qa` before publishing new or changed pages. It runs content QA, int
 
 Start here: [docs/README.md](docs/README.md).
 
+All visitor-facing copy must follow the [Donna CRM content and voice guide](docs/content-and-voice.md). Agents should also read the repository-level [AGENTS.md](../AGENTS.md) before changing marketing content.
+
 SEO: [docs/seo/README.md](docs/seo/README.md). Analytics: [docs/analytics/README.md](docs/analytics/README.md).
 
 ## Contact form email (Vercel)

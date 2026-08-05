@@ -12,6 +12,7 @@ const navItems = [
   { path: '/product', label: 'Product' },
   { path: '/how-it-works', label: 'How it works' },
   { path: '/resources', label: 'Resources' },
+  { path: '/updates', label: 'Updates' },
   { path: '/pricing', label: 'Pricing' },
   { path: '/faq', label: 'FAQ' },
 ] as const
@@ -58,7 +59,7 @@ export function SiteHeader() {
           <span>Donna CRM</span>
         </Link>
 
-        <nav className="hidden items-center gap-8 md:flex">
+        <nav className="hidden items-center gap-6 lg:flex lg:gap-8">
           {navItems.map((item) => {
             const active = isActiveNavItem(item.path)
             return (
@@ -95,7 +96,7 @@ export function SiteHeader() {
           </Button>
 
           <button
-            className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-input bg-background transition-colors hover:bg-muted md:hidden"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-input bg-background transition-colors hover:bg-muted lg:hidden"
             aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
             onClick={() => setMobileOpen((v) => !v)}
           >
@@ -107,7 +108,7 @@ export function SiteHeader() {
       {/* Mobile menu with slide transition */}
       <div
         className={cn(
-          'overflow-hidden border-t border-border bg-background transition-all duration-300 md:hidden',
+          'overflow-hidden border-t border-border bg-background transition-all duration-300 lg:hidden',
           mobileOpen ? 'max-h-80 opacity-100' : 'max-h-0 border-t-0 opacity-0',
         )}
       >

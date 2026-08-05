@@ -18,6 +18,7 @@ Routes come from Next.js App Router files under `src/app/`.
 - `/features`
 - `/integrations`
 - `/resources`
+- `/updates`
 - `/pricing`
 - `/faq`
 - `/contact`
@@ -64,6 +65,28 @@ Routes come from Next.js App Router files under `src/app/`.
 - Header nav items: `src/components/SiteHeader.tsx`
 - Footer link groups: `src/components/SiteFooter.tsx`
 
+## Product updates workflow
+
+The `/updates` route is a customer-facing explanation of meaningful Donna CRM improvements. It is not an engineering changelog.
+
+- Route metadata: `src/app/updates/page.tsx`
+- Page layout: `src/views/Updates.tsx`
+- Release content: `src/content/updates.ts`
+- Voice and accuracy standard: [content-and-voice.md](./content-and-voice.md)
+
+When adding a version:
+
+1. Confirm that the version is publicly available. Do not use a development manifest version as publication evidence.
+2. Confirm the live date from the Chrome Web Store or owner-provided evidence.
+3. Verify every capability against the shipped extension in the sibling `gmailCRM` repository.
+4. Include meaningful user-facing features only. Leave out cosmetic refinements, refactors, and maintenance work.
+5. Write from the user's point of view: what changed, how it helps, and how to use it.
+6. Keep the entry out of the published page until the owner approves its final content.
+7. Update page metadata or social preview copy if the positioning of the current release changes.
+8. Run `npm run qa` before publishing.
+
+The Chrome Web Store is authoritative for the current public version. The extension source is authoritative for behavior. The owner is the final authority for release positioning and publication approval.
+
 ## How to add a new page
 
 1. Add `src/app/<route>/page.tsx`.
@@ -73,5 +96,7 @@ Routes come from Next.js App Router files under `src/app/`.
 5. If the page should be discoverable by crawlers, add it to `src/app/sitemap.ts`.
 6. If the page is required for policy/support but should not be discoverable, set `robots: { index: false, follow: true }` and keep it out of `src/app/sitemap.ts`.
 7. Run `npm run qa` before publishing.
+
+New page copy must also pass the review checklist in [content-and-voice.md](./content-and-voice.md).
 
 Do not put redirect routes, noindex pages, or one-off utility pages in the sitemap. Redirect routes should point users and crawlers to the canonical page in one hop.

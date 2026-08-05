@@ -12,3 +12,5 @@ Marketing website for `donnacrm.com`.
 
 - Web package README: `web/README.md`
 - Web docs index: `web/docs/README.md`
+- Agent guidance: `AGENTS.md`
+- Content and voice standard: `web/docs/content-and-voice.md`

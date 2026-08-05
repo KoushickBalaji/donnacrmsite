@@ -34,6 +34,9 @@ export function SiteFooter() {
               <Link href="/resources" className="text-primary-foreground/70 transition-colors hover:text-white">
                 Resources
               </Link>
+              <Link href="/updates" className="text-primary-foreground/70 transition-colors hover:text-white">
+                Product updates
+              </Link>
               <Link href="/gmail-crm" className="text-primary-foreground/70 transition-colors hover:text-white">
                 Gmail CRM
               </Link>

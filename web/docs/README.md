@@ -13,6 +13,7 @@ This folder documents the `web/` package as implemented in source.
 - UI components: [ui-components.md](./ui-components.md)
 - Styling and design tokens: [styling-and-design-tokens.md](./styling-and-design-tokens.md)
 - Design guidelines (layout, copy, visuals): [design-guidelines.md](./design-guidelines.md)
+- Content and voice guide (canonical marketing tone): [content-and-voice.md](./content-and-voice.md)
 - Serverless API (contact email): [serverless-api.md](./serverless-api.md)
 - Deployment: [deployment.md](./deployment.md)
 - SEO: [seo/README.md](./seo/README.md)

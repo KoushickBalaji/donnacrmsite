@@ -76,6 +76,9 @@ Examples:
   - Resource article source data (slugs, metadata, sections, FAQs).
 - `src/content/faqs.ts`
   - Shared FAQ content.
+- `src/content/updates.ts`
+  - Published Donna CRM version history and customer-facing feature descriptions for `/updates`.
+  - Follow `docs/content-and-voice.md` and the product updates workflow in `docs/routing-and-pages.md` before editing.
 - `src/lib/`
   - `metadata.ts` page metadata helper
   - `site.ts` site constants and canonical origin resolver
@@ -90,3 +93,10 @@ Examples:
 - `public/stock/*` stock imagery
 - `public/og.png` default social share image
 - `public/donna-16-v3.png` site icon
+
+## Content standards
+
+- `docs/content-and-voice.md`
+  - Canonical marketing tone, language rules, product-update template, source-of-truth rules, and review checklist.
+- `../AGENTS.md`
+  - Repository-wide agent instructions and required reading.

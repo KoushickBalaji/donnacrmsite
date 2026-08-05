@@ -11,6 +11,7 @@ const paths = [
   '/features',
   '/integrations',
   '/resources',
+  '/updates',
   '/pricing',
   '/faq',
   '/contact',

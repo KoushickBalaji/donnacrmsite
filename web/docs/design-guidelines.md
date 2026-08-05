@@ -64,6 +64,10 @@ Use `scroll-snap-type: y proximity` (not `mandatory`). Mandatory snap prevents u
 
 ## Copy & messaging
 
+### Canonical voice
+
+All visitor-facing copy must follow [content-and-voice.md](./content-and-voice.md). That guide defines the approved Donna CRM tone, vocabulary, accuracy rules, product-update structure, and review checklist. The principles below focus on how that voice appears within page layouts.
+
 ### Headlines sell outcomes, not features
 
 Lead with _why it matters to the visitor_, explain the mechanism in the subtext.
