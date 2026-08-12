@@ -2,6 +2,10 @@
 
 import { ArrowRight, Check, Minus } from 'lucide-react'
 import Link from 'next/link'
+import {
+  ComparisonSources,
+  type ComparisonSource,
+} from '../components/ComparisonSources'
 import { Eyebrow } from '../components/Eyebrow'
 import { Reveal } from '../components/Reveal'
 import { Button } from '../components/ui/Button'
@@ -50,7 +54,7 @@ const comparisonRows: ComparisonRow[] = [
   {
     label: 'Primary workflow',
     donna: { title: 'Inbox-first', detail: 'Thread context and next steps inside Gmail.' },
-    hubspot: { title: 'Platform-first', detail: 'A full CRM platform with many surfaces.' },
+    hubspot: { title: 'Platform-first', detail: 'A full CRM platform with a connected Gmail inbox and sales tools.' },
   },
   {
     label: 'Best fit',
@@ -70,7 +74,7 @@ const comparisonRows: ComparisonRow[] = [
   {
     label: 'AI assistance',
     donna: { title: 'Human-in-the-loop', detail: 'Drafts and suggestions; you confirm.' },
-    hubspot: { title: 'Varies', detail: 'Depends on your stack and how you run operations.' },
+    hubspot: { title: 'Platform-wide AI', detail: 'Broad AI tools are available across the platform, depending on plan.' },
   },
   {
     label: 'Reporting',
@@ -83,6 +87,15 @@ const comparisonRows: ComparisonRow[] = [
     hubspot: { title: 'Team oriented', detail: 'Built for shared visibility and coordination.' },
   },
 ] as const
+
+const hubSpotSources = [
+  { label: 'HubSpot CRM', href: 'https://www.hubspot.com/products/crm' },
+  {
+    label: 'HubSpot email connection',
+    href: 'https://knowledge.hubspot.com/connected-email/connect-your-inbox-to-hubspot',
+  },
+  { label: 'HubSpot CRM pricing', href: 'https://www.hubspot.com/pricing/crm' },
+] as const satisfies readonly ComparisonSource[]
 
 export function HubSpotAlternativePage() {
   const primaryCtaLabel = 'Add Donna to Gmail'
@@ -231,10 +244,11 @@ export function HubSpotAlternativePage() {
               </table>
             </div>
 
-            <p className="mt-4 text-xs text-muted-foreground">
-              Note: This page is a high-level comparison for typical solo workflows. If you have a
-              specific use case, contact us and we will point you to the best fit.
-            </p>
+            <ComparisonSources
+              competitorName="HubSpot"
+              checkedDate="August 2026"
+              sources={hubSpotSources}
+            />
           </Reveal>
         </div>
       </section>

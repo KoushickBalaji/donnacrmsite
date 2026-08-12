@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import { JsonLd } from '../../components/JsonLd'
 import { pageMetadata } from '../../lib/metadata'
-import { softwareApplicationJsonLd } from '../../lib/structuredData'
 import { EmailTrackingInGmailPage } from '../../views/EmailTrackingInGmail'
 import { emailTrackingFaqs } from '../../views/email-tracking-data'
 
@@ -17,10 +16,6 @@ export const metadata: Metadata = pageMetadata({
 const jsonLd = {
   '@context': 'https://schema.org',
   '@graph': [
-    softwareApplicationJsonLd({
-      canonicalPath: '/email-tracking-in-gmail',
-      description,
-    }),
     {
       '@type': 'FAQPage',
       mainEntity: emailTrackingFaqs.map((faq) => ({

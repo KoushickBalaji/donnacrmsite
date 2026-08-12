@@ -2,6 +2,10 @@
 
 import { ArrowRight, Check, Minus } from 'lucide-react'
 import Link from 'next/link'
+import {
+  ComparisonSources,
+  type ComparisonSource,
+} from '../components/ComparisonSources'
 import { Eyebrow } from '../components/Eyebrow'
 import { Reveal } from '../components/Reveal'
 import { Button } from '../components/ui/Button'
@@ -33,16 +37,16 @@ const notIdealIf = [
 
 const whyMoveAway = [
   {
-    title: 'Pipelines take over your inbox',
-    text: 'Over time, threads, boxes, and stages compete for attention. For solo operators, it can feel like you are managing the CRM instead of the relationship.',
+    title: 'You need less pipeline structure',
+    text: 'Streak brings configurable pipelines into Gmail. If your main need is remembering context and the next follow-up, a lighter structure may be easier to maintain.',
   },
   {
     title: 'Setup becomes maintenance',
     text: 'Pipelines, fields, and workflows need tuning to stay useful. That overhead is fine for teams, but it is friction for individuals.',
   },
   {
-    title: 'Built for teams, not individuals',
-    text: 'Streak is strong when multiple people share a pipeline. If you just want to remember, follow up, and keep context in Gmail, it can feel heavier than necessary.',
+    title: 'Your workflow is primarily individual',
+    text: 'Streak supports individual and shared pipeline workflows. Donna focuses on solo operators who want context and follow-ups without a highly configurable CRM.',
   },
 ] as const
 
@@ -55,7 +59,7 @@ const comparisonRows: ComparisonRow[] = [
   {
     label: 'Setup and maintenance',
     donna: { title: 'Minimal', detail: 'Start with simple defaults and refine later.' },
-    streak: { title: 'More setup', detail: 'Pipelines and fields take ongoing tuning.' },
+    streak: { title: 'Highly configurable', detail: 'Pipelines, fields, and automations can be tailored.' },
   },
   {
     label: 'Best fit',
@@ -70,7 +74,7 @@ const comparisonRows: ComparisonRow[] = [
   {
     label: 'AI assistance',
     donna: { title: 'Human-in-the-loop', detail: 'Suggests updates and drafts; you confirm.' },
-    streak: { title: 'Not the core', detail: 'The core workflow is pipeline and boxes.' },
+    streak: { title: 'CRM-aware AI', detail: 'Supports CRM summaries, research, and workflow assistance by plan.' },
   },
   {
     label: 'Deal tracking',
@@ -98,6 +102,12 @@ const comparisonRows: ComparisonRow[] = [
     streak: { title: 'Yes', detail: 'Runs in Gmail.' },
   },
 ]
+
+const streakSources = [
+  { label: 'Streak for Google Workspace', href: 'https://www.streak.com/google-workspace-crm' },
+  { label: 'Streak AI', href: 'https://www.streak.com/ai' },
+  { label: 'Streak pricing', href: 'https://www.streak.com/pricing' },
+] as const satisfies readonly ComparisonSource[]
 
 export function StreakAlternativePage() {
   const primaryCtaLabel = 'Add Donna to Gmail'
@@ -250,10 +260,11 @@ export function StreakAlternativePage() {
               </table>
             </div>
 
-            <p className="mt-4 text-xs text-muted-foreground">
-              Note: This page is a high-level comparison for typical solo workflows. If you have
-              a specific use case, contact us and we will point you to the best fit.
-            </p>
+            <ComparisonSources
+              competitorName="Streak"
+              checkedDate="August 2026"
+              sources={streakSources}
+            />
           </Reveal>
         </div>
       </section>

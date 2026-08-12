@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import { JsonLd } from '../../components/JsonLd'
 import { pageMetadata } from '../../lib/metadata'
-import { softwareApplicationJsonLd } from '../../lib/structuredData'
 import { GmailCrmPage } from '../../views/GmailCrm'
 import { gmailCrmFaqs } from '../../views/gmail-crm-data'
 
@@ -17,10 +16,6 @@ export const metadata: Metadata = pageMetadata({
 const jsonLd = {
   '@context': 'https://schema.org',
   '@graph': [
-    softwareApplicationJsonLd({
-      canonicalPath: '/gmail-crm',
-      description,
-    }),
     {
       '@type': 'FAQPage',
       mainEntity: gmailCrmFaqs.map((faq) => ({

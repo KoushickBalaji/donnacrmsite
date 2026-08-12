@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import { JsonLd } from '../../components/JsonLd'
 import { pageMetadata } from '../../lib/metadata'
-import { softwareApplicationJsonLd } from '../../lib/structuredData'
 import { CrmForConsultantsPage } from '../../views/CrmForConsultants'
 import { crmForConsultantsFaqs } from '../../views/crm-for-consultants-data'
 
@@ -17,10 +16,6 @@ export const metadata: Metadata = pageMetadata({
 const jsonLd = {
   '@context': 'https://schema.org',
   '@graph': [
-    softwareApplicationJsonLd({
-      canonicalPath: '/crm-for-consultants',
-      description,
-    }),
     {
       '@type': 'FAQPage',
       mainEntity: crmForConsultantsFaqs.map((faq) => ({

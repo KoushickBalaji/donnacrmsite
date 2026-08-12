@@ -1,5 +1,4 @@
-const CHROME_WEB_STORE_INSTALL_URL =
-  'https://chromewebstore.google.com/detail/donna-crm/fadjjpednmcoomcpajkfbpchankdoiip'
+import { DONNA_PRODUCT_FACTS } from './productFacts'
 
 type UTM = {
   source?: string
@@ -16,7 +15,7 @@ const DEFAULT_UTM: Required<Pick<UTM, 'source' | 'medium' | 'campaign'>> = {
 }
 
 export function chromeWebStoreInstallUrl(utm: UTM = {}) {
-  const url = new URL(CHROME_WEB_STORE_INSTALL_URL)
+  const url = new URL(DONNA_PRODUCT_FACTS.chromeWebStoreUrl)
   url.searchParams.set('utm_source', utm.source ?? DEFAULT_UTM.source)
   url.searchParams.set('utm_medium', utm.medium ?? DEFAULT_UTM.medium)
   url.searchParams.set('utm_campaign', utm.campaign ?? DEFAULT_UTM.campaign)

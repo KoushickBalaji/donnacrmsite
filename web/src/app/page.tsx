@@ -23,7 +23,6 @@ export default function Page() {
   const jsonLd = {
     '@context': 'https://schema.org',
     ...softwareApplicationJsonLd({
-      canonicalPath: '/',
       description,
     }),
   }

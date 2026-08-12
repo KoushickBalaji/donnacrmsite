@@ -309,7 +309,7 @@ export function ProductPage() {
               A quick walkthrough of how Donna fits into your Gmail
               workflow - from install to first deal.
             </p>
-            <div className="mt-8">
+            <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
               <Button
                 size="lg"
                 variant="secondary"
@@ -320,6 +320,9 @@ export function ProductPage() {
                   How it works
                   <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
                 </Link>
+              </Button>
+              <Button size="lg" variant="outline" asChild>
+                <Link href="/integrations">Google integrations</Link>
               </Button>
             </div>
           </Reveal>

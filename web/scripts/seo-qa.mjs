@@ -5,6 +5,7 @@ const APP_ROOT = path.resolve('src/app')
 const VIEW_ROOT = path.resolve('src/views')
 const SITEMAP_PATH = path.resolve('src/app/sitemap.ts')
 const RESOURCES_PATH = path.resolve('src/content/resources.ts')
+const STRUCTURED_DATA_PATH = path.resolve('src/lib/structuredData.ts')
 const LINK_SOURCE_ROOTS = ['src/app', 'src/views', 'src/components', 'src/content']
 
 const TITLE_MAX = 60
@@ -43,7 +44,7 @@ function firstStringAfter(text, pattern) {
 }
 
 function isRedirectRoute(text) {
-  return /\bredirect\(/.test(text)
+  return /\b(?:redirect|permanentRedirect)\(/.test(text)
 }
 
 function isNoindexPage(text) {
@@ -117,6 +118,107 @@ async function checkResourceMetadata(issues) {
     const label = `/resources/${slug}`
     checkTitle(issues, label, `${seoTitle} | Donna CRM`)
     checkDescription(issues, label, description)
+  }
+}
+
+async function checkSoftwareApplicationSchema(issues) {
+  const helperText = await readFile(STRUCTURED_DATA_PATH, 'utf8').catch(() => null)
+  if (!helperText) {
+    issues.push('missing SoftwareApplication structured-data helper')
+    return
+  }
+
+  if (!/aggregateRating:\s*\{/.test(helperText)) {
+    issues.push('SoftwareApplication schema is missing AggregateRating')
+  }
+  if (!/price:\s*String\(DONNA_PRODUCT_FACTS\.monthlyPriceUsd\)/.test(helperText)) {
+    issues.push('SoftwareApplication offer must use the shared nonzero monthly price')
+  }
+  if (!/priceCurrency:\s*'USD'/.test(helperText)) {
+    issues.push('SoftwareApplication offer is missing USD price currency')
+  }
+
+  const consumers = []
+  const pageFiles = (await walk(APP_ROOT)).filter((filePath) => filePath.endsWith(`${path.sep}page.tsx`))
+  for (const filePath of pageFiles) {
+    const text = await readFile(filePath, 'utf8')
+    if (text.includes('softwareApplicationJsonLd')) consumers.push(routeFromPage(filePath))
+  }
+
+  if (consumers.length !== 1 || consumers[0] !== '/') {
+    issues.push(
+      `SoftwareApplication schema must be used only on / (found: ${consumers.join(', ') || 'none'})`,
+    )
+  }
+}
+
+async function checkResourceClusters(issues) {
+  const text = await readFile(RESOURCES_PATH, 'utf8').catch(() => null)
+  if (!text) return
+
+  const validClusters = new Set([
+    'gmail-crm-foundations',
+    'consulting-workflows',
+    'freelance-workflows',
+    'ai-assisted-workflows',
+    'solo-sales-workflows',
+    'outreach-tool-workflows',
+    'follow-up-workflows',
+  ])
+  const slugs = Array.from(text.matchAll(/^\s{4}slug:\s*'([^']+)',/gm), (match) => match[1])
+  const articles = Array.from(
+    text.matchAll(/^\s{4}slug:\s*'([^']+)',\s*\r?\n\s{4}topicCluster:\s*'([^']+)',/gm),
+    (match) => ({ slug: match[1], topicCluster: match[2] }),
+  )
+
+  if (articles.length !== slugs.length) {
+    const clusteredSlugs = new Set(articles.map((article) => article.slug))
+    const missing = slugs.filter((slug) => !clusteredSlugs.has(slug))
+    issues.push(`resources missing a topic cluster: ${missing.join(', ')}`)
+  }
+
+  const clusters = new Map()
+  for (const article of articles) {
+    if (!validClusters.has(article.topicCluster)) {
+      issues.push(`${article.slug} uses unknown topic cluster ${article.topicCluster}`)
+      continue
+    }
+    const clusterArticles = clusters.get(article.topicCluster) ?? []
+    clusterArticles.push(article)
+    clusters.set(article.topicCluster, clusterArticles)
+  }
+
+  for (const cluster of validClusters) {
+    const clusterArticles = clusters.get(cluster) ?? []
+    if (clusterArticles.length < 3) {
+      issues.push(`resource topic cluster ${cluster} has fewer than three articles`)
+    }
+  }
+
+  const inboundCounts = new Map(articles.map((article) => [article.slug, 0]))
+  for (const article of articles) {
+    const clusterArticles = clusters.get(article.topicCluster) ?? []
+    const currentIndex = clusterArticles.findIndex((candidate) => candidate.slug === article.slug)
+    const related = []
+    const resultLimit = Math.min(3, clusterArticles.length - 1)
+
+    for (let offset = 1; related.length < resultLimit && offset <= clusterArticles.length; offset += 1) {
+      const candidate = clusterArticles[(currentIndex + offset) % clusterArticles.length]
+      if (candidate && candidate.slug !== article.slug && !related.includes(candidate.slug)) {
+        related.push(candidate.slug)
+      }
+    }
+
+    if (related.length < 2 || related.length > 3) {
+      issues.push(`${article.slug} resolves to ${related.length} related resource links`)
+    }
+    for (const relatedSlug of related) {
+      inboundCounts.set(relatedSlug, (inboundCounts.get(relatedSlug) ?? 0) + 1)
+    }
+  }
+
+  for (const [slug, count] of inboundCounts) {
+    if (count < 2) issues.push(`/resources/${slug} receives only ${count} resource links`)
   }
 }
 
@@ -199,6 +301,8 @@ async function main() {
 
   await checkPageMetadata(issues)
   await checkResourceMetadata(issues)
+  await checkSoftwareApplicationSchema(issues)
+  await checkResourceClusters(issues)
   await checkImages(issues)
   await checkDuplicateH1s(issues)
   await checkSitemapRedirectEntries(issues)

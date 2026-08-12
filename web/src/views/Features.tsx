@@ -279,6 +279,9 @@ export function FeaturesPage() {
                 <Link href="/gmail-crm" className="text-primary hover:underline">
                   Gmail CRM overview
                 </Link>
+                <Link href="/integrations" className="text-primary hover:underline">
+                  Google integrations
+                </Link>
                 <Link href="/resources" className="text-primary hover:underline">
                   Resources and templates
                 </Link>
