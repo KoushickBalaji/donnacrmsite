@@ -2,6 +2,10 @@
 
 import { ArrowRight, Check, Minus } from 'lucide-react'
 import Link from 'next/link'
+import {
+  ComparisonSources,
+  type ComparisonSource,
+} from '../components/ComparisonSources'
 import { Eyebrow } from '../components/Eyebrow'
 import { Reveal } from '../components/Reveal'
 import { Button } from '../components/ui/Button'
@@ -37,8 +41,8 @@ const whyPeopleLookForAlternatives = [
     text: 'Pipeline workflows are powerful, but for solo operators they can become one more system to keep updated instead of a tool that reduces work.',
   },
   {
-    title: 'Context gets separated from the thread',
-    text: 'If the real work happens in Gmail, switching between the inbox and a CRM can add friction and make follow-ups slip.',
+    title: 'You want the inbox to be the main workspace',
+    text: 'Pipedrive can sync email on eligible plans, while its primary workflow remains in the CRM. Donna keeps the day-to-day workflow beside Gmail conversations.',
   },
   {
     title: 'You want a simpler next-step loop',
@@ -68,9 +72,14 @@ const comparisonRows: ComparisonRow[] = [
     pipedrive: { title: 'CRM-driven', detail: 'Follow-ups often managed via CRM activities.' },
   },
   {
+    label: 'Email connection',
+    donna: { title: 'Built around Gmail', detail: 'Donna runs beside the active conversation.' },
+    pipedrive: { title: 'Available by plan', detail: 'Email sync is available on Growth and higher plans.' },
+  },
+  {
     label: 'AI assistance',
     donna: { title: 'Human-in-the-loop', detail: 'Drafts and suggestions; you confirm.' },
-    pipedrive: { title: 'Varies', detail: 'Depends on your workflow and tooling.' },
+    pipedrive: { title: 'Built into current plans', detail: 'Sales and email assistance varies by feature and plan.' },
   },
   {
     label: 'Reporting',
@@ -83,6 +92,12 @@ const comparisonRows: ComparisonRow[] = [
     pipedrive: { title: 'Team oriented', detail: 'Built for shared processes and visibility.' },
   },
 ] as const
+
+const pipedriveSources = [
+  { label: 'Pipedrive pricing and features', href: 'https://www.pipedrive.com/en/pricing' },
+  { label: 'Pipedrive email sync', href: 'https://support.pipedrive.com/en/article/email-sync' },
+  { label: 'Pipedrive reporting', href: 'https://www.pipedrive.com/en/features/sales-reporting' },
+] as const satisfies readonly ComparisonSource[]
 
 export function PipedriveAlternativePage() {
   const primaryCtaLabel = 'Add Donna to Gmail'
@@ -233,10 +248,11 @@ export function PipedriveAlternativePage() {
               </table>
             </div>
 
-            <p className="mt-4 text-xs text-muted-foreground">
-              Note: This page is a high-level comparison for typical solo workflows. If you have a
-              specific use case, contact us and we will point you to the best fit.
-            </p>
+            <ComparisonSources
+              competitorName="Pipedrive"
+              checkedDate="August 2026"
+              sources={pipedriveSources}
+            />
           </Reveal>
         </div>
       </section>

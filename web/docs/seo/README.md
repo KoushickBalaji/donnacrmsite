@@ -20,8 +20,8 @@ Start here for Search Console workflow: `docs/seo/search-console.md`.
 - Default Open Graph image is `public/og.png`.
 - Structured data includes:
   - Global Organization + WebSite JSON-LD in `src/app/layout.tsx`
-  - Page JSON-LD on selected pages (for example Gmail CRM pages and resource articles)
-  - Reusable SoftwareApplication JSON-LD from `src/lib/structuredData.ts`
+  - FAQ and article JSON-LD on relevant supporting pages
+  - One SoftwareApplication entity on the homepage from `src/lib/structuredData.ts`
 
 ## Publishing rules
 
@@ -35,19 +35,22 @@ Start here for Search Console workflow: `docs/seo/search-console.md`.
   - Use the resources listing for article pages.
 - Do not add redirect routes, noindex pages, or utility/policy pages to the sitemap.
 - Use `robots: { index: false, follow: true }` for direct-access policy/support pages that should not be search landing pages.
-- Use `softwareApplicationJsonLd(...)` for product/feature/pricing/segment pages that describe the app.
+- Keep SoftwareApplication JSON-LD on the homepage only. Supporting product pages should use only the schema type their visible content supports, such as FAQPage.
+- Keep the visible homepage rating and monthly price aligned with `src/lib/productFacts.ts`.
+- Before changing rating data, verify the current value and count on Donna's Chrome Web Store listing. Before changing offer data, verify the current pricing page.
 - Do not publish fake ratings, review counts, adoption metrics, or unavailable offer data in structured data.
 
 ## Redirects and indexing behavior
 
-- `/home` redirects to `/`.
-- `/compare` redirects to `/streak-crm-alternative`.
+- `/home` permanently redirects to `/`.
+- `/compare` permanently redirects to `/streak-crm-alternative`.
 - Production middleware redirects `http` requests to `https` and redirects `donnacrm.com` to `www.donnacrm.com` in one hop when both apply.
+- Vercel may apply its own HTTP-to-HTTPS redirect before application middleware. Do not add application redirects solely to eliminate that platform-managed hop.
 - Global robots metadata in `layout.tsx` uses:
   - `index/follow = true` when `VERCEL_ENV === 'production'` or `NODE_ENV === 'production'`
   - `index/follow = false` otherwise
 - `src/middleware.ts` enforces HTTPS in production requests.
-- `npm run qa:seo` checks page title lengths, meta description lengths, empty image alt text, duplicate H1s, sitemap discoverability, and redirect routes accidentally listed in the sitemap.
+- `npm run qa:seo` checks page title lengths, meta description lengths, empty image alt text, duplicate H1s, sitemap discoverability, redirect routes, homepage software schema, and resource-topic linking.
 - `npm run qa` runs content QA, internal link QA, SEO QA, and lint before publishing.
 
 ## Code locations

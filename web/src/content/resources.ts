@@ -21,8 +21,18 @@ export type ResourceArticleLink = {
   label: string
 }
 
+export type ResourceTopicCluster =
+  | 'gmail-crm-foundations'
+  | 'consulting-workflows'
+  | 'freelance-workflows'
+  | 'ai-assisted-workflows'
+  | 'solo-sales-workflows'
+  | 'outreach-tool-workflows'
+  | 'follow-up-workflows'
+
 export type ResourceArticle = {
   slug: string
+  topicCluster: ResourceTopicCluster
   title: string
   seoTitle?: string
   description: string
@@ -40,6 +50,7 @@ export type ResourceArticle = {
 export const resourceArticles: ResourceArticle[] = [
   {
     slug: 'gmail-crm-for-consultants-workflow',
+    topicCluster: 'consulting-workflows',
     title: 'Gmail CRM for consultants: a lightweight workflow',
     seoTitle: 'Gmail CRM for Consultants',
     description:
@@ -157,6 +168,7 @@ export const resourceArticles: ResourceArticle[] = [
   },
   {
     slug: 'follow-up-system-in-gmail',
+    topicCluster: 'follow-up-workflows',
     title: 'A simple follow-up system in Gmail (templates + reminders)',
     seoTitle: 'Simple Gmail Follow-up System',
     description:
@@ -273,6 +285,7 @@ export const resourceArticles: ResourceArticle[] = [
   },
   {
     slug: 'inbox-to-pipeline',
+    topicCluster: 'gmail-crm-foundations',
     title: 'Inbox to pipeline: turn conversations into next steps',
     seoTitle: 'Inbox to Pipeline Workflow',
     description:
@@ -365,6 +378,7 @@ export const resourceArticles: ResourceArticle[] = [
   },
   {
     slug: 'track-deals-from-email-threads',
+    topicCluster: 'solo-sales-workflows',
     title: 'How to track deals from email threads (without spreadsheets)',
     seoTitle: 'Track Deals from Email Threads',
     description:
@@ -466,6 +480,7 @@ export const resourceArticles: ResourceArticle[] = [
   },
   {
     slug: 'personal-crm-inside-gmail-setup',
+    topicCluster: 'gmail-crm-foundations',
     title: 'Personal CRM inside Gmail: set it up in 15 minutes',
     seoTitle: 'Personal CRM Inside Gmail',
     description:
@@ -545,6 +560,7 @@ export const resourceArticles: ResourceArticle[] = [
   },
   {
     slug: 'email-tracking-for-proposals',
+    topicCluster: 'follow-up-workflows',
     title: 'Email tracking for proposals: what to expect (and what not to)',
     seoTitle: 'Proposal Email Tracking',
     description:
@@ -644,6 +660,7 @@ export const resourceArticles: ResourceArticle[] = [
   },
   {
     slug: 'what-is-an-agentic-crm',
+    topicCluster: 'ai-assisted-workflows',
     title: 'What is an agentic CRM? (human-in-the-loop explained)',
     seoTitle: 'What Is an Agentic CRM?',
     description:
@@ -738,6 +755,7 @@ export const resourceArticles: ResourceArticle[] = [
   },
   {
     slug: 'consultant-pipeline-stages',
+    topicCluster: 'consulting-workflows',
     title: 'Consultant pipeline stages you can copy-paste',
     description:
       'A lightweight consulting pipeline you can reuse: clear stages, exit criteria, and next-step habits that keep your client tracker accurate.',
@@ -831,6 +849,7 @@ export const resourceArticles: ResourceArticle[] = [
   },
   {
     slug: 'freelance-client-tracker-lead-to-paid',
+    topicCluster: 'freelance-workflows',
     title: 'Freelance client tracker: from lead to paid (a lightweight Gmail workflow)',
     seoTitle: 'Freelance Client Tracker',
     description:
@@ -924,6 +943,7 @@ export const resourceArticles: ResourceArticle[] = [
   },
   {
     slug: 'follow-up-email-templates-solo-b2b-sales',
+    topicCluster: 'solo-sales-workflows',
     title: 'Follow-up email templates for solo B2B sales',
     description:
       'Copy-ready follow-up templates for solo B2B sellers, plus a simple cadence and a workflow for keeping next steps visible inside Gmail.',
@@ -1028,6 +1048,7 @@ export const resourceArticles: ResourceArticle[] = [
   },
   {
     slug: 'keep-crm-updated-without-manual-data-entry',
+    topicCluster: 'gmail-crm-foundations',
     title: 'How to keep your CRM updated without manual data entry',
     seoTitle: 'Keep Your CRM Updated',
     description:
@@ -1123,6 +1144,7 @@ export const resourceArticles: ResourceArticle[] = [
   },
   {
     slug: 'gmail-crm-extension-checklist',
+    topicCluster: 'gmail-crm-foundations',
     title: 'Gmail CRM extension checklist: what to evaluate',
     description:
       'A checklist for evaluating Gmail CRM extensions: workflow fit, pipelines, tasks, AI safety, permissions, privacy, and solo-operator details.',
@@ -1233,6 +1255,7 @@ export const resourceArticles: ResourceArticle[] = [
   },
   {
     slug: 'weekly-gmail-crm-review-checklist',
+    topicCluster: 'gmail-crm-foundations',
     title: 'Weekly Gmail CRM review checklist (15 minutes)',
     description:
       'A simple 15-minute weekly review to keep your Gmail CRM up to date: triage stalled threads, confirm next steps, and prevent follow-ups from slipping.',
@@ -1338,6 +1361,7 @@ export const resourceArticles: ResourceArticle[] = [
   },
   {
     slug: 'proposal-follow-up-sequence-templates',
+    topicCluster: 'solo-sales-workflows',
     title: 'Proposal follow-up sequence (templates + timing for solo B2B sales)',
     seoTitle: 'Proposal Follow-up Sequence',
     description:
@@ -1453,6 +1477,7 @@ export const resourceArticles: ResourceArticle[] = [
   },
   {
     slug: 'consulting-meeting-follow-up-email-templates',
+    topicCluster: 'consulting-workflows',
     title: 'Consulting meeting follow-up templates (recap + next steps)',
     seoTitle: 'Consulting Follow-up Templates',
     description:
@@ -1554,6 +1579,7 @@ export const resourceArticles: ResourceArticle[] = [
   },
   {
     slug: 'freelance-retainer-renewal-workflow',
+    topicCluster: 'freelance-workflows',
     title: 'Freelance retainer renewal workflow (stages + check-in cadence)',
     seoTitle: 'Freelance Retainer Renewal',
     description:
@@ -1659,6 +1685,7 @@ export const resourceArticles: ResourceArticle[] = [
   },
   {
     slug: 'gmail-crm-tags-notes-system',
+    topicCluster: 'gmail-crm-foundations',
     title: 'A simple tags + notes system for a personal CRM in Gmail',
     seoTitle: 'Gmail CRM Tags and Notes',
     description:
@@ -1760,6 +1787,7 @@ export const resourceArticles: ResourceArticle[] = [
   },
   {
     slug: 'ai-assistant-prompts-for-followups-and-crm-updates',
+    topicCluster: 'ai-assisted-workflows',
     title: 'AI prompts for follow-ups and CRM updates (human-in-the-loop)',
     seoTitle: 'AI Prompts for CRM Follow-ups',
     description:
@@ -1870,6 +1898,7 @@ export const resourceArticles: ResourceArticle[] = [
   },
   {
     slug: 'reengagement-followup-templates-dormant-leads',
+    topicCluster: 'solo-sales-workflows',
     title: 'Re-engagement follow-up templates for dormant leads (no awkwardness)',
     seoTitle: 'Dormant Lead Follow-up Templates',
     description:
@@ -1973,6 +2002,7 @@ export const resourceArticles: ResourceArticle[] = [
   },
   {
     slug: 'scope-creep-prevention-email-workflow',
+    topicCluster: 'consulting-workflows',
     title: 'Scope creep prevention: the email-first workflow (templates included)',
     seoTitle: 'Scope Creep Prevention Workflow',
     description:
@@ -2078,6 +2108,7 @@ export const resourceArticles: ResourceArticle[] = [
   },
   {
     slug: 'recruiter-candidate-followup-system-in-gmail',
+    topicCluster: 'follow-up-workflows',
     title: 'Recruiter candidate follow-up system in Gmail (stages + templates)',
     seoTitle: 'Recruiter Follow-up System',
     description:
@@ -2188,6 +2219,7 @@ export const resourceArticles: ResourceArticle[] = [
 
   {
     slug: 'ai-tools-for-solo-founders-sales',
+    topicCluster: 'ai-assisted-workflows',
     title: 'AI tools for solo founders doing sales',
     seoTitle: 'AI Tools for Solo Founder Sales',
     description:
@@ -2303,6 +2335,7 @@ export const resourceArticles: ResourceArticle[] = [
   },
   {
     slug: 'ai-tools-for-freelancers-client-management',
+    topicCluster: 'ai-assisted-workflows',
     title: 'AI tools for freelancers managing clients',
     seoTitle: 'AI Tools for Freelancer Client Management',
     description:
@@ -2410,6 +2443,7 @@ export const resourceArticles: ResourceArticle[] = [
   },
   {
     slug: 'founder-led-sales-crm-in-gmail',
+    topicCluster: 'solo-sales-workflows',
     title: 'Founder-led sales CRM in Gmail: a practical setup',
     seoTitle: 'Founder-Led Sales CRM in Gmail',
     description:
@@ -2515,6 +2549,7 @@ export const resourceArticles: ResourceArticle[] = [
   },
   {
     slug: 'simple-sales-stack-for-solo-founders',
+    topicCluster: 'solo-sales-workflows',
     title: 'A simple sales stack for solo founders',
     seoTitle: 'Simple Sales Stack for Solo Founders',
     description:
@@ -2625,6 +2660,7 @@ export const resourceArticles: ResourceArticle[] = [
   },
   {
     slug: 'ai-prompts-for-founder-led-sales',
+    topicCluster: 'ai-assisted-workflows',
     title: 'AI prompts for founder-led sales',
     seoTitle: 'AI Prompts for Founder-Led Sales',
     description:
@@ -2776,6 +2812,7 @@ export const resourceArticles: ResourceArticle[] = [
 
   {
     slug: 'use-apollo-with-gmail-crm',
+    topicCluster: 'outreach-tool-workflows',
     title: 'How to use Apollo with a Gmail CRM workflow',
     seoTitle: 'Use Apollo with a Gmail CRM',
     description:
@@ -2886,6 +2923,7 @@ export const resourceArticles: ResourceArticle[] = [
   },
   {
     slug: 'apollo-to-gmail-follow-up-workflow',
+    topicCluster: 'outreach-tool-workflows',
     title: 'Apollo to Gmail follow-up workflow for solo sales',
     seoTitle: 'Apollo to Gmail Follow-up Workflow',
     description:
@@ -3008,6 +3046,7 @@ export const resourceArticles: ResourceArticle[] = [
   },
   {
     slug: 'instantly-to-crm-workflow',
+    topicCluster: 'outreach-tool-workflows',
     title: 'Instantly to CRM workflow: keep replies organized in Gmail',
     seoTitle: 'Instantly to CRM Workflow',
     description:
@@ -3116,6 +3155,7 @@ export const resourceArticles: ResourceArticle[] = [
   },
   {
     slug: 'manage-instantly-replies-in-gmail',
+    topicCluster: 'outreach-tool-workflows',
     title: 'How to manage Instantly replies in Gmail without losing context',
     seoTitle: 'Manage Instantly Replies in Gmail',
     description:
@@ -3231,6 +3271,7 @@ export const resourceArticles: ResourceArticle[] = [
   },
   {
     slug: 'cold-email-to-pipeline-workflow',
+    topicCluster: 'solo-sales-workflows',
     title: 'Cold email to pipeline workflow: from reply to next step',
     seoTitle: 'Cold Email to Pipeline Workflow',
     description:
@@ -3347,6 +3388,7 @@ export const resourceArticles: ResourceArticle[] = [
 
   {
     slug: 'what-to-do-after-cold-email-reply',
+    topicCluster: 'solo-sales-workflows',
     title: 'What to do after a cold email reply',
     seoTitle: 'What to Do After a Cold Email Reply',
     description:
@@ -3473,6 +3515,7 @@ export const resourceArticles: ResourceArticle[] = [
   },
   {
     slug: 'gmail-contact-notes-system',
+    topicCluster: 'gmail-crm-foundations',
     title: 'A Gmail contact notes system for people who sell from email',
     seoTitle: 'Gmail Contact Notes System',
     description:
@@ -3586,6 +3629,7 @@ export const resourceArticles: ResourceArticle[] = [
   },
   {
     slug: 'gmail-pipeline-tracker',
+    topicCluster: 'gmail-crm-foundations',
     title: 'How to build a Gmail pipeline tracker',
     seoTitle: 'Gmail Pipeline Tracker',
     description:
@@ -3694,6 +3738,7 @@ export const resourceArticles: ResourceArticle[] = [
   },
   {
     slug: 'freelance-proposal-tracker-in-gmail',
+    topicCluster: 'freelance-workflows',
     title: 'Freelance proposal tracker in Gmail',
     seoTitle: 'Freelance Proposal Tracker in Gmail',
     description:
@@ -3801,6 +3846,7 @@ export const resourceArticles: ResourceArticle[] = [
   },
   {
     slug: 'consultant-client-onboarding-email-workflow',
+    topicCluster: 'consulting-workflows',
     title: 'Consultant client onboarding email workflow',
     seoTitle: 'Consultant Client Onboarding Email Workflow',
     description:
@@ -3916,4 +3962,27 @@ export const resourceArticles: ResourceArticle[] = [
 
 export function getResourceArticleBySlug(slug: string) {
   return resourceArticles.find((article) => article.slug === slug) ?? null
+}
+
+export function getRelatedResourceArticles(article: ResourceArticle, limit = 3) {
+  if (limit <= 0) return []
+
+  const clusterArticles = resourceArticles.filter(
+    (candidate) => candidate.topicCluster === article.topicCluster,
+  )
+  const currentIndex = clusterArticles.findIndex((candidate) => candidate.slug === article.slug)
+
+  if (currentIndex === -1) return []
+
+  const result: ResourceArticle[] = []
+  const resultLimit = Math.min(limit, clusterArticles.length - 1)
+
+  for (let offset = 1; result.length < resultLimit; offset += 1) {
+    const candidate = clusterArticles[(currentIndex + offset) % clusterArticles.length]
+    if (candidate.slug !== article.slug && !result.some((item) => item.slug === candidate.slug)) {
+      result.push(candidate)
+    }
+  }
+
+  return result
 }

@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import { JsonLd } from '../../components/JsonLd'
 import { pageMetadata } from '../../lib/metadata'
-import { softwareApplicationJsonLd } from '../../lib/structuredData'
 import { PricingPage } from '../../views/Pricing'
 import { pricingFaqs } from '../../views/pricing-data'
 
@@ -17,10 +16,6 @@ export const metadata: Metadata = pageMetadata({
 const jsonLd = {
   '@context': 'https://schema.org',
   '@graph': [
-    softwareApplicationJsonLd({
-      canonicalPath: '/pricing',
-      description,
-    }),
     {
       '@type': 'FAQPage',
       mainEntity: pricingFaqs.map((faq) => ({

@@ -4,7 +4,7 @@ import { Eyebrow } from '../components/Eyebrow'
 import { FaqList, type FaqItem } from '../components/FaqList'
 import { Reveal } from '../components/Reveal'
 import { Button } from '../components/ui/Button'
-import type { ResourceArticle } from '../content/resources'
+import { getRelatedResourceArticles, type ResourceArticle } from '../content/resources'
 import { chromeWebStoreInstallUrl } from '../lib/chromeWebStore'
 
 const primaryCtaLabel = 'Add to Gmail - Free Trial'
@@ -16,6 +16,7 @@ function formatIsoDate(isoDate: string) {
 }
 
 export function ResourceArticlePage({ article }: { article: ResourceArticle }) {
+  const relatedArticles = getRelatedResourceArticles(article)
   const faqs: FaqItem[] = article.faqs.map((faq) => ({
     question: faq.question,
     answer: faq.answer,
@@ -222,25 +223,42 @@ export function ResourceArticlePage({ article }: { article: ResourceArticle }) {
                     Related reading
                   </h2>
                   <p className="mt-3 text-muted-foreground">
-                    Keep exploring: these pages go deeper on the feature set and the core Gmail CRM
-                    workflow.
+                    Continue with practical guides for the same workflow, or explore how Donna
+                    helps inside Gmail.
                   </p>
-                  <div className="mt-6 flex flex-wrap gap-3">
-                    <Link
-                      href={article.primaryInternalLink.href}
-                      className="rounded-full bg-primary/10 px-4 py-2 text-sm font-semibold text-primary transition-colors hover:bg-primary/15"
-                    >
-                      {article.primaryInternalLink.label}
-                    </Link>
-                    {article.supportingInternalLinks.map((link) => (
+                  <div className="mt-6">
+                    <p className="text-sm font-bold text-foreground">Related guides</p>
+                    <div className="mt-3 flex flex-wrap gap-3">
+                      {relatedArticles.map((relatedArticle) => (
+                        <Link
+                          key={relatedArticle.slug}
+                          href={`/resources/${relatedArticle.slug}`}
+                          className="rounded-full bg-primary/10 px-4 py-2 text-sm font-semibold text-primary transition-colors hover:bg-primary/15"
+                        >
+                          {relatedArticle.title}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="mt-6">
+                    <p className="text-sm font-bold text-foreground">Explore Donna</p>
+                    <div className="mt-3 flex flex-wrap gap-3">
                       <Link
-                        key={link.href}
-                        href={link.href}
-                        className="rounded-full bg-muted px-4 py-2 text-sm font-semibold text-foreground transition-colors hover:bg-muted/70"
+                        href={article.primaryInternalLink.href}
+                        className="rounded-full bg-primary/10 px-4 py-2 text-sm font-semibold text-primary transition-colors hover:bg-primary/15"
                       >
-                        {link.label}
+                        {article.primaryInternalLink.label}
                       </Link>
-                    ))}
+                      {article.supportingInternalLinks.map((link) => (
+                        <Link
+                          key={link.href}
+                          href={link.href}
+                          className="rounded-full bg-muted px-4 py-2 text-sm font-semibold text-foreground transition-colors hover:bg-muted/70"
+                        >
+                          {link.label}
+                        </Link>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </Reveal>

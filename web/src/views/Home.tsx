@@ -19,6 +19,7 @@ import { useRouter } from 'next/navigation'
 import { Reveal } from '../components/Reveal'
 import { Button } from '../components/ui/Button'
 import { chromeWebStoreInstallUrl } from '../lib/chromeWebStore'
+import { DONNA_PRODUCT_FACTS } from '../lib/productFacts'
 
 const primaryCtaLabel = 'Add to Gmail - Free Trial'
 
@@ -120,7 +121,8 @@ export function HomePage() {
               </div>
 
               <p className="mt-4 text-xs text-muted-foreground">
-                Free trial &middot; No credit card &middot; Uninstall anytime
+                {DONNA_PRODUCT_FACTS.trialDays}-day free trial &middot; $
+                {DONNA_PRODUCT_FACTS.monthlyPriceUsd}/month after trial &middot; Cancel anytime
               </p>
             </Reveal>
 
@@ -358,10 +360,14 @@ export function HomePage() {
               Featured on Chrome Web Store
             </div>
             <div className="mt-5 flex items-center justify-center gap-3">
-              <span className="text-5xl font-bold text-foreground" style={{ letterSpacing: '-0.02em' }}>4.8</span>
+              <span className="text-5xl font-bold text-foreground" style={{ letterSpacing: '-0.02em' }}>
+                {DONNA_PRODUCT_FACTS.ratingValue}
+              </span>
               <div className="text-left">
                 <div className="flex gap-0.5 text-lg text-brand-orange">★★★★★</div>
-                <p className="text-sm text-muted-foreground">5 ratings</p>
+                <p className="text-sm text-muted-foreground">
+                  {DONNA_PRODUCT_FACTS.ratingCount} ratings
+                </p>
               </div>
             </div>
           </Reveal>
@@ -382,7 +388,7 @@ export function HomePage() {
 
           <Reveal className="mt-10 text-center">
             <a
-              href="https://chromewebstore.google.com/detail/donna-crm/fadjjpednmcoomcpajkfbpchankdoiip/reviews"
+              href={`${DONNA_PRODUCT_FACTS.chromeWebStoreUrl}/reviews`}
               target="_blank"
               rel="noopener noreferrer"
               className="text-sm text-muted-foreground/70 underline-offset-2 hover:text-muted-foreground hover:underline"
@@ -417,7 +423,8 @@ export function HomePage() {
               </Button>
             </div>
             <p className="mt-4 text-xs text-muted-foreground">
-              Free trial &middot; No credit card &middot; Uninstall anytime
+              {DONNA_PRODUCT_FACTS.trialDays}-day free trial &middot; $
+              {DONNA_PRODUCT_FACTS.monthlyPriceUsd}/month after trial &middot; Cancel anytime
             </p>
           </Reveal>
         </div>

@@ -2,6 +2,10 @@
 
 import { ArrowRight, Check, Minus } from 'lucide-react'
 import Link from 'next/link'
+import {
+  ComparisonSources,
+  type ComparisonSource,
+} from '../components/ComparisonSources'
 import { Eyebrow } from '../components/Eyebrow'
 import { Reveal } from '../components/Reveal'
 import { Button } from '../components/ui/Button'
@@ -33,8 +37,8 @@ const considerCopperIf = [
 
 const whyPeopleLookForAlternatives = [
   {
-    title: 'Too much time outside Gmail',
-    text: 'Many CRMs pull you into dashboards and tabs. If your real work happens in email threads, context can drift away from the conversation.',
+    title: 'You want less CRM administration',
+    text: 'Copper connects closely with Google Workspace while also offering a full CRM. Solo operators may prefer fewer fields, reports, and processes to maintain.',
   },
   {
     title: 'Setup becomes a project',
@@ -50,7 +54,7 @@ const comparisonRows: ComparisonRow[] = [
   {
     label: 'Primary workflow',
     donna: { title: 'Gmail-first', detail: 'Context and next steps in the Gmail sidebar.' },
-    copper: { title: 'CRM-first', detail: 'A full CRM workflow with Gmail as one surface.' },
+    copper: { title: 'Google Workspace CRM', detail: 'Records, pipelines, tasks, and reporting across Gmail, Calendar, and the CRM.' },
   },
   {
     label: 'Best fit',
@@ -70,7 +74,7 @@ const comparisonRows: ComparisonRow[] = [
   {
     label: 'AI assistance',
     donna: { title: 'Human-in-the-loop', detail: 'Drafts and suggestions; you confirm.' },
-    copper: { title: 'Varies', detail: 'Depends on how you use your CRM tools.' },
+    copper: { title: 'Plan-dependent AI tools', detail: 'Includes email writing assistance on eligible plans.' },
   },
   {
     label: 'Reporting',
@@ -83,6 +87,11 @@ const comparisonRows: ComparisonRow[] = [
     copper: { title: 'Team oriented', detail: 'Designed for shared workflows and visibility.' },
   },
 ]
+
+const copperSources = [
+  { label: 'Copper for Google Workspace', href: 'https://www.copper.com/google-workspace-crm' },
+  { label: 'Copper pricing and features', href: 'https://www.copper.com/pricing' },
+] as const satisfies readonly ComparisonSource[]
 
 export function CopperAlternativePage() {
   const primaryCtaLabel = 'Add Donna to Gmail'
@@ -231,10 +240,11 @@ export function CopperAlternativePage() {
               </table>
             </div>
 
-            <p className="mt-4 text-xs text-muted-foreground">
-              Note: This page is a high-level comparison for typical solo workflows. If you have a
-              specific use case, contact us and we will point you to the best fit.
-            </p>
+            <ComparisonSources
+              competitorName="Copper"
+              checkedDate="August 2026"
+              sources={copperSources}
+            />
           </Reveal>
         </div>
       </section>
