@@ -22,9 +22,50 @@ export type ProductUpdate = {
 
 export const productUpdates: ProductUpdate[] = [
   {
+    version: '0.3.8',
+    releasedAt: '2026-08-14',
+    releaseLabel: 'Current release',
+    title: 'Know more before every follow-up',
+    summary:
+      'Apollo and Fathom are now live in Donna, bringing contact research, company details, meeting history, summaries, action items, and transcripts into your CRM beside Gmail. Get the context you need before your next email or call without piecing it together across tabs.',
+    features: [
+      {
+        title: 'Research the relationship without leaving Gmail',
+        description:
+          'Connect Apollo to find saved contacts, add useful company details, and confirm the workspace behind your results - all from Donna while you work in Gmail.',
+        capabilities: [
+          'Find contacts already saved in your Apollo workspace',
+          'Add useful Apollo details to a company using its domain',
+          'Confirm which Apollo user and workspace are connected',
+          'Review and confirm before company research uses an Apollo credit',
+        ],
+        steps: [
+          'Open Donna in Gmail, choose Agents, then open Apps.',
+          'Find Apollo, select Connect, and approve access.',
+          'Choose an Apollo task and tell Donna what you would like to find.',
+        ],
+      },
+      {
+        title: 'Keep every meeting close to the relationship',
+        description:
+          'Fathom is now live in Donna. Matching meeting recordings, summaries, action items, and transcripts appear in the contact profile, helping you pick up where the conversation left off before your next email or call.',
+        capabilities: [
+          'See Fathom recordings matched to each Donna contact',
+          'Review available summaries and action items before following up',
+          'Read transcript excerpts in Donna and load more when you need detail',
+          'Open the original recording in Fathom whenever you want to revisit it',
+        ],
+        steps: [
+          'Open Agents, choose Apps, and connect Fathom.',
+          'Open a Donna contact and choose Meeting transcripts.',
+          'Expand a meeting to review its summary, action items, and transcript.',
+        ],
+      },
+    ],
+  },
+  {
     version: '0.3.7',
     releasedAt: '2026-07-10',
-    releaseLabel: 'Current release',
     title: 'Bring Donna to Brave',
     summary:
       'Prefer Brave? You can now use Donna’s Gmail context, contact enrichment, labels, meeting tools, Google Sheets imports, and Drive file context without switching browsers.',
