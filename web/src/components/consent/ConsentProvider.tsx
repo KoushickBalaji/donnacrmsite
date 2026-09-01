@@ -2,7 +2,14 @@
 
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, useSyncExternalStore } from 'react'
 import type { Consent } from '../../lib/consent'
-import { clearGoogleCookies, isDoNotTrackEnabled, readConsent, writeConsent } from '../../lib/consent'
+import {
+  clearGoogleCookies,
+  clearOpenAIAdsCookies,
+  isDoNotTrackEnabled,
+  readConsent,
+  writeConsent,
+} from '../../lib/consent'
+import { setOpenAIAdsConsent } from '../../lib/analytics/openaiAds'
 
 const ga4MeasurementId = process.env.NEXT_PUBLIC_GA4_MEASUREMENT_ID?.trim()
 const googleAdsTagId = process.env.NEXT_PUBLIC_GOOGLE_ADS_TAG_ID?.trim()
@@ -122,6 +129,8 @@ export function ConsentProvider({ children }: { children: React.ReactNode }) {
       if (googleAdsTagId) {
         window.gtag?.('config', googleAdsTagId)
       }
+
+      setOpenAIAdsConsent(next.marketing)
     }
 
     const disabledAnalytics = Boolean(prev?.analytics && !next.analytics)
@@ -134,6 +143,8 @@ export function ConsentProvider({ children }: { children: React.ReactNode }) {
     if (shouldClearAnalytics || shouldClearMarketing) {
       clearGoogleCookies({ analytics: shouldClearAnalytics, marketing: shouldClearMarketing })
     }
+
+    if (shouldClearMarketing) clearOpenAIAdsCookies()
 
     if (typeof window !== 'undefined') {
       window.dispatchEvent(new Event(consentChangeEvent))

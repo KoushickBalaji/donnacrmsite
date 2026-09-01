@@ -29,6 +29,7 @@ Global robots metadata is set in `src/app/layout.tsx`:
 - `NEXT_PUBLIC_GA4_MEASUREMENT_ID`
 - `NEXT_PUBLIC_GOOGLE_ADS_TAG_ID`
 - `NEXT_PUBLIC_GOOGLE_ADS_INSTALL_SEND_TO`
+- `NEXT_PUBLIC_OPENAI_ADS_PIXEL_ID`
 
 ### Required for contact email
 

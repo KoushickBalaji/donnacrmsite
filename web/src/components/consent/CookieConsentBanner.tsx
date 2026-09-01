@@ -3,12 +3,13 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { Button } from '../ui/Button'
+import { openAIAdsPixelId } from '../../lib/analytics/openaiAds'
 import { isDoNotTrackEnabled } from '../../lib/consent'
 import { useConsent } from './ConsentProvider'
 
 const ga4MeasurementId = process.env.NEXT_PUBLIC_GA4_MEASUREMENT_ID?.trim()
 const googleAdsTagId = process.env.NEXT_PUBLIC_GOOGLE_ADS_TAG_ID?.trim()
-const hasGoogleTags = Boolean(ga4MeasurementId || googleAdsTagId)
+const hasOptionalTracking = Boolean(ga4MeasurementId || googleAdsTagId || openAIAdsPixelId)
 
 type CookieConsentBannerProps = {
   enabled: boolean
@@ -20,7 +21,7 @@ export function CookieConsentBanner({ enabled }: CookieConsentBannerProps) {
   const [customizeOpen, setCustomizeOpen] = useState(false)
 
   if (!enabled) return null
-  if (!hasGoogleTags) return null
+  if (!hasOptionalTracking) return null
   if (!isReady) return null
   if (isDoNotTrackEnabled()) return null
 
@@ -142,7 +143,9 @@ export function CookieConsentBanner({ enabled }: CookieConsentBannerProps) {
                     Marketing
                   </span>
                   <span className="block text-xs text-muted-foreground">
-                    Enables marketing cookies (Google Ads). When disabled, conversions may be measured in a cookieless, modeled way.
+                    Enables marketing measurement from Google Ads and OpenAI Ads. When disabled,
+                    OpenAI Ads is not loaded or sent conversion events; Google Ads may use
+                    cookieless measurement.
                   </span>
                 </span>
               </label>

@@ -152,3 +152,19 @@ export function clearGoogleCookies(options?: { analytics?: boolean; marketing?: 
     for (const domain of domains) deleteCookie(name, domain)
   }
 }
+
+export function clearOpenAIAdsCookies() {
+  if (typeof window === 'undefined') return
+
+  const hostname = window.location.hostname
+  const parentDomain = hostname ? getParentDomain(hostname) : ''
+  const domains = new Set<string | undefined>([
+    undefined,
+    hostname || undefined,
+    hostname ? `.${hostname}` : undefined,
+    parentDomain || undefined,
+    parentDomain ? `.${parentDomain}` : undefined,
+  ])
+
+  for (const domain of domains) deleteCookie('__oppref', domain)
+}

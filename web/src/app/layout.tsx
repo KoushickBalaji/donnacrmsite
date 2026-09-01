@@ -9,6 +9,7 @@ import { SiteFooter } from '../components/SiteFooter'
 import { SiteHeader } from '../components/SiteHeader'
 import { Ga4Analytics } from '../lib/analytics/Analytics'
 import { GoogleTagScripts } from '../lib/analytics/GoogleTagScripts'
+import { OpenAIAdsPixel } from '../lib/analytics/OpenAIAdsPixel'
 import { resolveSiteOrigin, SITE_NAME } from '../lib/site'
 import './globals.css'
 
@@ -69,6 +70,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={inter.className} suppressHydrationWarning>
         <GoogleTagScripts />
         <ConsentProvider>
+          {isProduction ? <OpenAIAdsPixel /> : null}
           <JsonLd id="donna-jsonld-global" data={globalJsonLd} />
           <div className="min-h-screen bg-background">
             <div className="flex min-h-screen flex-col">

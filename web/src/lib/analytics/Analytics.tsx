@@ -4,6 +4,7 @@ import { useEffect } from 'react'
 import { usePathname, useSearchParams } from 'next/navigation'
 import { trackEvent, trackPageView } from './ga4'
 import { trackGoogleAdsInstallClick } from './googleAds'
+import { trackOpenAIAdsInstallClick } from './openaiAds'
 
 type SearchParamsLike = {
   entries(): IterableIterator<[string, string]>
@@ -67,6 +68,7 @@ export function Ga4Analytics() {
         utm_campaign: utmCampaign,
         utm_content: utmContent,
       })
+      trackOpenAIAdsInstallClick()
 
       const opensNewTab = (anchor.getAttribute('target') ?? '').toLowerCase() === '_blank'
       const isPlainLeftClick =

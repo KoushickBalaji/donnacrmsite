@@ -1,5 +1,5 @@
 export function PrivacyPage() {
-  const lastUpdated = '25 Apr 2026'
+  const lastUpdated = '1 Sep 2026'
 
   return (
     <>
@@ -131,12 +131,13 @@ export function PrivacyPage() {
               </p>
               <ul className="list-inside list-disc space-y-2 text-muted-foreground">
                 <li>Google Analytics 4 (GA4) for usage analytics</li>
-                <li>Google Ads conversion tracking for install intent measurement</li>
+                <li>Google Ads and OpenAI Ads conversion tracking for install intent measurement</li>
               </ul>
               <p className="mt-4 text-muted-foreground">
-                We do not load these optional analytics/marketing tags until you
-                provide consent. You can update your preferences anytime via the
-                &ldquo;Cookie preferences&rdquo; link in the site footer.
+                OpenAI Ads measurement does not load until you provide marketing consent.
+                Google tags use denied storage and personalization settings before you
+                choose and may send cookieless measurement. You can update your preferences
+                anytime via the &ldquo;Cookie preferences&rdquo; link in the site footer.
               </p>
             </div>
 
